@@ -78,6 +78,36 @@ body {
   background: transparent;
 }
 
+.event-info {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.organizer {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.event-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.event-detail {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.event-detail span {
+  font-weight: 600;
+}
+
+
+
 /* =====================
    TITLE & SUBTITLE
 ===================== */
