@@ -1,0 +1,167 @@
+/* =====================
+   ROOT COLOR THEME
+===================== */
+:root {
+  --biru: #375395;
+  --emas: #c9a24d;
+}
+
+/* =====================
+   RESET & GLOBAL
+===================== */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.65)
+    ),
+    url('background.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* =====================
+   LOGO AREA (ATAS BACKGROUND)
+===================== */
+.logo-area {
+  text-align: center;
+  padding: 50px 0 12px;   /* ✔ jarak lebih kemas */
+  background: transparent;
+}
+
+.logo {
+  width: 240px;          /* ✔ logo DIKECILKAN */
+  max-width: 85%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.45));
+}
+
+/* =====================
+   MAIN WRAPPER (KAD PUTIH)
+===================== */
+.wrapper {
+  max-width: 420px;
+  margin: 0 auto 40px;
+  padding: 22px;
+  text-align: center;
+  background: rgba(255,255,255,0.88);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* =====================
+   LOGO PARTNER
+===================== */
+.logo-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 260px;
+  margin: 0 auto 16px;
+}
+
+.logo-group img {
+  width: 100%;
+  max-width: 52px;
+  display: block;
+  margin: auto;
+  background: transparent;
+}
+
+/* =====================
+   TITLE & SUBTITLE
+===================== */
+h1 {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 28px;        /* ✔ lebih seimbang mobile */
+  color: var(--biru);
+  margin: 8px 0 6px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--emas);
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+/* =====================
+   CARD / BUTTON
+===================== */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 16px;
+  margin-bottom: 14px;
+  text-decoration: none;
+  color: var(--biru);
+  border: 2px solid var(--biru);
+  box-shadow: 0 6px 14px rgba(55,83,149,0.18);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.card img {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.card span {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* =====================
+   CARD HOVER
+===================== */
+.card:hover {
+  background: var(--biru);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.card:hover span {
+  color: #ffffff;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  margin-top: 28px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* =====================
+   MOBILE EXTRA (KESELAMATAN)
+===================== */
+@media (max-width: 480px) {
+  .logo {
+    width: 210px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+.card.clicked {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
