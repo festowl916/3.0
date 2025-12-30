@@ -17,19 +17,24 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* PENTING: elak lari skrin */
+  overflow-x: hidden;
 }
 
 /* =====================
-   BODY
+   BODY (PROFESIONAL)
 ===================== */
 body {
-  background: #eaeaea;
+  background: linear-gradient(
+    180deg,
+    #1f3556 0%,
+    #2e4a7f 45%,
+    #eaeaea 100%
+  );
   color: #333;
 }
 
 /* =====================
-   LOGO AREA
+   LOGO AREA (HERO RASMI)
 ===================== */
 .logo-area {
   text-align: center;
@@ -38,33 +43,34 @@ body {
 
   background:
     linear-gradient(
-      rgba(0,0,0,0.20),
-      rgba(0,0,0,0.05)
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.75)
     ),
     url("festival-bg.jpg") center / cover no-repeat;
 }
 
+/* LOGO UTAMA */
 .logo {
-  max-width: 240px;
+  max-width: 230px;
   width: 100%;
   height: auto;
   margin: 0 auto;
   display: block;
-  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.45));
+  filter: drop-shadow(0 14px 28px rgba(0,0,0,0.55));
 }
 
 /* =====================
-   MAIN WRAPPER
+   MAIN WRAPPER (CARD RASMI)
 ===================== */
 .wrapper {
   max-width: 420px;
-  margin: -24px auto 40px;
-  padding: 22px;
+  margin: -48px auto 50px;
+  padding: 24px;
   text-align: center;
 
-  background: rgba(255,255,255,0.97);
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
 }
 
 /* =====================
@@ -75,7 +81,7 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   max-width: 280px;
-  margin: 0 auto 18px;
+  margin: 0 auto 20px;
 }
 
 .logo-group img {
@@ -91,7 +97,8 @@ h1 {
   font-family: 'Alfa Slab One', cursive;
   font-size: 28px;
   color: var(--biru);
-  margin: 12px 0 8px;
+  margin: 14px 0 10px;
+  letter-spacing: 0.5px;
 }
 
 /* =====================
@@ -102,8 +109,8 @@ h1 {
 }
 
 .event-info.under-title {
-  padding-bottom: 14px;
-  border-bottom: 1px dashed rgba(0,0,0,0.2);
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(0,0,0,0.25);
 }
 
 .organizer {
@@ -123,14 +130,14 @@ h1 {
 }
 
 /* =====================
-   CARD
+   CARD BUTTON
 ===================== */
 .card {
   display: flex;
   align-items: center;
   gap: 14px;
 
-  background: #fff;
+  background: #ffffff;
   padding: 14px;
   border-radius: 16px;
   margin-bottom: 14px;
@@ -139,8 +146,8 @@ h1 {
   color: var(--biru);
   border: 2px solid var(--biru);
 
-  box-shadow: 0 6px 14px rgba(55,83,149,0.2);
-  transition: 0.25s ease;
+  box-shadow: 0 8px 18px rgba(55,83,149,0.25);
+  transition: all 0.25s ease;
 }
 
 .card img {
@@ -157,7 +164,7 @@ h1 {
 .card:hover {
   background: var(--biru);
   color: #fff;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* =====================
@@ -179,5 +186,9 @@ footer {
 
   h1 {
     font-size: 26px;
+  }
+
+  .wrapper {
+    margin: -40px 14px 40px;
   }
 }
