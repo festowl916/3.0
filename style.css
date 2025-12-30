@@ -149,7 +149,34 @@ a.card {
   color: inherit;
   display: flex;
 }
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
+  padding: 16px 18px;
+  margin-bottom: 14px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  color: #222;
+  text-decoration: none;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.action-btn:hover {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.02);
+}
+
+.btn-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
 /* =====================
    FOOTER
 ===================== */
@@ -170,4 +197,5 @@ footer {
   h1 {
     font-size: 26px;
   }
+
 }
