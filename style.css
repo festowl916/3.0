@@ -33,16 +33,13 @@ body {
 .logo-area {
   text-align: center;
   padding: 50px 0 12px;
-  background: transparent;
 }
 
 .logo {
   width: 240px;
   max-width: 85%;
-  height: auto;
   display: block;
   margin: 0 auto;
-  background: transparent;
   filter: drop-shadow(0 10px 24px rgba(0,0,0,0.45));
 }
 
@@ -60,12 +57,44 @@ body {
 }
 
 /* =====================
-   EVENT INFO
+   LOGO PARTNER (SAMA BESAR)
+===================== */
+.logo-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  max-width: 280px;
+  margin: 0 auto 18px;
+}
+
+.logo-group img {
+  width: 100%;
+  height: 56px;
+  max-width: 56px;
+  object-fit: contain;
+  margin: auto;
+}
+
+/* =====================
+   TITLE
+===================== */
+h1 {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 28px;
+  color: var(--biru);
+  margin: 10px 0 8px;
+}
+
+/* =====================
+   EVENT INFO (BAWAH TAJUK)
 ===================== */
 .event-info {
-  margin: 14px 0 22px;
-  padding-bottom: 14px;
+  margin: 10px 0 18px;
   text-align: center;
+}
+
+.event-info.under-title {
+  padding-bottom: 14px;
   border-bottom: 1px dashed rgba(0,0,0,0.15);
 }
 
@@ -76,15 +105,11 @@ body {
   letter-spacing: 0.4px;
 }
 
-.organizer strong {
-  font-weight: 700;
-}
-
 .event-name {
   font-size: 15px;
   font-weight: 600;
   color: var(--biru);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .event-detail {
@@ -95,38 +120,11 @@ body {
 
 .event-detail span {
   font-weight: 600;
-  color: #333;
 }
 
 /* =====================
-   LOGO PARTNER
+   SUBTITLE
 ===================== */
-.logo-group {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  max-width: 260px;
-  margin: 0 auto 16px;
-}
-
-.logo-group img {
-  width: 100%;
-  max-width: 52px;
-  display: block;
-  margin: auto;
-  background: transparent;
-}
-
-/* =====================
-   TITLE & SUBTITLE
-===================== */
-h1 {
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 28px;
-  color: var(--biru);
-  margin: 8px 0 6px;
-}
-
 .subtitle {
   font-size: 13px;
   color: var(--emas);
