@@ -199,3 +199,46 @@ footer {
   }
 
 }
+
+.countdown-box {
+  margin: 28px 0;
+  padding: 18px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+
+  text-align: center;
+}
+
+.countdown-title {
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.countdown div {
+  min-width: 64px;
+}
+
+.countdown span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.countdown small {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .countdown span {
+    font-size: 22px;
+  }
+}
