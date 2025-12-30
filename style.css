@@ -23,6 +23,10 @@ html, body {
    BODY (WARNA NEUTRAL)
 ===================== */
 body {
+  margin: 0;
+  background: #eaeaea;
+  color: #333;
+} {
   background: #eaeaea;
   color: #333;
 }
@@ -30,17 +34,16 @@ body {
 /* =====================
    LOGO AREA (HERO BACKGROUND)
 ===================== */
-.logo-area {
+..logo-area {
   text-align: center;
-  padding: 60px 0 40px;
+  padding: 110px 0 80px;
 
   background:
     linear-gradient(
-      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.20),
       rgba(0,0,0,0.05)
     ),
-    url("./assets/Owl916_BG_Website_1920x1080.jpg")
-      center / cover no-repeat;
+    url("./festival-bg.jpg") center / cover no-repeat;
 }
 
 .logo {
