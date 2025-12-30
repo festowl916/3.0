@@ -21,6 +21,9 @@ html, body {
   overflow-x: hidden;
 }
 
+/* =====================
+   BODY (BACKGROUND 1 PAGE PENUH)
+===================== */
 body {
   min-height: 100vh;
   display: flex;
@@ -36,7 +39,7 @@ body {
 }
 
 /* =====================
-   LOGO AREA (HERO RASMI)
+   LOGO AREA (HERO)
 ===================== */
 .logo-area {
   text-align: center;
@@ -65,9 +68,8 @@ body {
    MAIN WRAPPER (FLOATING CARD)
 ===================== */
 .wrapper {
-	.wrapper {
   flex-shrink: 0;
-}
+
   max-width: 420px;
   margin: -48px auto 60px;
   padding: 24px;
@@ -135,7 +137,7 @@ h1 {
 }
 
 /* =====================
-   CARD BUTTON (TRANSPARENT / GLASS)
+   CARD BUTTON (GLASS)
 ===================== */
 .card {
   display: flex;
@@ -182,7 +184,8 @@ h1 {
    FOOTER
 ===================== */
 footer {
-  margin-top: 28px;
+  margin-top: auto;
+  padding-bottom: 20px;
   font-size: 12px;
   color: #666;
 }
