@@ -22,7 +22,7 @@ body {
       rgba(255,255,255,0.45),
       rgba(255,255,255,0.65)
     ),
-    url('background.jpg') no-repeat center center;
+    url('background.png') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
 }
