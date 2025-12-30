@@ -10,7 +10,32 @@
   <title>Festival Memanah Tradisional OWL 916 3.0 | 2026</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<script>
+  const eventDate = new Date("June 28, 2026 00:00:00").getTime();
 
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      document.querySelector(".countdown-box").innerHTML =
+        "<strong>🎯 Festival Sedang Berlangsung</strong>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+  }, 1000);
+</script>
+  
 <body>
 
   <!-- LOGO UTAMA (ATAS BACKGROUND FIXED) -->
@@ -99,6 +124,7 @@ class="card">
 </body>
 
 </html>
+
 
 
 
