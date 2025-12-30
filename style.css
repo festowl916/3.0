@@ -144,6 +144,11 @@ h1 {
   background: rgba(55,83,149,0.9);
   color: #fff;
 }
+a.card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
 
 /* =====================
    FOOTER
