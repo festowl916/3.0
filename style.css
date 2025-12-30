@@ -15,34 +15,32 @@
 }
 
 html, body {
-  min-height: 100%;
-}
-
-body {
   margin: 0;
-  min-height: 100vh;
-
-  /* BACKGROUND UTAMA */
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url("./Owl916_BG_Website_1920x1080.jpg") center / cover no-repeat fixed;
-
-  background-color: #1b2a4a; /* fallback */
-  color: #fff;
+  padding: 0;
 }
 
 /* =====================
-   LOGO AREA
+   BODY (WARNA NEUTRAL)
 ===================== */
-..logo-area {
+body {
+  background: #eaeaea;
+  color: #333;
+}
+
+/* =====================
+   LOGO AREA (HERO BACKGROUND)
+===================== */
+.logo-area {
+  text-align: center;
+  padding: 60px 0 40px;
+
   background:
     linear-gradient(
       rgba(0,0,0,0.35),
       rgba(0,0,0,0.05)
     ),
-    url("./assets/Owl916_BG_Website_1920x1080.jpg") center / cover no-repeat;
-
-  padding: 60px 0 30px;
+    url("./assets/Owl916_BG_Website_1920x1080.jpg")
+      center / cover no-repeat;
 }
 
 .logo {
@@ -58,13 +56,11 @@ body {
 ===================== */
 .wrapper {
   max-width: 420px;
-  margin: 0 auto 40px;
+  margin: -30px auto 40px; /* naik sikit ke atas */
   padding: 22px;
   text-align: center;
 
-  /* BUKAN PUTIH SOLID */
-  background: rgba(255,255,255,0.92);
-
+  background: rgba(255,255,255,0.95);
   border-radius: 18px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
@@ -81,9 +77,8 @@ body {
 }
 
 .logo-group img {
-  width: 100%;
+  width: 56px;
   height: 56px;
-  max-width: 56px;
   object-fit: contain;
   margin: auto;
 }
@@ -103,7 +98,6 @@ h1 {
 ===================== */
 .event-info {
   margin: 10px 0 18px;
-  text-align: center;
 }
 
 .event-info.under-title {
@@ -147,15 +141,14 @@ h1 {
   align-items: center;
   gap: 14px;
 
-  /* transparent sikit */
-  background: rgba(255,255,255,0.95);
-
+  background: #fff;
   padding: 14px;
   border-radius: 16px;
   margin-bottom: 14px;
-  text-decoration: none;
 
+  text-decoration: none;
   color: var(--biru);
+
   border: 2px solid var(--biru);
   box-shadow: 0 6px 14px rgba(55,83,149,0.2);
 
@@ -199,10 +192,6 @@ footer {
 
   h1 {
     font-size: 26px;
-  }
-
-  body {
-    background-attachment: scroll; /* mobile smooth */
   }
 }
 
