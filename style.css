@@ -34,9 +34,15 @@ body {
 /* =====================
    LOGO AREA
 ===================== */
-.logo-area {
-  text-align: center;
-  padding: 50px 0 12px;
+..logo-area {
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.35),
+      rgba(0,0,0,0.05)
+    ),
+    url("./assets/Owl916_BG_Website_1920x1080.jpg") center / cover no-repeat;
+
+  padding: 60px 0 30px;
 }
 
 .logo {
