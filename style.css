@@ -20,13 +20,9 @@ html, body {
 }
 
 /* =====================
-   BODY (WARNA NEUTRAL)
+   BODY (NEUTRAL)
 ===================== */
 body {
-  margin: 0;
-  background: #eaeaea;
-  color: #333;
-} {
   background: #eaeaea;
   color: #333;
 }
@@ -34,7 +30,7 @@ body {
 /* =====================
    LOGO AREA (HERO BACKGROUND)
 ===================== */
-..logo-area {
+.logo-area {
   text-align: center;
   padding: 110px 0 80px;
 
@@ -59,7 +55,7 @@ body {
 ===================== */
 .wrapper {
   max-width: 420px;
-  margin: -30px auto 40px; /* naik sikit ke atas */
+  margin: -30px auto 40px;
   padding: 22px;
   text-align: center;
 
