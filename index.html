@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B8WXXH8T6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7B8WXXH8T6');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
+  <meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://festowl916.github.io/3.0/">
+  <meta property="og:image" content="https://festowl916.github.io/3.0/og-image.jpg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <title>Festival Memanah Tradisional OWL 916 3.0 | 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGO UTAMA -->
+<div class="logo-area">
+  <img src="logo.png" alt="Logo Fest Memanah OWL 916" class="logo">
+</div>
+
+<!-- KANDUNGAN -->
+<div class="wrapper">
+
+  <!-- LOGO PARTNER -->
+  <div class="logo-group">
+    <img src="logo1.png" alt="Logo 1" class="partner-logo">
+    <img src="logo2.png" alt="Logo 2" class="partner-logo">
+    <img src="logo3.png" alt="Logo 3" class="partner-logo big">
+    <img src="logo4.png" alt="Logo 4" class="partner-logo">
+    <img src="logo5.png" alt="Logo 5" class="partner-logo big">
+    <img src="logo6.png" alt="Logo 6" class="partner-logo big">
+  </div>
+
+  <!-- TAJUK -->
+  <h1>Fest Memanah OWL 916 3.0</h1>
+
+  <!-- EVENT INFO -->
+  <div class="event-info under-title">
+    <p class="organizer">
+      <strong>Persatuan Memanah Tradisional Negeri Terengganu</strong>
+    </p>
+
+    <p class="event-name">
+      Festival Memanah Tradisional OWL 916 (Kali ke-3)
+    </p>
+
+    <p class="event-detail">
+      📍 <strong>Tempat:</strong> Terengganu Equestrian Resort<br>
+      📅 <strong>Tarikh:</strong> 28 – 29 Jun 2026 (Sabtu & Ahad)
+    </p>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-box">
+    <div class="countdown-title">⏳ Festival Bermula Dalam</div>
+    <div class="countdown">
+      <div><span id="days">0</span><small>Hari</small></div>
+      <div><span id="hours">0</span><small>Jam</small></div>
+      <div><span id="minutes">0</span><small>Minit</small></div>
+      <div><span id="seconds">0</span><small>Saat</small></div>
+    </div>
+  </div>
+
+  <!-- BUTANG -->
+  <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" class="card">
+    <img src="daftar.png" alt="">
+    <span>Pendaftaran Fest OWL 916</span>
+  </a>
+
+  <a href="https://chat.whatsapp.com/Cr3RCAzwITbB6q7FraSAHO" class="card" target="_blank">
+    <img src="whatsapp.png" alt="">
+    <span>Group WhatsApp Peserta</span>
+  </a>
+
+  <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" class="card">
+    <img src="baju.png" alt="">
+    <span>Baju Festival</span>
+  </a>
+
+  <a href="https://maps.app.goo.gl/8DtMF13yND7QZL639" class="card">
+    <img src="lokasi.png" alt="">
+    <span>Lokasi Program</span>
+  </a>
+
+  <a href="https://wa.me/60123456789" class="action-btn" target="_blank" rel="noopener">
+    <img src="phone.png" alt="Hubungi Urusetia" class="btn-icon">
+    <span>
+      <strong>Hubungi Urusetia</strong><br>
+      Pertanyaan & bantuan rasmi
+    </span>
+  </a>
+
+  <footer>© 2026 OWL 916</footer>
+
+</div>
+
+<!-- SCRIPT COUNTDOWN -->
+<script>
+  const eventDate = new Date("June 28, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      document.querySelector(".countdown-box").innerHTML =
+        "<strong>🎯 Festival Sedang Berlangsung</strong>";
+      return;
+    }
+
+    document.getElementById("days").innerText =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("hours").innerText =
+      Math.floor((distance / (1000 * 60 * 60)) % 24);
+    document.getElementById("minutes").innerText =
+      Math.floor((distance / (1000 * 60)) % 60);
+    document.getElementById("seconds").innerText =
+      Math.floor((distance / 1000) % 60);
+  }, 1000);
+</script>
+
+</body>
+</html>
