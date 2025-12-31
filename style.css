@@ -1,126 +1,252 @@
-/* RESET */
+/* =====================
+   ROOT
+===================== */
+:root {
+  --biru: #375395;
+  --emas: #c9a24d;
+}
+
+/* =====================
+   RESET
+===================== */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   font-family: system-ui, Arial, sans-serif;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* =====================
+   BACKGROUND MATI
+===================== */
 body {
-  min-height: 100vh;
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
     url("festival-bg.jpg") center / cover no-repeat fixed;
+  color: #222;
 }
 
-/* LOGO */
+/* =====================
+   LOGO HERO
+===================== */
 .logo-area {
   text-align: center;
-  padding: 70px 20px 40px;
+  padding: 90px 16px 70px;
 }
 
 .logo {
-  width: 160px;
-  max-width: 100%;
-  filter: drop-shadow(0 10px 24px rgba(0,0,0,.6));
+  max-width: 230px;
+  width: 100%;
+  filter: drop-shadow(0 14px 28px rgba(0,0,0,0.6));
 }
 
-/* WRAPPER */
+/* =====================
+   FLOATING GLASS WRAPPER
+===================== */
 .wrapper {
   max-width: 420px;
-  margin: 0 auto 60px;
-  padding: 24px;
-  background: rgba(255,255,255,0.18);
+  margin: -40px auto 60px;
+  padding: 26px;
+  text-align: center;
+
+  background: rgba(80,130,200,0.22); /* BIRU LEMBUT */
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   border-radius: 24px;
-  box-shadow: 0 30px 60px rgba(0,0,0,.35);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* COUNTDOWN */
-.countdown-box {
-  background: rgba(255,255,255,0.25);
-  padding: 18px;
-  border-radius: 18px;
-  text-align: center;
+/* =====================
+   LOGO PARTNER
+===================== */
+.logo-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+  gap: 14px;
+
+  max-width: 300px;
+  margin: 0 auto 20px;
+  justify-items: center;
+}
+
+.logo-group img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.logo-group img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+/* =====================
+   TITLE
+===================== */
+h1 {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 28px;
+  color: #ffffff;
+  margin: 14px 0 12px;
+}
+
+/* =====================
+   EVENT INFO
+===================== */
+.event-info {
+  color: #f1f1f1;
+}
+
+.organizer {
+  color: var(--emas);
+}
+
+.event-name {
+  font-weight: 600;
+}
+
+.event-info.under-title {
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(255,255,255,0.4);
   margin-bottom: 20px;
 }
 
-.countdown-title {
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-.countdown span {
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.countdown small {
-  display: block;
-  font-size: 12px;
-}
-
-/* CARD BUTTON */
+/* =====================
+   BUTTON CARD
+===================== */
 .card {
   display: flex;
   align-items: center;
   gap: 14px;
 
-  width: 100%;
-  padding: 16px 18px;
+  padding: 16px;
   margin-bottom: 16px;
-
-  background: rgba(255,255,255,0.35);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
 
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+
+  color: #123;
   text-decoration: none;
-  color: #1f3556;
   font-weight: 600;
-  font-size: 17px;
 
   box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  transition: all .25s ease;
+  transition: 0.3s ease;
+}
+
+.card img {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  background: rgba(255,255,255,0.55);
+  transform: translateY(-5px);
+  background: rgba(55,83,149,0.9);
+  color: #fff;
+}
+a.card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px 18px;
+  margin-bottom: 14px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  color: #222;
+  text-decoration: none;
+
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* ICON */
-.card-img {
-  width: 44px;
-  height: auto;
+.action-btn:hover {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.02);
+}
+
+.btn-icon {
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
 }
+/* =====================
+   FOOTER
+===================== */
+footer {
+  font-size: 12px;
+  color: #eee;
+  margin-top: 20px;
+}
 
-/* TITLE + SUB */
-.menu-title {
+/* =====================
+   MOBILE
+===================== */
+@media (max-width:480px) {
+  .wrapper {
+    margin: -30px 14px 50px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+}
+
+.countdown-box {
+  margin: 28px 0;
+  padding: 18px;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+
+  text-align: center;
+}
+
+.countdown-title {
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.countdown div {
+  min-width: 64px;
+}
+
+.countdown span {
+  display: block;
+  font-size: 26px;
   font-weight: 700;
 }
 
-.menu-sub {
-  font-size: 0.9em;
-  opacity: .8;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
+.countdown small {
   font-size: 12px;
-  margin-top: 20px;
-  color: #eee;
+  opacity: 0.85;
 }
 
-/* MOBILE */
-@media (max-width:480px) {
-  .logo { width: 140px; }
-  .wrapper { padding: 20px; }
+@media (max-width: 480px) {
+  .countdown span {
+    font-size: 22px;
+  }
 }
