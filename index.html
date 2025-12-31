@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-
-  <!-- GOOGLE ANALYTICS -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B8WXXH8T6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7B8WXXH8T6');
-  </script>
-
-  <!-- META -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Maklumat rasmi Festival Memanah Tradisional OWL 916 3.0, tarikh, lokasi, pendaftaran & hebahan rasmi.">
-
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
-  <meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://festowl916.github.io/3.0/">
-  <meta property="og:image" content="https://festowl916.github.io/3.0/og-image.jpg">
-
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
   <title>Festival Memanah Tradisional OWL 916 3.0 | 2026</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -34,34 +17,10 @@
 
   <!-- LOGO -->
   <header class="logo-area">
-    <img src="logo.png" alt="Logo Festival Memanah Tradisional OWL 916" class="logo">
+    <img src="logo.png" alt="Logo Festival Memanah OWL 916" class="logo">
   </header>
 
-  <!-- CONTENT -->
   <main class="wrapper">
-
-    <!-- LOGO PARTNER -->
-    <section class="logo-group">
-      <img src="logo1.png" class="partner-logo" alt="">
-      <img src="logo2.png" class="partner-logo" alt="">
-      <img src="logo3.png" class="logo-item big" alt="">
-      <img src="logo4.png" class="partner-logo" alt="">
-      <img src="logo5.png" class="logo-item big" alt="">
-      <img src="logo6.png" class="logo-item big" alt="">
-      <img src="logo7.png" class="logo-item big" alt="">
-    </section>
-
-    <h1>Fest Memanah OWL 916 3.0</h1>
-
-    <!-- INFO -->
-    <section class="event-info under-title">
-      <p class="organizer"><strong>Persatuan Memanah Tradisional Negeri Terengganu</strong></p>
-      <p class="event-name">Festival Memanah Tradisional OWL 916 (Kali ke-3)</p>
-      <p class="event-detail">
-        📍 <strong>Tempat:</strong> Terengganu Equestrian Resort<br>
-        📅 <strong>Tarikh:</strong> 28 – 29 Jun 2026
-      </p>
-    </section>
 
     <!-- COUNTDOWN -->
     <section class="countdown-box">
@@ -74,7 +33,7 @@
       </div>
     </section>
 
-    <!-- BUTANG UTAMA -->
+    <!-- BUTANG -->
     <a href="#" class="card">
       <img src="daftar.png" class="card-img" alt="">
       <span>Pendaftaran Fest OWL 916</span>
@@ -95,32 +54,13 @@
       <span>Lokasi Program</span>
     </a>
 
-    <!-- HUBUNGI -->
-    <div class="section-title">
-      📞 Hubungi Urusetia<br>
-      <small>Pertanyaan Rasmi (WhatsApp)</small>
-    </div>
-
+    <!-- HUBUNGI URUSETIA (SATU KAD SAHAJA) -->
     <a href="https://wa.me/60123456789" class="card">
-      <img src="whatsapp.png" class="card-img" alt="">
-      <span>Urusetia A</span>
-    </a>
-
-    <a href="https://wa.me/60123456788" class="card">
-      <img src="whatsapp.png" class="card-img" alt="">
-      <span>Urusetia B</span>
-    </a>
-
-    <div class="section-title">📝 Pertanyaan Pendaftaran</div>
-
-    <a href="https://wa.me/60123456789" class="card">
-      <img src="whatsapp.png" class="card-img" alt="">
-      <span>Urusetia A</span>
-    </a>
-
-    <a href="https://wa.me/60123456788" class="card">
-      <img src="whatsapp.png" class="card-img" alt="">
-      <span>Urusetia B</span>
+      <img src="icon-phone.png" class="card-img" alt="">
+      <div>
+        <div class="menu-title">Hubungi Urusetia</div>
+        <div class="menu-sub">Pertanyaan & bantuan rasmi</div>
+      </div>
     </a>
 
     <footer>© 2026 OWL 916</footer>
@@ -130,14 +70,16 @@
   <!-- COUNTDOWN SCRIPT -->
   <script>
     const eventDate = new Date("June 28, 2026 00:00:00").getTime();
+
     setInterval(() => {
       const now = new Date().getTime();
       const d = eventDate - now;
       if (d < 0) return;
-      days.innerText = Math.floor(d / 86400000);
-      hours.innerText = Math.floor((d % 86400000) / 3600000);
-      minutes.innerText = Math.floor((d % 3600000) / 60000);
-      seconds.innerText = Math.floor((d % 60000) / 1000);
+
+      days.textContent = Math.floor(d / 86400000);
+      hours.textContent = Math.floor((d % 86400000) / 3600000);
+      minutes.textContent = Math.floor((d % 3600000) / 60000);
+      seconds.textContent = Math.floor((d % 60000) / 1000);
     }, 1000);
   </script>
 

@@ -1,61 +1,126 @@
-/* =====================
-   BUTTON CARD (STANDARD – SEMUA BUTANG)
-===================== */
-a.card {
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+    url("festival-bg.jpg") center / cover no-repeat fixed;
+}
+
+/* LOGO */
+.logo-area {
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.logo {
+  width: 160px;
+  max-width: 100%;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.6));
+}
+
+/* WRAPPER */
+.wrapper {
+  max-width: 420px;
+  margin: 0 auto 60px;
+  padding: 24px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.35);
+}
+
+/* COUNTDOWN */
+.countdown-box {
+  background: rgba(255,255,255,0.25);
+  padding: 18px;
+  border-radius: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.countdown-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.countdown span {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.countdown small {
+  display: block;
+  font-size: 12px;
+}
+
+/* CARD BUTTON */
+.card {
   display: flex;
   align-items: center;
   gap: 14px;
 
   width: 100%;
-  max-width: 420px;
-  margin: 12px auto;
-
   padding: 16px 18px;
-  border-radius: 20px;
+  margin-bottom: 16px;
 
   background: rgba(255,255,255,0.35);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
 
-  color: #1f3556;
   text-decoration: none;
+  color: #1f3556;
   font-weight: 600;
   font-size: 17px;
 
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.4);
-
-  transition: all 0.25s ease;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  transition: all .25s ease;
 }
 
-a.card:hover {
-  transform: translateY(-4px) scale(1.01);
-  background: rgba(55,83,149,0.9);
-  color: #ffffff;
+.card:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.55);
 }
 
-a.card:active {
-  transform: scale(0.97);
-}
-
-/* ICON DALAM BUTANG */
-.card-img,
-.btn-icon {
-  width: 46px;
+/* ICON */
+.card-img {
+  width: 44px;
   height: auto;
-  object-fit: contain;
   flex-shrink: 0;
-  background: transparent !important;
 }
 
-/* TEXT DALAM BUTANG */
+/* TITLE + SUB */
 .menu-title {
   font-weight: 700;
-  font-size: 1.05em;
 }
 
 .menu-sub {
   font-size: 0.9em;
-  opacity: 0.85;
+  opacity: .8;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  color: #eee;
+}
+
+/* MOBILE */
+@media (max-width:480px) {
+  .logo { width: 140px; }
+  .wrapper { padding: 20px; }
 }
