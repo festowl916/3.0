@@ -39,7 +39,7 @@ body {
   padding: 70px 16px 50px;
 }
 .logo-item.big {
-  height: 60px;
+  height: 55px;
 }
 .logo-top .logo-item {
   vertical-align: middle;
@@ -286,3 +286,4 @@ footer {
   }
 
 }
+
