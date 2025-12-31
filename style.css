@@ -67,10 +67,18 @@ body {
 ===================== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
   gap: 14px;
-  max-width: 280px;
+
+  max-width: 300px;
   margin: 0 auto 20px;
+  justify-items: center;
+}
+
+.logo-group img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
 }
 
 .logo-group img {
