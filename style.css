@@ -41,7 +41,9 @@ body {
 .logo-item.big {
   height: 62px;
 }
-
+.logo-top .logo-item {
+  vertical-align: middle;
+}
 .logo {
   display: block;
   margin: 0 auto 14px;
@@ -247,6 +249,12 @@ footer {
 /* =====================
    MOBILE FIX (TAMBAH RESPONSIVE UNTUK GAMBAR)
 ===================== */
+@media (max-width: 480px) {
+  .logo-top .logo-item {
+    height: 44px;
+  }
+}
+
 @media (max-width: 480px) {
   .logo {
     width: 140px;
