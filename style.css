@@ -40,17 +40,15 @@ body {
 
 .logo {
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 14px;
 
-  width: auto;
-  max-width: 200px;
+  width: 160px;
   height: auto;
 
-  padding: 10px;
-  border-radius: 18px;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 
-  background: rgba(255,255,255,0.06);
-  filter: drop-shadow(0 12px 26px rgba(0,0,0,0.55));
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.55));
 }
 
 /* =====================
@@ -243,7 +241,11 @@ footer {
 /* =====================
    MOBILE
 ===================== */
-@media (max-width: 480px) {
+@media (max-width:480px) {
+  .logo {
+    width: 140px;
+  }
+}
 
   .logo {
     max-width: 160px;
