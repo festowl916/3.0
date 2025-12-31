@@ -103,14 +103,13 @@ body {
 }
 
 /* saiz asas logo */
+./* saiz asas logo – SERAGAM */
 .partner-logo {
   width: 100%;
-  max-height: 55px;
+  height: 60px;        /* paksa semua logo sama tinggi */
   object-fit: contain;
   display: block;
   margin: auto;
-
-  image-rendering: auto;
 }
 
 /* logo yang perlu lebih besar */
