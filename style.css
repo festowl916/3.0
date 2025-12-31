@@ -85,23 +85,37 @@ body {
 /* =====================
    LOGO PARTNER
 ===================== */
+/* =====================
+   LOGO PARTNER
+===================== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 16px;
 
-  max-width: 300px;
-  margin: 0 auto 22px;
-  justify-items: center;
+  max-width: 360px;
+  margin: 0 auto 40px;
+  padding: 18px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
 }
 
-.logo-group img {
-  width: 64px;
-  height: 64px;
+/* saiz asas logo */
+.partner-logo {
+  width: 100%;
+  max-height: 55px;
   object-fit: contain;
+  display: block;
+  margin: auto;
 
-  opacity: 0.95;
-  filter: grayscale(5%) brightness(1.05);
+  image-rendering: auto;
+}
+
+/* logo yang perlu lebih besar */
+.partner-logo.big {
+  max-height: 70px;
 }
 
 /* =====================
