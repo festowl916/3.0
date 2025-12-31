@@ -11,12 +11,13 @@
 ===================== */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: system-ui, Arial, sans-serif;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+  width: 100%;
   height: 100%;
 }
 
@@ -41,13 +42,14 @@ body {
 .logo {
   display: block;
   margin: 0 auto 14px;
-
   width: 160px;
   height: auto;
 
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none;
 
+  image-rendering: auto;
   filter: drop-shadow(0 12px 24px rgba(0,0,0,0.55));
 }
 
@@ -70,7 +72,7 @@ body {
 }
 
 /* =====================
-   LOGO PARTNER
+   LOGO PARTNER (FIX HITAM)
 ===================== */
 .logo-group {
   display: grid;
@@ -87,8 +89,13 @@ body {
   height: 64px;
   object-fit: contain;
 
-  opacity: 0.9;
-  filter: grayscale(10%) brightness(1.1);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+
+  mix-blend-mode: normal;
+  opacity: 0.95;
 }
 
 /* =====================
@@ -148,7 +155,10 @@ a.card {
 .card img {
   width: 46px;
   height: 46px;
-  border-radius: 10px;
+  object-fit: contain;
+
+  background: transparent !important;
+  border: none;
 }
 
 .card:hover {
@@ -187,6 +197,7 @@ a.card {
   width: 48px;
   height: 48px;
   flex-shrink: 0;
+  background: transparent !important;
 }
 
 /* =====================
@@ -199,13 +210,6 @@ a.card {
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-
-  text-align: center;
-}
-
-.countdown-title {
-  font-weight: 600;
-  margin-bottom: 14px;
 }
 
 .countdown {
@@ -214,12 +218,7 @@ a.card {
   gap: 14px;
 }
 
-.countdown div {
-  min-width: 64px;
-}
-
 .countdown span {
-  display: block;
   font-size: 26px;
   font-weight: 700;
 }
@@ -239,16 +238,11 @@ footer {
 }
 
 /* =====================
-   MOBILE
+   MOBILE FIX
 ===================== */
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .logo {
     width: 140px;
-  }
-}
-
-  .logo {
-    max-width: 160px;
   }
 
   .wrapper {
