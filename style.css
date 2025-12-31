@@ -215,6 +215,74 @@ a.card {
   height: 48px;
   flex-shrink: 0;
 }
+/* =====================
+   URUSETIA (WHATSAPP)
+===================== */
+.urusetia-box {
+  margin-top: 26px;
+  padding: 18px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  text-align: left;
+}
+
+.urusetia-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.urusetia-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.urusetia-title {
+  font-weight: 700;
+  font-size: 1.05em;
+  color: #123;
+}
+
+.urusetia-sub {
+  font-size: 0.9em;
+  opacity: 0.85;
+  color: #123;
+}
+
+.urusetia-section {
+  margin-top: 14px;
+}
+
+.urusetia-section strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #123;
+}
+
+.urusetia-link {
+  display: block;
+  margin-bottom: 6px;
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  background: rgba(37,211,102,0.25);
+  text-decoration: none;
+  font-weight: 600;
+  color: #0f3d2e;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.urusetia-link:hover {
+  background: rgba(37,211,102,0.45);
+  transform: translateX(4px);
+}
 
 /* =====================
    COUNTDOWN
