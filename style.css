@@ -1,8 +1,14 @@
+/* =====================
+   ROOT
+===================== */
 :root {
   --biru: #375395;
   --emas: #c9a24d;
 }
 
+/* =====================
+   RESET
+===================== */
 * {
   box-sizing: border-box;
   font-family: system-ui, Arial, sans-serif;
@@ -13,20 +19,31 @@ html, body {
   padding: 0;
 }
 
+/* =====================
+   BACKGROUND UTAMA
+===================== */
 body {
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg.jpg") center/cover no-repeat fixed;
+    url("festival-bg.jpg") center / cover no-repeat fixed;
+  color: #fff;
 }
 
-/* LOGO HERO */
+/* =====================
+   LOGO HERO
+===================== */
 .logo-area {
   text-align: center;
   padding: 80px 16px 60px;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.25));
+  background: linear-gradient(
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.25)
+  );
 }
 
 .logo {
+  display: block;
+  margin: 0 auto;
   width: 220px;
   max-width: 90%;
   padding: 12px;
@@ -35,19 +52,27 @@ body {
   filter: drop-shadow(0 10px 22px rgba(0,0,0,0.6));
 }
 
-/* WRAPPER */
+/* =====================
+   WRAPPER (GLASS CARD)
+===================== */
 .wrapper {
   max-width: 480px;
   margin: -30px auto 60px;
   padding: 26px;
   text-align: center;
+
   background: rgba(80,130,200,0.22);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
-/* LOGO PARTNER */
+/* =====================
+   LOGO PARTNER
+===================== */
 .logo-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
@@ -57,6 +82,7 @@ body {
 
 .partner-logo {
   height: 60px;
+  width: 100%;
   object-fit: contain;
   margin: auto;
 }
@@ -65,28 +91,47 @@ body {
   height: 72px;
 }
 
-/* TITLE */
+/* =====================
+   TITLE
+===================== */
 h1 {
   font-family: 'Alfa Slab One', cursive;
-  color: #fff;
+  color: #ffffff;
+  margin: 10px 0 14px;
 }
 
-/* EVENT INFO */
+/* =====================
+   EVENT INFO
+===================== */
 .event-info {
   color: #f1f1f1;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .organizer {
   color: var(--emas);
 }
 
-/* COUNTDOWN */
+.event-info.under-title {
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+}
+
+/* =====================
+   COUNTDOWN
+===================== */
 .countdown-box {
   margin: 28px 0;
   padding: 18px;
   background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
+}
+
+.countdown-title {
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 .countdown {
@@ -95,33 +140,95 @@ h1 {
   gap: 14px;
 }
 
-.countdown span {
-  font-size: 26px;
-  font-weight: bold;
+.countdown div {
+  min-width: 64px;
 }
 
-/* BUTTONS */
-.card, .action-btn {
+.countdown span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.countdown small {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* =====================
+   BUTTONS / CARDS
+===================== */
+.card,
+.action-btn {
   display: flex;
   align-items: center;
   gap: 14px;
+
   padding: 16px;
   margin-bottom: 14px;
   border-radius: 18px;
+
   background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+
   text-decoration: none;
   color: #123;
+  font-weight: 600;
+
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* FOOTER */
+.card:hover,
+.action-btn:hover {
+  background: rgba(55,83,149,0.9);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* 🔒 FIX KRITIKAL: IMEJ DALAM CARD */
+.card img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.card span {
+  flex: 1;
+  text-align: left;
+}
+
+/* =====================
+   FOOTER
+===================== */
 footer {
   font-size: 12px;
   color: #eee;
   margin-top: 20px;
 }
 
-/* MOBILE */
+/* =====================
+   GLOBAL IMAGE SAFETY
+===================== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =====================
+   MOBILE
+===================== */
 @media (max-width: 480px) {
-  .logo { width: 200px; }
-  h1 { font-size: 26px; }
+  .logo {
+    width: 200px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .countdown span {
+    font-size: 22px;
+  }
 }
