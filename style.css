@@ -43,6 +43,7 @@ body {
   display: block;
   margin: 0 auto 14px;
   width: 160px;
+  max-width: 100%; /* Tambah: Biar responsive kalau screen kecil */
   height: auto;
 
   background: transparent !important;
@@ -51,6 +52,7 @@ body {
 
   image-rendering: auto;
   filter: drop-shadow(0 12px 24px rgba(0,0,0,0.55));
+  object-fit: contain; /* Tambah: Pastikan tak distort */
 }
 
 /* =====================
@@ -72,7 +74,7 @@ body {
 }
 
 /* =====================
-   LOGO PARTNER (FIX HITAM)
+   LOGO PARTNER (FIX HITAM & SAIZ SAMA)
 ===================== */
 .logo-group {
   display: grid;
@@ -84,10 +86,11 @@ body {
   justify-items: center;
 }
 
-.logo-group img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
+.partner-logo { /* Edit: Guna class baru dari HTML, untuk saiz konsisten */
+  width: auto;
+  max-width: 64px; /* Saiz max sama, biar tak ada yang besar kecil */
+  height: auto;
+  object-fit: contain; /* Pastikan fit tanpa distort */
 
   background: transparent !important;
   border: none !important;
@@ -152,9 +155,9 @@ a.card {
   transition: 0.3s ease;
 }
 
-.card img {
+.card-img { /* Edit: Guna class baru dari HTML, untuk saiz konsisten */
   width: 46px;
-  height: 46px;
+  height: auto; /* Biar height adjust */
   object-fit: contain;
 
   background: transparent !important;
@@ -195,9 +198,10 @@ a.card {
 
 .btn-icon {
   width: 48px;
-  height: 48px;
+  height: auto; /* Tambah: Biar adjust ratio */
   flex-shrink: 0;
   background: transparent !important;
+  object-fit: contain; /* Tambah: Pastikan tak distort */
 }
 
 /* =====================
@@ -238,7 +242,7 @@ footer {
 }
 
 /* =====================
-   MOBILE FIX
+   MOBILE FIX (TAMBAH RESPONSIVE UNTUK GAMBAR)
 ===================== */
 @media (max-width: 480px) {
   .logo {
@@ -256,5 +260,17 @@ footer {
 
   .countdown span {
     font-size: 22px;
+  }
+
+  .partner-logo {
+    max-width: 50px; /* Tambah: Kecikkan partner logo untuk mobile */
+  }
+
+  .card-img {
+    width: 40px; /* Tambah: Kecikkan card img untuk mobile */
+  }
+
+  .btn-icon {
+    width: 40px; /* Tambah: Adjust icon untuk mobile */
   }
 }
