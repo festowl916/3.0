@@ -38,6 +38,9 @@ body {
   text-align: center;
   padding: 70px 16px 50px;
 }
+.logo-item.big {
+  height: 62px;
+}
 
 .logo {
   display: block;
