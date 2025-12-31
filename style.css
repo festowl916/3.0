@@ -1,350 +1,61 @@
 /* =====================
-   ROOT
-===================== */
-:root {
-  --biru: #375395;
-  --emas: #c9a24d;
-}
-
-/* =====================
-   RESET
-===================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, Arial, sans-serif;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
-/* =====================
-   BACKGROUND UTAMA
-===================== */
-body {
-  background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg.jpg") center / cover no-repeat fixed;
-  color: #222;
-}
-
-/* =====================
-   LOGO HERO
-===================== */
-.logo-area {
-  text-align: center;
-  padding: 70px 16px 50px;
-}
-.logo-item.big {
-  height: 60px;
-}
-.logo-top .logo-item {
-  vertical-align: middle;
-}
-.logo {
-  display: block;
-  margin: 0 auto 14px;
-  width: 160px;
-  max-width: 100%; /* Tambah: Biar responsive kalau screen kecil */
-  height: auto;
-
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none;
-
-  image-rendering: auto;
-  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.55));
-  object-fit: contain; /* Tambah: Pastikan tak distort */
-}
-
-/* =====================
-   FLOATING GLASS WRAPPER
-===================== */
-.wrapper {
-  max-width: 420px;
-  margin: -24px auto 60px;
-  padding: 26px;
-  text-align: center;
-
-  background: rgba(80,130,200,0.22);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.35);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-}
-
-/* =====================
-   LOGO PARTNER (FIX HITAM & SAIZ SAMA)
-===================== */
-.logo-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
-  gap: 14px;
-
-  max-width: 300px;
-  margin: 0 auto 22px;
-  justify-items: center;
-}
-
-.partner-logo { /* Edit: Guna class baru dari HTML, untuk saiz konsisten */
-  width: auto;
-  max-width: 64px; /* Saiz max sama, biar tak ada yang besar kecil */
-  height: auto;
-  object-fit: contain; /* Pastikan fit tanpa distort */
-
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
-
-  mix-blend-mode: normal;
-  opacity: 0.95;
-}
-
-/* =====================
-   TITLE
-===================== */
-h1 {
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 28px;
-  color: #ffffff;
-  margin: 14px 0 12px;
-}
-
-/* =====================
-   EVENT INFO
-===================== */
-.event-info {
-  color: #f1f1f1;
-}
-
-.organizer {
-  color: var(--emas);
-}
-
-.event-name {
-  font-weight: 600;
-}
-
-.event-info.under-title {
-  padding-bottom: 16px;
-  border-bottom: 1px dashed rgba(255,255,255,0.4);
-  margin-bottom: 20px;
-}
-
-/* =====================
-   BUTTON CARD
+   BUTTON CARD (STANDARD – SEMUA BUTANG)
 ===================== */
 a.card {
   display: flex;
   align-items: center;
   gap: 14px;
 
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 20px;
-
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-
-  color: #123;
-  text-decoration: none;
-  font-weight: 600;
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  transition: 0.3s ease;
-}
-
-.card-img { /* Edit: Guna class baru dari HTML, untuk saiz konsisten */
-  width: 46px;
-  height: auto; /* Biar height adjust */
-  object-fit: contain;
-
-  background: transparent !important;
-  border: none;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  background: rgba(55,83,149,0.9);
-  color: #fff;
-}
-.menu-title {
-  font-weight: 700;
-  font-size: 1.05em;
-  margin-bottom: 4px;
-}
-
-.menu-sub {
-  font-size: 0.9em;
-  opacity: 0.85;
-  margin-bottom: 10px;
-}
-.menu-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
   width: 100%;
   max-width: 420px;
   margin: 12px auto;
 
-  padding: 16px 20px;
-  border-radius: 18px;
+  padding: 16px 18px;
+  border-radius: 20px;
 
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255,255,255,0.35);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   color: #1f3556;
   text-decoration: none;
-  font-size: 17px;
   font-weight: 600;
+  font-size: 17px;
 
   box-shadow:
-    0 10px 25px rgba(0,0,0,0.15),
+    0 12px 28px rgba(0,0,0,0.25),
     inset 0 1px 0 rgba(255,255,255,0.4);
 
   transition: all 0.25s ease;
 }
 
-.menu-btn:hover {
-  transform: translateY(-3px) scale(1.01);
-  background: rgba(255, 255, 255, 0.75);
+a.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: rgba(55,83,149,0.9);
+  color: #ffffff;
 }
 
-.menu-btn:active {
+a.card:active {
   transform: scale(0.97);
 }
 
-.wa-link {
-  display: block;
-  text-decoration: none;
-  margin: 6px 0;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(37, 211, 102, 0.25);
-  color: #0f3d2e;
-  font-weight: 600;
-}
-
-.wa-link:hover {
-  background: rgba(37, 211, 102, 0.4);
-}
-
-
-/* =====================
-   ACTION BUTTON
-===================== */
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  padding: 16px 18px;
-  margin-bottom: 14px;
-
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-
-  border-radius: 18px;
-  color: #222;
-  text-decoration: none;
-
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.action-btn:hover {
-  background: rgba(255,255,255,0.35);
-  transform: scale(1.02);
-}
-
+/* ICON DALAM BUTANG */
+.card-img,
 .btn-icon {
-  width: 48px;
-  height: auto; /* Tambah: Biar adjust ratio */
+  width: 46px;
+  height: auto;
+  object-fit: contain;
   flex-shrink: 0;
   background: transparent !important;
-  object-fit: contain; /* Tambah: Pastikan tak distort */
 }
 
-/* =====================
-   COUNTDOWN
-===================== */
-.countdown-box {
-  margin: 28px 0;
-  padding: 18px;
-
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-.countdown span {
-  font-size: 26px;
+/* TEXT DALAM BUTANG */
+.menu-title {
   font-weight: 700;
+  font-size: 1.05em;
 }
 
-.countdown small {
-  font-size: 12px;
+.menu-sub {
+  font-size: 0.9em;
   opacity: 0.85;
-}
-
-/* =====================
-   FOOTER
-===================== */
-footer {
-  font-size: 12px;
-  color: #eee;
-  margin-top: 20px;
-}
-
-/* =====================
-   MOBILE FIX (TAMBAH RESPONSIVE UNTUK GAMBAR)
-===================== */
-@media (max-width: 480px) {
-  .logo-top .logo-item {
-    height: 44px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 140px;
-  }
-
-  .wrapper {
-    margin: -20px 14px 50px;
-    padding: 22px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
-
-  .partner-logo {
-    max-width: 50px; /* Tambah: Kecikkan partner logo untuk mobile */
-  }
-
-  .card-img {
-    width: 40px; /* Tambah: Kecikkan card img untuk mobile */
-  }
-
-  .btn-icon {
-    width: 40px; /* Tambah: Adjust icon untuk mobile */
-  }
 }
