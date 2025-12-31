@@ -1,79 +1,71 @@
 <!DOCTYPE html>
 <html lang="ms">
-<head> <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7B8WXXH8T6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
 
-  gtag('config', 'G-7B8WXXH8T6');
-</script>
-  
+  <!-- =====================
+       GOOGLE ANALYTICS
+  ====================== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B8WXXH8T6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7B8WXXH8T6');
+  </script>
+
+  <!-- =====================
+       META & SEO
+  ====================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
-<meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://festowl916.github.io/3.0/">
-<meta property="og:image" content="https://festowl916.github.io/3.0/og-image.jpg">
-  <!-- Google Font -->
+
+  <meta name="description" content="Maklumat rasmi Festival Memanah Tradisional OWL 916 3.0, tarikh, lokasi, pendaftaran & hebahan rasmi.">
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
+  <meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://festowl916.github.io/3.0/">
+  <meta property="og:image" content="https://festowl916.github.io/3.0/og-image.jpg">
+
+  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 
   <title>Festival Memanah Tradisional OWL 916 3.0 | 2026</title>
   <link rel="stylesheet" href="style.css">
+
 </head>
-<script>
-  const eventDate = new Date("June 28, 2026 00:00:00").getTime();
 
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = eventDate - now;
-
-    if (distance < 0) {
-      clearInterval(timer);
-      document.querySelector(".countdown-box").innerHTML =
-        "<strong>🎯 Festival Sedang Berlangsung</strong>";
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
-  }, 1000);
-</script>
-  
 <body>
 
-  <!-- LOGO UTAMA (ATAS BACKGROUND FIXED) -->
-  <div class="logo-area">
-    <img src="logo.png" alt="Logo Fest Memanah OWL 916" class="logo">
-  </div>
+  <!-- =====================
+       LOGO UTAMA
+  ====================== -->
+  <header class="logo-area">
+    <img src="logo.png" alt="Logo Festival Memanah Tradisional OWL 916" class="logo">
+  </header>
 
-  <!-- KANDUNGAN (INI SAHAJA SCROLL) -->
-  <div class="wrapper">
+  <!-- =====================
+       KANDUNGAN UTAMA
+  ====================== -->
+  <main class="wrapper">
 
     <!-- LOGO PARTNER -->
-<div class="logo-group">
-  <img src="logo1.png" alt="Logo Partner 1">
-  <img src="logo2.png" alt="Logo Partner 2">
-  <img src="logo3.png" alt="Logo Partner 3">
-  <img src="logo4.png" alt="Logo Partner 4">
-  <img src="logo5.png" alt="Logo Partner 5">
-  <img src="logo6.png" alt="Logo Partner 6">
-  <img src="logo7.png" alt="Logo Partner 7">
-</div>
+    <section class="logo-group">
+      <img src="logo1.png" alt="Logo Partner 1">
+      <img src="logo2.png" alt="Logo Partner 2">
+      <img src="logo3.png" alt="Logo Partner 3">
+      <img src="logo4.png" alt="Logo Partner 4">
+      <img src="logo5.png" alt="Logo Partner 5">
+      <img src="logo6.png" alt="Logo Partner 6">
+      <img src="logo7.png" alt="Logo Partner 7">
+    </section>
 
+    <!-- TAJUK -->
     <h1>Fest Memanah OWL 916 3.0</h1>
 
-    <div class="event-info under-title">
+    <!-- INFO EVENT -->
+    <section class="event-info under-title">
       <p class="organizer">
         <strong>Persatuan Memanah Tradisional Negeri Terengganu</strong>
       </p>
@@ -86,65 +78,88 @@
         📍 <strong>Tempat:</strong> Terengganu Equestrian Resort<br>
         📅 <strong>Tarikh:</strong> 28 – 29 Jun 2026 (Sabtu & Ahad)
       </p>
-    </div>
-<div class="countdown-box">
-  <div class="countdown-title">⏳ Festival Bermula Dalam</div>
+    </section>
 
-  <div class="countdown">
-    <div><span id="days">0</span><small>Hari</small></div>
-    <div><span id="hours">0</span><small>Jam</small></div>
-    <div><span id="minutes">0</span><small>Minit</small></div>
-    <div><span id="seconds">0</span><small>Saat</small></div>
-  </div>
-</div>
-    <!-- BUTANG -->
- <a href="https://chat.whatsapp.com/XXXXXXXXXXXX"
-class="card">
-      <img src="daftar.png">
+    <!-- COUNTDOWN -->
+    <section class="countdown-box">
+      <div class="countdown-title">⏳ Festival Bermula Dalam</div>
+
+      <div class="countdown">
+        <div><span id="days">0</span><small>Hari</small></div>
+        <div><span id="hours">0</span><small>Jam</small></div>
+        <div><span id="minutes">0</span><small>Minit</small></div>
+        <div><span id="seconds">0</span><small>Saat</small></div>
+      </div>
+    </section>
+
+    <!-- BUTANG UTAMA -->
+    <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" class="card">
+      <img src="daftar.png" alt="Pendaftaran">
       <span>Pendaftaran Fest OWL 916</span>
     </a>
 
     <a href="https://chat.whatsapp.com/Cr3RCAzwITbB6q7FraSAHO"
-   class="card"
-   target="_blank">
-  <img src="whatsapp.png" alt="">
-  <span>Group WhatsApp Peserta</span>
-</a>
+       class="card"
+       target="_blank"
+       rel="noopener">
+      <img src="whatsapp.png" alt="WhatsApp">
+      <span>Group WhatsApp Peserta</span>
+    </a>
 
-  <a href="https://chat.whatsapp.com/XXXXXXXXXXXX"
-class="card">
-      <img src="baju.png">
+    <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" class="card">
+      <img src="baju.png" alt="Baju Festival">
       <span>Baju Festival</span>
     </a>
 
-<a href="https://maps.app.goo.gl/8DtMF13yND7QZL639"
-class="card">
-      <img src="lokasi.png">
+    <a href="https://maps.app.goo.gl/8DtMF13yND7QZL639" class="card">
+      <img src="lokasi.png" alt="Lokasi">
       <span>Lokasi Program</span>
     </a>
-<a href="https://wa.me/60123456789"
-   class="action-btn"
-   target="_blank"
-   rel="noopener">
 
-  <img src="phone.png" alt="Hubungi Urusetia" class="btn-icon">
+    <!-- HUBUNGI -->
+    <a href="https://wa.me/60123456789"
+       class="action-btn"
+       target="_blank"
+       rel="noopener">
+      <img src="phone.png" alt="Hubungi Urusetia" class="btn-icon">
+      <span>
+        <strong>Hubungi Urusetia</strong><br>
+        Pertanyaan & bantuan rasmi
+      </span>
+    </a>
 
-  <span>
-    <strong>Hubungi Urusetia</strong><br>
-    Pertanyaan & bantuan rasmi
-  </span>
-</a>
     <footer>© 2026 OWL 916</footer>
 
-  </div>
+  </main>
+
+  <!-- =====================
+       COUNTDOWN SCRIPT
+  ====================== -->
+  <script>
+    const eventDate = new Date("June 28, 2026 00:00:00").getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        document.querySelector(".countdown-box").innerHTML =
+          "<strong>🎯 Festival Sedang Berlangsung</strong>";
+        return;
+      }
+
+      document.getElementById("days").innerText =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").innerText =
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("minutes").innerText =
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("seconds").innerText =
+        Math.floor((distance % (1000 * 60)) / 1000);
+
+    }, 1000);
+  </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
