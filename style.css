@@ -247,7 +247,11 @@ footer {
    MOBILE
 ===================== */
 @media (max-width: 480px) {
-
+@media (max-width: 480px) {
+  .logo-top .logo-item {
+    height: 44px;
+  }
+}
   .logo {
     max-width: 160px;
   }
@@ -264,4 +268,5 @@ footer {
   .countdown span {
     font-size: 22px;
   }
+
 }
