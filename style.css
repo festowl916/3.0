@@ -69,7 +69,9 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
   gap: 14px;
-
+.logo-item.big {
+  height: 54px;
+}
   max-width: 300px;
   margin: 0 auto 20px;
   justify-items: center;
