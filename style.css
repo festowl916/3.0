@@ -39,7 +39,7 @@ body {
   padding: 70px 16px 50px;
 }
 .logo-item.big {
-  height: 62px;
+  height: 60px;
 }
 .logo-top .logo-item {
   vertical-align: middle;
@@ -284,4 +284,5 @@ footer {
   .btn-icon {
     width: 40px; /* Tambah: Adjust icon untuk mobile */
   }
+
 }
