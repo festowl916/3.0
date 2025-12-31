@@ -1,14 +1,8 @@
-/* =====================
-   ROOT
-===================== */
 :root {
   --biru: #375395;
   --emas: #c9a24d;
 }
 
-/* =====================
-   RESET
-===================== */
 * {
   box-sizing: border-box;
   font-family: system-ui, Arial, sans-serif;
@@ -17,289 +11,82 @@
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
 }
 
-/* =====================
-   BACKGROUND UTAMA
-===================== */
 body {
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg.jpg") center / cover no-repeat fixed;
-  color: #222;
+    url("festival-bg.jpg") center/cover no-repeat fixed;
 }
 
-/* =====================
-   LOGO HERO (FIXED)
-===================== */
+/* LOGO HERO */
 .logo-area {
   text-align: center;
   padding: 80px 16px 60px;
-
-  /* background khas supaya logo naik */
-  background: linear-gradient(
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.25)
-  );
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.25));
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 14px;
-
-  /* BESARKAN LOGO KECIL DENGAN SELAMAT */
   width: 220px;
-  max-width: 90vw;
-  height: auto;
-
+  max-width: 90%;
   padding: 12px;
   border-radius: 18px;
-
   background: rgba(255,255,255,0.06);
-
-  /* elak blur + naikkan kontras */
-  image-rendering: auto;
-  transform: translateZ(0);
   filter: drop-shadow(0 10px 22px rgba(0,0,0,0.6));
 }
 
-/* =====================
-   FLOATING GLASS WRAPPER
-===================== */
+/* WRAPPER */
 .wrapper {
-  max-width: 420px;
-  margin: -26px auto 60px;
+  max-width: 480px;
+  margin: -30px auto 60px;
   padding: 26px;
   text-align: center;
-
   background: rgba(80,130,200,0.22);
   backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.35);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
-/* =====================
-   LOGO PARTNER
-===================== */
-/* =====================
-   LOGO PARTNER
-===================== */
+/* LOGO PARTNER */
 .logo-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
   gap: 16px;
-
-  max-width: 360px;
-  margin: 0 auto 40px;
-  padding: 18px;
-
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
+  margin-bottom: 40px;
 }
 
-/* saiz asas logo */
-./* saiz asas logo – SERAGAM */
 .partner-logo {
-  width: 100%;
-  height: 60px;        /* paksa semua logo sama tinggi */
+  height: 60px;
   object-fit: contain;
-  display: block;
   margin: auto;
 }
 
-/* logo yang perlu lebih besar */
 .partner-logo.big {
-  max-height: 70px;
+  height: 72px;
 }
 
-/* =====================
-   TITLE
-===================== */
+/* TITLE */
 h1 {
   font-family: 'Alfa Slab One', cursive;
-  font-size: 28px;
-  color: #ffffff;
-  margin: 14px 0 12px;
+  color: #fff;
 }
 
-/* =====================
-   EVENT INFO
-===================== */
+/* EVENT INFO */
 .event-info {
   color: #f1f1f1;
+  line-height: 1.5;
 }
 
 .organizer {
   color: var(--emas);
 }
 
-.event-name {
-  font-weight: 600;
-}
-
-.event-info.under-title {
-  padding-bottom: 16px;
-  border-bottom: 1px dashed rgba(255,255,255,0.4);
-  margin-bottom: 20px;
-}
-
-/* =====================
-   BUTTON CARD
-===================== */
-a.card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 20px;
-
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-
-  color: #123;
-  text-decoration: none;
-  font-weight: 600;
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  transition: 0.3s ease;
-}
-
-.card img {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  background: rgba(55,83,149,0.9);
-  color: #fff;
-}
-
-/* =====================
-   ACTION BUTTON
-===================== */
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  padding: 16px 18px;
-  margin-bottom: 14px;
-
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-
-  border-radius: 18px;
-  color: #222;
-  text-decoration: none;
-
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.action-btn:hover {
-  background: rgba(255,255,255,0.35);
-  transform: scale(1.02);
-}
-
-.btn-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-/* =====================
-   URUSETIA (WHATSAPP)
-===================== */
-.urusetia-box {
-  margin-top: 26px;
-  padding: 18px;
-  border-radius: 20px;
-
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  text-align: left;
-}
-
-.urusetia-header {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.urusetia-icon {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-}
-
-.urusetia-title {
-  font-weight: 700;
-  font-size: 1.05em;
-  color: #123;
-}
-
-.urusetia-sub {
-  font-size: 0.9em;
-  opacity: 0.85;
-  color: #123;
-}
-
-.urusetia-section {
-  margin-top: 14px;
-}
-
-.urusetia-section strong {
-  display: block;
-  margin-bottom: 6px;
-  color: #123;
-}
-
-.urusetia-link {
-  display: block;
-  margin-bottom: 6px;
-  padding: 10px 14px;
-  border-radius: 14px;
-
-  background: rgba(37,211,102,0.25);
-  text-decoration: none;
-  font-weight: 600;
-  color: #0f3d2e;
-
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.urusetia-link:hover {
-  background: rgba(37,211,102,0.45);
-  transform: translateX(4px);
-}
-
-/* =====================
-   COUNTDOWN
-===================== */
+/* COUNTDOWN */
 .countdown-box {
   margin: 28px 0;
   padding: 18px;
-
   background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
-
-  text-align: center;
-}
-
-.countdown-title {
-  font-weight: 600;
-  margin-bottom: 14px;
 }
 
 .countdown {
@@ -308,49 +95,33 @@ a.card {
   gap: 14px;
 }
 
-.countdown div {
-  min-width: 64px;
-}
-
 .countdown span {
-  display: block;
   font-size: 26px;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-.countdown small {
-  font-size: 12px;
-  opacity: 0.85;
+/* BUTTONS */
+.card, .action-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.25);
+  text-decoration: none;
+  color: #123;
 }
 
-/* =====================
-   FOOTER
-===================== */
+/* FOOTER */
 footer {
   font-size: 12px;
   color: #eee;
   margin-top: 20px;
 }
 
-/* =====================
-   MOBILE (ANDROID SAFE)
-===================== */
+/* MOBILE */
 @media (max-width: 480px) {
-
-  .logo {
-    width: 200px;
-  }
-
-  .wrapper {
-    margin: -20px 14px 50px;
-    padding: 22px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
+  .logo { width: 200px; }
+  h1 { font-size: 26px; }
 }
