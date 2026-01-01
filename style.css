@@ -62,29 +62,18 @@ body {
   justify-items: center;
 }
 
-/* SEMUA LOGO PENAJA SAMA */
+//* SEMUA LOGO PENAJA SAMA – TANPA GLASS */
 .partner-logo {
   height: 72px;
   width: auto;
   object-fit: contain;
-  .partner-logo {
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
-}
-.partner-logo {
-  height: 90px;          /* 🔼 BESARKAN */
-  width: auto;
-  object-fit: contain;
 
-  padding: 6px;
-  background: none;
-  border-radius: 0;
+  background: none;      /* ❌ buang glass */
+  border-radius: 0;      /* ❌ buang kotak */
+  padding: 0;            /* ❌ buang ruang kotak */
+  box-shadow: none;      /* ❌ buang shadow */
+  filter: none;          /* ❌ buang efek */
 }
-
-  padding: 6px;          /* boleh kecilkan sikit */
-  background: none;      /* ❌ buang kotak */
-  border-radius: 0;      /* ❌ buang bucu bulat */
-}
-
 /* =====================
    TITLE
 ===================== */
@@ -249,5 +238,6 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
