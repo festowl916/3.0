@@ -73,7 +73,7 @@ body {
 ===================== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 40px;
 
@@ -230,8 +230,8 @@ img {
    MOBILE
 ===================== */
 @media (max-width: 480px) {
-  .logo-area img {
-    max-width: 190px;
+  .logo-group {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   h1 {
