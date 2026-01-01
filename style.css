@@ -44,6 +44,8 @@ body {
   max-width: 300px;
   width: 100%;
   height: 70;
+ align-items: center;
+  justify-items: center;  
   filter: drop-shadow(0 8px 18px rgba(0,0,0,0.55));
 }
 
@@ -261,6 +263,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
