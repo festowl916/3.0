@@ -283,10 +283,10 @@ img {
   text-align: center;
 
   padding: 8px 14px;
-  margin: 4px 6px 0 0;
+  margin: 4px 6px 0;
 
   background: rgba(37, 211, 102, 0.85);
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
 
   font-size: 14px;
@@ -294,7 +294,6 @@ img {
 
   border-radius: 14px;
   box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-
   transition: all 0.2s ease;
 }
 
@@ -307,3 +306,10 @@ img {
   transform: scale(0.96);
 }
 
+/* ===== SUSUN BUTANG ===== */
+.urusetia-buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
