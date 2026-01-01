@@ -82,14 +82,14 @@ body {
 }
 
 .partner-logo {
-  height: 60px;
+  height: 72px;   /* BESARKAN SIKIT */
   width: auto;
   max-width: 100%;
   object-fit: contain;
 
-  padding: 8px;
+  padding: 10px;  /* sikit ruang supaya tak sempit */
   background: rgba(255,255,255,0.35);
-  border-radius: 14px;
+  border-radius: 16px;
 }
 
 /* =====================
