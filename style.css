@@ -44,12 +44,12 @@ body {
 .logo {
   display: block;
   margin: 0 auto;
-  width: 220px;
-  max-width: 90%;
-  padding: 12px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.06);
-  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.6));
+
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.55));
 }
 
 /* =====================
@@ -70,25 +70,26 @@ body {
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
-/* =====================
-   LOGO PARTNER
-===================== */
+/* ===== LOGO PARTNER ===== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 16px;
   margin-bottom: 40px;
+
+  align-items: center;
+  justify-items: center;
 }
 
 .partner-logo {
   height: 60px;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   object-fit: contain;
-  margin: auto;
-}
 
-.partner-logo.big {
-  height: 90px;
+  padding: 8px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 14px;
 }
 
 /* =====================
@@ -230,8 +231,8 @@ img {
    MOBILE
 ===================== */
 @media (max-width: 480px) {
-  .logo {
-    width: 200px;
+  .logo-area img {
+    max-width: 160px;
   }
 
   h1 {
