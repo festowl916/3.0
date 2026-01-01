@@ -56,16 +56,16 @@ body {
   gap: 16px;
 
   max-width: 360px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 
   align-items: center;
   justify-items: center;
 }
 
-/* SEMUA LOGO PENAJA – SAIZ SERAGAM, TANPA GLASS */
+/* LOGO SERAGAM – TAK POTONG */
 .partner-logo {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
 
   object-fit: contain;
   display: block;
@@ -84,7 +84,7 @@ body {
 h1 {
   font-family: 'Alfa Slab One', cursive;
   color: #ffffff;
-  margin: 10px 0 14px;
+  margin: 12px 0 14px;
 }
 
 /* =====================
@@ -111,6 +111,7 @@ h1 {
 .countdown-box {
   margin: 28px 0;
   padding: 18px;
+
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -122,7 +123,12 @@ h1 {
   gap: 14px;
 }
 
+.countdown div {
+  min-width: 64px;
+}
+
 .countdown span {
+  display: block;
   font-size: 26px;
   font-weight: 700;
 }
@@ -130,24 +136,6 @@ h1 {
 .countdown small {
   font-size: 12px;
   opacity: 0.85;
-}
-
-/* =====================
-   MOBILE
-===================== */
-@media (max-width: 480px) {
-  .partner-logo {
-    width: 56px;
-    height: 56px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
 }
 
 /* =====================
@@ -173,4 +161,27 @@ footer {
 
 .urusetia-group {
   margin-bottom: 18px;
+}
+
+/* =====================
+   MOBILE (PHONE)
+===================== */
+@media (max-width: 480px) {
+
+  .logo-group {
+    gap: 12px;
+  }
+
+  .partner-logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .countdown span {
+    font-size: 22px;
+  }
 }
