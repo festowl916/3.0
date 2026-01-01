@@ -78,6 +78,15 @@ body {
   .partner-logo {
     height: 56px;        /* 🔽 lagi kecil utk phone */
   }
+   .partner-logo {
+  width: 90px;          /* SAIZ KOTAK SAMA */
+  height: 90px;
+
+  object-fit: contain; /* logo kekal cantik */
+  display: block;
+
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+}
 }
 /* =====================
    TITLE
@@ -243,6 +252,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
