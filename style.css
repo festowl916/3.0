@@ -74,6 +74,11 @@ body {
   box-shadow: none;      /* ❌ buang shadow */
   filter: none;          /* ❌ buang efek */
 }
+@media (max-width: 480px) {
+  .partner-logo {
+    height: 56px;        /* 🔽 lagi kecil utk phone */
+  }
+}
 /* =====================
    TITLE
 ===================== */
@@ -238,6 +243,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
