@@ -88,7 +88,7 @@ body {
 }
 
 .partner-logo.big {
-  height: 72px;
+  height: 85px;
 }
 
 /* =====================
@@ -241,4 +241,5 @@ img {
   .countdown span {
     font-size: 22px;
   }
+
 }
