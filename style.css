@@ -30,27 +30,6 @@ body {
 }
 
 /* =====================
-   LOGO HERO
-===================== */
-.logo-area {
-  text-align: center;
-  padding: 80px 16px 60px;
-  background: linear-gradient(
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.25)
-  );
-}
-
-.logo {
-  display: block;
-  margin: 0 auto;
-  max-width: 300px;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.55));
-}
-
-/* =====================
    WRAPPER (GLASS CARD)
 ===================== */
 .wrapper {
@@ -73,10 +52,12 @@ body {
 ===================== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 atas, 3 bawah */
   gap: 16px;
-  margin-bottom: 40px;
 
+  max-width: 360px;      /* kemaskan dalam hero */
+  margin: 0 auto;        /* center */
+  
   align-items: center;
   justify-items: center;
 }
@@ -85,12 +66,23 @@ body {
 .partner-logo {
   height: 72px;
   width: auto;
-  max-width: 100%;
+  object-fit: contain;
+  .partner-logo {
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+}
+.partner-logo {
+  height: 90px;          /* 🔼 BESARKAN */
+  width: auto;
   object-fit: contain;
 
-  padding: 10px;
-  background: rgba(255,255,255,0.35);
-  border-radius: 16px;
+  padding: 6px;
+  background: none;
+  border-radius: 0;
+}
+
+  padding: 6px;          /* boleh kecilkan sikit */
+  background: none;      /* ❌ buang kotak */
+  border-radius: 0;      /* ❌ buang bucu bulat */
 }
 
 /* =====================
@@ -229,10 +221,6 @@ img {
 /* =====================
    MOBILE
 ===================== */
-@media (max-width: 480px) {
-  .logo-group {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   h1 {
     font-size: 26px;
@@ -262,4 +250,4 @@ img {
   margin-bottom: 18px;
 }
 
-.uruset
+
