@@ -48,46 +48,36 @@ body {
 }
 
 /* =====================
-   LOGO PARTNER
+   LOGO PARTNER (3 ATAS 3 BAWAH)
 ===================== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 atas, 3 bawah */
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 
-  max-width: 360px;      /* kemaskan dalam hero */
-  margin: 0 auto;        /* center */
-  
+  max-width: 360px;
+  margin: 0 auto;
+
   align-items: center;
   justify-items: center;
 }
 
-//* SEMUA LOGO PENAJA SAMA – TANPA GLASS */
+/* SEMUA LOGO PENAJA – SAIZ SERAGAM, TANPA GLASS */
 .partner-logo {
+  width: 64px;
   height: 64px;
-  width: auto;
+
   object-fit: contain;
-
-  background: none;      /* ❌ buang glass */
-  border-radius: 0;      /* ❌ buang kotak */
-  padding: 0;            /* ❌ buang ruang kotak */
-  box-shadow: none;      /* ❌ buang shadow */
-  filter: none;          /* ❌ buang efek */
-}
-@media (max-width: 480px) {
-  .partner-logo {
-    height: 56px;        /* 🔽 lagi kecil utk phone */
-  }
-   .partner-logo {
-  width: 90px;          /* SAIZ KOTAK SAMA */
-  height: 90px;
-
-  object-fit: contain; /* logo kekal cantik */
   display: block;
+
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
 }
-}
+
 /* =====================
    TITLE
 ===================== */
@@ -126,23 +116,13 @@ h1 {
   border-radius: 20px;
 }
 
-.countdown-title {
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
 .countdown {
   display: flex;
   justify-content: center;
   gap: 14px;
 }
 
-.countdown div {
-  min-width: 64px;
-}
-
 .countdown span {
-  display: block;
   font-size: 26px;
   font-weight: 700;
 }
@@ -153,55 +133,21 @@ h1 {
 }
 
 /* =====================
-   BUTTONS / CARDS
+   MOBILE
 ===================== */
-.card,
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+@media (max-width: 480px) {
+  .partner-logo {
+    width: 56px;
+    height: 56px;
+  }
 
-  padding: 16px;
-  margin-bottom: 14px;
-  border-radius: 18px;
+  h1 {
+    font-size: 26px;
+  }
 
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-
-  text-decoration: none;
-  color: #123;
-  font-weight: 600;
-
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.card img {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;
-  flex-shrink: 0;
-  border-radius: 10px;
-}
-
-.action-btn img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 50%;
-  padding: 6px;
-}
-
-.card span {
-  flex: 1;
-  text-align: left;
-}
-
-.card:hover,
-.action-btn:hover {
-  background: rgba(55,83,149,0.9);
-  color: #fff;
-  transform: translateY(-3px);
+  .countdown span {
+    font-size: 22px;
+  }
 }
 
 /* =====================
@@ -214,27 +160,6 @@ footer {
 }
 
 /* =====================
-   GLOBAL IMAGE SAFETY
-===================== */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* =====================
-   MOBILE
-===================== */
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
-}
-
-/* =====================
    HUBUNGI URUSETIA
 ===================== */
 .urusetia-detail {
@@ -243,18 +168,9 @@ img {
 
   background: rgba(255,255,255,0.22);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
   border-radius: 18px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
 }
 
 .urusetia-group {
   margin-bottom: 18px;
 }
-
-
-
-
-
-
