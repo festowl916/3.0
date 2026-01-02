@@ -282,14 +282,34 @@ img {
   opacity: 0.9;
 }
 
-/* BUTANG WHATSAPP */
+/* =====================
+   BUTANG WHATSAPP (FINAL)
+===================== */
 .urusetia-buttons {
   display: flex;
-  gap: 8px;
+  gap: 6px;              /* 🔽 rapatkan butang */
   flex-wrap: wrap;
 }
 
-.urusetia-body .urusetia-buttons a {
+.urusetia-buttons a,
+.urusetia-buttons a:link,
+.urusetia-buttons a:visited,
+.urusetia-buttons a:hover,
+.urusetia-buttons a:active {
+
+  flex: 1;
+  text-align: center;
+
+  padding: 6px 8px;      /* 🔽 KETINGGIAN BUTANG (ubah sini) */
+  font-size: 14px;       /* 🔽 SAIZ TEKS */
+
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+
+  text-decoration: none;
+  color: #000000;        /* ✅ WARNA HITAM PASTI JADI */
+  font-weight: 600;
+}urusetia-body .urusetia-buttons a {
   flex: 1;
   text-align: center;
 
@@ -303,6 +323,7 @@ img {
   color: #0A0A2A;         /* 👈 pastikan tak hitam */
   font-weight: 600;
 }
+
 
 
 
