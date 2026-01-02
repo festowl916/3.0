@@ -282,14 +282,10 @@ img {
   opacity: 0.9;
 }
 
+
 /* =====================
-   BUTANG WHATSAPP (FINAL)
+   BUTANG URUSETIA – WARNA HITAM SEMUA
 ===================== */
-.urusetia-buttons {
-  display: flex;
-  gap: 6px;              /* 🔽 rapatkan butang */
-  flex-wrap: wrap;
-}
 
 .urusetia-buttons a,
 .urusetia-buttons a:link,
@@ -300,41 +296,16 @@ img {
   flex: 1;
   text-align: center;
 
-  padding: 6px 8px;      /* 🔽 KETINGGIAN BUTANG (ubah sini) */
-  font-size: 14px;       /* 🔽 SAIZ TEKS */
+  padding: 4px 8px;     /* ketinggian butang */
+  font-size: 14px;
 
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
+  background: rgba(255,255,255,0.28);
+  border-radius: 12px;
 
-  text-decoration: none;
-  color: #000000;        /* ✅ WARNA HITAM PASTI JADI */
-  font-weight: 600;
-}urusetia-body .urusetia-buttons a {
-  flex: 1;
-  text-align: center;
-
-  padding: 3px 8px;      /* 👈 tinggi butang */
-  font-size: 14px;        /* 👈 kecilkan tulisan */
-
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-
-  text-decoration: none;
-  color: #0A0A2A;         /* 👈 pastikan tak hitam */
+  text-decoration: none !important;
+  color: #000000 !important;   /* 🔥 PAKSA HITAM */
   font-weight: 600;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
