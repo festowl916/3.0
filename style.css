@@ -79,6 +79,11 @@ body {
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
 }
 
+@media (max-width: 480px) {
+  .partner-logo {
+    height: 70px;
+  }
+
 /* =====================
    TITLE
 ===================== */
@@ -243,6 +248,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
