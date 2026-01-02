@@ -59,7 +59,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  gap: 8px;              /* 🔽 rapatkan logo */
+  gap: 0px;              /* 🔽 rapatkan logo */
   max-width: 360px;      /* 🔼 bagi ruang supaya tak bertindih */
   margin: 0 auto 6px;    /* 🔽 rapat ke bawah */
 
@@ -69,8 +69,8 @@ body {
 
 /* SEMUA LOGO PENAJA – BESAR & SERAGAM */
 .partner-logo {
-  width: 100px;
-  height: 100px;
+  width: 15ppx;
+  height: 150px;
   object-fit: contain;
   display: block;
 
@@ -259,6 +259,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
