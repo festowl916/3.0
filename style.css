@@ -108,9 +108,9 @@ h1 {
 }
 
 .event-info.under-title {
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px dashed rgba(255,255,255,0.4);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 /* =====================
@@ -250,6 +250,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
