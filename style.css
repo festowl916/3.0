@@ -84,7 +84,7 @@ max-width: 100%;
    ========================= */
 @media (max-width: 480px) {
   .partner-logo {
-    height: 72px;   /* phone sahaja */
+    height: 80px;   /* phone sahaja */
   }
 
 
@@ -317,6 +317,7 @@ img {
 .urusetia-body .urusetia-buttons a:hover {
   background: rgba(255,255,255,0.35);
 }
+
 
 
 
