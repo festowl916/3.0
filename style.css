@@ -51,14 +51,14 @@ body {
 /* =====================
    LOGO PARTNER
 ===================== */
-.logo-group {
+..logo-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 atas, 3 bawah */
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
 
-  max-width: 360px;      /* kemaskan dalam hero */
-  margin: 0 auto;        /* center */
-  
+  gap: 8px;                 /* 🔽 rapatkan logo */
+  max-width: 420px;         /* 🔼 beri ruang supaya tak sesak */
+  margin: 0 auto 6px;       /* 🔽 rapat ke bawah */
+
   align-items: center;
   justify-items: center;
 }
@@ -250,6 +250,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
