@@ -282,30 +282,37 @@ img {
   opacity: 0.9;
 }
 
+/* BUTANG WHATSAPP */
+.urusetia-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 
-/* =====================
-   BUTANG URUSETIA – WARNA HITAM SEMUA
-===================== */
-
-.urusetia-buttons a,
-.urusetia-buttons a:link,
-.urusetia-buttons a:visited,
-.urusetia-buttons a:hover,
-.urusetia-buttons a:active {
-
+.urusetia-body .urusetia-buttons a {
   flex: 1;
   text-align: center;
 
-  padding: 4px 8px;     /* ketinggian butang */
-  font-size: 14px;
+  padding: 2px 10px;      /* 👈 tinggi butang */
+  font-size: 14px;        /* 👈 kecilkan tulisan */
 
-  background: rgba(255,255,255,0.28);
-  border-radius: 12px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
 
-  text-decoration: none !important;
-  color: #000000 !important;   /* 🔥 PAKSA HITAM */
+  text-decoration: none;
+  color: #ffffff;         /* 👈 pastikan tak hitam */
   font-weight: 600;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
