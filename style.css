@@ -1,5 +1,5 @@
 /* =====================
-   RO.OT
+   ROOT
 ===================== */
 :root {
   --biru: #375395;
@@ -56,7 +56,7 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;                 /* jarak antara logo */
 
-  max-width: 320px;         /* kawal rapat grid */
+  max-width: 380px;         /* kawal rapat grid */
   margin: 10px auto 8px;
 
   align-items: center;
@@ -65,8 +65,9 @@ body {
 
 /* LOGO: SERAGAM & TAK POTONG */
 .partner-logo {
-  width: 100%;
-  height: 180px;             /* ⬅️ UBAH NILAI INI SAHAJA utk besar/kecil */
+  width: auto;
+  height: 90px;             /* ⬅️ UBAH NILAI INI SAHAJA utk besar/kecil */
+max-width: 100%;
 
   object-fit: contain;
   display: block;
@@ -316,6 +317,7 @@ img {
 .urusetia-body .urusetia-buttons a:hover {
   background: rgba(255,255,255,0.35);
 }
+
 
 
 
