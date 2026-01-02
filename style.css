@@ -50,7 +50,6 @@ body {
 .logo-area {
   padding: 20px 0 30px;   /* atas | kiri-kanan | bawah */
 }
-
 /* GRID: 3 atas 3 bawah */
 .logo-group {
   display: grid;
@@ -83,15 +82,10 @@ body {
    MOBILE (PHONE)
    ========================= */
 @media (max-width: 480px) {
-  .logo-group {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* KEKAL 3x2 */
-    gap: 4px;
-    max-width: 300px;
+  .partner-logo {
+    height: 72px;   /* phone sahaja */
   }
 
-  .partner-logo {
-    height: 52px;           /* ⬅️ SAIZ LOGO PHONE */
-  }
 
 /* =====================
    TITLE
@@ -257,6 +251,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
