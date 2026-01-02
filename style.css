@@ -33,23 +33,18 @@ body {
    WRAPPER (GLASS CARD)
 ===================== */
 .wrapper {
-  max-width: 420px;        /* 🔽 lebih kecil */
-  margin: 0 auto 50px;    /* ❌ tak overlap logo */
-  padding: 20px;          /* 🔽 kemas */
-
+  max-width: 480px;
+  margin: -30px auto 60px;
+  padding: 26px;
   text-align: center;
 
   background: rgba(80,130,200,0.22);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  border-radius: 22px;
+  border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.35);
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-}
-
-.logo-area {
-  padding-top: 40px;
 }
 
 /* =====================
@@ -57,43 +52,38 @@ body {
 ===================== */
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 atas, 3 bawah */
+  gap: 16px;
 
-  gap: 0px;              /* 🔽 rapatkan logo */
-  max-width: 360px;      /* 🔼 bagi ruang supaya tak bertindih */
-  margin: 0 auto 6px;    /* 🔽 rapat ke bawah */
-
+  max-width: 360px;      /* kemaskan dalam hero */
+  margin: 0 auto;        /* center */
+  
   align-items: center;
   justify-items: center;
 }
 
-/* SEMUA LOGO PENAJA – BESAR & SERAGAM */
+/* SEMUA LOGO PENAJA SAMA */
 .partner-logo {
-  width: 90ppx;
-  height: 90px;
+  height: 72px;
+  width: auto;
   object-fit: contain;
-  display: block;
-
-  background: none;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-/* =====================
-   media
-===================== */
-  @media (max-width: 480px) {
-  .logo-group {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    max-width: 220px;
-  }
-
   .partner-logo {
-    width: 150px;
-    height: 150px;
-  }
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
+}
+.partner-logo {
+  height: 90px;          /* 🔼 BESARKAN */
+  width: auto;
+  object-fit: contain;
 
+  padding: 6px;
+  background: none;
+  border-radius: 0;
+}
+
+  padding: 6px;          /* boleh kecilkan sikit */
+  background: none;      /* ❌ buang kotak */
+  border-radius: 0;      /* ❌ buang bucu bulat */
+}
 
 /* =====================
    TITLE
@@ -117,9 +107,9 @@ h1 {
 }
 
 .event-info.under-title {
-  padding-bottom: 12px;
+  padding-bottom: 16px;
   border-bottom: 1px dashed rgba(255,255,255,0.4);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 /* =====================
@@ -127,7 +117,7 @@ h1 {
 ===================== */
 .countdown-box {
   margin: 28px 0;
-  padding: 16px;
+  padding: 18px;
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -259,31 +249,5 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
