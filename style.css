@@ -304,9 +304,18 @@ img {
   font-weight: 600;
 }
 
+/* =====================
+   PAKSA WARNA HITAM – BUTANG URUSETIA
+===================== */
+.urusetia-body .urusetia-buttons a,
+.urusetia-body .urusetia-buttons a:hover,
+.urusetia-body .urusetia-buttons a:active {
+  color: #000000 !important;
+}
 
-
-
+.urusetia-body .urusetia-buttons a:hover {
+  background: rgba(255,255,255,0.35);
+}
 
 
 
