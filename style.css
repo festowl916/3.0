@@ -34,7 +34,7 @@ body {
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: 20px auto 60px;
+  margin: 10px auto 60px;
   padding: 26px;
   text-align: center;
 
@@ -271,4 +271,5 @@ footer {
   }
 
 }
+
 
