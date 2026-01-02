@@ -34,7 +34,7 @@ body {
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: -30px auto 60px;
+  margin: 20px auto 60px;
   padding: 26px;
   text-align: center;
 
@@ -257,6 +257,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
