@@ -33,20 +33,20 @@ body {
    WRAPPER (GLASS CARD)
 ===================== */
 .wrapper {
-  max-width: 420px;        /* 🔽 lebih kecil */
-  margin: 0 auto 50px;    /* ❌ tak overlap logo */
-  padding: 20px;          /* 🔽 kemas */
-
+  max-width: 480px;
+  margin: -30px auto 60px;
+  padding: 26px;
   text-align: center;
 
   background: rgba(80,130,200,0.22);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  border-radius: 22px;
+  border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.35);
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
+
 
 /* =====================
    LOGO PARTNER
@@ -250,6 +250,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
