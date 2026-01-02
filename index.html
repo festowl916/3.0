@@ -41,6 +41,18 @@ base-uri 'self';
 
   <title>Festival Memanah Tradisional OWL 916 3.0 | 2026</title>
   <link rel="stylesheet" href="style.css">
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('a[href*="wa.me"], a[href*="chat.whatsapp.com"], a[href*="whatsapp.com"]').forEach(function(el) {
+    el.addEventListener("click", function () {
+      gtag('event', 'whatsapp_click', {
+        event_category: 'whatsapp',
+        event_label: el.innerText || el.href
+      });
+    });
+  });
+});
+</script>
 </head>
 
 <body>
@@ -182,6 +194,7 @@ base-uri 'self';
 </body>
 
 </html>
+
 
 
 
