@@ -69,8 +69,8 @@ body {
 
 /* SEMUA LOGO PENAJA – BESAR & SERAGAM */
 .partner-logo {
-  width: 200ppx;
-  height: 200px;
+  width: 400ppx;
+  height: 400px;
   object-fit: contain;
   display: block;
 
@@ -259,6 +259,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
