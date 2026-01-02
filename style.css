@@ -118,7 +118,7 @@ h1 {
 ===================== */
 .countdown-box {
   margin: 28px 0;
-  padding: 18px;
+  padding: 16px;
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -250,6 +250,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
