@@ -81,6 +81,12 @@ body {
    media
 ===================== */
 @media (max-width: 480px) {
+  .logo-group {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    max-width: 260px;
+  }
+
   .partner-logo {
     width: 72px;
     height: 72px;
@@ -250,6 +256,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
