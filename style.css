@@ -54,7 +54,7 @@ body {
 .logo-group {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4px;                 /* jarak antara logo */
+  gap: 0px;                 /* jarak antara logo */
 
   max-width: 380px;         /* kawal rapat grid */
   margin: 10px auto 8px;
@@ -317,6 +317,7 @@ img {
 .urusetia-body .urusetia-buttons a:hover {
   background: rgba(255,255,255,0.35);
 }
+
 
 
 
