@@ -64,7 +64,7 @@ body {
 
 /* SEMUA LOGO PENAJA SERAGAM */
 .partner-logo {
-  height: 150px;      /* ⬅️ BESARKAN / KECILKAN LOGO DI SINI */
+  height: 100px;      /* ⬅️ BESARKAN / KECILKAN LOGO DI SINI */
   width: auto;
 
   object-fit: contain;
@@ -243,6 +243,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
