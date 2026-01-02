@@ -34,7 +34,7 @@ body {
 ===================== */
 .wrapper {
   max-width: 420px;        /* 🔽 lebih kecil */
-  margin: 0 auto 50px;    /* ❌ tak overlap logo */
+  margin: 0 auto 25px;    /* ❌ tak overlap logo */
   padding: 20px;          /* 🔽 kemas */
 
   text-align: center;
@@ -250,6 +250,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
