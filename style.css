@@ -48,15 +48,19 @@ body {
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
+.logo-area {
+  padding-top: 40px;
+}
+
 /* =====================
    LOGO PARTNER
 ===================== */
 .logo-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: -50px;                 /* 🔽 rapatkan logo */
-  max-width: 420px;         /* 🔼 beri ruang supaya tak sesak */
-  margin: 0 auto 6px;       /* 🔽 rapat ke bawah */
+  gap: 12px;
+  max-width: 320px;
+  margin: 0 auto 12px;
 
   align-items: center;
   justify-items: center;
@@ -64,9 +68,8 @@ body {
 
 /* SEMUA LOGO PENAJA – BESAR & SERAGAM */
 .partner-logo {
-  width: 180px;          /* 👉 kawal BESAR logo kat sini */
-  height: 180px;
-
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   display: block;
 
@@ -74,23 +77,22 @@ body {
   padding: 0;
   border-radius: 0;
   box-shadow: none;
-
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
 }
 /* =====================
    media
 ===================== */
-@media (max-width: 480px) {
+  @media (max-width: 480px) {
   .logo-group {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    max-width: 260px;
+    max-width: 220px;
   }
 
   .partner-logo {
-    width: 72px;
-    height: 72px;
+    width: 60px;
+    height: 60px;
   }
+
 
 /* =====================
    TITLE
@@ -256,6 +258,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
