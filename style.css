@@ -82,8 +82,8 @@ body {
 ===================== */
 @media (max-width: 480px) {
   .partner-logo {
-    width: 110px;
-    height: 110px;
+    width: 72px;
+    height: 72px;
   }
 
 /* =====================
@@ -250,6 +250,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
