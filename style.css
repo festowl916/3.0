@@ -58,9 +58,10 @@ body {
 .logo-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  max-width: 320px;
-  margin: 0 auto 12px;
+
+  gap: 8px;              /* 🔽 rapatkan logo */
+  max-width: 360px;      /* 🔼 bagi ruang supaya tak bertindih */
+  margin: 0 auto 6px;    /* 🔽 rapat ke bawah */
 
   align-items: center;
   justify-items: center;
@@ -258,6 +259,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
