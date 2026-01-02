@@ -54,7 +54,7 @@ body {
 ..logo-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: -30px;                 /* 🔽 rapatkan logo */
+  gap: -50px;                 /* 🔽 rapatkan logo */
   max-width: 420px;         /* 🔼 beri ruang supaya tak sesak */
   margin: 0 auto 6px;       /* 🔽 rapat ke bawah */
 
@@ -249,6 +249,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
