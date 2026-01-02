@@ -51,7 +51,7 @@ body {
 /* =====================
    LOGO PARTNER
 ===================== */
-..logo-group {
+.logo-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: -50px;                 /* 🔽 rapatkan logo */
@@ -256,6 +256,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
