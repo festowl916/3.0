@@ -46,7 +46,6 @@ body {
   border: 1px solid rgba(255,255,255,0.35);
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
-
 /* GRID: 3 atas 3 bawah */
 .logo-group {
   display: grid;
@@ -253,6 +252,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
