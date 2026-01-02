@@ -272,5 +272,16 @@ footer {
 
 }
 
+/* =====================
+   RAPATKAN LOGO ↔ WRAPPER (FORCE)
+===================== */
+.logo-area {
+  margin-bottom: 4px !important;
+  padding-bottom: 6px !important;
+}
+
+.wrapper {
+  margin-top: 4px !important;
+}
 
 
