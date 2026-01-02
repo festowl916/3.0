@@ -289,19 +289,20 @@ img {
   flex-wrap: wrap;
 }
 
-.urusetia-buttons a {
+.urusetia-body .urusetia-buttons a {
   flex: 1;
   text-align: center;
-  padding: 4px 10px;
+
+  padding: 4px 10px;      /* 👈 tinggi butang */
+  font-size: 14px;        /* 👈 kecilkan tulisan */
 
   background: rgba(255,255,255,0.25);
   border-radius: 10px;
 
   text-decoration: none;
-  color: #ffffff;
+  color: #ffffff;         /* 👈 pastikan tak hitam */
   font-weight: 600;
 }
-
 
 
 
