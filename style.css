@@ -64,7 +64,7 @@ body {
 
 /* SEMUA LOGO PENAJA SAMA */
 .partner-logo {
-  height: 72px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   .partner-logo {
@@ -249,5 +249,6 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
