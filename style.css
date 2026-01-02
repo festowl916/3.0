@@ -47,46 +47,29 @@ body {
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
 }
 
+/* =====================
+   LOGO PENAJA
+===================== */
 .logo-area {
-  padding: 20px 0 30px;   /* atas | kiri-kanan | bawah */
+  padding: 20px 0 30px;
 }
-/* GRID: 3 atas 3 bawah */
+
 .logo-group {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0px;                 /* jarak antara logo */
-
-  max-width: 380px;         /* kawal rapat grid */
+  gap: 6px;
+  max-width: 320px;
   margin: 10px auto 8px;
-
   align-items: center;
   justify-items: center;
 }
 
-/* LOGO: SERAGAM & TAK POTONG */
 .partner-logo {
-  width: auto;
-  height: 90px;             /* ⬅️ UBAH NILAI INI SAHAJA utk besar/kecil */
-max-width: 100%;
-
+  width: 100%;
+  height: 180px;
   object-fit: contain;
   display: block;
-
-  padding: 0;
-  margin: 0;
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
 }
-
-/* =========================
-   MOBILE (PHONE)
-   ========================= */
-@media (max-width: 480px) {
-  .partner-logo {
-    height: 80px;   /* phone sahaja */
-  }
-
 
 /* =====================
    TITLE
@@ -155,23 +138,18 @@ h1 {
 /* =====================
    BUTTONS / CARDS
 ===================== */
-.card,
-.action-btn {
+.card {
   display: flex;
   align-items: center;
   gap: 14px;
-
   padding: 16px;
   margin-bottom: 14px;
   border-radius: 18px;
-
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(8px);
-
   text-decoration: none;
   color: #123;
   font-weight: 600;
-
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -179,17 +157,6 @@ h1 {
   width: 46px;
   height: 46px;
   object-fit: contain;
-  flex-shrink: 0;
-  border-radius: 10px;
-}
-
-.action-btn img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 50%;
-  padding: 6px;
 }
 
 .card span {
@@ -197,68 +164,29 @@ h1 {
   text-align: left;
 }
 
-.card:hover,
-.action-btn:hover {
+.card:hover {
   background: rgba(55,83,149,0.9);
   color: #fff;
   transform: translateY(-3px);
 }
 
 /* =====================
-   FOOTER
+   URUSETIA CARD
 ===================== */
-footer {
-  font-size: 12px;
-  color: #eee;
-  margin-top: 20px;
-}
-
-/* =====================
-   GLOBAL IMAGE SAFETY
-===================== */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* =====================
-   MOBILE
-===================== */
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
-}
-
-/* KAD UTAMA */
 .urusetia-card {
   margin: 20px auto;
-  padding: 0;
   max-width: 420px;
-
   background: rgba(255,255,255,0.22);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
   border-radius: 20px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
   overflow: hidden;
 }
 
-/* HEADER */
 .urusetia-header {
   display: flex;
   align-items: center;
   gap: 12px;
-
   padding: 16px 18px;
-  font-size: 15px;
-  font-weight: 500;
-
   border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
@@ -267,80 +195,55 @@ img {
   height: 36px;
 }
 
-/* BODY */
 .urusetia-body {
   padding: 14px 18px 18px;
-}
-
-/* GROUP */
-.urusetia-group {
-  margin-bottom: 14px;
 }
 
 .urusetia-title {
   font-size: 14px;
   margin-bottom: 6px;
-  opacity: 0.9;
 }
 
-/* BUTANG WHATSAPP */
 .urusetia-buttons {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
 }
 
-.urusetia-body .urusetia-buttons a {
+.urusetia-buttons a {
   flex: 1;
-  text-align: center;
-
-  padding: 2px 10px;      /* 👈 tinggi butang */
-  font-size: 14px;        /* 👈 kecilkan tulisan */
-
+  padding: 2px 10px;
+  font-size: 14px;
   background: rgba(255,255,255,0.25);
   border-radius: 10px;
-
   text-decoration: none;
-  color: #000000;         /* 👈 pastikan tak hitam */
+  color: #000 !important;
   font-weight: 600;
 }
 
 /* =====================
-   PAKSA WARNA HITAM – BUTANG URUSETIA
+   FOOTER
 ===================== */
-.urusetia-body .urusetia-buttons a,
-.urusetia-body .urusetia-buttons a:hover,
-.urusetia-body .urusetia-buttons a:active {
-  color: #000000 !important;
+footer {
+  font-size: 12px;
+  margin-top: 20px;
 }
 
-.urusetia-body .urusetia-buttons a:hover {
-  background: rgba(255,255,255,0.35);
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 480px) {
+
+  .partner-logo {
+    height: 72px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  .countdown span {
+    font-size: 22px;
+  }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
