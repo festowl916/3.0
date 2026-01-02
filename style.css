@@ -57,7 +57,7 @@ body {
   gap: 6px;                 /* jarak antara logo */
 
   max-width: 320px;         /* kawal rapat grid */
-  margin: 0 auto 8px;
+  margin: 10 auto 8px;
 
   align-items: center;
   justify-items: center;
@@ -251,6 +251,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
