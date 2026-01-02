@@ -293,16 +293,17 @@ img {
   flex: 1;
   text-align: center;
 
-  padding: 4px 10px;      /* 👈 tinggi butang */
+  padding: 3px 8px;      /* 👈 tinggi butang */
   font-size: 14px;        /* 👈 kecilkan tulisan */
 
   background: rgba(255,255,255,0.25);
   border-radius: 10px;
 
   text-decoration: none;
-  color: #ffffff;         /* 👈 pastikan tak hitam */
+  color: #0A0A2A;         /* 👈 pastikan tak hitam */
   font-weight: 600;
 }
+
 
 
 
