@@ -53,7 +53,7 @@ body {
 .logo-group {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 atas, 3 bawah */
-  gap: 16px;
+  gap: 4px;
 
   max-width: 360px;      /* kemaskan dalam hero */
   margin: 0 auto;        /* center */
@@ -249,6 +249,7 @@ img {
 .urusetia-group {
   margin-bottom: 18px;
 }
+
 
 
 
