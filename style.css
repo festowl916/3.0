@@ -34,8 +34,8 @@ body {
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: 8px auto 60px;
-  padding: 20px;
+  margin: -30px auto 60px;
+  padding: 26px;
   text-align: center;
 
   background: rgba(80,130,200,0.22);
@@ -48,27 +48,34 @@ body {
 }
 
 /* =====================
-   LOGO PENAJA
+   LOGO PARTNER (3 ATAS 3 BAWAH)
 ===================== */
-.logo-area {
-  padding: 20px 0 30px;
-}
-
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
-  max-width: 320px;
-  margin: 10px auto 8px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  max-width: 360px;
+  margin: 0 auto 10px;
+
   align-items: center;
   justify-items: center;
 }
 
+/* LOGO SERAGAM – TAK POTONG */
 .partner-logo {
-  width: 100%;
-  height: 180px;
+  width: 72px;
+  height: 72px;
+
   object-fit: contain;
   display: block;
+
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
 }
 
 /* =====================
@@ -77,7 +84,7 @@ body {
 h1 {
   font-family: 'Alfa Slab One', cursive;
   color: #ffffff;
-  margin: 10px 0 14px;
+  margin: 12px 0 14px;
 }
 
 /* =====================
@@ -104,14 +111,10 @@ h1 {
 .countdown-box {
   margin: 28px 0;
   padding: 18px;
+
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-}
-
-.countdown-title {
-  font-weight: 600;
-  margin-bottom: 14px;
 }
 
 .countdown {
@@ -136,106 +139,42 @@ h1 {
 }
 
 /* =====================
-   BUTTONS / CARDS
-===================== */
-.card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px;
-  margin-bottom: 14px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
-  text-decoration: none;
-  color: #123;
-  font-weight: 600;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.card img {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;
-}
-
-.card span {
-  flex: 1;
-  text-align: left;
-}
-
-.card:hover {
-  background: rgba(55,83,149,0.9);
-  color: #fff;
-  transform: translateY(-3px);
-}
-
-/* =====================
-   URUSETIA CARD
-===================== */
-.urusetia-card {
-  margin: 20px auto;
-  max-width: 420px;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.urusetia-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-}
-
-.urusetia-header img {
-  width: 36px;
-  height: 36px;
-}
-
-.urusetia-body {
-  padding: 14px 18px 18px;
-}
-
-.urusetia-title {
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-.urusetia-buttons {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.urusetia-buttons a {
-  flex: 1;
-  padding: 2px 10px;
-  font-size: 14px;
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-  text-decoration: none;
-  color: #000 !important;
-  font-weight: 600;
-}
-
-/* =====================
    FOOTER
 ===================== */
 footer {
   font-size: 12px;
+  color: #eee;
   margin-top: 20px;
 }
 
 /* =====================
-   MOBILE
+   HUBUNGI URUSETIA
+===================== */
+.urusetia-detail {
+  margin-top: 14px;
+  padding: 14px 16px;
+
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+}
+
+.urusetia-group {
+  margin-bottom: 18px;
+}
+
+/* =====================
+   MOBILE (PHONE)
 ===================== */
 @media (max-width: 480px) {
 
+  .logo-group {
+    gap: 12px;
+  }
+
   .partner-logo {
-    height: 72px;
+    width: 56px;
+    height: 56px;
   }
 
   h1 {
@@ -245,44 +184,4 @@ footer {
   .countdown span {
     font-size: 22px;
   }
-
-/* =====================
-   OVERRIDE TAJUK (FINAL)
-===================== */
-.wrapper h1 {
-  font-size: 24px;
-  color: ##F04B4;
-  margin: 10px 0 12px;
 }
-
-.organizer strong {
-  font-size: 20px;
-  color: var(--emas);
-  font-weight: 700;
-}
-
-@media (max-width: 480px) {
-  .wrapper h1 {
-    font-size: 22px;
-  }
-
-  .organizer strong {
-    font-size: 18px;
-  }
-
-}
-
-/* =====================
-   RAPATKAN LOGO ↔ WRAPPER (FORCE)
-===================== */
-.logo-area {
-  margin-bottom: 4px !important;
-  padding-bottom: 6px !important;
-}
-
-.wrapper {
-  margin-top: 4px !important;
-}
-
-
-
