@@ -1,7 +1,52 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <!-- Google Analytics -->
+  <!-- =====================
+       BASIC META
+  ====================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <title>Festival Memanah Tradisional OWL 916 3.0 | 2026 – Laman Rasmi</title>
+
+  <!-- =====================
+       🔒 SECURITY HEADERS
+  ====================== -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' https:;
+    img-src 'self' https: data:;
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+    style-src 'self' https: 'unsafe-inline';
+    connect-src 'self' https://www.google-analytics.com;
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+    upgrade-insecure-requests;
+  ">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+
+  <!-- =====================
+       🔒 OPEN GRAPH (LOCKED)
+  ====================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
+  <meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
+  <meta property="og:url" content="https://festowl916.pages.dev/">
+
+  <meta property="og:image" content="https://festowl916.pages.dev/og/og-owl916-2026.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+
+  <!-- Twitter / WhatsApp fallback -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- =====================
+       GOOGLE ANALYTICS
+  ====================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B8WXXH8T6"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,53 +55,29 @@
     gtag('config', 'G-7B8WXXH8T6');
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- 🔒 SECURITY LOCK (s) -->
-<meta http-equiv="Content-Security-Policy"
-content="
-default-src 'self' https:;
-img-src 'self' https: data:;
-script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
-style-src 'self' https: 'unsafe-inline';
-connect-src 'self' https://www.google-analytics.com;
-frame-ancestors 'none';
-base-uri 'self';
-object-src 'none';
-upgrade-insecure-requests;
-
-
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Frame-Options" content="DENY">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph () -->
-<meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
-<meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://festowl916.github.io/3.0/">
-<meta property="og:image" content="https://festowl916.github.io/3.0/og-image.jpg">
-  <!-- Font -->
+  <!-- =====================
+       FONTS & CSS
+  ====================== -->
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
-  <title>Festival Memanah Tradisional OWL 916 3.0 | 2026-Laman Rasmi</title>
   <link rel="stylesheet" href="style.css">
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('a[href*="wa.me"], a[href*="chat.whatsapp.com"], a[href*="whatsapp.com"]').forEach(function(el) {
-    el.addEventListener("click", function () {
-      gtag('event', 'whatsapp_click', {
-        event_category: 'whatsapp',
-        event_label: el.innerText || el.href
+
+  <!-- =====================
+       WHATSAPP CLICK TRACKING
+  ====================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(
+        'a[href*="wa.me"], a[href*="chat.whatsapp.com"], a[href*="whatsapp.com"]'
+      ).forEach(function(el) {
+        el.addEventListener("click", function () {
+          gtag('event', 'whatsapp_click', {
+            event_category: 'whatsapp',
+            event_label: el.innerText || el.href
+          });
+        });
       });
     });
-  });
-});
-</script>
+  </script>
 </head>
 
 <body>
@@ -205,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </body>
 
 </html>
+
 
 
 
