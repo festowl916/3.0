@@ -171,33 +171,38 @@ document.addEventListener("DOMContentLoaded", function () {
   </main>
 
   <!-- SCRIPT COUNTDOWN -->
-  <script>
-    const eventDate = new Date("June 28, 2026 00:00:00").getTime();
+<script>
+  const eventDate = new Date("July 4, 2026 08:00:00").getTime(); // 4 Julai 2026, 8 pagi
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
 
-      if (distance < 0) {
-        document.querySelector(".countdown-box").innerHTML =
-          "<strong>🎯 Festival Sedang Berlangsung</strong>";
-        return;
-      }
+    if (distance < 0) {
+      document.querySelector(".countdown-box").innerHTML =
+        "<strong>🎯 Festival Sedang Berlangsung</strong>";
+      return;
+    }
 
-      document.getElementById("days").innerText =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
-      document.getElementById("hours").innerText =
-        Math.floor((distance / (1000 * 60 * 60)) % 24);
-      document.getElementById("minutes").innerText =
-        Math.floor((distance / (1000 * 60)) % 60);
-      document.getElementById("seconds").innerText =
-        Math.floor((distance / 1000) % 60);
-    }, 1000);
-  </script>
+    document.getElementById("days").innerText =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+      Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+    document.getElementById("minutes").innerText =
+      Math.floor((distance / (1000 * 60)) % 60);
+
+    document.getElementById("seconds").innerText =
+      Math.floor((distance / 1000) % 60);
+
+  }, 1000);
+</script>
 
 </body>
 
 </html>
+
 
 
 
