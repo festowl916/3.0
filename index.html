@@ -1,1 +1,117 @@
 
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <!-- =====================
+       BASIC META
+  ====================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <title>Festival Memanah Tradisional OWL 916 3.0 | 2026 – Laman Rasmi</title>
+
+  <!-- =====================
+       OPEN GRAPH (CLOUDFLARE)
+  ====================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Festival Memanah Tradisional OWL 916 3.0 | 2026">
+  <meta property="og:description" content="Maklumat rasmi festival, tarikh, lokasi dan pendaftaran.">
+  <meta property="og:url" content="https://festowl916.pages.dev/">
+  <meta property="og:image" content="https://festowl916.pages.dev/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- =====================
+       GOOGLE ANALYTICS
+  ====================== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7B8WXXH8T6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7B8WXXH8T6');
+  </script>
+
+  <!-- =====================
+       FONTS & CSS
+  ====================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- LOGO PENAJ A -->
+  <header class="logo-area">
+    <section class="logo-group">
+      <img src="logo1.png" class="partner-logo" alt="Logo Penaja 1">
+      <img src="logo2.png" class="partner-logo" alt="Logo Penaja 2">
+      <img src="logo3.png" class="partner-logo" alt="Logo Penaja 3">
+      <img src="logo4.png" class="partner-logo" alt="Logo Penaja 4">
+      <img src="logo5.png" class="partner-logo" alt="Logo Penaja 5">
+      <img src="logo6.png" class="partner-logo" alt="Logo Penaja 6">
+    </section>
+  </header>
+
+  <!-- KANDUNGAN UTAMA -->
+  <main class="wrapper">
+
+    <h1>Persatuan Memanah Tradisional Negeri Terengganu</h1>
+
+    <section class="event-info under-title">
+      <p><strong>Festival Memanah Tradisional OWL 916 (kali ke-3)</strong></p>
+      <p>Pendaftaran bermula <strong>1 Mac</strong> hingga <strong>20 Jun 2026</strong></p>
+      <p>📍 Terengganu Equestrian Resort</p>
+      <p>📅 4 – 5 Julai 2026 (Sabtu & Ahad)</p>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-box">
+      <h3>⏳ Festival Bermula Dalam</h3>
+      <div id="countdown">Loading…</div>
+    </section>
+
+    <!-- BUTANG -->
+    <section class="action-buttons">
+      <a href="daftar.png" class="btn">📥 Pendaftaran</a>
+      <a href="syarat.html" class="btn">📜 Syarat Penyertaan</a>
+      <a href="lokasi.png" class="btn">📍 Lokasi Program</a>
+      <a href="https://wa.me/6XXXXXXXXX" class="btn whatsapp">💬 Hubungi Urusetia</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 OWL 916 3.0</p>
+    <p>Do not share personal information</p>
+  </footer>
+
+  <!-- COUNTDOWN SCRIPT -->
+  <script>
+    const targetDate = new Date("2026-07-04T08:00:00").getTime();
+    const cd = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        cd.innerHTML = "Festival telah bermula!";
+        return;
+      }
+
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff / (1000*60*60)) % 24);
+      const m = Math.floor((diff / (1000*60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      cd.innerHTML = `${d} Hari ${h} Jam ${m} Minit ${s} Saat`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
