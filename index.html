@@ -69,11 +69,9 @@ base-uri 'self';
         <strong>Festival Memanah Tradisional Owl 916 (kali ke-3)</strong>
       </p>
 
-      <section class="event-info under-title">
-      <p>Pendaftaran bermula <strong>1 Mac</strong> hingga <strong>20 Jun 2026</strong></p>
-      <p>📍 Terengganu Equestrian Resort</p>
-      <p>📅 4 – 5 Julai 2026 (Sabtu & Ahad)</p>
-    </section>
+      <p id="pendaftaran-info" class="pendaftaran-info">
+  Pendaftaran bermula 1 Mac hingga 20 Jun 2026
+</p>
 
     <!-- COUNTDOWN -->
     <section class="countdown-box">
@@ -154,7 +152,9 @@ base-uri 'self';
   </footer>
 
 <script>
-  // SET TARIKH EVENT (YYYY-MM-DDTHH:MM:SS)
+  /* =====================
+     COUNTDOWN FESTIVAL
+  ===================== */
   const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
   const timer = setInterval(() => {
@@ -163,7 +163,6 @@ base-uri 'self';
 
     if (distance <= 0) {
       clearInterval(timer);
-      document.querySelector(".countdown-title").innerText = "🎉 Festival Sedang Berlangsung";
       document.getElementById("days").innerText = "0";
       document.getElementById("hours").innerText = "0";
       document.getElementById("minutes").innerText = "0";
@@ -171,19 +170,42 @@ base-uri 'self';
       return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
-
+    document.getElementById("days").innerText =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("hours").innerText =
+      Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById("minutes").innerText =
+      Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById("seconds").innerText =
+      Math.floor((distance % (1000 * 60)) / 1000);
   }, 1000);
-</script>
 
+
+  /* =====================
+     STATUS PENDAFTARAN
+  ===================== */
+  const daftarBuka = new Date("2026-03-01T00:00:00").getTime();
+  const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
+  const daftarEl = document.getElementById("pendaftaran-info");
+
+  function checkPendaftaran() {
+    const now = new Date().getTime();
+    daftarEl.classList.remove("open", "closed");
+
+    if (now < daftarBuka) {
+      daftarEl.innerText = "Pendaftaran akan dibuka pada 1 Mac 2026";
+    } else if (now <= daftarTutup) {
+      daftarEl.innerText = "Pendaftaran sedang dibuka hingga 20 Jun 2026";
+      daftarEl.classList.add("open");
+    } else {
+      daftarEl.innerText = "Pendaftaran telah ditutup";
+      daftarEl.classList.add("closed");
+    }
+  }
+
+  checkPendaftaran();
+  setInterval(checkPendaftaran, 60000);
+</script>
 
 
 
