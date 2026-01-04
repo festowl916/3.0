@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const daftarBuka  = new Date("2026-03-01T00:00:00").getTime();
+  const daftarBuka = new Date("2020-01-01").getTime();
   const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
 
   const daftarEl = document.getElementById("pendaftaran-info");
@@ -36,3 +36,4 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(checkPendaftaran, 60000);
 
 });
+
