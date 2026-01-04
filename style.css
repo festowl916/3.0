@@ -329,3 +329,9 @@ footer {
 .card.disabled span {
   text-decoration: line-through;
 }
+
+.card.disabled {
+  pointer-events: none;
+  opacity: 0.45;
+  filter: grayscale(100%);
+}
