@@ -183,33 +183,6 @@ base-uri 'self';
   }, 1000);
 
 
-  /* =====================
-     STATUS PENDAFTARAN
-  ===================== */
-  const daftarBuka = new Date("2026-03-01T00:00:00").getTime();
-  const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
-  const daftarEl = document.getElementById("pendaftaran-info");
-
-  function checkPendaftaran() {
-    const now = new Date().getTime();
-    daftarEl.classList.remove("open", "closed");
-
-    if (now < daftarBuka) {
-      daftarEl.innerText = "Pendaftaran akan dibuka pada 1 Mac 2026";
-    } else if (now <= daftarTutup) {
-      daftarEl.innerText = "Pendaftaran sedang dibuka hingga 20 Jun 2026";
-      daftarEl.classList.add("open");
-    } else {
-      daftarEl.innerText = "Pendaftaran telah ditutup";
-      daftarEl.classList.add("closed");
-    }
-  }
-
-  checkPendaftaran();
-  setInterval(checkPendaftaran, 60000);
-</script>
-</footer>
-
   <!-- =========================
        JS STATUS PENDAFTARAN
   ========================== -->
@@ -248,6 +221,7 @@ if (!daftarEl || !btnDaftar) return;
 
 </body>
 </html>
+
 
 
 
