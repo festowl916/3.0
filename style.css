@@ -366,9 +366,11 @@ footer {
 
 
 .organizer {
+  font-family: system-ui, Arial, sans-serif;
   font-weight: 700;
-  color: #c9a24d;     /* emas */
+  color: #c9a24d;
 }
+
 
 
 
