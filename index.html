@@ -153,34 +153,33 @@ base-uri 'self';
     <p>Do not share personal information</p>
   </footer>
 
-  <!-- SCRIPT COUNTDOWN -->
   <script>
-    const eventDate = new Date("June 28, 2026 00:00:00").getTime();
+  // SET TARIKH EVENT (YYYY-MM-DDTHH:MM:SS)
+  const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
 
-      if (distance < 0) {
-        document.querySelector(".countdown-box").innerHTML =
-          "<strong>🎯 Festival Sedang Berlangsung</strong>";
-        return;
-      }
+    if (distance <= 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").innerHTML = "Acara telah bermula";
+      return;
+    }
 
-      document.getElementById("days").innerText =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
-      document.getElementById("hours").innerText =
-        Math.floor((distance / (1000 * 60 * 60)) % 24);
-      document.getElementById("minutes").innerText =
-        Math.floor((distance / (1000 * 60)) % 60);
-      document.getElementById("seconds").innerText =
-        Math.floor((distance / 1000) % 60);
-    }, 1000);
-  </script>
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      `${days} hari ${hours} jam ${minutes} min ${seconds} saat`;
+  }, 1000);
 
 </body>
 
 </html>
+
 
 
 
