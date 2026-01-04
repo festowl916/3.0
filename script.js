@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
      MODE TEST (PRO)
      Tukar true → false bila live
   ===================== */
-  const TEST_MODE = false;
+  const TEST_MODE = true;
   const TEST_NOW  = new Date("2026-04-15T12:00:00").getTime();
 
   const nowTime = () => TEST_MODE ? TEST_NOW : Date.now();
@@ -76,4 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
+
 
