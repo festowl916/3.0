@@ -1,38 +1,39 @@
-// Pastikan HTML dah load dulu
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ✅ TEST (boleh padam lepas confirm jalan)
-  console.log("script.js berjalan");
-
   // =========================
-  // KESAN KLIK PADA CARD
+  // STATUS PENDAFTARAN + DISABLE BUTANG
   // =========================
-  const cards = document.querySelectorAll(".card");
+  const daftarBuka  = new Date("2026-03-01T00:00:00").getTime();
+  const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
 
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      card.classList.add("clicked");
-      setTimeout(() => {
-        card.classList.remove("clicked");
-      }, 200);
-    });
-  });
+  const daftarEl  = document.getElementById("pendaftaran-info");
+  const btnDaftar = document.getElementById("btn-daftar");
 
-  // =========================
-  // ANIMASI MASUK (fade-in)
-  // =========================
-  const elements = document.querySelectorAll(
-    ".logo-area, .logo-group, h1, .subtitle, .card"
-  );
+  if (!daftarEl || !btnDaftar) return;
 
-  elements.forEach((el, i) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    setTimeout(() => {
-      el.style.transition = "0.6s ease";
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }, i * 120);
-  });
+  function checkPendaftaran() {
+    const now = new Date().getTime();
+
+    daftarEl.classList.remove("open", "closed");
+    btnDaftar.classList.remove("disabled");
+
+    if (now < daftarBuka) {
+      daftarEl.innerText = "Pendaftaran akan dibuka pada 1 Mac 2026";
+      daftarEl.classList.add("closed");
+      btnDaftar.classList.add("disabled");
+    } 
+    else if (now <= daftarTutup) {
+      daftarEl.innerText = "Pendaftaran sedang dibuka sehingga 20 Jun 2026";
+      daftarEl.classList.add("open");
+    } 
+    else {
+      daftarEl.innerText = "Pendaftaran telah ditutup";
+      daftarEl.classList.add("closed");
+      btnDaftar.classList.add("disabled");
+    }
+  }
+
+  checkPendaftaran();
+  setInterval(checkPendaftaran, 60000);
 
 });
