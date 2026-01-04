@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
      false = LIVE
      true  = TEST
   ===================== */
-  const TEST_MODE = false;
-  const TEST_NOW  = new Date("2026-02-15T12:00:00").getTime();
+  const TEST_MODE = true;
+  const TEST_NOW  = new Date("2026-01-1T12:00:00").getTime();
   const nowTime = () => TEST_MODE ? TEST_NOW : Date.now();
 
   /* =====================
@@ -58,3 +58,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(checkPendaftaran, 60000);
 
 });
+
