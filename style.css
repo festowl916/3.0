@@ -284,11 +284,10 @@ footer {
   margin-top: 4px !important;
 }
 
-
 /* =====================
    STATUS PENDAFTARAN
 ===================== */
-.pendaftaran-info {
+#pendaftaran-info {
   color: #c62828;
   font-weight: 600;
   text-align: center;
@@ -298,7 +297,7 @@ footer {
   margin-top: 10px;
 }
 
-.pendaftaran-info::after {
+#pendaftaran-info::after {
   content: "";
   position: absolute;
   left: 20%;
@@ -309,12 +308,12 @@ footer {
   border-radius: 2px;
 }
 
-.pendaftaran-info.open {
-  color: #c9a24d;
+#pendaftaran-info.open {
+  color: #2ecc71; /* hijau */
 }
 
-.pendaftaran-info.closed {
-  color: #9e9e9e;
+#pendaftaran-info.closed {
+  color: #e74c3c; /* merah */
 }
 
 /* =====================
@@ -329,6 +328,7 @@ footer {
 .card.disabled span {
   text-decoration: line-through;
 }
+
 
 
 
