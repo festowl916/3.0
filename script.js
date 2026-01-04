@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* MODE TEST */
   const TEST_MODE = true;
-  const TEST_NOW  = new Date("2026-02l3-10T12:00:00").getTime();
+  const TEST_NOW  = new Date("2026-03-10T12:00:00").getTime();
   const nowTime = () => TEST_MODE ? TEST_NOW : Date.now();
 
   /* TARIKH MASTER */
@@ -51,3 +51,4 @@ function checkPendaftaran() {
 
 checkPendaftaran();
 setInterval(checkPendaftaran, 60000);                          
+
