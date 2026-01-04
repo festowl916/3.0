@@ -80,9 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =====================
      COUNTDOWN FESTIVAL
   ===================== */
-
-  const eventDate = new Date("2026-07-04T08:00:00").getTime();
-
+const eventDate = new Date("2026-07-04T08:00:00").getTime();
   function updateCountdown() {
     const now = nowTime(); // guna MODE TEST / LIVE
     const distance = eventDate - now;
@@ -107,3 +105,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
