@@ -27,7 +27,7 @@ btnDaftar.dataset.link = btnDaftar.getAttribute("href");
     btnDaftar.classList.remove("disabled");
 
     if (now < daftarBuka) {
-      daftarEl.textContent = "Pendaftaran akan dibuka pada 1 Mac 2026";
+      daftarEl.textContent = "Pendaftaran dibuka pada 1 Mac hingga 20 Julai 2026";
       daftarEl.classList.add("closed");
       btnDaftar.classList.add("disabled");
     }
@@ -76,6 +76,7 @@ btnDaftar.dataset.link = btnDaftar.getAttribute("href");
   setInterval(updateCountdown, 1000);
 
 });
+
 
 
 
