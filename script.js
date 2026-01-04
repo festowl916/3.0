@@ -12,39 +12,32 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =====================
      STATUS PENDAFTARAN
   ===================== */
-  const daftarBuka  = new Date("2026-03-01T00:00:00").getTime();
-  const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
-
-  const daftarEl  = document.getElementById("pendaftaran-info");
-  const btnDaftar = document.getElementById("btn-daftar");
-btnDaftar.dataset.link = btnDaftar.getAttribute("href");
   function checkPendaftaran() {
-    if (!daftarEl || !btnDaftar) return;
+  if (!daftarEl || !btnDaftar) return;
 
-    const now = nowTime();
+  const now = nowTime();
 
-    daftarEl.classList.remove("open", "closed");
-    btnDaftar.classList.remove("disabled");
+  daftarEl.classList.remove("open", "closed");
+  btnDaftar.classList.remove("disabled");
 
-    if (now < daftarBuka) {
-      daftarEl.textContent = "Pendaftaran dibuka pada 1 Mac hingga 20 Julai 2026";
-      daftarEl.classList.add("closed");
-      btnDaftar.classList.add("disabled");
-    }
-    else if (now <= daftarTutup) {
-      daftarEl.textContent = "Pendaftaran sedang dibuka sehingga 20 Jun 2026";
-      daftarEl.classList.add("open");
-    }
-    else {
-      daftarEl.textContent = "Pendaftaran telah ditutup";
-      daftarEl.classList.add("closed");
-      btnDaftar.classList.add("disabled");
-    }
+  if (now < daftarBuka) {
+    daftarEl.textContent =
+      "Pendaftaran akan dibuka dari 1 Mac hingga 20 Jun 2026";
+    daftarEl.classList.add("closed");
+    btnDaftar.classList.add("disabled");
   }
-
-  checkPendaftaran();
-  setInterval(checkPendaftaran, 60000);
-
+  else if (now <= daftarTutup) {
+    daftarEl.textContent =
+      "Pendaftaran dibuka dari 1 Mac hingga 20 Jun 2026";
+    daftarEl.classList.add("open");
+  }
+  else {
+    daftarEl.textContent =
+      "Pendaftaran telah ditutup";
+    daftarEl.classList.add("closed");
+    btnDaftar.classList.add("disabled");
+  }
+}
   /* =====================
      COUNTDOWN FESTIVAL
   ===================== */
@@ -76,6 +69,7 @@ btnDaftar.dataset.link = btnDaftar.getAttribute("href");
   setInterval(updateCountdown, 1000);
 
 });
+
 
 
 
