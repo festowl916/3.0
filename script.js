@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const daftarEl  = document.getElementById("pendaftaran-info");
   const btnDaftar = document.getElementById("btn-daftar");
-
+btnDaftar.dataset.link = btnDaftar.getAttribute("href");
   function checkPendaftaran() {
     if (!daftarEl || !btnDaftar) return;
 
@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
+
 
 
 
