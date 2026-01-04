@@ -154,81 +154,71 @@ base-uri 'self';
   </footer>
 
 <script>
-  /* =====================
-     COUNTDOWN FESTIVAL
-  ===================== */
-  const eventDate = new Date("2026-07-04T08:00:00").getTime();
+/* =====================
+   COUNTDOWN FESTIVAL
+===================== */
+const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
-  const timer = setInterval(() => {
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if (distance <= 0) {
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "0";
+    document.getElementById("minutes").innerText = "0";
+    document.getElementById("seconds").innerText = "0";
+    return;
+  }
+
+  document.getElementById("days").innerText =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").innerText =
+    Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  document.getElementById("minutes").innerText =
+    Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  document.getElementById("seconds").innerText =
+    Math.floor((distance % (1000 * 60)) / 1000);
+}, 1000);
+</script>
+
+<script>
+/* =========================
+   STATUS PENDAFTARAN
+========================= */
+document.addEventListener("DOMContentLoaded", function () {
+
+  const daftarBuka  = new Date("2026-03-01T00:00:00").getTime();
+  const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
+
+  const daftarEl = document.getElementById("pendaftaran-info");
+  const btnDaftar = document.getElementById("btn-daftar");
+
+  if (!daftarEl || !btnDaftar) return;
+
+  function checkPendaftaran() {
     const now = new Date().getTime();
-    const distance = eventDate - now;
 
-    if (distance <= 0) {
-      clearInterval(timer);
-      document.getElementById("days").innerText = "0";
-      document.getElementById("hours").innerText = "0";
-      document.getElementById("minutes").innerText = "0";
-      document.getElementById("seconds").innerText = "0";
-      return;
+    daftarEl.classList.remove("open", "closed");
+    btnDaftar.classList.remove("disabled");
+
+    if (now < daftarBuka) {
+      daftarEl.innerText = "Pendaftaran akan dibuka pada 1 Mac 2026";
+      daftarEl.classList.add("closed");
+      btnDaftar.classList.add("disabled");
     }
-
-    document.getElementById("days").innerText =
-      Math.floor(distance / (1000 * 60 * 60 * 24));
-    document.getElementById("hours").innerText =
-      Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    document.getElementById("minutes").innerText =
-      Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById("seconds").innerText =
-      Math.floor((distance % (1000 * 60)) / 1000);
-  }, 1000);
-
-
-  <!-- =========================
-       JS STATUS PENDAFTARAN
-  ========================== -->
-  <script>
-    const daftarBuka  = new Date("2026-03-01T00:00:00").getTime();
-    const daftarTutup = new Date("2026-06-20T23:59:59").getTime();
-
-    const daftarEl = document.getElementById("pendaftaran-info");
-    const btnDaftar = document.getElementById("btn-daftar");
-
-if (!daftarEl || !btnDaftar) return;
-
-    function checkPendaftaran() {
-      const now = new Date().getTime();
-
-      daftarEl.classList.remove("open", "closed");
-      btnDaftar.classList.remove("disabled");
-
-      if (now < daftarBuka) {
-        daftarEl.innerText = "Pendaftaran akan dibuka pada 1 Mac 2026";
-        daftarEl.classList.add("closed");
-        btnDaftar.classList.add("disabled");
-      } else if (now <= daftarTutup) {
-        daftarEl.innerText = "Pendaftaran sedang dibuka sehingga 20 Jun 2026";
-        daftarEl.classList.add("open");
-      } else {
-        daftarEl.innerText = "Pendaftaran telah ditutup";
-        daftarEl.classList.add("closed");
-        btnDaftar.classList.add("disabled");
-      }
+    else if (now <= daftarTutup) {
+      daftarEl.innerText = "Pendaftaran sedang dibuka sehingga 20 Jun 2026";
+      daftarEl.classList.add("open");
     }
+    else {
+      daftarEl.innerText = "Pendaftaran telah ditutup";
+      daftarEl.classList.add("closed");
+      btnDaftar.classList.add("disabled");
+    }
+  }
 
-    checkPendaftaran();
-    setInterval(checkPendaftaran, 60000);
-  </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
+  checkPendaftaran();
+  setInterval(checkPendaftaran, 60000);
+});
+</script>
