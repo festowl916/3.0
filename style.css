@@ -316,3 +316,16 @@ footer {
 .pendaftaran-info.closed {
   color: #9e9e9e;
 }
+
+/* =====================
+   BUTANG PENDAFTARAN (DISABLED)
+===================== */
+.card.disabled {
+  pointer-events: none;     /* tak boleh klik */
+  opacity: 0.45;            /* pudar */
+  filter: grayscale(100%);  /* hitam putih */
+}
+
+.card.disabled span {
+  text-decoration: line-through;
+}
