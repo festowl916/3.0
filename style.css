@@ -383,14 +383,15 @@ footer {
 }
 
 .status-mini {
-  color: #fff;
+  color: #ffff;
   opacity: 1;
 }
 
 .status-mini .status-text {
-  color: #fff;
+  color: #ffff;
   font-weight: 600;
 }
+
 
 
 
