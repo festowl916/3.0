@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const DAFTAR_BUKA  = new Date("2026-03-01T00:00:00").getTime();
   const DAFTAR_TUTUP = new Date("2026-06-20T23:59:59").getTime();
 
-  const btn = document.getElementById("btn-daftar");
+  const btn  = document.getElementById("btn-daftar");
+  const info = document.getElementById("pendaftaran-info");
   const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
@@ -99,6 +100,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
