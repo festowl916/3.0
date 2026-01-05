@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ===================== */
   const TEST_MODE = true; // ❗ tukar false bila LIVE
 
-  let fakeNow = new Date("2026-02-01T12:00:00").getTime();
+  let fakeNow = new Date("2026-03-01T00:01:00").getTime();
   const daftarTime = () => TEST_MODE ? fakeNow : Date.now();
 
   if (TEST_MODE) {
@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(kawalLinkDaftar, 60000);
 
 });
+
 
 
 
