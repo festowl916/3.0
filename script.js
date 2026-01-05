@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const TEST_MODE = true; // ← tukar false bila LIVE
 
   // Tarikh palsu untuk test (TUKAR DI SINI SAHAJA)
-  let fakeNow = new Date("2026-03-01T12:00:00").getTime();
+  let fakeNow = new Date("2026-03-01T12:10:00").getTime();
 
   // Masa untuk PENDAFTARAN
   const daftarTime = () =>
@@ -87,4 +87,5 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
