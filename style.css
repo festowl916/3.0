@@ -382,6 +382,15 @@ footer {
   color: #999 !important; /* kelabu */
 }
 
+.status-mini {
+  color: #fff;
+  opacity: 1;
+}
+
+.status-mini .status-text {
+  color: #fff;
+  font-weight: 600;
+}
 
 
 
