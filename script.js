@@ -1,132 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
-const statusDot = document.querySelector(".status-mini .dot");
-const statusText = document.querySelector(".status-mini .status-text");
-  /* =================================================
-     MODE TEST / LIVE (UNTUK PENDAFTARAN SAHAJA)
-  ================================================= */
-  const TEST_MODE = true; // ← tukar false bila LIVE
-
-  // Tarikh palsu untuk test (TUKAR DI SINI SAHAJA)
-  let fakeNow = new Date("2026-03-01T12:10:00").getTime();
-
-  // Masa untuk PENDAFTARAN
-  const daftarTime = () =>
-    TEST_MODE ? fakeNow : Date.now();
-
-  // Gerakkan fake time (supaya test boleh berubah bila refresh)
-  if (TEST_MODE) {
-    setInterval(() => {
-      fakeNow += 60 * 1000; // tambah 1 minit setiap minit
-    }, 60000);
-  }
 
   /* =====================
-     TARIKH PENDAFTARAN
+     MODE TEST / LIVE
+  ===================== */
+  const TEST_MODE = true; // ← tukar false bila LIVE
+
+  let fakeNow = new Date("2026-02-15T12:00:00").getTime();
+  const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
+
+  /* =====================
+     TARIKH DAFTAR
   ===================== */
   const DAFTAR_BUKA  = new Date("2026-03-01T00:00:00").getTime();
   const DAFTAR_TUTUP = new Date("2026-06-20T23:59:59").getTime();
 
-  const btn  = document.getElementById("btn-daftar");
-  const info = document.getElementById("pendaftaran-info");
+  const btn = document.getElementById("btn-daftar");
   const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
-  function kawalLinkDaftar() {
-  const now = daftarTime();
-  if (!btn || !info || !statusDot || !statusText) return;
+    if (!btn) return;
 
-  // reset class
-  info.classList.remove("belum", "buka", "tutup");
-  statusDot.classList.remove("belum", "buka", "tutup");
+    const now = nowTime();
 
-  if (now < DAFTAR_BUKA) {
-    // BELUM BUKA
-    btn.classList.add("disabled");
-    btn.style.pointerEvents = "none";
+    if (now < DAFTAR_BUKA) {
+      btn.classList.add("disabled");
+      btn.removeAttribute("href");
 
-    info.textContent =
-      "Pendaftaran akan dibuka dari 1 Mac hingga 20 Jun 2026";
-    info.classList.add("belum");
+    } else if (now <= DAFTAR_TUTUP) {
+      btn.classList.remove("disabled");
+      btn.setAttribute("href", originalLink);
 
-    statusDot.classList.add("belum");
-    statusText.innerHTML = `
-      Belum dibuka
-      <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
-    `;
-
-  } else if (now <= DAFTAR_TUTUP) {
-    // SEDANG BUKA
-    btn.classList.remove("disabled");
-    btn.style.pointerEvents = "auto";
-
-    info.textContent =
-      "Pendaftaran dibuka dari 1 Mac hingga 20 Jun 2026";
-    info.classList.add("buka");
-
-    statusDot.classList.add("buka");
-    statusText.innerHTML = `
-      Sedang dibuka
-      <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
-    `;
-
-  } else {
-    // SUDAH TUTUP
-    btn.classList.add("disabled");
-    btn.style.pointerEvents = "none";
-
-    info.textContent = "Pendaftaran telah ditutup";
-    info.classList.add("tutup");
-
-    statusDot.classList.add("tutup");
-    statusText.innerHTML = `
-      Pendaftaran ditutup
-      <small>Tutup: 20 Jun 2026</small>
-    `;
+    } else {
+      btn.classList.add("disabled");
+      btn.removeAttribute("href");
+    }
   }
-}
 
   kawalLinkDaftar();
-  setInterval(kawalLinkDaftar, 60000); // semak setiap 1 minit
+  setInterval(kawalLinkDaftar, 60000);
 
-});
+  /* =====================
+     COUNTDOWN FESTIVAL
+     (TIADA KAITAN DENGAN DAFTAR)
+  ===================== */
+  const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
-/* =================================================
-   COUNTDOWN FESTIVAL (LIVE SEBENAR)
-   ❌ TAK GUNA MODE TEST
-   ❌ TAK GUNA fakeNow
-================================================= */
-const EVENT_DATE = new Date("2026-07-04T08:00:00").getTime();
+  function updateCountdown() {
+    const now = nowTime();
+    const distance = eventDate - now;
 
-function updateCountdown() {
-  const now = Date.now(); // LIVE sebenar
-  const distance = EVENT_DATE - now;
+    const d = document.getElementById("days");
+    const h = document.getElementById("hours");
+    const m = document.getElementById("minutes");
+    const s = document.getElementById("seconds");
 
-  const d = document.getElementById("days");
-  const h = document.getElementById("hours");
-  const m = document.getElementById("minutes");
-  const s = document.getElementById("seconds");
+    if (!d || !h || !m || !s) return;
 
-  if (!d || !h || !m || !s) return;
+    if (distance <= 0) {
+      d.textContent = h.textContent =
+      m.textContent = s.textContent = "0";
+      return;
+    }
 
-  if (distance <= 0) {
-    d.textContent = h.textContent =
-    m.textContent = s.textContent = "0";
-    return;
+    d.textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+    h.textContent = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    m.textContent = Math.floor((distance / (1000 * 60)) % 60);
+    s.textContent = Math.floor((distance / 1000) % 60);
   }
 
-  d.textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
-  h.textContent = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  m.textContent = Math.floor((distance / (1000 * 60)) % 60);
-  s.textContent = Math.floor((distance / 1000) % 60);
-}
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-
-
-
-
-
-
-
+});

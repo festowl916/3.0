@@ -1,82 +1,399 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* =====================
+   ROOT
+===================== */
+:root {
+  --biru: #375395;
+  --emas: #c9a24d;
+}
 
-  /* =====================
-     MODE TEST / LIVE
-  ===================== */
-  const TEST_MODE = true; // ❗ tukar false bila LIVE
+/* =====================
+   RESET
+===================== */
+* {
+  box-sizing: border-box;
+  font-family: system-ui, Arial, sans-serif;
+}
 
-  let fakeNow = new Date("2026-03-01T12:10:00").getTime();
-  const daftarTime = () => TEST_MODE ? fakeNow : Date.now();
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
-  if (TEST_MODE) {
-    setInterval(() => {
-      fakeNow += 60 * 1000;
-    }, 60000);
+/* =====================
+   BACKGROUND UTAMA
+===================== */
+body {
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+    url("festival-bg.jpg") center / cover no-repeat fixed;
+  color: #fff;
+}
+
+/* =====================
+   WRAPPER (GLASS CARD)
+===================== */
+.wrapper {
+  max-width: 480px;
+  margin: 8px auto 60px;
+  padding: 20px;
+  text-align: center;
+
+  background: rgba(80,130,200,0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+
+/* =====================
+   LOGO PENAJA
+===================== */
+.logo-area {
+  padding: 20px 0 30px;
+}
+
+.logo-group {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  max-width: 320px;
+  margin: 10px auto 8px;
+  align-items: center;
+  justify-items: center;
+}
+
+.partner-logo {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+/* =====================
+   TITLE
+===================== */
+h1 {
+  font-family: 'Alfa Slab One', cursive;
+  color: #ffffff;
+  margin: 10px 0 14px;
+}
+
+/* =====================
+   EVENT INFO
+===================== */
+.event-info {
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+.organizer {
+  color: var(--emas);
+}
+
+.event-info.under-title {
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(255,255,255,0.4);
+  margin-bottom: 20px;
+}
+
+/* =====================
+   COUNTDOWN
+===================== */
+.countdown-box {
+  margin: 28px 0;
+  padding: 18px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+}
+
+.countdown-title {
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.countdown div {
+  min-width: 64px;
+}
+
+.countdown span {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.countdown small {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* =====================
+   BUTTONS / CARDS
+===================== */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  color: #123;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.card img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.card span {
+  flex: 1;
+  text-align: left;
+}
+
+.card:hover {
+  background: rgba(55,83,149,0.9);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* =====================
+   URUSETIA CARD
+===================== */
+.urusetia-card {
+  margin: 20px auto;
+  max-width: 420px;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.urusetia-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+.urusetia-header img {
+  width: 36px;
+  height: 36px;
+}
+
+.urusetia-body {
+  padding: 14px 18px 18px;
+}
+
+.urusetia-title {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.urusetia-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.urusetia-buttons a {
+  flex: 1;
+  padding: 2px 10px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000 !important;
+  font-weight: 600;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 480px) {
+
+  .partner-logo {
+    height: 72px;
   }
 
-  /* =====================
-     TARIKH PENDAFTARAN
-  ===================== */
-  const DAFTAR_BUKA  = new Date("2026-03-01T00:00:00").getTime();
-  const DAFTAR_TUTUP = new Date("2026-06-20T23:59:59").getTime();
-
-  const btn        = document.getElementById("btn-daftar");
-  const info       = document.getElementById("pendaftaran-info");
-  const statusDot  = document.querySelector(".status-mini .dot");
-  const statusText = document.querySelector(".status-mini .status-text");
-  const originalLink = btn?.getAttribute("href");
-
-  if (!btn || !info || !statusDot || !statusText) return;
-
-  function kawalLinkDaftar() {
-    const now = daftarTime();
-
-    info.classList.remove("belum", "buka", "tutup");
-    statusDot.classList.remove("belum", "buka", "tutup");
-
-    if (now < DAFTAR_BUKA) {
-      btn.classList.add("disabled");
-      btn.removeAttribute("href");
-
-      info.textContent =
-        "Pendaftaran akan dibuka dari 1 Mac hingga 20 Jun 2026";
-      info.classList.add("belum");
-
-      statusDot.classList.add("belum");
-      statusText.innerHTML = `
-        Belum dibuka
-        <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
-      `;
-
-    } else if (now <= DAFTAR_TUTUP) {
-      btn.classList.remove("disabled");
-      btn.setAttribute("href", originalLink);
-
-      info.textContent =
-        "Pendaftaran dibuka dari 1 Mac hingga 20 Jun 2026";
-      info.classList.add("buka");
-
-      statusDot.classList.add("buka");
-      statusText.innerHTML = `
-        Sedang dibuka
-        <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
-      `;
-
-    } else {
-      btn.classList.add("disabled");
-      btn.removeAttribute("href");
-
-      info.textContent = "Pendaftaran telah ditutup";
-      info.classList.add("tutup");
-
-      statusDot.classList.add("tutup");
-      statusText.innerHTML = `
-        Pendaftaran ditutup
-        <small>Tutup: 20 Jun 2026</small>
-      `;
-    }
+  h1 {
+    font-size: 26px;
   }
 
-  kawalLinkDaftar();
-  setInterval(kawalLinkDaftar, 60000);
-});
+  .countdown span {
+    font-size: 22px;
+  }
+
+/* =====================
+   OVERRIDE TAJUK (FINAL)
+===================== */
+.wrapper h1 {
+  font-size: 24px;
+  color: ##F04B4;
+  margin: 10px 0 12px;
+}
+
+.organizer strong {
+  font-size: 20px;
+  color: var(--emas);
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .wrapper h1 {
+    font-size: 22px;
+  }
+
+  .organizer strong {
+    font-size: 18px;
+  }
+
+}
+
+/* =====================
+   RAPATKAN LOGO ↔ WRAPPER (FORCE)
+===================== */
+.logo-area {
+  margin-bottom: 4px !important;
+  padding-bottom: 6px !important;
+}
+
+.wrapper {
+  margin-top: 4px !important;
+}
+
+/* =====================
+   STATUS PENDAFTARAN
+===================== */
+#pendaftaran-info {
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+#pendaftaran-info::after {
+  content: "";
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+  width: 60%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* =====================
+   BUTANG PENDAFTARAN (DISABLED)
+===================== */
+.card.disabled {
+  pointer-events: none;     /* tak boleh klik */
+  opacity: 0.45;            /* pudar */
+  filter: grayscale(100%);  /* hitam putih */
+}
+
+.card.disabled span {
+  text-decoration: line-through;
+}
+
+
+/* =====================
+   STATUS PENDAFTARAN (MINI)
+===================== */
+.status-mini {
+  margin: 6px 0 14px;
+  font-size: 13px;
+  opacity: 0.85;
+  text-align: center;
+}
+
+.status-mini .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.status-mini .dot.belum {
+  background: #f1c40f;
+}
+
+.status-mini .dot.buka {
+  background: #2ecc71;
+}
+
+.status-text small {
+  display: block;
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.organizer strong {
+  font-family: system-ui, Arial, sans-serif !important;
+  font-weight: 700 !important;
+  color: #c9a24d;
+}
+
+#pendaftaran-info {
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* BELUM BUKA */
+#pendaftaran-info.belum {
+  color: #f5c542 !important; /* kuning */
+}
+
+/* SEDANG BUKA */
+#pendaftaran-info.buka {
+  color: #2ecc71 !important; /* hijau */
+}
+
+/* SUDAH TUTUP */
+#pendaftaran-info.tutup {
+  color: #999 !important; /* kelabu */
+}
+
+.status-mini {
+  color: #fff;
+  opacity: 1;
+}
+
+.status-mini .status-text {
+  color: #fff;
+  font-weight: 600;
+}
+
+
+
+
+
+
