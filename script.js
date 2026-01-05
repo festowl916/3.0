@@ -1,16 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =====================
-     MODE TEST / LIVE
-  ===================== */
-  const TEST_MODE = true; // ❗ tukar false bila LIVE
+  /* =================================================
+     MODE TEST / LIVE (UNTUK PENDAFTARAN SAHAJA)
+     ❗ tukar false bila LIVE
+  ================================================= */
+  const TEST_MODE = true;
 
+  // Masa palsu untuk test (UBAH TARIKH DI SINI SAHAJA)
   let fakeNow = new Date("2026-03-01T00:02:00").getTime();
+
   const daftarTime = () => TEST_MODE ? fakeNow : Date.now();
 
   if (TEST_MODE) {
     setInterval(() => {
-      fakeNow += 60 * 1000;
+      fakeNow += 60 * 1000; // tambah 1 minit
     }, 60000);
   }
 
@@ -31,10 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function kawalLinkDaftar() {
     const now = daftarTime();
 
+    // reset
+    btn.classList.remove("disabled");
     info.classList.remove("belum", "buka", "tutup");
     statusDot.classList.remove("belum", "buka", "tutup");
 
     if (now < DAFTAR_BUKA) {
+      // BELUM BUKA
       btn.classList.add("disabled");
       btn.removeAttribute("href");
 
@@ -49,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
     } else if (now <= DAFTAR_TUTUP) {
-      btn.classList.remove("disabled");
+      // SEDANG BUKA
       btn.setAttribute("href", originalLink);
 
       info.textContent =
@@ -63,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
     } else {
+      // SUDAH TUTUP
       btn.classList.add("disabled");
       btn.removeAttribute("href");
 
@@ -80,9 +87,36 @@ document.addEventListener("DOMContentLoaded", () => {
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 60000);
 
+  /* =================================================
+     COUNTDOWN FESTIVAL (LIVE SEBENAR)
+     ❌ TAK GUNA TEST MODE
+  ================================================= */
+  const EVENT_DATE = new Date("2026-07-04T08:00:00").getTime();
+
+  function updateCountdown() {
+    const now = Date.now(); // ikut waktu Malaysia
+    const distance = EVENT_DATE - now;
+
+    const d = document.getElementById("days");
+    const h = document.getElementById("hours");
+    const m = document.getElementById("minutes");
+    const s = document.getElementById("seconds");
+
+    if (!d || !h || !m || !s) return;
+
+    if (distance <= 0) {
+      d.textContent = h.textContent =
+      m.textContent = s.textContent = "0";
+      return;
+    }
+
+    d.textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+    h.textContent = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    m.textContent = Math.floor((distance / (1000 * 60)) % 60);
+    s.textContent = Math.floor((distance / 1000) % 60);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
 });
-
-
-
-
-
