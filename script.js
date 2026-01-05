@@ -25,23 +25,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
-    if (!btn) return;
+  const now = daftarTime();
+  if (!btn || !info || !statusDot || !statusText) return;
 
-    const now = nowTime();
+  info.classList.remove("belum", "buka", "tutup");
+  statusDot.classList.remove("belum", "buka", "tutup");
 
-    if (now < DAFTAR_BUKA) {
-      btn.classList.add("disabled");
-      btn.removeAttribute("href");
+  if (now < DAFTAR_BUKA) {
+    btn.classList.add("disabled");
+    btn.removeAttribute("href");
 
-    } else if (now <= DAFTAR_TUTUP) {
-      btn.classList.remove("disabled");
-      btn.setAttribute("href", originalLink);
+    info.textContent =
+      "Pendaftaran akan dibuka dari 1 Mac hingga 20 Jun 2026";
+    info.classList.add("belum");
 
-    } else {
-      btn.classList.add("disabled");
-      btn.removeAttribute("href");
-    }
+    statusDot.classList.add("belum");
+    statusText.innerHTML = `
+      Belum dibuka
+      <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
+    `;
+
+  } else if (now <= DAFTAR_TUTUP) {
+    btn.classList.remove("disabled");
+    btn.setAttribute("href", originalLink);
+
+    info.textContent =
+      "Pendaftaran dibuka dari 1 Mac hingga 20 Jun 2026";
+    info.classList.add("buka");
+
+    statusDot.classList.add("buka");
+    statusText.innerHTML = `
+      Sedang dibuka
+      <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
+    `;
+
+  } else {
+    btn.classList.add("disabled");
+    btn.removeAttribute("href");
+
+    info.textContent = "Pendaftaran telah ditutup";
+    info.classList.add("tutup");
+
+    statusDot.classList.add("tutup");
+    statusText.innerHTML = `
+      Pendaftaran ditutup
+      <small>Tutup: 20 Jun 2026</small>
+    `;
   }
+}
 
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 1000);
@@ -79,3 +110,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
+
