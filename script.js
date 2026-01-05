@@ -12,7 +12,7 @@ const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
      TARIKH DAFTAR
   ===================== */
   const DAFTAR_BUKA  = new Date("2026-03-01T00:00:00").getTime();
-  const DAFTAR_TUTUP = new Date("2026-07-20T23:59:59").getTime();
+  const DAFTAR_TUTUP = new Date("2026-06-20T23:59:59").getTime();
 
   const btn = document.getElementById("btn-daftar");
   if (!btn) return;
@@ -72,6 +72,7 @@ const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
 
 
 
