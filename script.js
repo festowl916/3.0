@@ -29,26 +29,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
-    if (!btn) return;
+  if (!btn) return;
 
-    const now = daftarTime();
+  const now = daftarTime();
 
-    if (now < DAFTAR_BUKA) {
-      // BELUM BUKA
-      btn.classList.add("disabled");
-      btn.removeAttribute("href");
+  if (now < DAFTAR_BUKA) {
+    // BELUM BUKA
+    btn.classList.add("disabled");
+    btn.style.pointerEvents = "none";
 
-    } else if (now <= DAFTAR_TUTUP) {
-      // SEDANG BUKA
-      btn.classList.remove("disabled");
-      btn.setAttribute("href", originalLink);
+  } else if (now <= DAFTAR_TUTUP) {
+    // SEDANG BUKA
+    btn.classList.remove("disabled");
+    btn.style.pointerEvents = "auto";
 
-    } else {
-      // SUDAH TUTUP
-      btn.classList.add("disabled");
-      btn.removeAttribute("href");
-    }
+  } else {
+    // SUDAH TUTUP
+    btn.classList.add("disabled");
+    btn.style.pointerEvents = "none";
   }
+}
 
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 60000); // semak setiap 1 minit
@@ -87,5 +87,6 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
