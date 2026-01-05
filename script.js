@@ -34,11 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("disabled");
       btn.removeAttribute("href");
     }
-  }
-
-  kawalLinkDaftar();
-  setInterval(kawalLinkDaftar, 60000);
-
+  
   /* =====================
      COUNTDOWN FESTIVAL
      (TIADA KAITAN DENGAN DAFTAR)
@@ -72,4 +68,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
+
 
