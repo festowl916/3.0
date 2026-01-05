@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =====================
      MODE TEST
-     true  = test tarikh
-     false = LIVE sebenar
   ===================== */
-  const TEST_MODE = false;
-  const TEST_NOW  = new Date("2026-02-15T12:00:00").getTime();
-  const nowTime = () => TEST_MODE ? TEST_NOW : Date.now();
+  const TEST_MODE = true;
+
+  let fakeNow = new Date("2026-02-15T12:00:00").getTime();
+  const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
 
   /* =====================
      TARIKH DAFTAR
@@ -24,17 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const now = nowTime();
 
     if (now < DAFTAR_BUKA) {
-      // BELUM BUKA
       btn.classList.add("disabled");
       btn.removeAttribute("href");
 
     } else if (now <= DAFTAR_TUTUP) {
-      // SEDANG BUKA
       btn.classList.remove("disabled");
       btn.setAttribute("href", originalLink);
 
     } else {
-      // SUDAH TUTUP
       btn.classList.add("disabled");
       btn.removeAttribute("href");
     }
@@ -42,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 60000);
+});
 
   /* =====================
      COUNTDOWN FESTIVAL
@@ -75,4 +72,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
 
