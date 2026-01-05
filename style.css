@@ -364,21 +364,24 @@ footer {
 #pendaftaran-info {
   margin-top: 10px;
   font-weight: 600;
+  text-align: center;
 }
-   /* BELUM BUKA */
+
+/* BELUM BUKA */
 #pendaftaran-info.belum {
   color: #f5c542 !important; /* kuning */
 }
 
 /* SEDANG BUKA */
 #pendaftaran-info.buka {
-  color: #d22 !important; /* merah */
+  color: #2ecc71 !important; /* hijau */
 }
 
 /* SUDAH TUTUP */
 #pendaftaran-info.tutup {
   color: #999 !important; /* kelabu */
 }
+
 
 
 
