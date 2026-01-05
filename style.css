@@ -397,14 +397,14 @@ footer {
 ===================== */
 .organizer strong {
   display: block;
-  font-size: 24px;          /* BESAR */
-  font-weight: 900;         /* BOLD */
-  color: #1e2a3a; !important;   /* HITAM */
+  font-size: 24px;
+  font-weight: 900;
+  color: #1e2a3a !important;
   letter-spacing: 0.4px;
   line-height: 1.25;
   text-align: center;
   margin: 6px 0 8px;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.6); /* polish lembut */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
 }
 
 /* MOBILE */
@@ -412,6 +412,7 @@ footer {
   .organizer strong {
     font-size: 21px;
   }
+
 
 
 
