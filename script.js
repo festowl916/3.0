@@ -29,24 +29,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
-  if (!btn) return;
-
   const now = daftarTime();
+  if (!btn || !info) return;
+
+  info.classList.remove("belum", "buka", "tutup");
 
   if (now < DAFTAR_BUKA) {
     // BELUM BUKA
     btn.classList.add("disabled");
     btn.style.pointerEvents = "none";
 
+    info.textContent =
+      "Pendaftaran akan dibuka dari 1 Mac hingga 20 Jun 2026";
+    info.classList.add("belum");
+
   } else if (now <= DAFTAR_TUTUP) {
     // SEDANG BUKA
     btn.classList.remove("disabled");
     btn.style.pointerEvents = "auto";
 
+    info.textContent =
+      "Pendaftaran dibuka dari 1 Mac hingga 20 Jun 2026";
+    info.classList.add("buka");
+
   } else {
     // SUDAH TUTUP
     btn.classList.add("disabled");
     btn.style.pointerEvents = "none";
+
+    info.textContent = "Pendaftaran telah ditutup";
+    info.classList.add("tutup");
   }
 }
 
@@ -87,6 +99,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
