@@ -43,3 +43,37 @@ document.addEventListener("DOMContentLoaded", () => {
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 60000); // semak setiap 1 minit
 });
+
+/* =====================
+   COUNTDOWN FESTIVAL
+   (TIADA KAITAN DENGAN DAFTAR)
+===================== */
+(function () {
+  const eventDate = new Date("2026-07-04T08:00:00").getTime();
+
+  function updateCountdown() {
+    const now = Date.now();
+    const distance = eventDate - now;
+
+    const d = document.getElementById("days");
+    const h = document.getElementById("hours");
+    const m = document.getElementById("minutes");
+    const s = document.getElementById("seconds");
+
+    if (!d || !h || !m || !s) return;
+
+    if (distance <= 0) {
+      d.textContent = h.textContent =
+      m.textContent = s.textContent = "0";
+      return;
+    }
+
+    d.textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+    h.textContent = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    m.textContent = Math.floor((distance / (1000 * 60)) % 60);
+    s.textContent = Math.floor((distance / 1000) % 60);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
