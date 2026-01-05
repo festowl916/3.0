@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+const statusDot = document.querySelector(".status-mini .dot");
+const statusText = document.querySelector(".status-mini .status-text");
   /* =================================================
      MODE TEST / LIVE (UNTUK PENDAFTARAN SAHAJA)
   ================================================= */
@@ -30,10 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
+  function kawalLinkDaftar() {
   const now = daftarTime();
-  if (!btn || !info) return;
+  if (!btn || !info || !statusDot || !statusText) return;
 
+  // reset class
   info.classList.remove("belum", "buka", "tutup");
+  statusDot.classList.remove("belum", "buka", "tutup");
 
   if (now < DAFTAR_BUKA) {
     // BELUM BUKA
@@ -44,6 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "Pendaftaran akan dibuka dari 1 Mac hingga 20 Jun 2026";
     info.classList.add("belum");
 
+    statusDot.classList.add("belum");
+    statusText.innerHTML = `
+      Belum dibuka
+      <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
+    `;
+
   } else if (now <= DAFTAR_TUTUP) {
     // SEDANG BUKA
     btn.classList.remove("disabled");
@@ -53,6 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "Pendaftaran dibuka dari 1 Mac hingga 20 Jun 2026";
     info.classList.add("buka");
 
+    statusDot.classList.add("buka");
+    statusText.innerHTML = `
+      Sedang dibuka
+      <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
+    `;
+
   } else {
     // SUDAH TUTUP
     btn.classList.add("disabled");
@@ -60,6 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     info.textContent = "Pendaftaran telah ditutup";
     info.classList.add("tutup");
+
+    statusDot.classList.add("tutup");
+    statusText.innerHTML = `
+      Pendaftaran ditutup
+      <small>Tutup: 20 Jun 2026</small>
+    `;
   }
 }
 
@@ -100,6 +122,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
