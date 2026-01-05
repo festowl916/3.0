@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ===================== */
   const TEST_MODE = true; // ← tukar false bila LIVE
 
-  let fakeNow = new Date("2026-02-15T12:00:00").getTime();
+  let fakeNow = new Date("2026-03-01T12:01:00").getTime();
   const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
 
   /* =====================
@@ -72,3 +72,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
+
