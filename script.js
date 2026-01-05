@@ -45,14 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =====================
-   COUNTDOWN FESTIVAL
-   (TIADA KAITAN DENGAN DAFTAR)
-===================== */
-(function () {
+     COUNTDOWN FESTIVAL
+     (TIADA KAITAN DENGAN DAFTAR)
+  ===================== */
   const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
   function updateCountdown() {
-    const now = Date.now();
+    const now = nowTime(); // ⬅️ ikut MODE TEST / LIVE
     const distance = eventDate - now;
 
     const d = document.getElementById("days");
@@ -76,4 +75,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
-})();
