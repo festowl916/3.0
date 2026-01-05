@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =====================
-   MODE TEST / LIVE
-===================== */
-const TEST_MODE = true; // ← tukar false bila LIVE
+     MODE TEST / LIVE
+  ===================== */
+  const TEST_MODE = true; // ← tukar false bila LIVE
 
-let fakeNow = new Date("2026-02-15T12:00:00").getTime();
-const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
+  let fakeNow = new Date("2026-02-15T12:00:00").getTime();
+  const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
 
   /* =====================
      TARIKH DAFTAR
@@ -15,11 +15,11 @@ const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
   const DAFTAR_TUTUP = new Date("2026-06-20T23:59:59").getTime();
 
   const btn = document.getElementById("btn-daftar");
-  if (!btn) return;
-
-  const originalLink = btn.getAttribute("href");
+  const originalLink = btn?.getAttribute("href");
 
   function kawalLinkDaftar() {
+    if (!btn) return;
+
     const now = nowTime();
 
     if (now < DAFTAR_BUKA) {
@@ -38,7 +38,6 @@ const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
 
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 60000);
-});
 
   /* =====================
      COUNTDOWN FESTIVAL
@@ -47,7 +46,7 @@ const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
   const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
   function updateCountdown() {
-    const now = nowTime(); // ikut TEST / LIVE yang sama
+    const now = nowTime();
     const distance = eventDate - now;
 
     const d = document.getElementById("days");
@@ -71,8 +70,5 @@ const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
 });
-
-
-
-
