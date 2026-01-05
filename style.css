@@ -370,7 +370,25 @@ footer {
   color: #c9a24d;
 }
 
+#pendaftaran-info {
+  margin-top: 10px;
+  font-weight: 600;
+}
 
+/* BELUM BUKA */
+#pendaftaran-info.belum {
+  color: #f5c542; /* kuning */
+}
+
+/* SEDANG BUKA */
+#pendaftaran-info.buka {
+  color: #d22; /* merah */
+}
+
+/* SUDAH TUTUP */
+#pendaftaran-info.tutup {
+  color: #999; /* kelabu */
+}
 
 
 
