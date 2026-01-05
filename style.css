@@ -399,7 +399,7 @@ footer {
   display: block;
   font-size: 24px;          /* BESAR */
   font-weight: 900;         /* BOLD */
-  color: #000 !important;   /* HITAM */
+  color: #1e2a3a; !important;   /* HITAM */
   letter-spacing: 0.4px;
   line-height: 1.25;
   text-align: center;
@@ -412,6 +412,7 @@ footer {
   .organizer strong {
     font-size: 21px;
   }
+
 
 
 
