@@ -86,7 +86,7 @@ const statusText = document.querySelector(".status-mini .status-text");
 }
 
   kawalLinkDaftar();
-  setInterval(kawalLinkDaftar, 1000); // semak setiap 1 minit
+  setInterval(kawalLinkDaftar, 60000); // semak setiap 1 minit
 
 });
 
@@ -122,6 +122,7 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
 
 
