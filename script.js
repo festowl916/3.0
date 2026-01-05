@@ -3,10 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =====================
      MODE TEST / LIVE
   ===================== */
-  const TEST_MODE = true; // ← tukar false bila LIVE
+  const TEST_MODE = true; // tukar false bila LIVE
 
   let fakeNow = new Date("2026-06-20T00:01:00").getTime();
-  const nowTime = () => TEST_MODE ? (fakeNow += 1000) : Date.now();
+  const nowTime = () => TEST_MODE ? fakeNow : Date.now();
+
+  // Gerakkan masa palsu (TEST sahaja)
+  if (TEST_MODE) {
+    setInterval(() => {
+      fakeNow += 1000; // tambah 1 saat
+    }, 1000);
+  }
 
   /* =====================
      TARIKH DAFTAR
@@ -34,16 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("disabled");
       btn.removeAttribute("href");
     }
-  
+  }
+
+  kawalLinkDaftar();
+  setInterval(kawalLinkDaftar, 1000);
+
   /* =====================
      COUNTDOWN FESTIVAL
-     (TIADA KAITAN DENGAN DAFTAR)
+     (TIADA KAITAN DAFTAR)
   ===================== */
-  const eventDate = new Date("2026-07-04T08:00:00").getTime();
+  const EVENT_DATE = new Date("2026-07-04T08:00:00").getTime();
 
   function updateCountdown() {
     const now = nowTime();
-    const distance = eventDate - now;
+    const distance = EVENT_DATE - now;
 
     const d = document.getElementById("days");
     const h = document.getElementById("hours");
@@ -68,7 +79,3 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
-
-
-
-
