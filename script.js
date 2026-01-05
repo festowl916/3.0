@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
      MODE TEST / LIVE (UNTUK PENDAFTARAN SAHAJA)
      ❗ tukar false bila LIVE
   ================================================= */
-  const TEST_MODE = true;
+  const TEST_MODE = false;
 
   // Masa palsu untuk test (UBAH TARIKH DI SINI SAHAJA)
   let fakeNow = new Date("2026-02-21T00:02:00").getTime();
@@ -120,5 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 1000);
 
 });
+
 
 
