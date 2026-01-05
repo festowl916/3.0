@@ -40,3 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
   kawalLinkDaftar();
   setInterval(kawalLinkDaftar, 60000); // semak setiap 1 minit
 });
+
+const DAFTAR_TUTUP = new Date("2026-07-20T23:59:59").getTime();
+
+
+function kawalLinkDaftar() {
+  const now = nowTime();
+
+  if (now < DAFTAR_BUKA) {
+    // BELUM BUKA
+    btn.classList.add("disabled");
+    btn.removeAttribute("href");
+
+  } else if (now <= DAFTAR_TUTUP) {
+    // SEDANG BUKA
+    btn.classList.remove("disabled");
+    btn.setAttribute("href", originalLink);
+
+  } else {
+    // SUDAH TUTUP
+    btn.classList.add("disabled");
+    btn.removeAttribute("href");
+  }
+}
+
+
+
+
+
+
