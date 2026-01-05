@@ -41,17 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   kawalLinkDaftar();
-  setInterval(kawalLinkDaftar, 60000); // semak setiap 1 minit
-});
+  setInterval(kawalLinkDaftar, 60000);
 
-/* =====================
+  /* =====================
      COUNTDOWN FESTIVAL
      (TIADA KAITAN DENGAN DAFTAR)
   ===================== */
   const eventDate = new Date("2026-07-04T08:00:00").getTime();
 
   function updateCountdown() {
-    const now = nowTime(); // ⬅️ ikut MODE TEST / LIVE
+    const now = nowTime(); // ikut TEST / LIVE yang sama
     const distance = eventDate - now;
 
     const d = document.getElementById("days");
@@ -75,3 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+});
