@@ -413,8 +413,42 @@ footer {
     font-size: 21px;
   }
 
+/* =====================
+   LOGO PENAJA
+===================== */
+.logo-area {
+  padding: 20px 0 30px;
+}
 
+.logo-group {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 360px;   /* sikit besar supaya tak sempit */
+  margin: 12px auto 10px;
+  align-items: center;
+  justify-items: center;
+}
 
+.partner-logo {
+  width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .logo-group {
+    max-width: 320px;
+    gap: 8px;
+  }
+
+  .logo1 { height: 80px; }
+  .logo2 { height: 72px; }
+  .logo3,
+  .logo4 { height: 60px; }
+  .logo5 { height: 55px; }
+  .logo6 { height: 48px; }
+}
 
 
 
