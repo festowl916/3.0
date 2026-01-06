@@ -450,6 +450,41 @@ footer {
   .logo6 { height: 48px; }
 }
 
+/* =====================
+   WRAP ATAS (NAMA PERSATUAN)
+===================== */
+.top-wrap {
+  width: 100%;
+  padding: 22px 16px 26px;
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.organizer-block {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.organizer-label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.organizer-name {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
 
 
 
