@@ -305,3 +305,14 @@ footer {
   margin: 8px 0 10px;
   text-shadow: none;
 }
+
+/* RAPATKAN WRAP ATAS ↔ WRAP BAWAH */
+.top-wrapper {
+  margin-bottom: 6px;
+}
+
+.wrapper {
+  margin-top: 6px;
+}
+
+
