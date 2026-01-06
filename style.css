@@ -52,6 +52,7 @@ body {
 ===================== */
 .logo-area {
   padding: 20px 0 30px;
+  margin-bottom: 4px;
 }
 
 .logo-group {
@@ -66,17 +67,30 @@ body {
 
 .partner-logo {
   width: 100%;
-  height: 180px;
+  height: 72px;
   object-fit: contain;
   display: block;
 }
 
 /* =====================
-   TITLE
+   TAJUK & PENGANJUR
 ===================== */
+.organizer strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--emas);
+  letter-spacing: 0.4px;
+  line-height: 1.25;
+  text-align: center;
+  margin: 6px 0 10px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+}
+
 h1 {
   font-family: 'Alfa Slab One', cursive;
   color: #ffffff;
+  font-size: 24px;
   margin: 10px 0 14px;
 }
 
@@ -88,15 +102,39 @@ h1 {
   line-height: 1.6;
 }
 
-.organizer {
-  color: var(--emas);
-}
-
 .event-info.under-title {
   padding-bottom: 16px;
   border-bottom: 1px dashed rgba(255,255,255,0.4);
   margin-bottom: 20px;
 }
+
+/* =====================
+   STATUS PENDAFTARAN
+===================== */
+#pendaftaran-info {
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+#pendaftaran-info::after {
+  content: "";
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+  width: 60%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* BELUM / BUKA / TUTUP */
+#pendaftaran-info.belum { color: #f5c542; }
+#pendaftaran-info.buka  { color: #2ecc71; }
+#pendaftaran-info.tutup { color: #999; }
 
 /* =====================
    COUNTDOWN
@@ -170,8 +208,40 @@ h1 {
   transform: translateY(-3px);
 }
 
+/* DISABLED */
+.card.disabled {
+  pointer-events: none;
+  opacity: 0.45;
+  filter: grayscale(100%);
+}
+
+.card.disabled span {
+  text-decoration: line-through;
+}
+
 /* =====================
-   URUSETIA CARD
+   STATUS MINI
+===================== */
+.status-mini {
+  margin: 6px 0 14px;
+  font-size: 13px;
+  text-align: center;
+  color: #fff;
+}
+
+.status-mini .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-mini .dot.belum { background: #f1c40f; }
+.status-mini .dot.buka  { background: #2ecc71; }
+
+/* =====================
+   URUSETIA
 ===================== */
 .urusetia-card {
   margin: 20px auto;
@@ -199,28 +269,6 @@ h1 {
   padding: 14px 18px 18px;
 }
 
-.urusetia-title {
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-.urusetia-buttons {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.urusetia-buttons a {
-  flex: 1;
-  padding: 2px 10px;
-  font-size: 14px;
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-  text-decoration: none;
-  color: #000 !important;
-  font-weight: 600;
-}
-
 /* =====================
    FOOTER
 ===================== */
@@ -233,191 +281,15 @@ footer {
    MOBILE
 ===================== */
 @media (max-width: 480px) {
-
-  .partner-logo {
-    height: 72px;
+  h1 {
+    font-size: 22px;
   }
 
-  h1 {
-    font-size: 26px;
+  .organizer strong {
+    font-size: 21px;
   }
 
   .countdown span {
     font-size: 22px;
   }
-
-/* =====================
-   OVERRIDE TAJUK (FINAL)
-===================== */
-.wrapper h1 {
-  font-size: 24px;
-  color: ##F04B4;
-  margin: 10px 0 12px;
 }
-
-.organizer strong {
-  font-size: 20px;
-  color: var(--emas);
-  font-weight: 700;
-}
-
-@media (max-width: 480px) {
-  .wrapper h1 {
-    font-size: 22px;
-  }
-
-  .organizer strong {
-    font-size: 18px;
-  }
-
-}
-
-/* =====================
-   RAPATKAN LOGO ↔ WRAPPER (FORCE)
-===================== */
-.logo-area {
-  margin-bottom: 4px !important;
-  padding-bottom: 6px !important;
-}
-
-.wrapper {
-  margin-top: 4px !important;
-}
-
-/* =====================
-   STATUS PENDAFTARAN
-===================== */
-#pendaftaran-info {
-  font-weight: 600;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-  margin-top: 10px;
-}
-
-#pendaftaran-info::after {
-  content: "";
-  position: absolute;
-  left: 20%;
-  bottom: 0;
-  width: 60%;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
-}
-
-/* =====================
-   BUTANG PENDAFTARAN (DISABLED)
-===================== */
-.card.disabled {
-  pointer-events: none;     /* tak boleh klik */
-  opacity: 0.45;            /* pudar */
-  filter: grayscale(100%);  /* hitam putih */
-}
-
-.card.disabled span {
-  text-decoration: line-through;
-}
-
-
-/* =====================
-   STATUS PENDAFTARAN (MINI)
-===================== */
-.status-mini {
-  margin: 6px 0 14px;
-  font-size: 13px;
-  opacity: 0.85;
-  text-align: center;
-}
-
-.status-mini .dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-
-.status-mini .dot.belum {
-  background: #f1c40f;
-}
-
-.status-mini .dot.buka {
-  background: #2ecc71;
-}
-
-.status-text small {
-  display: block;
-  font-size: 11px;
-  opacity: 0.75;
-  margin-top: 2px;
-}
-
-.organizer strong {
-  font-family: system-ui, Arial, sans-serif !important;
-  font-weight: 700 !important;
-  color: #c9a24d;
-}
-
-#pendaftaran-info {
-  margin-top: 10px;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* BELUM BUKA */
-#pendaftaran-info.belum {
-  color: #f5c542 !important; /* kuning */
-}
-
-/* SEDANG BUKA */
-#pendaftaran-info.buka {
-  color: #2ecc71 !important; /* hijau */
-}
-
-/* SUDAH TUTUP */
-#pendaftaran-info.tutup {
-  color: #999 !important; /* kelabu */
-}
-
-.status-mini {
-  color: #fff;
-  opacity: 1;
-}
-
-.status-mini .status-text {
-  color: #fff;
-  font-weight: 600;
-}
-
-/* =====================
-   POLISH TAJUK FESTIVAL (FINAL)
-===================== */
-.organizer strong {
-  display: block;
-  font-size: 24px;
-  font-weight: 900;
-  color: ##1589FF !important;
-  letter-spacing: 0.4px;
-  line-height: 1.25;
-  text-align: center;
-  margin: 6px 0 8px;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .organizer strong {
-    font-size: 21px;
-  }
-
-
-
-
-
-
-
-
-
