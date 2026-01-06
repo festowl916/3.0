@@ -309,12 +309,13 @@ footer {
 
 /* RAPATKAN WRAP ATAS ↔ WRAP BAWAH */
 .top-wrapper {
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 .wrapper {
-  margin-top: 0px;
+  margin-top: 4px;
 }
+
 
 
 
