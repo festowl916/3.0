@@ -293,3 +293,15 @@ footer {
     font-size: 22px;
   }
 }
+
+.organizer strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;   /* BOLD */
+  color: #000000;     /* HITAM */
+  letter-spacing: 0.4px;
+  line-height: 1.25;
+  text-align: center;
+  margin: 8px 0 10px;
+  text-shadow: none;
+}
