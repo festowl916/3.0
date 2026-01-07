@@ -23,9 +23,12 @@ html, body {
    BACKGROUND UTAMA
 ===================== */
 body {
+  min-height: 100vh;
+
   background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg.png") center / cover no-repeat fixed;
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+    url("festival-bg.png") center center / cover no-repeat;
+
   color: #fff;
 }
 
@@ -315,6 +318,7 @@ footer {
 .wrapper {
   margin-top: 4px;
 }
+
 
 
 
