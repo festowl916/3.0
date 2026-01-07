@@ -34,7 +34,7 @@ body {
 ===================== */
 header {
   position: sticky;
-  top: 2px;
+  top: 0;
   z-index: 100;
   padding-top: calc(20px + env(safe-area-inset-top));
   padding-bottom: 8px;
@@ -48,9 +48,11 @@ header {
   margin: 0 auto 60px;
   padding: 20px;
   text-align: center;
-background: rgba(80,130,200,0.22);
+
+  background: rgba(80,130,200,0.22);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.35);
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
@@ -129,13 +131,16 @@ h1 {
 }
 
 /* =====================
-   PENDAFTARAN
+   PENDAFTARAN (✔ DIBETULKAN)
 ===================== */
 #pendaftaran-info {
-  .teks-kuning {
   color: #ffbf00;
   font-weight: 800;
+}
 
+.teks-kuning {
+  color: #ffbf00;
+  font-weight: 800;
   text-shadow:
     0 2px 4px rgba(0,0,0,0.85),
     0 0 14px rgba(0,0,0,0.6);
@@ -297,8 +302,3 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
-
-
-
-
-
