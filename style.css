@@ -116,7 +116,7 @@ h1 {
    PERSATUAN (DIBETULKAN)
 ===================== */
 .organizer {
-  color:  color: #eaf3ff; /* teks cerah */
+  color: #eaf3ff; /* teks cerah */
   font-size: 24px;
   font-weight: 800;
 
@@ -306,6 +306,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
