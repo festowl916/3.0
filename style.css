@@ -128,18 +128,16 @@ h1 {
   color: #eaf3ff;
   font-size: 24px;
   font-weight: 800;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.45);
 }
 
 /* =====================
-   PENDAFTARAN (✔ DIBETULKAN)
+   PENDAFTARAN
 ===================== */
 #pendaftaran-info {
   color: #f4f9ff;
-   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
   font-weight: 800;
-  text-shadow:
-    0 2px 4px rgba(0,0,0,0.85),
-    0 0 14px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
 
 /* =====================
@@ -298,5 +296,3 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
-
-
