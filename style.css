@@ -54,7 +54,7 @@ body {
    LOGO PENAJA
 ===================== */
 .logo-area {
-  padding: 20px 0 30px;
+  padding: 12px 0 8px;
   margin-bottom: 4px;
 }
 
@@ -306,7 +306,7 @@ footer {
   letter-spacing: 0.4px;
   line-height: 1.25;
   text-align: center;
-  margin: 8px 0 10px;
+  margin: 6px 0 10px;
   text-shadow: none;
 }
 
@@ -343,6 +343,7 @@ backdrop-filter: blur(8px);
 .wrapper {
   border: 1px solid rgba(255,255,255,0.45);
 }
+
 
 
 
