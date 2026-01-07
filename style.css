@@ -43,7 +43,7 @@ header {
 /* =====================
    WRAPPER (GLASS CARD)
 ===================== */
-..wrapper {
+.wrapper {
   max-width: 480px;
   margin: 20px auto 60px; /* ← DI SINI (jarak atas) */
   padding: 20px;
@@ -296,4 +296,5 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
