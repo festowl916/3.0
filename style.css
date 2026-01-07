@@ -85,49 +85,48 @@ h1 {
 }
 
 /* =====================
-   CARD (NEUTRAL – BOLEH ADA GAMBAR BESAR)
+   CARD (SEMUA ICON KECIL – MACAM ASAL)
 ===================== */
 .card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
   padding: 16px;
   margin-bottom: 14px;
   border-radius: 18px;
+
   background: rgba(255,255,255,0.25);
   backdrop-filter: blur(8px);
+
   text-decoration: none;
   color: #123;
   font-weight: 600;
 }
 
-/* GAMBAR BESAR (POSTER / PENDAFTARAN) */
+/* ICON DALAM CARD — KUNCI SAIZ (INI KUNCI UTAMA) */
 .card img {
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-}
-
-/* =====================
-   CARD ICON SAHAJA (WHATSAPP, LOKASI)
-===================== */
-.card.icon {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.card.icon img {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
+  max-width: 46px;
+  max-height: 46px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.card.icon span {
+/* TEKS */
+.card span {
+  flex: 1;
   text-align: left;
 }
 
-/* =====================
-   DISABLED
-===================== */
+/* HOVER */
+.card:hover {
+  background: rgba(55,83,149,0.9);
+  color: #fff;
+}
+
+/* DISABLED */
 .card.disabled {
   pointer-events: none;
   opacity: 0.45;
@@ -137,7 +136,5 @@ h1 {
    MOBILE
 ===================== */
 @media (max-width: 480px) {
-  h1 {
-    font-size: 22px;
-  }
+  h1 { font-size: 22px; }
 }
