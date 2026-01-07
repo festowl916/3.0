@@ -115,8 +115,8 @@ h1 {
 /* =====================
    PERSATUAN (DIBETULKAN)
 ===================== */
-.organizer {   /* BETULKAN ..organizer → .organizer */
-  color: rgba(159, 185, 232, 0.35);
+.organizer {   /* BETULKAN ..
+  color: rgba(190, 220, 255, 0.9);   /* BIRU LEMBUT NAIK */
   font-size: 24px;       /* DIBESARKAN */
   font-weight: 800;
   text-shadow: 0 2px 6px rgba(0,0,0,0.4);
@@ -296,6 +296,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
