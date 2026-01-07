@@ -34,7 +34,7 @@ body {
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: 8px auto 60px;
+  margin: 0px auto 60px;
   padding: 20px;
   text-align: center;
 
@@ -260,6 +260,7 @@ footer {
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 }
+
 
 
 
