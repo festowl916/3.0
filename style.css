@@ -38,7 +38,7 @@ body {
   padding: 20px;
   text-align: center;
 
-  background: rgba(80,130,200,0.20);
+  background: rgba(80,130,200,0.50);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
@@ -284,6 +284,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
