@@ -272,6 +272,11 @@ footer {
 }
 
 
+@media (max-width: 480px) {
+  header {
+    padding-top: calc(24px + env(safe-area-inset-top));
+  }
+}
 
 
 
