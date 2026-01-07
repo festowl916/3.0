@@ -116,14 +116,18 @@ h1 {
    PERSATUAN (DIBETULKAN)
 ===================== */
 .organizer {
-  background: rgba(110, 170, 230, 0.65); /* biru lembut timbul */
-  font-size: 24px;       /* DIBESARKAN */
-  font-weight: 800;
-  padding: 14px 16px;
-  border-radius: 18px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
 
+  color: rgba(190, 220, 255, 0.9);
+  font-size: 24px;
+  font-weight: 800;
+  margin: 14px 0 18px;
+
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.45);
+}
 /* =====================
    PENDAFTARAN
 ===================== */
@@ -305,6 +309,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
