@@ -175,6 +175,9 @@ h1 {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+.card:first-of-type {
+  margin-top: -4px;
+}
 .card img {
   width: 46px;
   height: 46px;
@@ -260,6 +263,7 @@ footer {
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 }
+
 
 
 
