@@ -138,3 +138,9 @@ h1 {
 @media (max-width: 480px) {
   h1 { font-size: 22px; }
 }
+/* KUNCI SAIZ ICON – BALIK KE ASAL */
+.card img {
+  width: 46px !important;
+  height: 46px !important;
+  object-fit: contain !important;
+}
