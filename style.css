@@ -235,5 +235,11 @@ h1 {
   flex-shrink: 0 !important;
 }
 
+.card img[src*="whatsapp"],
+.card img[src*="wa"],
+.card img[src*="WhatsApp"] {
+  width: 40px !important;
+  height: 40px !important;
+}
 
 
