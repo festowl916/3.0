@@ -35,7 +35,10 @@ body {
 header {
   position: sticky;
   top: 0;
-  z-index: 10; /* TURUNKAN dari 100 */
+  z-index: 10;
+
+  /* FIX OVERLAP */
+  padding-bottom: 160px; /* ruang untuk logo */
 }
 /* =====================
    WRAPPER (GLASS CARD)
@@ -295,6 +298,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
