@@ -319,6 +319,24 @@ footer {
   margin-top: 4px;
 }
 
+.wrapper {
+  max-width: 480px;
+  margin: 12px auto;
+  padding: 20px;
+
+  background: rgba(80,130,200,0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+
+  /* 🔽 INI KUNCI UTAMA */
+  max-height: calc(100vh - 220px); /* ruang untuk logo + tajuk */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 
 
