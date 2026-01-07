@@ -153,10 +153,12 @@ h1 {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+/* ICON – KEKAL KECIL */
 .card img {
   width: 46px;
   height: 46px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .card span {
@@ -230,170 +232,10 @@ footer {
 }
 
 /* =====================
-   MOBILE
+   MOBILE (DITUTUP BETUL)
 ===================== */
 @media (max-width: 480px) {
-
-  .partner-logo {
-    height: 72px;
-  }
-
-  h1 {
-    font-size: 26px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
-
-/* =====================
-   OVERRIDE TAJUK (FINAL)
-===================== */
-.wrapper h1 {
-  font-size: 24px;
-  color: ##F04B4;
-  margin: 10px 0 12px;
+  .partner-logo { height: 72px; }
+  h1 { font-size: 26px; }
+  .countdown span { font-size: 22px; }
 }
-
-.organizer strong {
-  font-size: 20px;
-  color: var(--emas);
-  font-weight: 700;
-}
-
-@media (max-width: 480px) {
-  .wrapper h1 {
-    font-size: 22px;
-  }
-
-  .organizer strong {
-    font-size: 18px;
-  }
-
-}
-
-/* =====================
-   RAPATKAN LOGO ↔ WRAPPER (FORCE)
-===================== */
-.logo-area {
-  margin-bottom: 4px !important;
-  padding-bottom: 6px !important;
-}
-
-.wrapper {
-  margin-top: 4px !important;
-}
-
-/* =====================
-   STATUS PENDAFTARAN
-===================== */
-#pendaftaran-info {
-  font-weight: 600;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-  margin-top: 10px;
-}
-
-#pendaftaran-info::after {
-  content: "";
-  position: absolute;
-  left: 20%;
-  bottom: 0;
-  width: 60%;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
-}
-
-/* =====================
-   BUTANG PENDAFTARAN (DISABLED)
-===================== */
-.card.disabled {
-  pointer-events: none;     /* tak boleh klik */
-  opacity: 0.45;            /* pudar */
-  filter: grayscale(100%);  /* hitam putih */
-}
-
-.card.disabled span {
-  text-decoration: line-through;
-}
-
-
-/* =====================
-   STATUS PENDAFTARAN (MINI)
-===================== */
-.status-mini {
-  margin: 6px 0 14px;
-  font-size: 13px;
-  opacity: 0.85;
-  text-align: center;
-}
-
-.status-mini .dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-
-.status-mini .dot.belum {
-  background: #f1c40f;
-}
-
-.status-mini .dot.buka {
-  background: #2ecc71;
-}
-
-.status-text small {
-  display: block;
-  font-size: 11px;
-  opacity: 0.75;
-  margin-top: 2px;
-}
-
-.organizer strong {
-  font-family: system-ui, Arial, sans-serif !important;
-  font-weight: 700 !important;
-  color: #c9a24d;
-}
-
-#pendaftaran-info {
-  margin-top: 10px;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* BELUM BUKA */
-#pendaftaran-info.belum {
-  color: #f5c542 !important; /* kuning */
-}
-
-/* SEDANG BUKA */
-#pendaftaran-info.buka {
-  color: #2ecc71 !important; /* hijau */
-}
-
-/* SUDAH TUTUP */
-#pendaftaran-info.tutup {
-  color: #999 !important; /* kelabu */
-}
-
-.status-mini {
-  color: #fff;
-  opacity: 1;
-}
-
-.status-mini .status-text {
-  color: #fff;
-  font-weight: 600;
-}
-
-
-
-
-
-
