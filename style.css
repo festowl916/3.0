@@ -172,11 +172,19 @@ h1 {
   padding: 16px;
   margin-bottom: 14px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(8px);
+
+  /* BIRU LEMBUT TAPI NAIK */
+  background: rgba(90, 140, 200, 0.65);
+
+  /* BLUR LEBIH KUAT (INI PENTING) */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   text-decoration: none;
-  color: #123;
+  color: #0f1f3a;   /* TEXT LEBIH KONTRAS */
   font-weight: 600;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -282,6 +290,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
