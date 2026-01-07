@@ -224,16 +224,13 @@ h1 {
   .countdown span {
     font-size: 22px;
   }
-
-/* FIX LOGO WHATSAPP / ICON CARD (PAKSA SAIZ) */
-.card img {
-  width: 40px !important;
-  height: 40px !important;
-  max-width: 40px !important;
-  max-height: 40px !important;
-  object-fit: contain !important;
-  flex-shrink: 0 !important;
+.card.whatsapp {
+  background-size: 40px 40px !important;
+  background-repeat: no-repeat !important;
+  background-position: 16px center !important;
+  padding-left: 70px !important;
 }
+
 
 .card img[src*="whatsapp"],
 .card img[src*="wa"],
@@ -241,5 +238,6 @@ h1 {
   width: 40px !important;
   height: 40px !important;
 }
+
 
 
