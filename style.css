@@ -55,7 +55,7 @@ body {
 ===================== */
 .logo-area {
   padding: 12px 0 8px;
-  margin-bottom: 4px;
+  margin-bottom: 0px;
 }
 
 .logo-group {
@@ -343,6 +343,7 @@ backdrop-filter: blur(8px);
 .wrapper {
   border: 1px solid rgba(255,255,255,0.45);
 }
+
 
 
 
