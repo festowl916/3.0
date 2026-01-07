@@ -116,14 +116,18 @@ h1 {
    PERSATUAN (DIBETULKAN)
 ===================== */
 .organizer {
-  color:  color: #eaf3ff; /* teks cerah */
+  background: rgba(140, 180, 220, 0.45);  /* biru lembut, jelas */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 14px 18px;
+  border-radius: 22px;
+
+  color: #eaf3ff; /* teks cerah */
   font-size: 24px;
   font-weight: 800;
 
-.event-info.under-title {
-  padding-bottom: 16px;
-  border-bottom: 1px dashed rgba(255,255,255,0.4);
-  margin-bottom: 20px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
 }
 /* =====================
    PENDAFTARAN
@@ -306,6 +310,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
