@@ -209,9 +209,6 @@ h1 {
   filter: grayscale(100%);
 }
 
-/* =====================
-   MOBILE
-===================== */
 @media (max-width: 480px) {
   h1 {
     font-size: 22px;
@@ -224,19 +221,20 @@ h1 {
   .countdown span {
     font-size: 22px;
   }
-.card.whatsapp {
-  background-size: 40px 40px !important;
-  background-repeat: no-repeat !important;
-  background-position: 16px center !important;
-  padding-left: 70px !important;
 }
-
-
-.card img[src*="whatsapp"],
-.card img[src*="wa"],
-.card img[src*="WhatsApp"] {
+/* =====================
+   FIX ICON WHATSAPP (PAKSA KECIL)
+===================== */
+.card img,
+.card svg {
   width: 40px !important;
   height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
 }
 
 
