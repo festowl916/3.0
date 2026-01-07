@@ -20,77 +20,62 @@ html, body {
 }
 
 /* =====================
-   BACKGROUND UTAMA
+   BACKGROUND
 ===================== */
 body {
   min-height: 100vh;
   color: #fff;
-
   background:
-    linear-gradient(
-      rgba(0,0,0,0.35),
-      rgba(0,0,0,0.45)
-    ),
-    url("festival-bg.png") center center / cover no-repeat;
+    linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0.40)),
+    url("festival-bg.png") center / cover no-repeat;
 }
 
 /* =====================
-   LOGO PENAJA
+   LOGO
 ===================== */
 .logo-area {
   padding: 6px 0 4px;
-  margin: 0;
 }
 
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 6px;
   max-width: 320px;
   margin: 0 auto;
-  align-items: center;
-  justify-items: center;
 }
 
 .partner-logo {
-  width: 100%;
   height: 72px;
   object-fit: contain;
-  display: block;
 }
 
 /* =====================
-   WRAPPER (GLASS CARD)
+   WRAPPER
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: 4px auto 40px;
+  margin: 6px auto 40px;
   padding: 16px;
   text-align: center;
 
-  /* 🔵 BIRU LEMBUT (ASAL FEEL) */
-  background: rgba(80,130,200,0.22);
-
+  background: rgba(80,130,200,0.22); /* biru lembut */
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.35);
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 
   max-height: calc(100vh - 200px);
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
+
 /* =====================
-   TAJUK & PENGANJUR
+   TAJUK
 ===================== */
 .organizer strong {
-  display: block;
   font-size: 24px;
   font-weight: 900;
-  color: var(--emas);
-  margin: 6px 0 10px;
+  color: #fff;
 }
 
 h1 {
@@ -100,143 +85,59 @@ h1 {
 }
 
 /* =====================
-   EVENT INFO
-===================== */
-.event-info {
-  line-height: 1.6;
-}
-
-.event-info.under-title {
-  padding-bottom: 14px;
-  border-bottom: 1px dashed rgba(255,255,255,0.4);
-  margin-bottom: 18px;
-}
-
-/* =====================
-   STATUS PENDAFTARAN
-===================== */
-#pendaftaran-info {
-  font-weight: 600;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 8px;
-  margin-top: 10px;
-}
-
-#pendaftaran-info::after {
-  content: "";
-  position: absolute;
-  left: 20%;
-  bottom: 0;
-  width: 60%;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
-}
-
-#pendaftaran-info.belum { color: #f5c542; }
-#pendaftaran-info.buka  { color: #2ecc71; }
-#pendaftaran-info.tutup { color: #999; }
-
-/* =====================
-   COUNTDOWN
-===================== */
-.countdown-box {
-  margin: 22px 0;
-  padding: 16px;
-  background: rgba(255,255,255,0.22);
-  border-radius: 18px;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-.countdown span {
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.countdown small {
-  font-size: 12px;
-  opacity: 0.85;
-}
-
-/* =====================
-   BUTTONS / CARDS
+   CARD (NEUTRAL – BOLEH ADA GAMBAR BESAR)
 ===================== */
 .card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px;
-  margin-bottom: 12px;
-  border-radius: 16px;
-
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 18px;
   background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(6px);
-
+  backdrop-filter: blur(8px);
   text-decoration: none;
   color: #123;
   font-weight: 600;
 }
 
+/* GAMBAR BESAR (POSTER / PENDAFTARAN) */
 .card img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+/* =====================
+   CARD ICON SAHAJA (WHATSAPP, LOKASI)
+===================== */
+.card.icon {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.card.icon img {
   width: 40px;
   height: 40px;
-  max-width: 40px;
-  max-height: 40px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.card span {
-  flex: 1;
+.card.icon span {
   text-align: left;
 }
 
-.card:hover {
-  background: rgba(55,83,149,0.9);
-  color: #fff;
-}
-
+/* =====================
+   DISABLED
+===================== */
 .card.disabled {
   pointer-events: none;
   opacity: 0.45;
-  filter: grayscale(100%);
 }
 
+/* =====================
+   MOBILE
+===================== */
 @media (max-width: 480px) {
   h1 {
     font-size: 22px;
   }
-
-  .organizer strong {
-    font-size: 21px;
-  }
-
-  .countdown span {
-    font-size: 22px;
-  }
 }
-/* =====================
-   FIX ICON WHATSAPP (PAKSA KECIL)
-===================== */
-.card img,
-.card svg {
-  width: 40px !important;
-  height: 40px !important;
-  max-width: 40px !important;
-  max-height: 40px !important;
-  min-width: 40px !important;
-  min-height: 40px !important;
-  object-fit: contain !important;
-  flex-shrink: 0 !important;
-}
-
-
-
-
