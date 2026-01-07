@@ -81,7 +81,7 @@ h1 {
   text-shadow: 0 3px 8px rgba(0,0,0,0.5); /* POLISH */
 }
 .festival-title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: #ffcc55;              /* EMAS */
   letter-spacing: 0.4px;
@@ -257,6 +257,7 @@ footer {
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 }
+
 
 
 
