@@ -71,7 +71,7 @@ body {
   display: block;
 }
 header {
-  margin-bottom: -12px;
+  margin-bottom: -16px;
 }
 
 /* =====================
@@ -260,6 +260,7 @@ footer {
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 }
+
 
 
 
