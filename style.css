@@ -25,7 +25,7 @@ html, body {
 body {
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg.jpg") center / cover no-repeat fixed;
+    url("festival-bg.png") center / cover no-repeat fixed;
   color: #fff;
 }
 
@@ -315,6 +315,7 @@ footer {
 .wrapper {
   margin-top: 4px;
 }
+
 
 
 
