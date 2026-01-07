@@ -68,19 +68,20 @@ body {
   padding: 16px;
   text-align: center;
 
-  background: rgba(255,255,255,0.16);
+  /* 🔵 BIRU LEMBUT (ASAL FEEL) */
+  background: rgba(80,130,200,0.22);
+
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
   border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.35);
   box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 
   max-height: calc(100vh - 200px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-
 /* =====================
    TAJUK & PENGANJUR
 ===================== */
@@ -184,9 +185,12 @@ h1 {
 }
 
 .card img {
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .card span {
@@ -221,3 +225,5 @@ h1 {
     font-size: 22px;
   }
 }
+
+
