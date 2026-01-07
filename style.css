@@ -137,9 +137,13 @@ h1 {
 .countdown-box {
   margin: 28px 0;
   padding: 18px;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  border-radius: 18px;
+
+  background: rgba(120, 170, 220, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
 .countdown-title {
@@ -232,7 +236,6 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
-
 .urusetia-header {
   display: flex;
   align-items: center;
@@ -302,6 +305,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
