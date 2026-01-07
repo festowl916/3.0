@@ -226,5 +226,14 @@ h1 {
   }
 }
 
+/* FIX LOGO WHATSAPP / ICON CARD (PAKSA SAIZ) */
+.card img {
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
 
 
