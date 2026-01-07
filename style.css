@@ -81,7 +81,7 @@ h1 {
   text-shadow: 0 3px 8px rgba(0,0,0,0.5); /* POLISH */
 }
 .festival-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: #ffcc55;              /* EMAS */
   letter-spacing: 0.4px;
@@ -109,7 +109,7 @@ h1 {
 ===================== */
 .organizer {   /* BETULKAN ..organizer → .organizer */
   color: #9fb9e8;
-  font-size: 26px;       /* DIBESARKAN */
+  font-size: 24px;       /* DIBESARKAN */
   font-weight: 800;
   text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
@@ -257,6 +257,7 @@ footer {
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 }
+
 
 
 
