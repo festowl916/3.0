@@ -116,8 +116,9 @@ h1 {
    PERSATUAN (DIBETULKAN)
 ===================== */
 .organizer {
-  color: var(--emas);
-}
+  color:  color: #eaf3ff; /* teks cerah */
+  font-size: 24px;
+  font-weight: 800;
 
 .event-info.under-title {
   padding-bottom: 16px;
@@ -305,6 +306,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
