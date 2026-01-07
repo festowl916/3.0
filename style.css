@@ -71,9 +71,8 @@ body {
   display: block;
 }
 header {
-  padding-top: 20px;
+  padding-top: calc(20px + env(safe-area-inset-top));
 }
-
 /* =====================
    TITLE (FESTIVAL)
 ===================== */
@@ -277,6 +276,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
