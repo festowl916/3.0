@@ -48,10 +48,10 @@ body {
 }
 
 /* =====================
-   LOGO PENAJA
+   LOGO PENAJA (DIRAPATKAN)
 ===================== */
 .logo-area {
-  padding: 4px 0 8px;
+  padding: 2px 0 6px;   /* DIUBAH */
 }
 
 .logo-group {
@@ -59,7 +59,7 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
   max-width: 320px;
-  margin: 4px auto 6px;
+  margin: 0 auto 4px;   /* DIUBAH */
   align-items: center;
   justify-items: center;
 }
@@ -72,12 +72,13 @@ body {
 }
 
 /* =====================
-   TITLE
+   TITLE (FESTIVAL)
 ===================== */
 h1 {
   font-family: 'Alfa Slab One', cursive;
-  color: #ffffff;
+  color: #ffcc55; /* DIUBAH KE EMAS */
   margin: 10px 0 14px;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.5); /* POLISH */
 }
 
 /* =====================
@@ -88,9 +89,12 @@ h1 {
   line-height: 1.6;
 }
 
-..organizer {
-  color: #ffcc55;
-  font-size: 19px;
+/* =====================
+   PERSATUAN (DIBETULKAN)
+===================== */
+.organizer {   /* BETULKAN ..organizer → .organizer */
+  color: #ffd77a;
+  font-size: 20px;       /* DIBESARKAN */
   font-weight: 800;
   text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
@@ -150,7 +154,6 @@ h1 {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* ICON – KEKAL KECIL */
 .card img {
   width: 46px;
   height: 46px;
@@ -229,12 +232,10 @@ footer {
 }
 
 /* =====================
-   MOBILE (DITUTUP BETUL)
+   MOBILE
 ===================== */
 @media (max-width: 480px) {
   .partner-logo { height: 72px; }
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 }
-
-
