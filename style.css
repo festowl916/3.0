@@ -322,7 +322,7 @@ footer {
 .wrapper {
   max-width: 480px;
   margin: 12px auto;
-  padding: 18px;
+  padding: 16px;
 
   background: rgba(80,130,200,0.22);
   backdrop-filter: blur(14px);
@@ -343,6 +343,7 @@ backdrop-filter: blur(8px);
 .wrapper {
   border: 1px solid rgba(255,255,255,0.45);
 }
+
 
 
 
