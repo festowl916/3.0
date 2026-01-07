@@ -218,10 +218,13 @@ box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 .urusetia-card {
   margin: 20px auto;
   max-width: 420px;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  overflow: hidden;
+  border-radius: 18px;
+
+  background: rgba(120, 170, 220, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
 .urusetia-header {
@@ -293,6 +296,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
