@@ -139,7 +139,8 @@ h1 {
 }
 
 .teks-kuning {
-  color: #ffbf00;
+  color: #f4f9ff;
+   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
   font-weight: 800;
   text-shadow:
     0 2px 4px rgba(0,0,0,0.85),
@@ -302,3 +303,4 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
