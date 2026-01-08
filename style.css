@@ -277,7 +277,19 @@ h1 {
   color: #000;
   font-weight: 600;
 }
+.back-home {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #375395;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
 
+.back-home:hover {
+  background: #2c4275;
+}
 /* =====================
    FOOTER
 ===================== */
@@ -298,5 +310,6 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
