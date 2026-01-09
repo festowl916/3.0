@@ -14,18 +14,19 @@
   justify-items:center;
   align-items:center;
   margin:20px auto;
-  max-width:640px; /* kecilkan supaya tak rapat tepi */
+  max-width:640px;
 }
-
 .logo-row img{
-  height:80px;        /* PAKSA tinggi sama */
+  height:80px;
   width:auto;
   object-fit:contain;
 }
+
 /* HEADER LOGO */
 .header-logos{
   margin-bottom:20px;
 }
+
 :root{
   --primary:#1f6f4a;
   --accent:#a7d7bd;
@@ -38,6 +39,149 @@
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#0f5132,#198754);
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+}
+header h1{
+  margin:0;
+  font-size:2rem;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+/* LAYOUT */
+.container{
+  max-width:960px;
+  margin:auto;
+  padding:22px;
+}
+
+/* SECTION */
+.section{
+  background:var(--card);
+  border-radius:12px;
+  padding:24px;
+  margin-bottom:22px;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+.section h2{
+  margin:0 0 16px 0;
+  font-size:1.25rem;
+  font-weight:800;
+  color:var(--primary);
+  border-left:5px solid var(--accent);
+  padding-left:12px;
+}
+
+.highlight{
+  background:#f3faf6;
+  border-left:5px solid #7fbf9c;
+  padding:14px;
+  border-radius:8px;
+  font-weight:700;
+  margin:14px 0;
+}
+
+.sub-title{
+  font-weight:800;
+  color:#145c3f;
+  margin-top:14px;
+}
+
+.danger{
+  background:#fee2e2;
+  border-left:5px solid var(--danger);
+  padding:16px;
+  border-radius:8px;
+  font-weight:700;
+}
+
+ul{
+  padding-left:20px;
+}
+ul li{
+  margin-bottom:6px;
+}
+
+.payment{
+  background:#f9fdfb;
+  border:1px dashed var(--primary);
+  padding:16px;
+  border-radius:8px;
+  font-weight:600;
+}
+
+.payment-deadline{
+  display:block;
+  margin-top:18px;
+  background:#fee2e2;
+  border-left:6px solid #dc2626;
+  padding:14px 16px;
+  border-radius:8px;
+  font-weight:900;
+  font-size:1.2rem;
+  color:#7f1d1d;
+}
+
+.floating-home{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:var(--primary);
+  color:#fff;
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:40px;
+  font-weight:700;
+  font-size:.95rem;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+}
+.floating-home:hover{
+  background:#155c3b;
+}
+
+.footer{
+  text-align:center;
+  padding:32px 16px;
+  font-size:.85rem;
+  color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER BERSIH & BETUL -->
+<header>
+  <div class="logo-row header-logos">
+    <img src="logo1.png" alt="Logo Kerajaan Negeri Terengganu">
+    <img src="logo2.png" alt="Logo Persatuan Memanah Tradisional Negeri Terengganu">
+    <img src="logo3.png" alt="Logo Kementerian Belia dan Sukan Malaysia">
+    <img src="logo5.png" alt="Logo Urusetia Belia, Sukan dan NGO Terengganu">
+    <img src="logo4.png" alt="Logo Terengganu Equestrian Resort">
+    <img src="logo6.png" alt="Logo Visit Terengganu Malaysia">
+  </div>
+
+  <h1>FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
+</header>
+
+<div class="container">
+<!-- 🔽 SEMUA SECTION ASAL ANDA – TIDAK DIUBAH 🔽 -->
+
+<!-- (isi section kekal seperti yang anda beri, hanya struktur dibetulkan) -->
+
+</div>
+
+-system,Segoe UI,Roboto,sans-serif;
   background:var(--bg);
   color:var(--text);
   line-height:1.75;
@@ -137,62 +281,13 @@ ul li{
   font-weight:900;
   font-size:1.2rem;
   color:#7f1d1d;
-}
 
-/* FLOATING BUTTON */
-.floating-home{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:var(--primary);
-  color:#fff;
-  text-decoration:none;
-  padding:14px 22px;
-  border-radius:40px;
-  font-weight:700;
-  font-size:.95rem;
-  box-shadow:0 8px 18px rgba(0,0,0,.25);
-}
-.floating-home:hover{
-  background:#155c3b;
-}
-
-/* FOOTER */
-.footer{
-  text-align:center;
-  padding:32px 16px;
-  font-size:.85rem;
-  color:#555;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<header>   <div class="logo-row header-logos">
-      ...
-   </div>
 
   <h1>FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
  </header>
 
  <div class="container">
-  <div class="logo-row header-logos">
-  <!-- Baris Atas -->
-  <img src="logo1.png" alt="Logo Kerajaan Negeri Terengganu">
-  <img src="logo2.png" alt="Logo Persatuan Memanah Tradisional Negeri Terengganu">
-  <img src="logo3.png" alt="Logo Kementerian Belia dan Sukan Malaysia">
-
-  <!-- Baris Bawah -->
-  <img src="logo5.png" alt="Logo Urusetia Belia, Sukan dan NGO Terengganu">
-  <img src="logo4.png" alt="Logo Terengganu Equestrian Resort">
-  <img src="logo6.png" alt="Logo Visit Terengganu Malaysia">
-</div>
-
-  <h1>FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
-
-</header>
+  <div class="logo-row header-logos"
 
 <div class="container">
 
@@ -437,6 +532,7 @@ Slip bayaran yang tidak dimuat naik hendaklah dihantar melalui WhatsApp<br>
 
 </body>
 </html>
+
 
 
 
