@@ -8,12 +8,13 @@
 <style>
 /* LOGO ROW */
 .logo-row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:20px;
+  justify-items:center;
   align-items:center;
-  gap:16px;
-  margin-top:20px;
+  margin:20px auto;
+  max-width:720px;
 }
 
 .logo-row img{
@@ -430,6 +431,7 @@ Slip bayaran yang tidak dimuat naik hendaklah dihantar melalui WhatsApp<br>
 
 </body>
 </html>
+
 
 
 
