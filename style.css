@@ -297,6 +297,17 @@ footer {
   font-size: 12px;
   margin-top: 20px;
 }
+/* ===== TARIKH TUTUP BAYARAN (HIGHLIGHT KUAT) ===== */
+.payment-deadline{
+  margin-top:12px;
+  background:#fff3cd;          /* kuning lembut (alert) */
+  border-left:6px solid #f59e0b;
+  padding:14px;
+  border-radius:8px;
+  font-weight:900;
+  font-size:1.05rem;           /* BESARKAN sikit */
+  color:#92400e;
+}
 
 /* =====================
    MOBILE
@@ -310,6 +321,7 @@ footer {
     padding-top: calc(24px + env(safe-area-inset-top));
   }
 }
+
 
 
 
