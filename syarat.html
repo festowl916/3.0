@@ -6,34 +6,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+<style>
 :root{
-  --primary:#0b3c5d;     /* Royal Blue */
-  --accent:#d4af37;      /* Gold */
-  --bg:#f3f5f7;          /* Light grey */
+  --primary:#3f4f2f;     /* Olive green */
+  --accent:#c9a24d;      /* Gold muted */
+  --dark:#1f2933;        /* Charcoal */
+  --bg:#f4f5f2;
   --card:#ffffff;
-  --danger:#8b1e1e;      /* Dark red */
+  --danger:#8b1e1e;
 }
 
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   background:var(--bg);
-  color:#1f2933;
+  color:var(--dark);
   line-height:1.7;
 }
 
 header{
-  background:linear-gradient(135deg,#0b3c5d,#1d4ed8);
+  background:linear-gradient(135deg,#1f2933,#3f4f2f);
   color:#ffffff;
-  padding:38px 20px;
+  padding:40px 20px;
   text-align:center;
 }
 
 header h1{
   margin:0;
   font-size:2rem;
-  font-weight:800;
-  letter-spacing:.5px;
+  font-weight:900;
+  letter-spacing:1px;
 }
 
 .container{
@@ -45,72 +47,87 @@ header h1{
 .section{
   background:var(--card);
   border-radius:16px;
-  padding:24px;
-  margin-bottom:24px;
-  box-shadow:0 12px 32px rgba(0,0,0,.08);
+  padding:26px;
+  margin-bottom:26px;
+  box-shadow:0 14px 36px rgba(0,0,0,.08);
 }
 
 .section h2{
   margin-top:0;
-  font-size:1.3rem;
+  font-size:1.35rem;
   color:var(--primary);
-  border-left:6px solid var(--accent);
-  padding-left:14px;
+  border-left:8px solid var(--accent);
+  padding-left:16px;
+  letter-spacing:.5px;
 }
 
 .highlight{
-  background:#fff8e1;
-  border-left:6px solid var(--accent);
-  padding:14px 16px;
-  border-radius:12px;
-  font-weight:700;
-  margin:14px 0;
+  background:#faf6e8;
+  border:2px solid var(--accent);
+  padding:16px 18px;
+  border-radius:14px;
+  font-weight:800;
+  margin:18px 0;
 }
 
-.danger{
-  background:#fde8e8;
-  border-left:6px solid var(--danger);
-  padding:16px;
-  border-radius:12px;
+.notice{
+  background:#eef1ea;
+  border-left:6px solid var(--primary);
+  padding:14px 16px;
+  border-radius:10px;
   font-weight:700;
+}
+
+.warning{
+  background:#fdecec;
+  border-left:8px solid var(--danger);
+  padding:18px;
+  border-radius:14px;
+  font-weight:800;
 }
 
 ul{
-  padding-left:20px;
+  padding-left:22px;
+}
+
+ul li{
+  margin-bottom:6px;
 }
 
 .payment{
-  background:#eef4ff;
-  border:2px dashed #1d4ed8;
+  background:#f1f5f2;
+  border:2px dashed var(--primary);
   padding:18px;
   border-radius:14px;
-  font-weight:600;
+  font-weight:700;
 }
 
 .footer{
   text-align:center;
-  padding:32px 16px;
+  padding:36px 16px;
   font-size:.85rem;
   color:#4b5563;
+  background:#eef1ea;
 }
 
 .floating-home{
   position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#1d4ed8;
+  right:22px;
+  bottom:22px;
+  background:var(--primary);
   color:#ffffff;
   text-decoration:none;
-  padding:14px 22px;
-  border-radius:50px;
-  font-weight:700;
-  box-shadow:0 12px 28px rgba(0,0,0,.3);
+  padding:16px 24px;
+  border-radius:60px;
+  font-weight:900;
+  letter-spacing:.5px;
+  box-shadow:0 14px 32px rgba(0,0,0,.35);
 }
 
 .floating-home:hover{
-  background:#0b3c5d;
+  background:#2f3d23;
 }
-</style>
+</style>>
 </head>
 
 <body>
@@ -359,10 +376,11 @@ Keselamatan peserta serta peralatan adalah tanggungjawab peserta sepenuhnya.
 <a href="/" class="floating-home">⬅ Kembali Laman Utama</a>
 
 <footer class="footer">
-© 2026 Persatuan memanah tradisional negeri terengganu<br>
+© 2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
 © 2026 OWL 916 3.0
 </footer>
 
 </body>
 </html>
+
 
