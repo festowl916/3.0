@@ -22,10 +22,24 @@
   object-fit:contain;
 }
 
-/* HEADER LOGO */
+/* HEADER LOGO — 3 ATAS 3 BAWAH */
 .header-logos{
-  margin-bottom:20px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px 20px;
+  justify-items:center;
+  align-items:center;
+  margin-bottom:26px;
 }
+
+.header-logos img{
+  display:block;
+  max-height:90px;
+  width:auto;
+  object-fit:contain;
+}
+
+/* WARNA */
 :root{
   --primary:#1f6f4a;
   --accent:#a7d7bd;
@@ -45,13 +59,14 @@ body{
 
 /* HEADER */
 header{
-  background:linear-gradient(135deg,#0f5132,#198754);
+  background:linear-gradient(135deg,#1f6f4a,#3a8f6a);
   color:#fff;
   padding:40px 20px;
   text-align:center;
 }
+
 header h1{
-  margin:0;
+  margin-top:14px;
   font-size:2rem;
   font-weight:800;
   letter-spacing:.5px;
@@ -126,7 +141,7 @@ ul li{
   font-weight:600;
 }
 
-/* PAYMENT DEADLINE (HIGHLIGHT BESAR & WARNA) */
+/* PAYMENT DEADLINE */
 .payment-deadline{
   display:block;
   margin-top:18px;
@@ -164,24 +179,28 @@ ul li{
   font-size:.85rem;
   color:#555;
 }
+
+/* MOBILE */
+@media (max-width:480px){
+  .header-logos img{
+    max-height:70px;
+  }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
   <div class="logo-row header-logos">
-  <img src="logo1.png" alt="Logo Kerajaan Negeri Terengganu">
+    <img src="logo1.png" alt="Logo Kerajaan Negeri Terengganu">
     <img src="logo2.png" alt="PMTT">
     <img src="logo3.png" alt="KBS">
     <img src="logo4.png" alt="TER">
-    <img src="logo5.png" alt="Logo Urusetia Belia, Sukan dan NGO Terengganu">
+    <img src="logo5.png" alt="Urusetia Belia, Sukan & NGO">
     <img src="logo6.png" alt="Visit Terengganu">
   </div>
-
   <h1>FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
-
 </header>
 
 <div class="container">
