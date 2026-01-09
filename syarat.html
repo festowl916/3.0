@@ -7,8 +7,8 @@
 
 <style>
 :root{
-  --primary:#1f6f4a;     /* hijau lembut */
-  --accent:#a7d7bd;      /* hijau pastel */
+  --primary:#1f6f4a;
+  --accent:#a7d7bd;
   --bg:#f5f7f6;
   --card:#ffffff;
   --danger:#dc2626;
@@ -23,30 +23,28 @@ body{
   line-height:1.75;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   background:linear-gradient(135deg,#0f5132,#198754);
   color:#fff;
   padding:40px 20px;
   text-align:center;
 }
-
 header h1{
   margin:0;
-  font-size:2rem;              /* sederhana */
+  font-size:2rem;
   font-weight:800;
   letter-spacing:.5px;
-  color:#eaf4ee;               /* putih kehijauan */
 }
 
-/* ===== LAYOUT ===== */
+/* LAYOUT */
 .container{
   max-width:960px;
   margin:auto;
   padding:22px;
 }
 
-/* ===== SECTION ===== */
+/* SECTION */
 .section{
   background:var(--card);
   border-radius:12px;
@@ -55,36 +53,43 @@ header h1{
   box-shadow:0 8px 24px rgba(0,0,0,.06);
 }
 
-/* ===== SECTION TITLE ===== */
+/* SECTION TITLE */
 .section h2{
   margin:0 0 16px 0;
-  font-size:1.2rem;            /* sikit besar dari teks */
-  font-weight:700;
-  color:var(--primary);        /* warna lembut */
-  border-left:4px solid var(--accent);
+  font-size:1.25rem;
+  font-weight:800;
+  color:var(--primary);
+  border-left:5px solid var(--accent);
   padding-left:12px;
 }
 
-/* ===== HIGHLIGHT ===== */
+/* HIGHLIGHT */
 .highlight{
   background:#f3faf6;
-  border-left:4px solid #7fbf9c;
+  border-left:5px solid #7fbf9c;
   padding:14px;
   border-radius:8px;
-  font-weight:600;
+  font-weight:700;
   margin:14px 0;
 }
 
-/* ===== WARNING ===== */
+/* SUB TITLE */
+.sub-title{
+  font-weight:800;
+  color:#145c3f;
+  margin-top:14px;
+}
+
+/* WARNING */
 .danger{
   background:#fee2e2;
-  border-left:4px solid var(--danger);
+  border-left:5px solid var(--danger);
   padding:16px;
   border-radius:8px;
   font-weight:700;
 }
 
-/* ===== LIST ===== */
+/* LIST */
 ul{
   padding-left:20px;
 }
@@ -92,7 +97,7 @@ ul li{
   margin-bottom:6px;
 }
 
-/* ===== PAYMENT ===== */
+/* PAYMENT */
 .payment{
   background:#f9fdfb;
   border:1px dashed var(--primary);
@@ -101,7 +106,7 @@ ul li{
   font-weight:600;
 }
 
-/* ===== FLOATING BUTTON ===== */
+/* FLOATING BUTTON */
 .floating-home{
   position:fixed;
   right:20px;
@@ -119,7 +124,7 @@ ul li{
   background:#155c3b;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer{
   text-align:center;
   padding:32px 16px;
@@ -130,6 +135,7 @@ ul li{
 </head>
 
 <body>
+
 <header>
   <h1>FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
 </header>
@@ -145,23 +151,23 @@ ul li{
 </section>
 
 <section class="section">
-<h2>ðŸ“‹ JADUAL PERTANDINGAN</h2>
+<h2>📋 JADUAL PERTANDINGAN</h2>
 
 <div class="highlight">SABTU | 4 JULAI 2026</div>
-<p>ARROW NATURAL</p>
+<p class="sub-title">ARROW NATURAL</p>
 <ul>
 <li>Terbuka Lelaki Dewasa</li>
 <li>Terbuka Wanita Dewasa</li>
 </ul>
 
-<p>ARROW CARBON</p>
+<p class="sub-title">ARROW CARBON</p>
 <ul>
 <li>Remaja</li>
 <li>Cilik</li>
 </ul>
 
 <div class="highlight">AHAD | 5 JULAI 2026</div>
-<p>ARROW CARBON</p>
+<p class="sub-title">ARROW CARBON</p>
 <ul>
 <li>Lelaki Dewasa</li>
 <li>Wanita Dewasa</li>
@@ -179,7 +185,7 @@ Kuala Ibai, Terengganu
 </section>
 
 <section class="section">
-<h2> ANJURAN</h2>
+<h2>ANJURAN</h2>
 <p><strong>Persatuan Memanah Tradisional Negeri Terengganu</strong></p>
 <p>Dengan Kerjasama:</p>
 <ul>
@@ -189,7 +195,7 @@ Kuala Ibai, Terengganu
 </section>
 
 <section class="section">
-<h2> FORMAT PERTANDINGAN & KATEGORI</h2>
+<h2>FORMAT PERTANDINGAN & KATEGORI</h2>
 
 <p><strong>Kategori Terbuka (Arrow Natural)</strong></p>
 <ul>
@@ -211,8 +217,8 @@ Kuala Ibai, Terengganu
 </ul>
 <p>
 Kelayakan:<br>
-â€¢ Lelaki: 18 â€“ 49 tahun<br>
-â€¢ Wanita: 18 tahun ke atas
+• Lelaki: 18 – 49 tahun<br>
+• Wanita: 18 tahun ke atas
 </p>
 
 <p><strong>Kategori Remaja (Arrow Carbon)</strong></p>
@@ -220,12 +226,12 @@ Kelayakan:<br>
 <li>Remaja Lelaki</li>
 <li>Remaja Perempuan</li>
 </ul>
-<p>Kelayakan: 13 â€“ 17 tahun</p>
+<p>Kelayakan: 13 – 17 tahun</p>
 
 <div class="highlight">
 Jarak untuk semua kategori di atas<br>
 30 meter<br>
-6 anak panah Ã— 20 end
+6 anak panah × 20 end
 </div>
 
 <p><strong>Kategori Cilik (Arrow Carbon)</strong></p>
@@ -236,9 +242,9 @@ Jarak untuk semua kategori di atas<br>
 <p>Kelayakan: 12 tahun ke bawah</p>
 
 <div class="highlight">
- Jarak untuk kategori cilik<br>
+Jarak untuk kategori cilik<br>
 15 meter<br>
-6 anak panah Ã— 15 end
+6 anak panah × 15 end
 </div>
 </section>
 
@@ -260,7 +266,7 @@ Jarak untuk semua kategori di atas<br>
 <section class="section">
 <h2>PENDAFTARAN</h2>
 <div class="highlight">
-1 Mac 2026 â€“ 20 Jun 2026
+1 Mac 2026 – 20 Jun 2026
 </div>
 </section>
 
@@ -270,26 +276,26 @@ Jarak untuk semua kategori di atas<br>
 <p><strong>Dewasa / Veteran</strong></p>
 <p>1 Kategori</p>
 <ul>
-<li>RM40 â€“ Tanpa Baju</li>
-<li>RM70 â€“ Percuma Baju</li>
+<li>RM40 – Tanpa Baju</li>
+<li>RM70 – Percuma Baju</li>
 </ul>
 
 <p>2 Kategori (Arrow Carbon & Arrow Natural)</p>
 <ul>
-<li>RM70 â€“ Tanpa Baju</li>
-<li>RM100 â€“ Percuma Baju</li>
+<li>RM70 – Tanpa Baju</li>
+<li>RM100 – Percuma Baju</li>
 </ul>
 
 <p><strong>Kategori Remaja</strong></p>
 <ul>
-<li>RM40 â€“ Tanpa Baju</li>
-<li>RM70 â€“ Percuma Baju</li>
+<li>RM40 – Tanpa Baju</li>
+<li>RM70 – Percuma Baju</li>
 </ul>
 
 <p><strong>Kategori Cilik</strong></p>
 <ul>
-<li>RM35 â€“ Tanpa Baju</li>
-<li>RM55 â€“ Percuma Baju</li>
+<li>RM35 – Tanpa Baju</li>
+<li>RM55 – Percuma Baju</li>
 </ul>
 </section>
 
@@ -307,7 +313,7 @@ Tarikh tutup bayaran: 25 Jun 2026
 </section>
 
 <section class="section">
-<h2> YURAN DIGUNAKAN UNTUK</h2>
+<h2>YURAN DIGUNAKAN UNTUK</h2>
 <ul>
 <li>Air minuman</li>
 <li>Makan tengah hari</li>
@@ -316,7 +322,7 @@ Tarikh tutup bayaran: 25 Jun 2026
 </section>
 
 <section class="section">
-<h2> HADIAH KESELURUHAN BERJUMLAH RM70,000</h2>
+<h2>HADIAH KESELURUHAN BERJUMLAH RM70,000</h2>
 <p>Terbuka kepada pemanah seluruh Nusantara</p>
 
 <p><strong>HADIAH SETIAP KATEGORI</strong></p>
@@ -331,25 +337,25 @@ Tarikh tutup bayaran: 25 Jun 2026
 </ul>
 
 <ul>
-<li>Johan â€“ RM1,000</li>
-<li>Naib Johan â€“ RM800</li>
-<li>Ketiga â€“ RM600</li>
-<li>Keempat â€“ RM300</li>
-<li>Kelima â€“ RM100</li>
-<li>Keenam hingga ke-20 â€“ RM50</li>
+<li>Johan – RM1,000</li>
+<li>Naib Johan – RM800</li>
+<li>Ketiga – RM600</li>
+<li>Keempat – RM300</li>
+<li>Kelima – RM100</li>
+<li>Keenam hingga ke-20 – RM50</li>
 </ul>
 </section>
 
 <section class="section">
 <h2>HADIAH KATEGORI CILIK</h2>
 <ul>
-<li>Johan â€“ RM500</li>
-<li>Naib Johan â€“ RM400</li>
-<li>Ketiga â€“ RM300</li>
-<li>Keempat â€“ RM200</li>
-<li>Kelima â€“ RM100</li>
-<li>Keenam â€“ RM50</li>
-<li>Ke-7 hingga ke-40 â€“ Hampers</li>
+<li>Johan – RM500</li>
+<li>Naib Johan – RM400</li>
+<li>Ketiga – RM300</li>
+<li>Keempat – RM200</li>
+<li>Kelima – RM100</li>
+<li>Keenam – RM50</li>
+<li>Ke-7 hingga ke-40 – Hampers</li>
 </ul>
 
 <p><strong>Semua hadiah adalah BUKAN daripada yuran penyertaan</strong></p>
@@ -371,16 +377,12 @@ Keselamatan peserta serta peralatan adalah tanggungjawab peserta sepenuhnya.
 
 </div>
 
-<a href="/" class="floating-home">â¬… Kembali Laman Utama</a>
+<a href="/" class="floating-home">⬅ Kembali Laman Utama</a>
 
 <footer class="footer">
-Â© 2026 Persatuan memanah tradisional negeri terengganu<br>
-Â© 2026 OWL 916 3.0
+© 2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
+© 2026 OWL 916 3.0
 </footer>
 
 </body>
 </html>
-
-
-
-
