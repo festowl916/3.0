@@ -7,32 +7,33 @@
 
 <style>
 :root{
-  --primary:#0f5132;
-  --accent:#fbbf24;
-  --bg:#f5f7f6;
+  --primary:#0b3c5d;     /* Royal Blue */
+  --accent:#d4af37;      /* Gold */
+  --bg:#f3f5f7;          /* Light grey */
   --card:#ffffff;
-  --danger:#dc2626;
+  --danger:#8b1e1e;      /* Dark red */
 }
 
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   background:var(--bg);
-  color:#222;
+  color:#1f2933;
   line-height:1.7;
 }
 
 header{
-  background:linear-gradient(135deg,#0f5132,#198754);
-  color:#fff;
-  padding:36px 20px;
+  background:linear-gradient(135deg,#0b3c5d,#1d4ed8);
+  color:#ffffff;
+  padding:38px 20px;
   text-align:center;
 }
 
 header h1{
   margin:0;
-  font-size:1.9rem;
+  font-size:2rem;
   font-weight:800;
+  letter-spacing:.5px;
 }
 
 .container{
@@ -43,34 +44,34 @@ header h1{
 
 .section{
   background:var(--card);
-  border-radius:14px;
-  padding:22px;
-  margin-bottom:22px;
-  box-shadow:0 10px 28px rgba(0,0,0,.06);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:24px;
+  box-shadow:0 12px 32px rgba(0,0,0,.08);
 }
 
 .section h2{
   margin-top:0;
-  font-size:1.25rem;
+  font-size:1.3rem;
   color:var(--primary);
   border-left:6px solid var(--accent);
-  padding-left:12px;
+  padding-left:14px;
 }
 
 .highlight{
-  background:#fff7d6;
+  background:#fff8e1;
   border-left:6px solid var(--accent);
-  padding:14px;
-  border-radius:10px;
+  padding:14px 16px;
+  border-radius:12px;
   font-weight:700;
-  margin:12px 0;
+  margin:14px 0;
 }
 
 .danger{
-  background:#fee2e2;
+  background:#fde8e8;
   border-left:6px solid var(--danger);
-  padding:14px;
-  border-radius:10px;
+  padding:16px;
+  border-radius:12px;
   font-weight:700;
 }
 
@@ -79,31 +80,35 @@ ul{
 }
 
 .payment{
-  background:#ecfdf5;
-  border:2px dashed #198754;
-  padding:16px;
-  border-radius:12px;
+  background:#eef4ff;
+  border:2px dashed #1d4ed8;
+  padding:18px;
+  border-radius:14px;
   font-weight:600;
 }
 
 .footer{
   text-align:center;
-  padding:30px 15px;
+  padding:32px 16px;
   font-size:.85rem;
-  color:#555;
+  color:#4b5563;
 }
 
 .floating-home{
   position:fixed;
-  right:18px;
-  bottom:18px;
-  background:#198754;
-  color:#fff;
+  right:20px;
+  bottom:20px;
+  background:#1d4ed8;
+  color:#ffffff;
   text-decoration:none;
-  padding:14px 20px;
+  padding:14px 22px;
   border-radius:50px;
   font-weight:700;
-  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  box-shadow:0 12px 28px rgba(0,0,0,.3);
+}
+
+.floating-home:hover{
+  background:#0b3c5d;
 }
 </style>
 </head>
@@ -111,7 +116,7 @@ ul{
 <body>
 
 <header>
-  <h1>🎯 FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
+  <h1>FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
 </header>
 
 <div class="container">
@@ -360,3 +365,4 @@ Keselamatan peserta serta peralatan adalah tanggungjawab peserta sepenuhnya.
 
 </body>
 </html>
+
