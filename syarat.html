@@ -8,9 +8,10 @@
 <style>
 :root{
   --primary:#0f5132;
-  --accent:#f59e0b;
-  --bg:#f4f6f5;
+  --accent:#fbbf24;
+  --bg:#f5f7f6;
   --card:#ffffff;
+  --danger:#dc2626;
 }
 
 body{
@@ -18,7 +19,7 @@ body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   background:var(--bg);
   color:#222;
-  line-height:1.6;
+  line-height:1.7;
 }
 
 header{
@@ -34,15 +35,6 @@ header h1{
   font-weight:800;
 }
 
-header .date{
-  margin-top:12px;
-  background:rgba(255,255,255,.2);
-  display:inline-block;
-  padding:8px 18px;
-  border-radius:30px;
-  font-weight:600;
-}
-
 .container{
   max-width:960px;
   margin:auto;
@@ -54,19 +46,19 @@ header .date{
   border-radius:14px;
   padding:22px;
   margin-bottom:22px;
-  box-shadow:0 12px 28px rgba(0,0,0,.06);
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
 }
 
 .section h2{
   margin-top:0;
+  font-size:1.25rem;
   color:var(--primary);
-  font-size:1.3rem;
   border-left:6px solid var(--accent);
   padding-left:12px;
 }
 
 .highlight{
-  background:#fff3cd;
+  background:#fff7d6;
   border-left:6px solid var(--accent);
   padding:14px;
   border-radius:10px;
@@ -74,10 +66,18 @@ header .date{
   margin:12px 0;
 }
 
+.danger{
+  background:#fee2e2;
+  border-left:6px solid var(--danger);
+  padding:14px;
+  border-radius:10px;
+  font-weight:700;
+}
+
 ul{padding-left:20px}
 
 .payment{
-  background:#e9f7ef;
+  background:#ecfdf5;
   border:2px dashed #198754;
   padding:16px;
   border-radius:12px;
@@ -109,29 +109,37 @@ ul{padding-left:20px}
 <body>
 
 <header>
-  <h1>🌟 FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0 🌟</h1>
-  <div class="date">📅 4 & 5 Julai 2026 (Sabtu & Ahad)</div>
+  <h1>🎯 FESTIVAL MEMANAH TRADISIONAL OWL 916 3.0</h1>
 </header>
 
 <div class="container">
 
 <section class="section">
-<h2>🗓️ JADUAL PERTANDINGAN</h2>
+<h2>📅 TARIKH</h2>
+<div class="highlight">
+4 & 5 Julai 2026<br>
+(Sabtu & Ahad)
+</div>
+</section>
+
+<section class="section">
+<h2>📋 JADUAL PERTANDINGAN</h2>
 
 <div class="highlight">SABTU | 4 JULAI 2026</div>
-<p><strong>ARROW NATURAL</strong></p>
+<p>ARROW NATURAL</p>
 <ul>
 <li>Terbuka Lelaki Dewasa</li>
 <li>Terbuka Wanita Dewasa</li>
 </ul>
 
-<p><strong>ARROW CARBON</strong></p>
+<p>ARROW CARBON</p>
 <ul>
 <li>Remaja</li>
 <li>Cilik</li>
 </ul>
 
 <div class="highlight">AHAD | 5 JULAI 2026</div>
+<p>ARROW CARBON</p>
 <ul>
 <li>Lelaki Dewasa</li>
 <li>Wanita Dewasa</li>
@@ -140,14 +148,16 @@ ul{padding-left:20px}
 </section>
 
 <section class="section">
-<h2>⛳ LOKASI</h2>
-<p><strong>Padang Polo</strong><br>
+<h2>📍 LOKASI</h2>
+<p>
+Padang Polo<br>
 Terengganu Equestrian Resort (TER)<br>
-Kuala Ibai, Terengganu</p>
+Kuala Ibai, Terengganu
+</p>
 </section>
 
 <section class="section">
-<h2>🗒️ ANJURAN</h2>
+<h2>🏛️ ANJURAN</h2>
 <p><strong>Persatuan Memanah Tradisional Negeri Terengganu</strong></p>
 <p>Dengan Kerjasama:</p>
 <ul>
@@ -157,34 +167,68 @@ Kuala Ibai, Terengganu</p>
 </section>
 
 <section class="section">
-<h2>📌 FORMAT, JARAK & KATEGORI</h2>
+<h2>📌 FORMAT PERTANDINGAN & KATEGORI</h2>
 
-<p><strong>Arrow Natural – Terbuka</strong><br>18 tahun ke atas</p>
-<p><strong>Arrow Carbon – Veteran Lelaki</strong><br>50 tahun ke atas (MANDATORI)</p>
-<p><strong>Arrow Carbon – Dewasa</strong><br>Lelaki 18–49 | Wanita 18+</p>
-<p><strong>Arrow Carbon – Remaja</strong><br>13–17 tahun</p>
+<p><strong>Kategori Terbuka (Arrow Natural)</strong></p>
+<ul>
+<li>Terbuka Lelaki</li>
+<li>Terbuka Wanita</li>
+</ul>
+<p>Kelayakan: 18 tahun ke atas</p>
+
+<p><strong>Kategori Veteran (Arrow Carbon)</strong></p>
+<ul>
+<li>Veteran Lelaki</li>
+</ul>
+<p>Kelayakan: 50 tahun ke atas (MANDATORI)</p>
+
+<p><strong>Kategori Dewasa (Arrow Carbon)</strong></p>
+<ul>
+<li>Lelaki Dewasa</li>
+<li>Wanita Dewasa</li>
+</ul>
+<p>
+Kelayakan:<br>
+• Lelaki: 18 – 49 tahun<br>
+• Wanita: 18 tahun ke atas
+</p>
+
+<p><strong>Kategori Remaja (Arrow Carbon)</strong></p>
+<ul>
+<li>Remaja Lelaki</li>
+<li>Remaja Perempuan</li>
+</ul>
+<p>Kelayakan: 13 – 17 tahun</p>
 
 <div class="highlight">
-🎯 30 meter<br>
+🎯 Jarak untuk semua kategori di atas<br>
+30 meter<br>
 6 anak panah × 20 end
 </div>
 
-<p><strong>Kategori Cilik (Arrow Carbon)</strong><br>12 tahun ke bawah</p>
+<p><strong>Kategori Cilik (Arrow Carbon)</strong></p>
+<ul>
+<li>Cilik Lelaki</li>
+<li>Cilik Perempuan</li>
+</ul>
+<p>Kelayakan: 12 tahun ke bawah</p>
+
 <div class="highlight">
-🎯 15 meter<br>
+🎯 Jarak untuk kategori cilik<br>
+15 meter<br>
 6 anak panah × 15 end
 </div>
 </section>
 
 <section class="section">
-<h2>🏵️ SASARAN</h2>
-<p><strong>Face 80 cm GAPETER (Segitiga ⚠️)</strong></p>
+<h2>🎯 SASARAN (TARGET)</h2>
+<p><strong>Face 80 cm GAPETER (Segitiga)</strong></p>
 </section>
 
 <section class="section">
 <h2>📌 SYARAT & PERATURAN</h2>
 <ul>
-<li>Arrow rest & mata berburu TIDAK DIBENARKAN</li>
+<li>Arrow rest & mata berburu <strong>TIDAK DIBENARKAN</strong></li>
 <li>Peserta mesti berpakaian sopan & patuh syariat</li>
 <li>Setiap anak panah mesti bertanda untuk pengenalan</li>
 <li>Seluar celoreng / bercorak ketenteraan tidak dibenarkan</li>
@@ -192,32 +236,48 @@ Kuala Ibai, Terengganu</p>
 </section>
 
 <section class="section">
-<h2>📌 PENDAFTARAN</h2>
-<div class="highlight">1 Mac 2026 – 20 Jun 2026</div>
+<h2>🗓️ PENDAFTARAN</h2>
+<div class="highlight">
+1 Mac 2026 – 20 Jun 2026
+</div>
 </section>
 
 <section class="section">
 <h2>💰 YURAN PENYERTAAN</h2>
+
+<p><strong>Dewasa / Veteran</strong></p>
+<p>1 Kategori</p>
 <ul>
-<li>Dewasa / Veteran: RM40 – RM100</li>
-<li>Remaja: RM40 – RM70</li>
-<li>Cilik: RM35 – RM55</li>
+<li>RM40 – Tanpa Baju</li>
+<li>RM70 – Percuma Baju</li>
 </ul>
 
-<div class="highlight">
-Yuran digunakan untuk:<br>
-• Air minuman<br>
-• Makan tengah hari<br>
-• Kos pengurusan
-</div>
+<p>2 Kategori (Arrow Carbon & Arrow Natural)</p>
+<ul>
+<li>RM70 – Tanpa Baju</li>
+<li>RM100 – Percuma Baju</li>
+</ul>
+
+<p><strong>Kategori Remaja</strong></p>
+<ul>
+<li>RM40 – Tanpa Baju</li>
+<li>RM70 – Percuma Baju</li>
+</ul>
+
+<p><strong>Kategori Cilik</strong></p>
+<ul>
+<li>RM35 – Tanpa Baju</li>
+<li>RM55 – Percuma Baju</li>
+</ul>
 </section>
 
 <section class="section">
 <h2>💳 MAKLUMAT PEMBAYARAN</h2>
 <div class="payment">
 Bank: Bank Rakyat<br>
-No Akaun: 1102358633<br>
-Penama: Persatuan Memanah Tradisional Negeri Terengganu<br>
+No. Akaun: 1102358633<br>
+Penama:<br>
+Persatuan Memanah Tradisional Negeri Terengganu<br>
 Rujukan: OpenLD_Nama<br><br>
 Slip bayaran yang tidak dimuat naik hendaklah dihantar melalui WhatsApp<br>
 Tarikh tutup bayaran: 25 Jun 2026
@@ -225,51 +285,14 @@ Tarikh tutup bayaran: 25 Jun 2026
 </section>
 
 <section class="section">
-<h2>📢 HADIAH KESELURUHAN RM70,000</h2>
-<p><strong>Semua hadiah BUKAN daripada yuran penyertaan</strong></p>
-
-<p><strong>Hadiah Setiap Kategori</strong></p>
+<h2>ℹ️ YURAN DIGUNAKAN UNTUK</h2>
 <ul>
-<li>Johan – RM1,000</li>
-<li>Naib Johan – RM800</li>
-<li>Ketiga – RM600</li>
-<li>Keempat – RM300</li>
-<li>Kelima – RM100</li>
-<li>Keenam hingga ke-20 – RM50</li>
-</ul>
-
-<p><strong>Hadiah Kategori Cilik</strong></p>
-<ul>
-<li>Johan – RM500</li>
-<li>Naib Johan – RM400</li>
-<li>Ketiga – RM300</li>
-<li>Keempat – RM200</li>
-<li>Kelima – RM100</li>
-<li>Keenam – RM50</li>
-<li>Ke-7 hingga ke-40 – Hampers</li>
+<li>Air minuman</li>
+<li>Makan tengah hari</li>
+<li>Kos pengurusan</li>
 </ul>
 </section>
 
 <section class="section">
-<h2>🎁 CENDERAMATA</h2>
-<p>Setiap peserta akan menerima cenderamata kenang-kenangan dari pihak penganjur.</p>
-</section>
-
-<section class="section">
-<h2>⚠️ PENAFIAN</h2>
-<p>Penganjur tidak bertanggungjawab terhadap sebarang kecederaan, kemalangan atau kehilangan peralatan.</p>
-<p><strong>Keselamatan peserta serta peralatan adalah tanggungjawab peserta sepenuhnya.</strong></p>
-<p>Sebarang pindaan akhir tertakluk kepada keputusan pihak penganjur.</p>
-</section>
-
-</div>
-
-<a href="/" class="floating-home">⬅ Kembali Laman Utama</a>
-
-<footer class="footer">
-© 2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
-© 2026 OWL 916 3.0
-</footer>
-
-</body>
-</html>
+<h2>🏆 HADIAH KESELURUHAN BERJUMLAH RM70,000</h2>
+<p>Terbuka kepada pemanah seluruh
