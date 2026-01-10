@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pendaftaran Peserta | FEST OWL 916</title>
+
+  <!-- Guna CSS sedia ada -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="wrapper">
+
+  <h2>Pendaftaran Peserta</h2>
+  <p>Bayaran tidak wajib semasa daftar.</p>
+
+  <!-- FORM (BELUM DISAMBUNG KE APP SCRIPT) -->
+  <form id="daftarForm">
+
+    <input
+      type="text"
+      name="nama"
+      placeholder="Nama Penuh"
+      required>
+
+    <input
+      type="text"
+      name="telefon"
+      placeholder="No Telefon"
+      required>
+
+    <select name="kategori" required>
+      <option value="">Pilih Kategori</option>
+      <option value="Terbuka">Terbuka</option>
+      <option value="Dewasa">Dewasa</option>
+      <option value="Veteran">Veteran</option>
+      <option value="Remaja">Remaja</option>
+      <option value="Cilik">Cilik</option>
+    </select>
+
+    <button type="submit" class="card">
+      <span>Hantar Pendaftaran</span>
+    </button>
+
+  </form>
+
+  <p id="status"></p>
+
+  <a href="index.html" class="back-home">← Kembali ke Laman Utama</a>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
