@@ -64,15 +64,26 @@
   <h2>Pendaftaran Peserta</h2>
   <p>Bayaran tidak wajib semasa daftar.</p>
 
-  <a
-    href="https://forms.gle/pveKq4wM4zo57S148"
-    target="_blank"
-    rel="noopener"
-    class="card"
-  >
-    <img src="daftar.png" alt="Pendaftaran">
-    <span>Buka Borang Pendaftaran</span>
-  </a>
+  <form id="daftarForm">
+
+    <input type="text" name="nama" placeholder="Nama Penuh" required>
+
+    <input type="text" name="telefon" placeholder="No Telefon" required>
+
+    <select name="kategori" required>
+      <option value="">Pilih Kategori</option>
+      <option value="Terbuka">Terbuka</option>
+      <option value="Dewasa">Dewasa</option>
+      <option value="Veteran">Veteran</option>
+      <option value="Remaja">Remaja</option>
+      <option value="Cilik">Cilik</option>
+    </select>
+
+    <button type="submit" class="card">
+      <span>Hantar Pendaftaran</span>
+    </button>
+
+  </form>
 
   <p id="status"></p>
 </section>
@@ -137,5 +148,6 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
