@@ -80,48 +80,27 @@
       style="display:none;"
     >
 
-    <!-- SAIZ BAJU -->
+
 <!-- SAIZ BAJU -->
 <label>Saiz Baju</label>
 
-<div class="baju-radio">
-
-  <label>
-    <input type="radio" name="kategori_baju" value="Lelaki Dewasa">
-    Lelaki Dewasa
-  </label>
-
-  <label>
-    <input type="radio" name="kategori_baju" value="Wanita Dewasa">
-    Wanita Dewasa
-  </label>
-
-  <label>
-    <input type="radio" name="kategori_baju" value="Remaja Lelaki">
-    Remaja Lelaki
-  </label>
-
-  <label>
-    <input type="radio" name="kategori_baju" value="Remaja Perempuan">
-    Remaja Perempuan
-  </label>
-
-  <label>
-    <input type="radio" name="kategori_baju" value="Cilik Lelaki">
-    Cilik Lelaki
-  </label>
-
-  <label>
-    <input type="radio" name="kategori_baju" value="Cilik Perempuan">
-    Cilik Perempuan
-  </label>
-
-</div>
+<select id="kategoriBaju">
+  <option value="">— Pilih —</option>
+  <option value="Lelaki Dewasa">Lelaki Dewasa</option>
+  <option value="Wanita Dewasa">Wanita Dewasa</option>
+  <option value="Remaja Lelaki">Remaja Lelaki</option>
+  <option value="Remaja Perempuan">Remaja Perempuan</option>
+  <option value="Cilik Lelaki">Cilik Lelaki</option>
+  <option value="Cilik Perempuan">Cilik Perempuan</option>
+</select>
 
 <input
   type="text"
-  name="saiz_baju"
-  placeholder="Contoh: S / M / L / XL (jika ada)">
+  id="saizInput"
+  placeholder="Saiz (contoh: S / M / L / XL)">
+
+<!-- FIELD YANG AKAN MASUK SHEET -->
+<input type="hidden" name="saiz_baju" id="saizBajuFinal">
     
     <!-- TELEFON -->
     <label>No Telefon</label>
@@ -148,6 +127,7 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
