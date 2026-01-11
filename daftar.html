@@ -3,29 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pendaftaran Peserta | FEST OWL 916</title>
+  <title>Pendaftaran Peserta</title>
 
-  <!-- CSS ASING -->
   <link rel="stylesheet" href="daftar.css">
 </head>
 <body>
 
-<main class="wrapper">
+<main class="form-wrapper">
 
-  <h2>Pendaftaran Peserta</h2>
-  <p>Bayaran tidak wajib semasa daftar.</p>
+  <h1>Pendaftaran Peserta</h1>
 
   <form id="daftarForm">
 
     <!-- NAMA -->
-    <input type="text" name="nama" placeholder="Nama Penuh" required>
+    <label>Nama Penuh</label>
+    <input type="text" name="nama_penuh" required>
 
-    <!-- NO IC -->
-
-
-    <!-- KATEGORI ARROW CARBON -->
+    <!-- ARROW CARBON -->
     <label>Arrow Carbon</label>
-    <select name="arrow_carbon">
+    <select name="arrow_carbon" required>
       <option value="">— Pilih —</option>
       <option>VETERAN LELAKI</option>
       <option>LELAKI DEWASA</option>
@@ -36,7 +32,7 @@
       <option>CILIK PEREMPUAN</option>
     </select>
 
-    <!-- KATEGORI ARROW NATURAL -->
+    <!-- ARROW NATURAL -->
     <label>Arrow Natural</label>
     <select name="arrow_natural">
       <option value="">— Pilih —</option>
@@ -44,7 +40,7 @@
       <option>TERBUKA WANITA</option>
     </select>
 
-    <!-- NEGERI -->
+    <!-- NEGERI / NEGARA -->
     <label>Negeri / Negara</label>
     <select name="negeri" required>
       <option value="">— Pilih —</option>
@@ -64,36 +60,52 @@
       <option>KUALA LUMPUR</option>
       <option>PUTRAJAYA</option>
       <option>LABUAN</option>
-      <option>BRUNEI</option>
+      <option>BRUNAI</option>
       <option>SINGAPURA</option>
       <option>INDONESIA</option>
       <option>THAILAND</option>
-      <option>LAIN-LAIN</option>
+      <option>Other</option>
     </select>
 
-    <!-- BAJU (OPTIONAL) -->
-    <label>Saiz Baju (Optional)</label>
-    <input type="text" name="saiz_baju" placeholder="Contoh: L / XL / M">
-    <input type="text" name="ic" placeholder="Nombor IC" required>
+    <!-- BAJU (OPTIONAL - TICK) -->
+    <fieldset>
+      <legend>Baju (Tidak Wajib)</legend>
+
+      <label><input type="checkbox" name="baju_lelaki"> LELAKI</label>
+
+      <label><input type="checkbox" name="baju_wanita"> WANITA</label>
+      <input type="text" name="saiz_wanita" placeholder="Saiz">
+
+      <label><input type="checkbox" name="baju_remaja_lelaki"> REMAJA LELAKI</label>
+
+      <label><input type="checkbox" name="baju_remaja_perempuan"> REMAJA PEREMPUAN</label>
+
+      <label><input type="checkbox" name="baju_cilik_lelaki"> CILIK LELAKI</label>
+      <input type="text" name="saiz_cilik_lelaki" placeholder="Saiz">
+
+      <label><input type="checkbox" name="baju_cilik_perempuan"> CILIK PEREMPUAN</label>
+      <input type="text" name="saiz_cilik_perempuan" placeholder="Saiz">
+    </fieldset>
 
     <!-- TELEFON -->
-    <input type="tel" name="telefon" placeholder="Nombor Telefon" required>
+    <label>Nombor Telefon</label>
+    <input type="tel" name="telefon" required>
 
+    <!-- IC -->
+    <label>Nombor IC</label>
+    <input type="text" name="ic" required>
 
     <!-- RESIT -->
-    <label>Muat Naik Resit (Jika Ada)</label>
-    <input type="file" name="resit" accept="image/*,application/pdf">
+    <label>Resit (Upload)</label>
+    <input type="file" name="resit" accept="image/*,.pdf">
 
-    <!-- SUBMIT -->
-    <button type="submit">
-      Hantar Pendaftaran
-    </button>
+    <button type="submit">Hantar Pendaftaran</button>
 
   </form>
 
   <p id="status"></p>
 
-  <a href="index.html" class="back">← Kembali ke Laman Utama</a>
+  <a href="index.html" class="back">← Kembali</a>
 
 </main>
 
