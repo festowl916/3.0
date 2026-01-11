@@ -215,37 +215,28 @@ footer p {
 }
 
 /* =========================
-   PLACEHOLDER / BELUM PILIH
+   SELECT BELUM DIPILIH
 ========================= */
-
-/* select yang masih kosong */
-select:required:has(option[value=""]:checked) {
-  color: #c0392b; /* merah lembut */
+select:required:invalid {
+  color: #c0392b;
   border-color: #e74c3c;
 }
 
-/* option kosong */
+/* option placeholder */
 select option[value=""] {
   color: #c0392b;
 }
 
 /* =========================
-   SELECT BELUM DIPILIH → MERAH
+   SELECT DAH DIPILIH
 ========================= */
-
-/* keadaan default (belum pilih) */
-select {
-  color: #c0392b;           /* merah */
-  border-color: #e74c3c;
-}
-
-/* bila user dah pilih option selain kosong */
-select option:not([value=""]) {
+select:required:valid {
   color: #333;
+  border-color: #ccc;
 }
 
-/* bila select ada value (focus / change) */
+/* bila focus */
 select:focus {
-  color: #333;
   border-color: #2f5faa;
+  outline: none;
 }
