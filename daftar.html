@@ -118,17 +118,23 @@
         <option value="Cilik Perempuan">Cilik Perempuan</option>
       </select>
 
-      <input
-        type="text"
-        id="saizInput"
-        placeholder="Saiz (contoh: S / M / L / XL)">
 
-      <label>Alamat Penghantaran Baju</label>
-      <textarea
-        name="alamat_penghantaran"
-        rows="3"
-        placeholder="No rumah, jalan, poskod, bandar, negeri">
-      </textarea>
+        <input
+  type="text"
+  id="saizInput"
+  placeholder="Saiz (S / M / L / XL)"
+  required>
+
+<textarea
+  name="alamat_penghantaran"
+  id="alamatPenghantaran"
+  rows="3"
+  placeholder="Alamat penuh penghantaran"
+  required>
+</textarea>
+
+
+      
 
       <!-- MASUK KE SHEET (1 KOLUM) -->
       <input type="hidden" name="saiz_baju" id="saizBajuFinal">
@@ -171,5 +177,6 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
