@@ -42,7 +42,7 @@ body {
 
 /* SAIZ LOGO */
 .logo-bar img {
-  height: 42px;      /* 👉 INI SAIZ SESUAI (sekarang terlalu kecil) */
+  height: 40px;      /* 👉 INI SAIZ SESUAI (sekarang terlalu kecil) */
   width: auto;
   object-fit: contain;
 }
@@ -187,6 +187,7 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
+
 
 
 
