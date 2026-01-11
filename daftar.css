@@ -84,3 +84,12 @@ label small {
   color: #555;
   margin-top: 4px;
 }
+
+.note {
+  font-size: 14px;
+  color: #555;
+  background: #f7f7f7;
+  padding: 10px;
+  border-left: 4px solid #c9a24d;
+  margin-bottom: 12px;
+}
