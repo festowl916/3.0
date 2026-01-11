@@ -22,10 +22,12 @@ body {
   margin: 30px auto;
   padding: 20px;
 
-  background: rgba(255, 255, 255, 0.96);
+  /* biru lembut ikut tema butang */
+  background: rgba(235, 242, 252, 0.96);
+
   border-radius: 14px;
 
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 14px 30px rgba(47, 95, 170, 0.18);
 }
 
 /* =========================
@@ -168,3 +170,4 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
+
