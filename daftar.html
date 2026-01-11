@@ -81,25 +81,58 @@
   style="display:none;"
 >
     
-    <!-- BAJU (OPTIONAL - TICK) -->
-    <fieldset>
-      <legend>Baju (Tidak Wajib)</legend>
+    <fieldset class="baju-box">
+  <legend>Baju (Tidak Wajib)</legend>
 
-      <label><input type="checkbox" name="baju_lelaki"> LELAKI</label>
+  <!-- DEWASA -->
+  <div class="baju-group">
+    <strong>DEWASA</strong>
 
-      <label><input type="checkbox" name="baju_wanita"> WANITA</label>
-      <input type="text" name="saiz_wanita" placeholder="Saiz">
+    <label>
+      <input type="checkbox" name="baju_dewasa_lelaki">
+      Lelaki
+    </label>
 
-      <label><input type="checkbox" name="baju_remaja_lelaki"> REMAJA LELAKI</label>
+    <label>
+      <input type="checkbox" name="baju_dewasa_wanita">
+      Wanita
+      <input type="text" name="saiz_dewasa_wanita" placeholder="Saiz">
+    </label>
+  </div>
 
-      <label><input type="checkbox" name="baju_remaja_perempuan"> REMAJA PEREMPUAN</label>
+  <!-- REMAJA -->
+  <div class="baju-group">
+    <strong>REMAJA</strong>
 
-      <label><input type="checkbox" name="baju_cilik_lelaki"> CILIK LELAKI</label>
+    <label>
+      <input type="checkbox" name="baju_remaja_lelaki">
+      Lelaki
+    </label>
+
+    <label>
+      <input type="checkbox" name="baju_remaja_perempuan">
+      Perempuan
+    </label>
+  </div>
+
+  <!-- CILIK -->
+  <div class="baju-group">
+    <strong>CILIK</strong>
+
+    <label>
+      <input type="checkbox" name="baju_cilik_lelaki">
+      Lelaki
       <input type="text" name="saiz_cilik_lelaki" placeholder="Saiz">
+    </label>
 
-      <label><input type="checkbox" name="baju_cilik_perempuan"> CILIK PEREMPUAN</label>
+    <label>
+      <input type="checkbox" name="baju_cilik_perempuan">
+      Perempuan
       <input type="text" name="saiz_cilik_perempuan" placeholder="Saiz">
-    </fieldset>
+    </label>
+  </div>
+
+</fieldset>
 
     <!-- TELEFON -->
     <label>Nombor Telefon</label>
@@ -126,6 +159,7 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
