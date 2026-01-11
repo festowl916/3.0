@@ -114,42 +114,49 @@ label small {
   margin-top: 8px;
 }
 
+
 .baju-card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 5px 6px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
+  gap: 8px;
+
+  padding: 6px 8px;          /* paling nipis */
+  margin-bottom: 10px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
   cursor: pointer;
   background: #fafafa;
+
   transition: all 0.2s ease;
 }
 
+/* radio paling kecil yang masih selesa */
 .baju-card input[type="radio"] {
   transform: scale(0.85);
+  margin: 0;
 }
 
+/* teks utama */
+.baju-card strong {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* buang teks kecil bawah */
+.baju-card small {
+  display: none;
+}
+
+/* hover */
 .baju-card:hover {
   border-color: #2f5faa;
   background: #f3f7ff;
 }
 
-.baju-card input[type="radio"]:checked + span {
-  color: #2f5faa;
-}
-
+/* bila dipilih */
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
-}
-
-.baju-card strong {
-  font-size: 13px;
-}
-
-.baju-card small {
-  font-size: 12px;
-  color: #666;
-}
-
+  }
 
