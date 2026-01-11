@@ -71,3 +71,9 @@ button {
   font-size: 18px;
   color: #cfa53a;
 }
+
+.baju-radio label {
+  display: block;
+  font-weight: normal;
+  margin-top: 6px;
+}
