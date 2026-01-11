@@ -1,41 +1,43 @@
-/* =====================
-   BODY & BACKGROUND
-===================== */
+/* =========================
+   GLOBAL
+========================= */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
 
+  /* BACKGROUND LEMBUT + GAMBAR */
   background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
+    linear-gradient(
+      rgba(245, 247, 250, 0.85),
+      rgba(245, 247, 250, 0.95)
+    ),
     url("festival-bg.png") center / cover no-repeat fixed;
 }
 
-/* =====================
+/* =========================
    FORM WRAPPER
-===================== */
+========================= */
 .form-wrapper {
   max-width: 480px;
   margin: 30px auto;
   padding: 20px;
 
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(4px);
-
+  background: rgba(255, 255, 255, 0.96);
   border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
-/* =====================
-   TITLE
-===================== */
+/* =========================
+   TAJUK
+========================= */
 h1 {
   text-align: center;
-  margin-bottom: 16px;
 }
 
-/* =====================
+/* =========================
    LABEL & INPUT
-===================== */
+========================= */
 label {
   display: block;
   margin-top: 15px;
@@ -60,36 +62,71 @@ button {
 
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 14px;
+  box-sizing: border-box;
 }
 
-/* =====================
-   NOTE / INFO
-===================== */
+/* =========================
+   BUTTON (KEKAL BIRU)
+========================= */
+button {
+  margin-top: 20px;
+  background: #2f5faa;
+  color: white;
+  border: none;
+
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #244a88;
+}
+
+/* =========================
+   NOTE
+========================= */
 .note {
   font-size: 14px;
   color: #555;
+
   background: #f7f7f7;
   padding: 10px;
+
   border-left: 4px solid #c9a24d;
-  margin: 12px 0;
+  margin-bottom: 12px;
 }
 
-/* =====================
+/* =========================
+   BANK INFO
+========================= */
+.bank-info {
+  margin-top: 18px;
+  padding: 12px;
+
+  background: #f8f8f8;
+  border-left: 4px solid #2f5faa;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
    SECTION TITLE
-===================== */
+========================= */
 .section-title {
   font-weight: bold;
   margin-top: 10px;
 }
 
-/* =====================
-   PILIHAN BAJU (RADIO CARD)
-===================== */
+/* =========================
+   PILIHAN BAJU
+========================= */
 .baju-pilihan {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-top: 8px;
 }
 
@@ -99,11 +136,13 @@ button {
   gap: 8px;
 
   padding: 6px 8px;
+  margin-bottom: 6px;
+
   border: 1px solid #ddd;
   border-radius: 8px;
 
-  background: #fafafa;
   cursor: pointer;
+  background: #fafafa;
   transition: all 0.2s ease;
 }
 
@@ -115,7 +154,6 @@ button {
 .baju-card strong {
   font-size: 13px;
   font-weight: 600;
-  line-height: 1.2;
 }
 
 .baju-card small {
@@ -129,73 +167,4 @@ button {
 
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
-}
-
-/* =====================
-   SAIZ BAJU SECTION
-===================== */
-#saizBajuSection {
-  margin-top: 14px;
-}
-
-/* =====================
-   BANK INFO
-===================== */
-.bank-info {
-  margin-top: 18px;
-  padding: 12px;
-
-  background: #f8f8f8;
-  border-left: 4px solid #2f5faa;
-
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-/* =====================
-   BUTTON
-===================== */
-button {
-  margin-top: 20px;
-
-  background: linear-gradient(135deg, #375395, #2f5faa);
-  color: white;
-
-  border: none;
-  font-size: 16px;
-  padding: 12px;
-  border-radius: 10px;
-
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  cursor: pointer;
-
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
-}
-
-/* =====================
-   STATUS MESSAGE
-===================== */
-#status {
-  margin-top: 14px;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* =====================
-   BACK LINK
-===================== */
-a {
-  display: block;
-  text-align: center;
-  margin-top: 14px;
-  color: #2f5faa;
-  text-decoration: none;
-  font-weight: bold;
 }
