@@ -3,8 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("daftarForm");
   const status = document.getElementById("status");
 
-  const negeriSelect = document.getElementById("negeri");
-  const negeriLain = document.getElementById("negeri_lain");
+  const negeriSelect = document.getElementById("negeriSelect");
+  const negeriLain = document.getElementById("negeriLain");
+
+  /* ===== TOGGLE NEGERI OTHER ===== */
+  negeriSelect.addEventListener("change", function () {
+    if (this.value === "OTHER") {
+      negeriLain.style.display = "block";
+      negeriLain.required = true;
+      negeriLain.focus();
+    } else {
+      negeriLain.style.display = "none";
+      negeriLain.required = false;
+      negeriLain.value = "";
+    }
+  });
 
   /* ===== SUBMIT FORM (TEST MODE) ===== */
   form.addEventListener("submit", function (e) {
@@ -22,18 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     this.reset();
     negeriLain.style.display = "none";
-  });
-
-  /* ===== NEGERI OTHER ===== */
-  negeriSelect.addEventListener("change", () => {
-    if (negeriSelect.value === "OTHER") {
-      negeriLain.style.display = "block";
-      negeriLain.required = true;
-    } else {
-      negeriLain.style.display = "none";
-      negeriLain.required = false;
-      negeriLain.value = "";
-    }
   });
 
 });
