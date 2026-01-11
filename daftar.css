@@ -51,6 +51,14 @@ h1 {
   font-weight: 600;
   margin: 8px 0 12px;
 }
+h2 {
+  text-align: center;
+}
+
+
+
+
+
 
 /* =========================
    LABEL & INPUT
@@ -185,6 +193,7 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
+
 
 
 
