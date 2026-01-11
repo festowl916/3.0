@@ -193,3 +193,23 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin-top: 30px;
+  padding: 14px 10px;
+  text-align: center;
+
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+
+  background: rgba(255, 255, 255, 0.75);
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+footer p {
+  margin: 0 0 6px;
+  font-weight: 500;
+}
