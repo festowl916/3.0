@@ -84,19 +84,25 @@
     <fieldset class="baju-box">
   <legend>Baju (Tidak Wajib)</legend>
 
+  <!-- BAJU -->
+<l<label>Baju (Tidak Wajib)</label>
+
+<div class="baju-box">
+
   <!-- DEWASA -->
   <div class="baju-group">
     <strong>DEWASA</strong>
 
-    <label>
+    <label class="baju-item">
       <input type="checkbox" name="baju_dewasa_lelaki">
       Lelaki
+      <input type="text" name="saiz_dewasa_lelaki" placeholder="Saiz (jika ada)">
     </label>
 
-    <label>
+    <label class="baju-item">
       <input type="checkbox" name="baju_dewasa_wanita">
       Wanita
-      <input type="text" name="saiz_dewasa_wanita" placeholder="Saiz">
+      <input type="text" name="saiz_dewasa_wanita" placeholder="Saiz (jika ada)">
     </label>
   </div>
 
@@ -104,14 +110,16 @@
   <div class="baju-group">
     <strong>REMAJA</strong>
 
-    <label>
+    <label class="baju-item">
       <input type="checkbox" name="baju_remaja_lelaki">
       Lelaki
+      <input type="text" name="saiz_remaja_lelaki" placeholder="Saiz (jika ada)">
     </label>
 
-    <label>
+    <label class="baju-item">
       <input type="checkbox" name="baju_remaja_perempuan">
       Perempuan
+      <input type="text" name="saiz_remaja_perempuan" placeholder="Saiz (jika ada)">
     </label>
   </div>
 
@@ -119,18 +127,20 @@
   <div class="baju-group">
     <strong>CILIK</strong>
 
-    <label>
+    <label class="baju-item">
       <input type="checkbox" name="baju_cilik_lelaki">
       Lelaki
-      <input type="text" name="saiz_cilik_lelaki" placeholder="Saiz">
+      <input type="text" name="saiz_cilik_lelaki" placeholder="Saiz (jika ada)">
     </label>
 
-    <label>
+    <label class="baju-item">
       <input type="checkbox" name="baju_cilik_perempuan">
       Perempuan
-      <input type="text" name="saiz_cilik_perempuan" placeholder="Saiz">
+      <input type="text" name="saiz_cilik_perempuan" placeholder="Saiz (jika ada)">
     </label>
   </div>
+
+</div>
 
 </fieldset>
 
@@ -159,6 +169,7 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
