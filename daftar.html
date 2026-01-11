@@ -3,27 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Festival Memanah Tradisional OWL916 3.0</title>
+  <title>Festival Memanah Tradisional OWL916 3.0</title>
   <link rel="stylesheet" href="daftar.css">
 </head>
 <body>
 
 <main class="form-wrapper">
 
-<div class="logo-bar">
-  <img src="logo1.png">
-  <img src="logo2.png">
-  <img src="logo3.png">
-  <img src="logo4.png">
-  <img src="logo5.png">
-  <img src="logo6.png">
-</div>
+  <!-- LOGO -->
+  <div class="logo-bar">
+    <img src="logo1.png">
+    <img src="logo2.png">
+    <img src="logo3.png">
+    <img src="logo4.png">
+    <img src="logo5.png">
+    <img src="logo6.png">
+  </div>
 
-<h2 class="festival-title">
-  Festival Memanah Tradisional OWL916 3.0
-</h2>
-
-<h1>Pendaftaran Peserta</h1>
+  <h2 class="festival-title">Festival Memanah Tradisional OWL916 3.0</h2>
+  <h1>Pendaftaran Peserta</h1>
 
   <form id="daftarForm">
 
@@ -33,21 +31,18 @@
       <option value="">— Pilih —</option>
       <option value="dengan_baju">Daftar dan baju</option>
       <option value="tanpa_baju">Daftar tanpa baju</option>
-      <option value="beli_baju">belum buka</option>
+      <option value="beli_baju" disabled>Belum dibuka</option>
     </select>
 
-    <!-- NAMA -->
+    <!-- WAJIB (DUA-DUA MOD) -->
     <label>Nama Penuh</label>
     <input type="text" name="nama_penuh" required>
 
-    
-    <!-- =======================
-         KATEGORI & KELAB
-    ======================== -->
-    <div id="kategoriSection">
+    <label>Nama Kelab</label>
+    <input type="text" name="kelab" required>
 
-      <label>Nama Kelab</label>
-      <input type="text" name="kelab"required>
+    <!-- KATEGORI (TAK WAJIB, TAPI MIN 1) -->
+    <div id="kategoriSection">
 
       <p class="note">
         Peserta 18 tahun ke atas boleh memilih kategori Arrow Carbon,
@@ -75,9 +70,9 @@
 
     </div>
 
-    <!-- NEGERI / NEGARA -->
+    <!-- NEGERI (WAJIB) -->
     <label>Negeri / Negara</label>
-    <select id="negeriSelect" name="negeri">
+    <select id="negeriSelect" name="negeri" required>
       <option value="">— Pilih —</option>
       <option>JOHOR</option>
       <option>KEDAH</option>
@@ -101,68 +96,50 @@
       <option value="OTHER">LAIN-LAIN</option>
     </select>
 
-    <input
-      type="text"
-      id="negeriLain"
-      name="negeri_lain"
-      placeholder="Taip Negeri / Negara"
-      style="display:none;"
-    >
+    <input type="text"
+           id="negeriLain"
+           name="negeri_lain"
+           placeholder="Taip Negeri / Negara"
+           style="display:none;">
 
-    <!-- =======================
-         SAIZ BAJU
-    ======================== -->
+    <!-- SAIZ BAJU (HANYA DENGAN BAJU) -->
     <div id="saizBajuSection">
 
-      <label>
-        Saiz Baju
-        <small>
-          (Untuk pendaftaran dan baju sahaja)
-        </small>
-      </label>
+      <label>Saiz Baju</label>
 
       <select id="kategoriBaju">
         <option value="">— Pilih —</option>
-        <option value="Lelaki Dewasa">Lelaki Dewasa</option>
-        <option value="Wanita Dewasa">Wanita Dewasa</option>
-        <option value="Remaja Lelaki">Remaja Lelaki</option>
-        <option value="Remaja Perempuan">Remaja Perempuan</option>
-        <option value="Cilik Lelaki">Cilik Lelaki</option>
-        <option value="Cilik Perempuan">Cilik Perempuan</option>
+        <option>Lelaki Dewasa</option>
+        <option>Wanita Dewasa</option>
+        <option>Remaja Lelaki</option>
+        <option>Remaja Perempuan</option>
+        <option>Cilik Lelaki</option>
+        <option>Cilik Perempuan</option>
       </select>
 
+      <input type="text"
+             id="saizInput"
+             placeholder="Saiz (S / M / L / XL)">
 
-        <input
-  type="text"
-  id="saizInput"
-  placeholder="Saiz (S / M / L / XL)">
+      <label>Alamat Penghantaran</label>
+      <textarea id="alamatPenghantaran"
+                name="alamat_penghantaran"
+                rows="3"
+                placeholder="Alamat penuh penghantaran">
+      </textarea>
 
-<textarea
-  name="alamat_penghantaran"
-  id="alamatPenghantaran"
-  rows="3"
-  placeholder="Alamat penuh penghantaran"
-  required>
-</textarea>
-
-
-      
-
-      <!-- MASUK KE SHEET (1 KOLUM) -->
       <input type="hidden" name="saiz_baju" id="saizBajuFinal">
-
     </div>
 
-    <!-- IC -->
+    <!-- IC (WAJIB DUA-DUA MOD) -->
     <div id="icSection">
       <label>No IC</label>
       <input type="text" name="ic" required>
     </div>
 
-<!-- TELEFON (KEKAL) -->
+    <!-- TELEFON (WAJIB) -->
     <label>No Telefon</label>
     <input type="tel" name="telefon" required>
-    
 
     <!-- BAYARAN -->
     <div class="bank-info">
