@@ -99,30 +99,36 @@
       placeholder="Taip Negeri / Negara"
       style="display:none;"
     >
-
-
 <!-- SAIZ BAJU -->
-<label>
-  Saiz Baju
-  <small>
-    (Untuk pendaftaran baju percuma sahaja, rujuk “Maklumat, Peraturan & Syarat” di halaman utama)
-  </small>
-</label>
-<select id="kategoriBaju">
-  <option value="">— Pilih —</option>
-  <option value="Lelaki Dewasa">Lelaki Dewasa</option>
-  <option value="Wanita Dewasa">Wanita Dewasa</option>
-  <option value="Remaja Lelaki">Remaja Lelaki</option>
-  <option value="Remaja Perempuan">Remaja Perempuan</option>
-  <option value="Cilik Lelaki">Cilik Lelaki</option>
-  <option value="Cilik Perempuan">Cilik Perempuan</option>
-</select>
+<div id="saizBajuSection">
 
-<input
-  type="text"
-  id="saizInput"
-  placeholder="Saiz (contoh: S / M / L / XL)">
+  <label>
+    Saiz Baju
+    <small>
+      (Untuk pendaftaran baju percuma sahaja,
+      rujuk “Maklumat, Peraturan & Syarat” di halaman utama)
+    </small>
+  </label>
 
+  <select id="kategoriBaju">
+    <option value="">— Pilih —</option>
+    <option value="Lelaki Dewasa">Lelaki Dewasa</option>
+    <option value="Wanita Dewasa">Wanita Dewasa</option>
+    <option value="Remaja Lelaki">Remaja Lelaki</option>
+    <option value="Remaja Perempuan">Remaja Perempuan</option>
+    <option value="Cilik Lelaki">Cilik Lelaki</option>
+    <option value="Cilik Perempuan">Cilik Perempuan</option>
+  </select>
+
+  <input
+    type="text"
+    id="saizInput"
+    placeholder="Saiz (contoh: S / M / L / XL)">
+
+  <!-- INI YANG AKAN MASUK KE SHEET (SATU KOLUM) -->
+  <input type="hidden" name="saiz_baju" id="saizBajuFinal">
+
+</div>
 <!-- FIELD YANG AKAN MASUK SHEET -->
 <input type="hidden" name="saiz_baju" id="saizBajuFinal">
     
@@ -159,6 +165,7 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
