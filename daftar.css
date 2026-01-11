@@ -45,20 +45,19 @@ body {
 /* =========================
    TAJUK
 ========================= */
+h2 {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 6px 0 4px;
+}
+
 h1 {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
-  margin: 8px 0 12px;
+  margin: 4px 0 14px;
 }
-h2 {
-  text-align: center;
-}
-
-
-
-
-
 
 /* =========================
    LABEL & INPUT
@@ -84,21 +83,28 @@ button {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-
   border-radius: 6px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
 /* =========================
-   BUTTON (KEKAL BIRU)
+   SELECT KHAS (JENIS PENDAFTARAN)
+========================= */
+#jenisPendaftaran {
+  background-color: #f3f7ff;
+  border: 1px solid #2f5faa;
+  font-weight: 600;
+}
+
+/* =========================
+   BUTTON
 ========================= */
 button {
   margin-top: 20px;
   background: #2f5faa;
   color: white;
   border: none;
-
   font-size: 16px;
   padding: 12px;
   border-radius: 8px;
@@ -115,10 +121,8 @@ button:hover {
 .note {
   font-size: 14px;
   color: #555;
-
   background: #f7f7f7;
   padding: 10px;
-
   border-left: 4px solid #c9a24d;
   margin-bottom: 12px;
 }
@@ -129,10 +133,8 @@ button:hover {
 .bank-info {
   margin-top: 18px;
   padding: 12px;
-
   background: #f8f8f8;
   border-left: 4px solid #2f5faa;
-
   font-size: 14px;
   line-height: 1.6;
 }
@@ -146,7 +148,8 @@ button:hover {
 }
 
 /* =========================
-   PILIHAN BAJU
+   (LEGACY – TAK DIGUNAKAN SEKARANG)
+   Selamat biarkan, tak rosakkan apa-apa
 ========================= */
 .baju-pilihan {
   display: flex;
@@ -159,13 +162,10 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 8px;
-
   padding: 6px 8px;
   margin-bottom: 6px;
-
   border: 1px solid #ddd;
   border-radius: 8px;
-
   cursor: pointer;
   background: #fafafa;
   transition: all 0.2s ease;
@@ -193,16 +193,3 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
