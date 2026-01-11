@@ -48,16 +48,6 @@ body {
 /* =========================
    TAJUK FESTIVAL
 ========================= */
-.festival-title {
-  text-align: center;
-  font-size: 20px;      /* lebih kecil dari Pendaftaran Peserta */
-  font-weight: 500;
-  margin-bottom: 4px;
-  color: #222;
-}
-
-
-
 h1 {
   text-align: center;
   font-size: 24px;
@@ -198,6 +188,7 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
+
 
 
 
