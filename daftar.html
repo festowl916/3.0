@@ -17,23 +17,33 @@
     <!-- PILIHAN PENDAFTARAN BAJU -->
     <label class="section-title">Jenis Pendaftaran</label>
 
-<div class="baju-pilihan">
-  <label class="baju-card">
-    <input type="radio" name="pilihan_baju" value="dengan_baju" checked>
-    <span>
-      <strong>Daftar baju percuma</strong><br>
-      <small>Termasuk pilihan saiz baju</small>
-    </span>
-  </label>
+    <div class="baju-pilihan">
+      <label class="baju-card">
+        <input type="radio" name="pilihan_baju" value="dengan_baju" checked>
+        <span>
+          <strong>Daftar baju percuma</strong><br>
+          <small>Termasuk pilihan saiz baju</small>
+        </span>
+      </label>
 
-  <label class="baju-card">
-    <input type="radio" name="pilihan_baju" value="tanpa_baju">
-    <span>
-      <strong>Daftar tanpa baju</strong><br>
-      <small>Tidak perlu isi saiz baju</small>
-    </span>
-  </label>
-</div>
+      <label class="baju-card">
+        <input type="radio" name="pilihan_baju" value="tanpa_baju">
+        <span>
+          <strong>Daftar tanpa baju</strong><br>
+          <small>Tidak perlu isi saiz baju</small>
+        </span>
+      </label>
+
+      <!-- ✅ TAMBAHAN BARU -->
+      <label class="baju-card">
+        <input type="radio" name="pilihan_baju" value="beli_baju">
+        <span>
+          <strong>Beli baju sahaja</strong><br>
+          <small>Tidak perlu isi kelab & kategori</small>
+        </span>
+      </label>
+    </div>
+
     <!-- NAMA -->
     <label>Nama Penuh</label>
     <input type="text" name="nama_penuh" required>
@@ -108,7 +118,7 @@
       <label>
         Saiz Baju
         <small>
-          (Untuk pendaftaran baju percuma sahaja,
+          (Untuk pendaftaran baju percuma / beli baju sahaja,
           rujuk “Maklumat, Peraturan & Syarat” di halaman utama)
         </small>
       </label>
@@ -128,12 +138,20 @@
         id="saizInput"
         placeholder="Saiz (contoh: S / M / L / XL)">
 
+      <!-- ➕ TAMBAHAN BARU: ALAMAT PENGHANTARAN -->
+      <label>Alamat Penghantaran Baju</label>
+      <textarea
+        name="alamat_penghantaran"
+        rows="3"
+        placeholder="Contoh: No rumah, jalan, poskod, bandar, negeri">
+      </textarea>
+
       <!-- INI SAHAJA YANG MASUK KE SHEET -->
       <input type="hidden" name="saiz_baju" id="saizBajuFinal">
 
     </div>
 
-    <!-- TELEFON -->
+    <!-- TELEFON (❗️TIDAK DISENTUH) -->
     <label>No Telefon</label>
     <input type="tel" name="telefon" required>
 
@@ -167,5 +185,3 @@
 <script src="daftar.js"></script>
 </body>
 </html>
-
-
