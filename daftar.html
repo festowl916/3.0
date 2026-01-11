@@ -12,25 +12,22 @@
 
   <h1>Pendaftaran Peserta</h1>
 
-  <!-- INFO RINGKAS -->
-
-
   <form id="daftarForm">
 
-<!-- PILIHAN PENDAFTARAN BAJU -->
-<label>Jenis Pendaftaran</label>
-<div class="baju-pilihan">
-  <label>
-    <input type="radio" name="pilihan_baju" value="YA" checked>
-    Daftar baju percuma
-  </label>
+    <!-- PILIHAN PENDAFTARAN BAJU -->
+    <label>Jenis Pendaftaran</label>
+    <div class="baju-pilihan">
+      <label>
+        <input type="radio" name="pilihan_baju" value="dengan_baju" checked>
+        Daftar baju percuma
+      </label>
 
-  <label>
-    <input type="radio" name="pilihan_baju" value="TIDAK">
-    Daftar tanpa baju
-  </label>
-</div>
-  
+      <label>
+        <input type="radio" name="pilihan_baju" value="tanpa_baju">
+        Daftar tanpa baju
+      </label>
+    </div>
+
     <!-- NAMA -->
     <label>Nama Penuh</label>
     <input type="text" name="nama_penuh" required>
@@ -39,12 +36,11 @@
     <label>Nama Kelab</label>
     <input type="text" name="kelab">
 
-<p class="note">
-  Peserta 18 tahun ke atas boleh memilih kategori Arrow Carbon, Arrow Natural atau kedua-duanya.
-</p>
+    <p class="note">
+      Peserta 18 tahun ke atas boleh memilih kategori Arrow Carbon,
+      Arrow Natural atau kedua-duanya.
+    </p>
 
-</select>
-    
     <!-- ARROW CARBON -->
     <label>Kategori Arrow Carbon</label>
     <select name="arrow_carbon">
@@ -99,39 +95,38 @@
       placeholder="Taip Negeri / Negara"
       style="display:none;"
     >
-<!-- SAIZ BAJU -->
-<div id="saizBajuSection">
 
-  <label>
-    Saiz Baju
-    <small>
-      (Untuk pendaftaran baju percuma sahaja,
-      rujuk “Maklumat, Peraturan & Syarat” di halaman utama)
-    </small>
-  </label>
+    <!-- SAIZ BAJU -->
+    <div id="saizBajuSection">
 
-  <select id="kategoriBaju">
-    <option value="">— Pilih —</option>
-    <option value="Lelaki Dewasa">Lelaki Dewasa</option>
-    <option value="Wanita Dewasa">Wanita Dewasa</option>
-    <option value="Remaja Lelaki">Remaja Lelaki</option>
-    <option value="Remaja Perempuan">Remaja Perempuan</option>
-    <option value="Cilik Lelaki">Cilik Lelaki</option>
-    <option value="Cilik Perempuan">Cilik Perempuan</option>
-  </select>
+      <label>
+        Saiz Baju
+        <small>
+          (Untuk pendaftaran baju percuma sahaja,
+          rujuk “Maklumat, Peraturan & Syarat” di halaman utama)
+        </small>
+      </label>
 
-  <input
-    type="text"
-    id="saizInput"
-    placeholder="Saiz (contoh: S / M / L / XL)">
+      <select id="kategoriBaju">
+        <option value="">— Pilih —</option>
+        <option value="Lelaki Dewasa">Lelaki Dewasa</option>
+        <option value="Wanita Dewasa">Wanita Dewasa</option>
+        <option value="Remaja Lelaki">Remaja Lelaki</option>
+        <option value="Remaja Perempuan">Remaja Perempuan</option>
+        <option value="Cilik Lelaki">Cilik Lelaki</option>
+        <option value="Cilik Perempuan">Cilik Perempuan</option>
+      </select>
 
-  <!-- INI YANG AKAN MASUK KE SHEET (SATU KOLUM) -->
-  <input type="hidden" name="saiz_baju" id="saizBajuFinal">
+      <input
+        type="text"
+        id="saizInput"
+        placeholder="Saiz (contoh: S / M / L / XL)">
 
-</div>
-<!-- FIELD YANG AKAN MASUK SHEET -->
-<input type="hidden" name="saiz_baju" id="saizBajuFinal">
-    
+      <!-- INI SAHAJA YANG MASUK KE SHEET -->
+      <input type="hidden" name="saiz_baju" id="saizBajuFinal">
+
+    </div>
+
     <!-- TELEFON -->
     <label>No Telefon</label>
     <input type="tel" name="telefon" required>
@@ -140,14 +135,15 @@
     <label>No IC</label>
     <input type="text" name="ic" required>
 
-<!-- MAKLUMAT BAYARAN -->
-<div class="bank-info">
-  <strong>Maklumat Bayaran</strong><br>
-  Bank: <strong>Bank Rakyat</strong><br>
-  No. Akaun: <strong>1102358633</strong><br>
-  Penama: <strong>Persatuan Memanah Tradisional Negeri Terengganu</strong>
-</div>
-   
+    <!-- MAKLUMAT BAYARAN -->
+    <div class="bank-info">
+      <strong>Maklumat Bayaran</strong><br>
+      Bank: <strong>Bank Rakyat</strong><br>
+      No. Akaun: <strong>1102358633</strong><br>
+      Penama:
+      <strong>Persatuan Memanah Tradisional Negeri Terengganu</strong>
+    </div>
+
     <!-- RESIT -->
     <label>Resit (Upload)</label>
     <input type="file" name="resit" accept="image/*,.pdf">
@@ -165,17 +161,3 @@
 <script src="daftar.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
