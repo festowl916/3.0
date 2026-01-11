@@ -77,3 +77,10 @@ button {
   font-weight: normal;
   margin-top: 6px;
 }
+label small {
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  color: #555;
+  margin-top: 4px;
+}
