@@ -50,4 +50,24 @@ button {
   background: #2f5faa;
   color: white;
   border: none;
-  font-size
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+  
+.highlight-box {
+  background: rgba(255, 215, 120, 0.18);
+  border: 2px dashed #c9a24d;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.highlight-box strong {
+  font-size: 18px;
+  color: #cfa53a;
+}
