@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const saizInput = document.getElementById("saizInput");
   const saizBajuFinal = document.getElementById("saizBajuFinal");
 
-  /* ===== TOGGLE NEGERI OTHER ===== */
+  /* ===============================
+     TOGGLE NEGERI / NEGARA (OTHER)
+  =============================== */
   negeriSelect.addEventListener("change", function () {
     if (this.value === "OTHER") {
       negeriLain.style.display = "block";
@@ -23,24 +25,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ===== SUBMIT FORM (TEST MODE) ===== */
+  /* ===============================
+     SUBMIT FORM (MODE UJIAN)
+  =============================== */
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    /* === GABUNG SAIZ BAJU (1 COLUMN) === */
-    const kategori = kategoriBaju.value;
-    const saiz = saizInput.value.trim();
+    /* === GABUNG SAIZ BAJU (1 KOLUM) === */
+    const kategori = kategoriBaju?.value || "";
+    const saiz = saizInput?.value.trim() || "";
 
     if (kategori && saiz) {
-      saizBajuFinal.value = kategori + " " + saiz;
+      saizBajuFinal.value = `${kategori} ${saiz}`;
     } else if (kategori) {
       saizBajuFinal.value = kategori;
     } else {
       saizBajuFinal.value = "";
     }
 
-    /* === LOG DATA (TEST) === */
-    const data = new FormData(this);
+    /* === LOG DATA (TEST SAHAJA) === */
+    const data = new FormData(form);
     console.log("=== DATA DIHANTAR ===");
     for (let item of data.entries()) {
       console.log(item[0], item[1]);
@@ -49,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     status.textContent = "✅ Pendaftaran diterima (MODE UJIAN)";
     status.style.color = "green";
 
-    this.reset();
+    form.reset();
     negeriLain.style.display = "none";
   });
 
