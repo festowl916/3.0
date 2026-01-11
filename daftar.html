@@ -1,58 +1,35 @@
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<input type="text" name="nama" placeholder="Nama Penuh" required>
 
-  <title>Pendaftaran Peserta | FEST OWL 916</title>
+<select name="arrow_carbon">
+  <option value="">Arrow Carbon (jika ada)</option>
+  <option>VETERAN LELAKI</option>
+  <option>LELAKI DEWASA</option>
+  <option>WANITA DEWASA</option>
+  <option>REMAJA LELAKI</option>
+  <option>REMAJA PEREMPUAN</option>
+  <option>CILIK LELAKI</option>
+  <option>CILIK PEREMPUAN</option>
+</select>
 
-  <!-- Guna CSS sedia ada -->
-  <link rel="stylesheet" href="style.css">
-</head>
+<select name="arrow_natural">
+  <option value="">Arrow Natural (jika ada)</option>
+  <option>TERBUKA LELAKI</option>
+  <option>TERBUKA WANITA</option>
+</select>
 
-<body>
+<select name="negeri" required>
+  <option value="">Pilih Negeri / Negara</option>
+  <option>TERENGGANU</option>
+  <option>SELANGOR</option>
+  <option>KELANTAN</option>
+  <option>JOHOR</option>
+  <option>SABAH</option>
+  <option>SARAWAK</option>
+  <option>BRUNEI</option>
+  <option>SINGAPURA</option>
+  <option>INDONESIA</option>
+  <option>LAIN-LAIN</option>
+</select>
 
-<main class="wrapper">
-
-  <h2>Pendaftaran Peserta</h2>
-  <p>Bayaran tidak wajib semasa daftar.</p>
-
-  <!-- FORM (BELUM DISAMBUNG KE APP SCRIPT) -->
-  <form id="daftarForm">
-
-    <input
-      type="text"
-      name="nama"
-      placeholder="Nama Penuh"
-      required>
-
-    <input
-      type="text"
-      name="telefon"
-      placeholder="No Telefon"
-      required>
-
-    <select name="kategori" required>
-      <option value="">Pilih Kategori</option>
-      <option value="Terbuka">Terbuka</option>
-      <option value="Dewasa">Dewasa</option>
-      <option value="Veteran">Veteran</option>
-      <option value="Remaja">Remaja</option>
-      <option value="Cilik">Cilik</option>
-    </select>
-
-    <button type="submit" class="card">
-      <span>Hantar Pendaftaran</span>
-    </button>
-
-  </form>
-
-  <p id="status"></p>
-
-  <a href="index.html" class="back-home">← Kembali ke Laman Utama</a>
-
-</main>
-
-<script src="script.js"></script>
-</body>
-</html>
+<input type="text" name="telefon" placeholder="No Telefon" required>
+<input type="text" name="ic" placeholder="No IC" required>
