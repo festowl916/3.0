@@ -21,89 +21,81 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
-     PILIHAN JENIS PENDAFTARAN
-     (HANYA 2 MOD)
+     PILIHAN DAFTAR (2 SAHAJA)
   =============================== */
-  const pilihanRadios = document.querySelectorAll(
-    'input[name="pilihan_baju"]'
-  );
+  const radios = document.querySelectorAll('input[name="pilihan_baju"]');
 
   const saizBajuSection = document.getElementById("saizBajuSection");
-
   const kategoriBaju = document.getElementById("kategoriBaju");
   const saizInput = document.getElementById("saizInput");
   const saizBajuFinal = document.getElementById("saizBajuFinal");
-
   const alamatInput = document.querySelector(
     'textarea[name="alamat_penghantaran"]'
   );
 
-  /* ===============================
-     KAWAL MEDAN IKUT PILIHAN
-  =============================== */
+  function hideSaizBaju() {
+    saizBajuSection.style.display = "none";
+
+    kategoriBaju.required = false;
+    saizInput.required = false;
+    alamatInput.required = false;
+
+    kategoriBaju.value = "";
+    saizInput.value = "";
+    saizBajuFinal.value = "";
+    alamatInput.value = "";
+  }
+
+  function showSaizBaju() {
+    saizBajuSection.style.display = "block";
+
+    kategoriBaju.required = true;
+    saizInput.required = true;
+    alamatInput.required = true;
+  }
+
   function kawalMedan() {
     const pilihan = document.querySelector(
       'input[name="pilihan_baju"]:checked'
-    ).value;
+    )?.value;
 
     if (pilihan === "dengan_baju") {
-      // ✅ DAFTAR DENGAN BAJU
-      saizBajuSection.style.display = "block";
-
-      kategoriBaju.required = true;
-      saizInput.required = true;
-      alamatInput.required = true;
-
-    } else if (pilihan === "tanpa_baju") {
-      // ❌ DAFTAR TANPA BAJU
-      saizBajuSection.style.display = "none";
-
-      kategoriBaju.required = false;
-      saizInput.required = false;
-      alamatInput.required = false;
-
-      kategoriBaju.value = "";
-      saizInput.value = "";
-      saizBajuFinal.value = "";
-      alamatInput.value = "";
+      showSaizBaju();
+    } else {
+      // SEMUA SELAIN DENGAN_BAJU → HIDE
+      hideSaizBaju();
     }
   }
 
-  pilihanRadios.forEach(radio =>
-    radio.addEventListener("change", kawalMedan)
-  );
+  radios.forEach(r => r.addEventListener("change", kawalMedan));
 
-  kawalMedan(); // run masa load
+  // FORCE JALAN MASA LOAD (INI YANG SEBELUM NI TAK JADI)
+  setTimeout(kawalMedan, 0);
 
   /* ===============================
-     SUBMIT FORM (MODE UJIAN)
+     SUBMIT (MODE TEST)
   =============================== */
   form.addEventListener("submit", e => {
     e.preventDefault();
 
-    // Gabung saiz baju → 1 kolum sahaja
-    const kategori = kategoriBaju.value;
-    const saiz = saizInput.value.trim();
-
-    if (kategori && saiz) {
-      saizBajuFinal.value = `${kategori} ${saiz}`;
+    if (saizBajuSection.style.display !== "none") {
+      const k = kategoriBaju.value;
+      const s = saizInput.value.trim();
+      saizBajuFinal.value = k && s ? `${k} ${s}` : "";
     } else {
       saizBajuFinal.value = "";
     }
 
-    // LOG UNTUK TEST
     const data = new FormData(form);
     console.log("=== DATA DIHANTAR ===");
-    for (let d of data.entries()) {
-      console.log(d[0], d[1]);
-    }
+    for (let d of data.entries()) console.log(d[0], d[1]);
 
     status.textContent = "✅ Pendaftaran diterima (MODE UJIAN)";
     status.style.color = "green";
 
     form.reset();
     negeriLain.style.display = "none";
-    kawalMedan();
+    setTimeout(kawalMedan, 0);
   });
 
 });
