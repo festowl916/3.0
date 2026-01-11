@@ -214,4 +214,18 @@ footer p {
   font-weight: 500;
 }
 
+/* =========================
+   PLACEHOLDER / BELUM PILIH
+========================= */
+
+/* select yang masih kosong */
+select:required:has(option[value=""]:checked) {
+  color: #c0392b; /* merah lembut */
+  border-color: #e74c3c;
+}
+
+/* option kosong */
+select option[value=""] {
+  color: #c0392b;
+}
 
