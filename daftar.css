@@ -93,3 +93,12 @@ label small {
   border-left: 4px solid #c9a24d;
   margin-bottom: 12px;
 }
+
+.bank-info {
+  margin-top: 18px;
+  padding: 12px;
+  background: #f8f8f8;
+  border-left: 4px solid #2f5faa;
+  font-size: 14px;
+  line-height: 1.6;
+}
