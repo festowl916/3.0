@@ -6,21 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const negeriSelect = document.getElementById("negeriSelect");
   const negeriLain = document.getElementById("negeriLain");
 
+  const jenis = document.getElementById("jenisPendaftaran");
+
+  const kategoriSection = document.getElementById("kategoriSection");
+  const icSection = document.getElementById("icSection");
+  const saizBajuSection = document.getElementById("saizBajuSection");
+
   const kategoriBaju = document.getElementById("kategoriBaju");
   const saizInput = document.getElementById("saizInput");
   const saizBajuFinal = document.getElementById("saizBajuFinal");
 
-  const pilihanBajuRadios = document.querySelectorAll('input[name="pilihan_baju"]');
-  const saizBajuSection = document.getElementById("saizBajuSection");
-
   /* ===============================
-     TOGGLE NEGERI / NEGARA (OTHER)
+     NEGERI / NEGARA (OTHER)
   =============================== */
-  negeriSelect.addEventListener("change", function () {
-    if (this.value === "OTHER") {
+  negeriSelect.addEventListener("change", () => {
+    if (negeriSelect.value === "OTHER") {
       negeriLain.style.display = "block";
       negeriLain.required = true;
-      negeriLain.focus();
     } else {
       negeriLain.style.display = "none";
       negeriLain.required = false;
@@ -29,56 +31,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
-     TOGGLE DAFTAR TANPA BAJU
+     KAWAL MEDAN IKUT PILIHAN
   =============================== */
-  function toggleSaizBaju() {
-    const pilihan = document.querySelector('input[name="pilihan_baju"]:checked').value;
+  function kawalMedan() {
+    const v = jenis.value;
 
-    if (pilihan === "tanpa_baju") {
+    if (v === "dengan_baju") {
+      // DAFTAR BAJU
+      kategoriSection.style.display = "block";
+      icSection.style.display = "block";
+      saizBajuSection.style.display = "block";
+
+    } else if (v === "tanpa_baju") {
+      // TANPA BAJU
+      kategoriSection.style.display = "block";
+      icSection.style.display = "block";
       saizBajuSection.style.display = "none";
+
       kategoriBaju.value = "";
       saizInput.value = "";
       saizBajuFinal.value = "";
-    } else {
+
+    } else if (v === "beli_baju") {
+      // BELI BAJU SAHAJA
+      kategoriSection.style.display = "none";
+      icSection.style.display = "none";
       saizBajuSection.style.display = "block";
     }
   }
 
-  pilihanBajuRadios.forEach(radio => {
-    radio.addEventListener("change", toggleSaizBaju);
-  });
-
-  toggleSaizBaju(); // run masa load
+  jenis.addEventListener("change", kawalMedan);
+  kawalMedan(); // run awal
 
   /* ===============================
-     SUBMIT FORM (MODE UJIAN)
+     SUBMIT (TEST MODE)
   =============================== */
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", e => {
     e.preventDefault();
 
-    const kategori = kategoriBaju.value;
-    const saiz = saizInput.value.trim();
-
-    if (kategori && saiz) {
-      saizBajuFinal.value = `${kategori} ${saiz}`;
-    } else if (kategori) {
-      saizBajuFinal.value = kategori;
-    } else {
-      saizBajuFinal.value = "";
-    }
+    // Gabung saiz baju → 1 kolum
+    const k = kategoriBaju.value;
+    const s = saizInput.value.trim();
+    saizBajuFinal.value = k && s ? `${k} ${s}` : "";
 
     const data = new FormData(form);
     console.log("=== DATA DIHANTAR ===");
-    for (let item of data.entries()) {
-      console.log(item[0], item[1]);
-    }
+    for (let d of data.entries()) console.log(d[0], d[1]);
 
     status.textContent = "✅ Pendaftaran diterima (MODE UJIAN)";
     status.style.color = "green";
 
     form.reset();
     negeriLain.style.display = "none";
-    toggleSaizBaju();
+    kawalMedan();
   });
 
 });
