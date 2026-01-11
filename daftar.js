@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const saizInput = document.getElementById("saizInput");
   const saizBajuFinal = document.getElementById("saizBajuFinal");
 
+  const pilihanBajuRadios = document.querySelectorAll('input[name="pilihan_baju"]');
+  const saizBajuSection = document.getElementById("saizBajuSection");
+
   /* ===============================
      TOGGLE NEGERI / NEGARA (OTHER)
   =============================== */
@@ -26,14 +29,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ===============================
+     TOGGLE DAFTAR TANPA BAJU
+  =============================== */
+  function toggleSaizBaju() {
+    const pilihan = document.querySelector('input[name="pilihan_baju"]:checked').value;
+
+    if (pilihan === "tanpa_baju") {
+      saizBajuSection.style.display = "none";
+      kategoriBaju.value = "";
+      saizInput.value = "";
+      saizBajuFinal.value = "";
+    } else {
+      saizBajuSection.style.display = "block";
+    }
+  }
+
+  pilihanBajuRadios.forEach(radio => {
+    radio.addEventListener("change", toggleSaizBaju);
+  });
+
+  toggleSaizBaju(); // run masa load
+
+  /* ===============================
      SUBMIT FORM (MODE UJIAN)
   =============================== */
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    /* === GABUNG SAIZ BAJU (1 KOLUM) === */
-    const kategori = kategoriBaju?.value || "";
-    const saiz = saizInput?.value.trim() || "";
+    const kategori = kategoriBaju.value;
+    const saiz = saizInput.value.trim();
 
     if (kategori && saiz) {
       saizBajuFinal.value = `${kategori} ${saiz}`;
@@ -43,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
       saizBajuFinal.value = "";
     }
 
-    /* === LOG DATA (TEST SAHAJA) === */
     const data = new FormData(form);
     console.log("=== DATA DIHANTAR ===");
     for (let item of data.entries()) {
@@ -55,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.reset();
     negeriLain.style.display = "none";
+    toggleSaizBaju();
   });
 
 });
