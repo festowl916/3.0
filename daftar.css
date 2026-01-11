@@ -215,11 +215,13 @@ footer p {
 }
 
 /* =========================
-   SELECT BELUM DIPILIH
+   SELECT – VISUAL PERINGATAN
 ========================= */
-select:required:invalid {
-  color: #c0392b;
-  border-color: #e74c3c;
+
+/* default */
+select {
+  color: #333;
+  border-color: #ccc;
 }
 
 /* option placeholder */
@@ -227,15 +229,19 @@ select option[value=""] {
   color: #c0392b;
 }
 
-/* =========================
-   SELECT DAH DIPILIH
-========================= */
-select:required:valid {
+/* bila masih “Tidak Pilih” */
+select:has(option[value=""]:checked) {
+  color: #c0392b;
+  border-color: #e74c3c;
+}
+
+/* bila dah pilih option sebenar */
+select:not(:has(option[value=""]:checked)) {
   color: #333;
   border-color: #ccc;
 }
 
-/* bila focus */
+/* focus */
 select:focus {
   border-color: #2f5faa;
   outline: none;
