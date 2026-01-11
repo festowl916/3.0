@@ -229,3 +229,23 @@ select option[value=""] {
   color: #c0392b;
 }
 
+/* =========================
+   SELECT BELUM DIPILIH → MERAH
+========================= */
+
+/* keadaan default (belum pilih) */
+select {
+  color: #c0392b;           /* merah */
+  border-color: #e74c3c;
+}
+
+/* bila user dah pilih option selain kosong */
+select option:not([value=""]) {
+  color: #333;
+}
+
+/* bila select ada value (focus / change) */
+select:focus {
+  color: #333;
+  border-color: #2f5faa;
+}
