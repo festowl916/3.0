@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const negeriSelect = document.getElementById("negeriSelect");
   const negeriLain = document.getElementById("negeriLain");
 
+  const kategoriBaju = document.getElementById("kategoriBaju");
+  const saizInput = document.getElementById("saizInput");
+  const saizBajuFinal = document.getElementById("saizBajuFinal");
+
   /* ===== TOGGLE NEGERI OTHER ===== */
   negeriSelect.addEventListener("change", function () {
     if (this.value === "OTHER") {
@@ -23,8 +27,20 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const data = new FormData(this);
+    /* === GABUNG SAIZ BAJU (1 COLUMN) === */
+    const kategori = kategoriBaju.value;
+    const saiz = saizInput.value.trim();
 
+    if (kategori && saiz) {
+      saizBajuFinal.value = kategori + " " + saiz;
+    } else if (kategori) {
+      saizBajuFinal.value = kategori;
+    } else {
+      saizBajuFinal.value = "";
+    }
+
+    /* === LOG DATA (TEST) === */
+    const data = new FormData(this);
     console.log("=== DATA DIHANTAR ===");
     for (let item of data.entries()) {
       console.log(item[0], item[1]);
