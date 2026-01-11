@@ -102,3 +102,52 @@ label small {
   font-size: 14px;
   line-height: 1.6;
 }
+.section-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.baju-pilihan {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.baju-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fafafa;
+  transition: all 0.2s ease;
+}
+
+.baju-card input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.baju-card:hover {
+  border-color: #2f5faa;
+  background: #f3f7ff;
+}
+
+.baju-card input[type="radio"]:checked + span {
+  color: #2f5faa;
+}
+
+.baju-card input[type="radio"]:checked {
+  accent-color: #2f5faa;
+}
+
+.baju-card strong {
+  font-size: 15px;
+}
+
+.baju-card small {
+  font-size: 12px;
+  color: #666;
+}
