@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pendaftaran Peserta</title>
-
   <link rel="stylesheet" href="daftar.css">
 </head>
 <body>
@@ -13,18 +12,18 @@
 
   <h1>Pendaftaran Peserta</h1>
 
-<div class="highlight-box">
-  <strong>Timestamp</strong><br>
-  <strong>Nama Penuh</strong><br>
-  <strong>Kategori (Arrow Carbon)</strong><br>
-  <strong>Kategori (Arrow Natural)</strong><br>
-  <strong>Kelab</strong><br>
-  <strong>Negara / Negeri</strong><br>
-  <strong>Saiz Baju</strong><br>
-  <strong>No Telefon</strong><br>
-  <strong>Nombor IC</strong><br>
-  <strong>Resit</strong>
-</div>
+  <!-- INFO RINGKAS -->
+  <div class="highlight-box">
+    <strong>Maklumat Disimpan:</strong><br>
+    Nama Penuh<br>
+    Kategori Arrow Carbon / Natural<br>
+    Kelab<br>
+    Negara / Negeri<br>
+    Saiz Baju<br>
+    No Telefon<br>
+    No IC<br>
+    Resit
+  </div>
 
   <form id="daftarForm">
 
@@ -32,134 +31,75 @@
     <label>Nama Penuh</label>
     <input type="text" name="nama_penuh" required>
 
-    <input
-  type="text"
-  name="kelab"
-  placeholder="Nama Kelab"
-  required>
-    
-<!-- ARROW CARBON -->
-<label>Arrow Carbon</label>
-<select name="arrow_carbon">
-  <option value="">— Tidak Pilih —</option>
-  <option value="VETERAN LELAKI">VETERAN LELAKI</option>
-  <option value="LELAKI DEWASA">LELAKI DEWASA</option>
-  <option value="WANITA DEWASA">WANITA DEWASA</option>
-  <option value="REMAJA LELAKI">REMAJA LELAKI</option>
-  <option value="REMAJA PEREMPUAN">REMAJA PEREMPUAN</option>
-  <option value="CILIK LELAKI">CILIK LELAKI</option>
-  <option value="CILIK PEREMPUAN">CILIK PEREMPUAN</option>
-</select>
+    <!-- KELAB -->
+    <label>Nama Kelab</label>
+    <input type="text" name="kelab">
 
-<!-- ARROW NATURAL -->
-<label>Arrow Natural</label>
-<select name="arrow_natural">
-  <option value="">— Tidak Pilih —</option>
-  <option value="TERBUKA LELAKI">TERBUKA LELAKI</option>
-  <option value="TERBUKA WANITA">TERBUKA WANITA</option>
-</select>
+    <!-- ARROW CARBON -->
+    <label>Arrow Carbon</label>
+    <select name="arrow_carbon">
+      <option value="">— Tidak Pilih —</option>
+      <option>VETERAN LELAKI</option>
+      <option>LELAKI DEWASA</option>
+      <option>WANITA DEWASA</option>
+      <option>REMAJA LELAKI</option>
+      <option>REMAJA PEREMPUAN</option>
+      <option>CILIK LELAKI</option>
+      <option>CILIK PEREMPUAN</option>
+    </select>
+
+    <!-- ARROW NATURAL -->
+    <label>Arrow Natural</label>
+    <select name="arrow_natural">
+      <option value="">— Tidak Pilih —</option>
+      <option>TERBUKA LELAKI</option>
+      <option>TERBUKA WANITA</option>
+    </select>
 
     <!-- NEGERI / NEGARA -->
-<label>Negeri / Negara</label>
-<select name="negeri" id="negeriSelect" required>
-  <option value="">— Pilih —</option>
-  <option value="JOHOR">JOHOR</option>
-  <option value="KEDAH">KEDAH</option>
-  <option value="KELANTAN">KELANTAN</option>
-  <option value="MELAKA">MELAKA</option>
-  <option value="NEGERI SEMBILAN">NEGERI SEMBILAN</option>
-  <option value="PAHANG">PAHANG</option>
-  <option value="PULAU PINANG">PULAU PINANG</option>
-  <option value="PERAK">PERAK</option>
-  <option value="PERLIS">PERLIS</option>
-  <option value="SELANGOR">SELANGOR</option>
-  <option value="TERENGGANU">TERENGGANU</option>
-  <option value="SABAH">SABAH</option>
-  <option value="SARAWAK">SARAWAK</option>
-  <option value="KUALA LUMPUR">KUALA LUMPUR</option>
-  <option value="PUTRAJAYA">PUTRAJAYA</option>
-  <option value="LABUAN">LABUAN</option>
-  <option value="BRUNEI">BRUNEI</option>
-  <option value="SINGAPURA">SINGAPURA</option>
-  <option value="INDONESIA">INDONESIA</option>
-  <option value="THAILAND">THAILAND</option>
-  <option value="OTHER">LAIN-LAIN</option>
-</select>
+    <label>Negeri / Negara</label>
+    <select id="negeriSelect" name="negeri">
+      <option value="">— Pilih —</option>
+      <option>JOHOR</option>
+      <option>KEDAH</option>
+      <option>KELANTAN</option>
+      <option>MELAKA</option>
+      <option>NEGERI SEMBILAN</option>
+      <option>PAHANG</option>
+      <option>PULAU PINANG</option>
+      <option>PERAK</option>
+      <option>PERLIS</option>
+      <option>SELANGOR</option>
+      <option>TERENGGANU</option>
+      <option>SABAH</option>
+      <option>SARAWAK</option>
+      <option>KUALA LUMPUR</option>
+      <option>LABUAN</option>
+      <option>BRUNEI</option>
+      <option>SINGAPURA</option>
+      <option>INDONESIA</option>
+      <option>THAILAND</option>
+      <option value="OTHER">LAIN-LAIN</option>
+    </select>
 
-<input
-  type="text"
-  id="negeriLain"
-  name="negeri_lain"
-  placeholder="Taip Negeri / Negara"
-  style="display:none;"
->
+    <input
+      type="text"
+      id="negeriLain"
+      name="negeri_lain"
+      placeholder="Taip Negeri / Negara"
+      style="display:none;"
+    >
 
-  <!-- BAJU -->
-<l<label>Baju</label>
-
-<div class="baju-box">
-
-  <!-- DEWASA -->
-  <div class="baju-group">
-    <strong>DEWASA</strong>
-
-    <label class="baju-item">
-      <input type="checkbox" name="baju_dewasa_lelaki">
-      Lelaki
-      <input type="text" name="saiz_dewasa_lelaki" placeholder="Saiz (jika ada)">
-    </label>
-
-    <label class="baju-item">
-      <input type="checkbox" name="baju_dewasa_wanita">
-      Wanita
-      <input type="text" name="saiz_dewasa_wanita" placeholder="Saiz (jika ada)">
-    </label>
-  </div>
-
-  <!-- REMAJA -->
-  <div class="baju-group">
-    <strong>REMAJA</strong>
-
-    <label class="baju-item">
-      <input type="checkbox" name="baju_remaja_lelaki">
-      Lelaki
-      <input type="text" name="saiz_remaja_lelaki" placeholder="Saiz (jika ada)">
-    </label>
-
-    <label class="baju-item">
-      <input type="checkbox" name="baju_remaja_perempuan">
-      Perempuan
-      <input type="text" name="saiz_remaja_perempuan" placeholder="Saiz (jika ada)">
-    </label>
-  </div>
-
-  <!-- CILIK -->
-  <div class="baju-group">
-    <strong>CILIK</strong>
-
-    <label class="baju-item">
-      <input type="checkbox" name="baju_cilik_lelaki">
-      Lelaki
-      <input type="text" name="saiz_cilik_lelaki" placeholder="Saiz (jika ada)">
-    </label>
-
-    <label class="baju-item">
-      <input type="checkbox" name="baju_cilik_perempuan">
-      Perempuan
-      <input type="text" name="saiz_cilik_perempuan" placeholder="Saiz (jika ada)">
-    </label>
-  </div>
-
-</div>
-
-</fieldset>
+    <!-- SAIZ BAJU -->
+    <label>Saiz Baju (Jika Ada)</label>
+    <input type="text" name="saiz_baju" placeholder="Contoh: M / L / XL">
 
     <!-- TELEFON -->
-    <label>Nombor Telefon</label>
+    <label>No Telefon</label>
     <input type="tel" name="telefon" required>
 
     <!-- IC -->
-    <label>Nombor IC</label>
+    <label>No IC</label>
     <input type="text" name="ic" required>
 
     <!-- RESIT -->
@@ -172,21 +112,10 @@
 
   <p id="status"></p>
 
-  <a href="index.html" class="back">← Kembali</a>
+  <a href="index.html">← Kembali</a>
 
 </main>
 
 <script src="daftar.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
