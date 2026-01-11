@@ -3,54 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pendaftaran Peserta</title>
+  <title>Pendaftaran Peserta | FEST OWL 916</title>
+
+  <!-- CSS ASING -->
   <link rel="stylesheet" href="daftar.css">
 </head>
 <body>
 
-<main class="form-wrapper">
+<main class="wrapper">
 
-  <h1>Pendaftaran Peserta</h1>
+  <h2>Pendaftaran Peserta</h2>
+  <p>Bayaran tidak wajib semasa daftar.</p>
 
   <form id="daftarForm">
 
-    <!-- PILIHAN PENDAFTARAN BAJU -->
-    <label class="section-title">Jenis Pendaftaran</label>
-
-<div class="baju-pilihan">
-  <label class="baju-card">
-    <input type="radio" name="pilihan_baju" value="dengan_baju" checked>
-    <span>
-      <strong>Daftar baju percuma</strong><br>
-      <small>Termasuk pilihan saiz baju</small>
-    </span>
-  </label>
-
-  <label class="baju-card">
-    <input type="radio" name="pilihan_baju" value="tanpa_baju">
-    <span>
-      <strong>Daftar tanpa baju</strong><br>
-      <small>Tidak perlu isi saiz baju</small>
-    </span>
-  </label>
-</div>
     <!-- NAMA -->
-    <label>Nama Penuh</label>
-    <input type="text" name="nama_penuh" required>
+    <input type="text" name="nama" placeholder="Nama Penuh" required>
 
-    <!-- KELAB -->
-    <label>Nama Kelab</label>
-    <input type="text" name="kelab">
+    <!-- NO IC -->
 
-    <p class="note">
-      Peserta 18 tahun ke atas boleh memilih kategori Arrow Carbon,
-      Arrow Natural atau kedua-duanya.
-    </p>
 
-    <!-- ARROW CARBON -->
-    <label>Kategori Arrow Carbon</label>
+    <!-- KATEGORI ARROW CARBON -->
+    <label>Arrow Carbon</label>
     <select name="arrow_carbon">
-      <option value="">— Tidak Pilih —</option>
+      <option value="">— Pilih —</option>
       <option>VETERAN LELAKI</option>
       <option>LELAKI DEWASA</option>
       <option>WANITA DEWASA</option>
@@ -60,17 +36,17 @@
       <option>CILIK PEREMPUAN</option>
     </select>
 
-    <!-- ARROW NATURAL -->
-    <label>Kategori Arrow Natural</label>
+    <!-- KATEGORI ARROW NATURAL -->
+    <label>Arrow Natural</label>
     <select name="arrow_natural">
-      <option value="">— Tidak Pilih —</option>
+      <option value="">— Pilih —</option>
       <option>TERBUKA LELAKI</option>
       <option>TERBUKA WANITA</option>
     </select>
 
-    <!-- NEGERI / NEGARA -->
+    <!-- NEGERI -->
     <label>Negeri / Negara</label>
-    <select id="negeriSelect" name="negeri">
+    <select name="negeri" required>
       <option value="">— Pilih —</option>
       <option>JOHOR</option>
       <option>KEDAH</option>
@@ -86,86 +62,41 @@
       <option>SABAH</option>
       <option>SARAWAK</option>
       <option>KUALA LUMPUR</option>
+      <option>PUTRAJAYA</option>
       <option>LABUAN</option>
       <option>BRUNEI</option>
       <option>SINGAPURA</option>
       <option>INDONESIA</option>
       <option>THAILAND</option>
-      <option value="OTHER">LAIN-LAIN</option>
+      <option>LAIN-LAIN</option>
     </select>
 
-    <input
-      type="text"
-      id="negeriLain"
-      name="negeri_lain"
-      placeholder="Taip Negeri / Negara"
-      style="display:none;"
-    >
-
-    <!-- SAIZ BAJU -->
-    <div id="saizBajuSection">
-
-      <label>
-        Saiz Baju
-        <small>
-          (Untuk pendaftaran baju percuma sahaja,
-          rujuk “Maklumat, Peraturan & Syarat” di halaman utama)
-        </small>
-      </label>
-
-      <select id="kategoriBaju">
-        <option value="">— Pilih —</option>
-        <option value="Lelaki Dewasa">Lelaki Dewasa</option>
-        <option value="Wanita Dewasa">Wanita Dewasa</option>
-        <option value="Remaja Lelaki">Remaja Lelaki</option>
-        <option value="Remaja Perempuan">Remaja Perempuan</option>
-        <option value="Cilik Lelaki">Cilik Lelaki</option>
-        <option value="Cilik Perempuan">Cilik Perempuan</option>
-      </select>
-
-      <input
-        type="text"
-        id="saizInput"
-        placeholder="Saiz (contoh: S / M / L / XL)">
-
-      <!-- INI SAHAJA YANG MASUK KE SHEET -->
-      <input type="hidden" name="saiz_baju" id="saizBajuFinal">
-
-    </div>
+    <!-- BAJU (OPTIONAL) -->
+    <label>Saiz Baju (Optional)</label>
+    <input type="text" name="saiz_baju" placeholder="Contoh: L / XL / M">
+    <input type="text" name="ic" placeholder="Nombor IC" required>
 
     <!-- TELEFON -->
-    <label>No Telefon</label>
-    <input type="tel" name="telefon" required>
+    <input type="tel" name="telefon" placeholder="Nombor Telefon" required>
 
-    <!-- IC -->
-    <label>No IC</label>
-    <input type="text" name="ic" required>
-
-    <!-- MAKLUMAT BAYARAN -->
-    <div class="bank-info">
-      <strong>Maklumat Bayaran</strong><br>
-      Bank: <strong>Bank Rakyat</strong><br>
-      No. Akaun: <strong>1102358633</strong><br>
-      Penama:
-      <strong>Persatuan Memanah Tradisional Negeri Terengganu</strong>
-    </div>
 
     <!-- RESIT -->
-    <label>Resit (Upload)</label>
-    <input type="file" name="resit" accept="image/*,.pdf">
+    <label>Muat Naik Resit (Jika Ada)</label>
+    <input type="file" name="resit" accept="image/*,application/pdf">
 
-    <button type="submit">Hantar Pendaftaran</button>
+    <!-- SUBMIT -->
+    <button type="submit">
+      Hantar Pendaftaran
+    </button>
 
   </form>
 
   <p id="status"></p>
 
-  <a href="index.html">← Kembali</a>
+  <a href="index.html" class="back">← Kembali ke Laman Utama</a>
 
 </main>
 
 <script src="daftar.js"></script>
 </body>
 </html>
-
-
