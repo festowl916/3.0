@@ -16,18 +16,26 @@
 
     <!-- PILIHAN PENDAFTARAN BAJU -->
     <label>Jenis Pendaftaran</label>
-    <div class="baju-pilihan">
-      <label>
-        <input type="radio" name="pilihan_baju" value="dengan_baju" checked>
-        Daftar baju percuma
-      </label>
 
-      <label>
-        <input type="radio" name="pilihan_baju" value="tanpa_baju">
-        Daftar tanpa baju
-      </label>
-    </div>
+<label class="section-title">Jenis Pendaftaran</label>
 
+<div class="baju-pilihan">
+  <label class="baju-card">
+    <input type="radio" name="pilihan_baju" value="dengan_baju" checked>
+    <span>
+      <strong>Daftar baju percuma</strong><br>
+      <small>Termasuk pilihan saiz baju</small>
+    </span>
+  </label>
+
+  <label class="baju-card">
+    <input type="radio" name="pilihan_baju" value="tanpa_baju">
+    <span>
+      <strong>Daftar tanpa baju</strong><br>
+      <small>Tidak perlu isi saiz baju</small>
+    </span>
+  </label>
+</div>
     <!-- NAMA -->
     <label>Nama Penuh</label>
     <input type="text" name="nama_penuh" required>
@@ -161,3 +169,4 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
