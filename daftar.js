@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (negeriSelect.value === "OTHER") {
       negeriLain.style.display = "block";
       negeriLain.required = true;
-      negeriLain.focus();
     } else {
       negeriLain.style.display = "none";
       negeriLain.required = false;
@@ -23,18 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ===============================
      PILIHAN JENIS PENDAFTARAN
+     (HANYA 2 MOD)
   =============================== */
   const pilihanRadios = document.querySelectorAll(
     'input[name="pilihan_baju"]'
   );
-
-  const kategoriSection = document.querySelector(
-    'select[name="arrow_carbon"]'
-  ).closest("label").parentElement;
-
-  const icSection = document.querySelector(
-    'input[name="ic"]'
-  ).closest("label").parentElement;
 
   const saizBajuSection = document.getElementById("saizBajuSection");
 
@@ -55,21 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
     ).value;
 
     if (pilihan === "dengan_baju") {
-      // ✅ DAFTAR + BAJU PERCUMA
-      kategoriSection.style.display = "block";
-      icSection.style.display = "block";
-
+      // ✅ DAFTAR DENGAN BAJU
       saizBajuSection.style.display = "block";
+
       kategoriBaju.required = true;
       saizInput.required = true;
       alamatInput.required = true;
 
     } else if (pilihan === "tanpa_baju") {
       // ❌ DAFTAR TANPA BAJU
-      kategoriSection.style.display = "block";
-      icSection.style.display = "block";
-
       saizBajuSection.style.display = "none";
+
       kategoriBaju.required = false;
       saizInput.required = false;
       alamatInput.required = false;
@@ -78,21 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
       saizInput.value = "";
       saizBajuFinal.value = "";
       alamatInput.value = "";
-
-    } else if (pilihan === "beli_baju") {
-      // 🛒 BELI BAJU SAHAJA
-      kategoriSection.style.display = "none";
-      icSection.style.display = "none";
-
-      saizBajuSection.style.display = "block";
-      kategoriBaju.required = true;
-      saizInput.required = true;
-      alamatInput.required = true;
     }
   }
 
-  pilihanRadios.forEach(r =>
-    r.addEventListener("change", kawalMedan)
+  pilihanRadios.forEach(radio =>
+    radio.addEventListener("change", kawalMedan)
   );
 
   kawalMedan(); // run masa load
