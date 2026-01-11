@@ -1,35 +1,102 @@
-<input type="text" name="nama" placeholder="Nama Penuh" required>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Peserta | FEST OWL 916</title>
 
-<select name="arrow_carbon">
-  <option value="">Arrow Carbon (jika ada)</option>
-  <option>VETERAN LELAKI</option>
-  <option>LELAKI DEWASA</option>
-  <option>WANITA DEWASA</option>
-  <option>REMAJA LELAKI</option>
-  <option>REMAJA PEREMPUAN</option>
-  <option>CILIK LELAKI</option>
-  <option>CILIK PEREMPUAN</option>
-</select>
+  <!-- CSS ASING -->
+  <link rel="stylesheet" href="daftar.css">
+</head>
+<body>
 
-<select name="arrow_natural">
-  <option value="">Arrow Natural (jika ada)</option>
-  <option>TERBUKA LELAKI</option>
-  <option>TERBUKA WANITA</option>
-</select>
+<main class="wrapper">
 
-<select name="negeri" required>
-  <option value="">Pilih Negeri / Negara</option>
-  <option>TERENGGANU</option>
-  <option>SELANGOR</option>
-  <option>KELANTAN</option>
-  <option>JOHOR</option>
-  <option>SABAH</option>
-  <option>SARAWAK</option>
-  <option>BRUNEI</option>
-  <option>SINGAPURA</option>
-  <option>INDONESIA</option>
-  <option>LAIN-LAIN</option>
-</select>
+  <h2>Pendaftaran Peserta</h2>
+  <p>Bayaran tidak wajib semasa daftar.</p>
 
-<input type="text" name="telefon" placeholder="No Telefon" required>
-<input type="text" name="ic" placeholder="No IC" required>
+  <form id="daftarForm">
+
+    <!-- NAMA -->
+    <input type="text" name="nama" placeholder="Nama Penuh" required>
+
+    <!-- NO IC -->
+
+
+    <!-- KATEGORI ARROW CARBON -->
+    <label>Arrow Carbon</label>
+    <select name="arrow_carbon">
+      <option value="">— Pilih —</option>
+      <option>VETERAN LELAKI</option>
+      <option>LELAKI DEWASA</option>
+      <option>WANITA DEWASA</option>
+      <option>REMAJA LELAKI</option>
+      <option>REMAJA PEREMPUAN</option>
+      <option>CILIK LELAKI</option>
+      <option>CILIK PEREMPUAN</option>
+    </select>
+
+    <!-- KATEGORI ARROW NATURAL -->
+    <label>Arrow Natural</label>
+    <select name="arrow_natural">
+      <option value="">— Pilih —</option>
+      <option>TERBUKA LELAKI</option>
+      <option>TERBUKA WANITA</option>
+    </select>
+
+    <!-- NEGERI -->
+    <label>Negeri / Negara</label>
+    <select name="negeri" required>
+      <option value="">— Pilih —</option>
+      <option>JOHOR</option>
+      <option>KEDAH</option>
+      <option>KELANTAN</option>
+      <option>MELAKA</option>
+      <option>NEGERI SEMBILAN</option>
+      <option>PAHANG</option>
+      <option>PULAU PINANG</option>
+      <option>PERAK</option>
+      <option>PERLIS</option>
+      <option>SELANGOR</option>
+      <option>TERENGGANU</option>
+      <option>SABAH</option>
+      <option>SARAWAK</option>
+      <option>KUALA LUMPUR</option>
+      <option>PUTRAJAYA</option>
+      <option>LABUAN</option>
+      <option>BRUNEI</option>
+      <option>SINGAPURA</option>
+      <option>INDONESIA</option>
+      <option>THAILAND</option>
+      <option>LAIN-LAIN</option>
+    </select>
+
+    <!-- BAJU (OPTIONAL) -->
+    <label>Saiz Baju (Optional)</label>
+    <input type="text" name="saiz_baju" placeholder="Contoh: L / XL / M">
+    <input type="text" name="ic" placeholder="Nombor IC" required>
+
+    <!-- TELEFON -->
+    <input type="tel" name="telefon" placeholder="Nombor Telefon" required>
+
+
+    <!-- RESIT -->
+    <label>Muat Naik Resit (Jika Ada)</label>
+    <input type="file" name="resit" accept="image/*,application/pdf">
+
+    <!-- SUBMIT -->
+    <button type="submit">
+      Hantar Pendaftaran
+    </button>
+
+  </form>
+
+  <p id="status"></p>
+
+  <a href="index.html" class="back">← Kembali ke Laman Utama</a>
+
+</main>
+
+<script src="daftar.js"></script>
+</body>
+</html>
