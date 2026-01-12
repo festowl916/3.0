@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
      SUBMIT (MODE UJIAN)
   =============================== */
   form.addEventListener("submit", e => {
-    e.preventDefault();
+    
 
     /* Gabung saiz baju → 1 kolum */
     if (kategoriBaju.value && saizInput.value.trim()) {
@@ -97,3 +97,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
