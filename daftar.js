@@ -57,20 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  jenisPendaftaran.addEventListener("change", kawalMedan);
-  kawalMedan(); // jalan masa load
+  // fungsi
+function kawalMedan() {
+  ...
+}
 
+// event change
+jenisPendaftaran.addEventListener("change", kawalMedan);
+kawalMedan(); // auto jalan masa load
 
+// ❌ TIADA submit handler
+// ❌ TIADA reset
 
-    status.textContent = "✅ Pendaftaran diterima (MODE UJIAN)";
-    status.style.color = "green";
+    
 
-    form.reset();
-    negeriLain.style.display = "none";
-    kawalMedan();
-  });
-
-});
 
 
 
