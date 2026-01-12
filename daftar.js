@@ -73,9 +73,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function doGet(e) {
-  return ContentService
-    .createTextOutput("OK - Web App Aktif")
-    .setMimeType(ContentService.MimeType.TEXT);
-}
 
