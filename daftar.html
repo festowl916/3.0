@@ -155,11 +155,17 @@
       <strong>Persatuan Memanah Tradisional Negeri Terengganu</strong>
     </div>
 
-    <!-- RESIT -->
-    <label>Resit (Upload)</label>
-    <input type="file" name="resit" accept="image/*,.pdf">
-
-    <button type="submit">Hantar Pendaftaran</button>
+    <!-- RESIT (GOOGLE DRIVE LINK) -->
+<label>Bukti Pembayaran (Google Drive Link)</label>
+<input
+  type="url"
+  name="bukti_link"
+  placeholder="https://drive.google.com/file/..."
+  required
+>
+<small>
+Upload resit ke Google Drive → set “Anyone with link (Viewer)” → paste link di sini
+</small>
 
   </form>
 
@@ -176,6 +182,7 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
