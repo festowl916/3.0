@@ -24,8 +24,11 @@
   <h1>Pendaftaran Peserta</h1>
 
 <form
-  
-
+  id="daftarForm"
+  method="POST"
+  action="https://script.google.com/macros/s/AKfycbzM9_sY3hMvaO6NQxMMik2dDoadiXWK0GKaph4DEeFEuAZI8MEd79bIT34YVP0NfcFELg/exec"
+  enctype="multipart/form-data"
+>
     <!-- JENIS PENDAFTARAN -->
     <label class="section-title">Jenis Pendaftaran</label>
     <select id="jenisPendaftaran" name="jenis_pendaftaran" required>
@@ -216,6 +219,7 @@ document.getElementById("daftarForm").addEventListener("submit", e => {
   reader.readAsDataURL(file);
 });
     </script>
+
 
 
 
