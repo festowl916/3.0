@@ -1,53 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => {
+function doPost(e) {
 
-  const negeriSelect = document.getElementById("negeriSelect");
-  const negeriLain = document.getElementById("negeriLain");
+  const FOLDER_ID = "PASTE_FOLDER_ID_GOOGLE_DRIVE_KAU";
+  const SHEET_ID  = "PASTE_SPREADSHEET_ID_KAU";
+  const SHEET_NAME = "OWL916";
 
-  const saizBajuSection = document.getElementById("saizBajuSection");
-  const kategoriBaju = document.getElementById("kategoriBaju");
-  const saizInput = document.getElementById("saizInput");
-  const saizBajuFinal = document.getElementById("saizBajuFinal");
-  const alamatInput = document.getElementById("alamatPenghantaran");
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const sheet = SpreadsheetApp.openById(SHEET_ID)
+                .getSheetByName(SHEET_NAME);
 
-  /* NEGERI OTHER */
-  negeriSelect.addEventListener("change", () => {
-    if (negeriSelect.value === "OTHER") {
-      negeriLain.style.display = "block";
-      negeriLain.required = true;
-    } else {
-      negeriLain.style.display = "none";
-      negeriLain.required = false;
-      negeriLain.value = "";
-    }
-  });
+  let fileLink = "";
 
-  /* KAWAL BAJU */
-  function kawalBaju() {
-    const jenis = document.querySelector(
-      'input[name="jenis_pendaftaran"]:checked'
-    ).value;
+  // 🔹 Jika ada fail resit
+  if (e.files && e.files.resit) {
+    const blob = e.files.resit;
 
-    if (jenis === "dengan_baju") {
-      saizBajuSection.style.display = "block";
-      kategoriBaju.required = true;
-      saizInput.required = true;
-      alamatInput.required = true;
-    } else {
-      saizBajuSection.style.display = "none";
-      kategoriBaju.required = false;
-      saizInput.required = false;
-      alamatInput.required = false;
+    // simpan fail ke Drive
+    const file = folder.createFile(blob);
 
-      kategoriBaju.value = "";
-      saizInput.value = "";
-      saizBajuFinal.value = "";
-      alamatInput.value = "";
-    }
+    // set akses view (optional tapi disyorkan)
+    file.setSharing(
+      DriveApp.Access.ANYONE_WITH_LINK,
+      DriveApp.Permission.VIEW
+    );
+
+    // ambil LINK Drive
+    fileLink = file.getUrl();
   }
 
-  document
-    .querySelectorAll('input[name="jenis_pendaftaran"]')
-    .forEach(r => r.addEventListener("change", kawalBaju));
+  // 🔹 Simpan ke Sheet (LINK sahaja)
+  sheet.appendRow([
+    new Date(),
+    e.parameter.jenis_pendaftaran || "",
+    e.parameter.nama_penuh || "",
+    e.parameter.kelab || "",
+    e.parameter.arrow_carbon || "",
+    e.parameter.arrow_natural || "",
+    e.parameter.negeri || "",
+    e.parameter.saiz_baju || "",
+    e.parameter.alamat_penghantaran || "",
+    fileLink   // ✅ LINK DRIVE
+  ]);
 
-  kawalBaju();
-});
+  return ContentService
+    .createTextOutput("SUCCESS")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
