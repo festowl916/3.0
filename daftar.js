@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const form = document.getElementById("daftarForm");
-
   const negeriSelect = document.getElementById("negeriSelect");
   const negeriLain = document.getElementById("negeriLain");
 
-  const jenisPendaftaran = document.getElementById("jenisPendaftaran");
   const saizBajuSection = document.getElementById("saizBajuSection");
   const kategoriBaju = document.getElementById("kategoriBaju");
   const saizInput = document.getElementById("saizInput");
@@ -25,8 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* KAWAL BAJU */
-  function kawalMedan() {
-    const jenis = jenisPendaftaran.value;
+  function kawalBaju() {
+    const jenis = document.querySelector(
+      'input[name="jenis_pendaftaran"]:checked'
+    ).value;
 
     if (jenis === "dengan_baju") {
       saizBajuSection.style.display = "block";
@@ -46,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  jenisPendaftaran.addEventListener("change", kawalMedan);
-  kawalMedan(); // jalan masa load
+  document
+    .querySelectorAll('input[name="jenis_pendaftaran"]')
+    .forEach(r => r.addEventListener("change", kawalBaju));
 
-  // ❌ TIADA submit handler
-  // ❌ TIADA reset
+  kawalBaju();
 });
