@@ -60,33 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   jenisPendaftaran.addEventListener("change", kawalMedan);
   kawalMedan(); // jalan masa load
 
-  /* ===============================
-     SUBMIT (MODE UJIAN)
-  =============================== */
-  form.addEventListener("submit", e => {
-    
 
-    /* Gabung saiz baju → 1 kolum */
-    if (kategoriBaju.value && saizInput.value.trim()) {
-      saizBajuFinal.value =
-        kategoriBaju.value + " " + saizInput.value.trim();
-    } else {
-      saizBajuFinal.value = "";
-    }
-
-    /* Semak sekurang-kurangnya satu kategori dipilih */
-    const carbon = form.arrow_carbon.value;
-    const natural = form.arrow_natural.value;
-
-    if (!carbon && !natural) {
-      alert("Sila pilih sekurang-kurangnya satu kategori Arrow.");
-      return;
-    }
-
-    /* TEST OUTPUT */
-    const data = new FormData(form);
-    console.log("=== DATA DIHANTAR ===");
-    for (let d of data.entries()) console.log(d[0], d[1]);
 
     status.textContent = "✅ Pendaftaran diterima (MODE UJIAN)";
     status.style.color = "green";
@@ -97,4 +71,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
 
