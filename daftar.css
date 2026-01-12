@@ -246,3 +246,15 @@ select:focus {
   border-color: #2f5faa;
   outline: none;
 }
+
+.btn-submit{
+  width:100%;
+  padding:14px;
+  background:#2f5faa;
+  color:#fff;
+  font-size:16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
