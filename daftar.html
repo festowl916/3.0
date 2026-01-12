@@ -24,11 +24,7 @@
   <h1>Pendaftaran Peserta</h1>
 
 <form
-  id="daftarForm"
-  method="POST"
-  action="https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjaBa5Oa-33_rdUvzOhV7RpXZWgnx3pzZ8Wcnh3nVlC8J-9fHTcbrP6FAWWHHAtSrVpmaKgnzpdLwZn2sKE0Pj4Dch3JePOGjL_RzpIlL2HmZQlDjzuFgmGSJikjaxzIPi0O-rKp7yeSi_Nrn7UlcR6X5uC5mJow3CDqUrp3KtsGn9CJ2CYLb1CiPDDqR4liFRDBdrG2wKJJVPNu6y23aq9hHvIjmlpFm0TIcfJoPS0zulyMqzbQ6LHiSopv7lSmvo01zNMjf9thb5XrvgdBsCYczeCifaLnwZJPBpy&lib=M1wyLpl3jB-HL813WTI2xwre4O7PUWMno"
-  enctype="multipart/form-data"
->
+  
 
     <!-- JENIS PENDAFTARAN -->
     <label class="section-title">Jenis Pendaftaran</label>
@@ -185,6 +181,41 @@
 </html>
 
 
+<form id="daftarForm">
+  <input name="nama_penuh" required>
+  <input name="kelab" required>
+
+  <input type="file" id="resit" accept="image/*,.pdf" required>
+
+  <button type="submit">Hantar</button>
+</form>
+
+<script>
+document.getElementById("daftarForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const form = e.target;
+  const file = document.getElementById("resit").files[0];
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const data = {
+      nama_penuh: form.nama_penuh.value,
+      kelab: form.kelab.value
+    };
+
+    google.script.run
+      .withSuccessHandler(() => alert("Berjaya"))
+      .submitForm(data, {
+        name: file.name,
+        type: file.type,
+        data: reader.result.split(",")[1]
+      });
+  };
+
+  reader.readAsDataURL(file);
+});
+    </script>
 
 
 
