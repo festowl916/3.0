@@ -24,6 +24,22 @@
   <h1>Pendaftaran Peserta</h1>
 
 <form
+
+<form
+  method="POST"
+  action="https://script.google.com/macros/s/XXXX/exec"
+  enctype="multipart/form-data"
+>
+
+  <input name="nama_penuh" required>
+  <input name="kelab" required>
+
+  <input type="file" name="resit" accept="image/*,.pdf" required>
+
+  <button type="submit">Hantar</button>
+</form>
+  
+  
   id="daftarForm"
   method="POST"
   action="https://script.google.com/macros/s/AKfycbzM9_sY3hMvaO6NQxMMik2dDoadiXWK0GKaph4DEeFEuAZI8MEd79bIT34YVP0NfcFELg/exec"
@@ -182,5 +198,6 @@
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
