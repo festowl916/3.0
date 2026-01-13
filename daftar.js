@@ -1,41 +1,43 @@
-function doPost(e) {
+const SCRIPT_URL = "PASTE_EXEC_URL_KAU";
 
-  const SHEET_ID = "ID_SHEET_KAU";
-  const FOLDER_ID = "ID_FOLDER_KAU";
-  const SHEET_NAME = "OWL916";
+document.getElementById("daftarForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
-  const sheet = SpreadsheetApp
-    .openById(SHEET_ID)
-    .getSheetByName(SHEET_NAME);
+  const form = e.target;
+  const file = form.resit.files[0];
+  if (!file) { alert("Sila upload resit"); return; }
 
-  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const reader = new FileReader();
+  reader.onload = function () {
 
-  let fileUrl = "";
+    const data = {
+      jenis_pendaftaran: form.jenis_pendaftaran.value,
+      nama_penuh: form.nama_penuh.value,
+      kelab: form.kelab.value,
+      arrow_carbon: form.arrow_carbon.value,
+      arrow_natural: form.arrow_natural.value,
+      negeri: form.negeri.value,
+      saiz_baju: form.saiz_baju.value,
+      alamat_penghantaran: form.alamat_penghantaran.value,
+      ic: form.ic.value,
+      telefon: form.telefon.value,
+      fileName: file.name,
+      fileType: file.type,
+      fileData: reader.result.split(",")[1]
+    };
 
-  // 🔴 FILE UPLOAD DARI HTML FORM
-  if (e.files && e.files.resit) {
-    const file = folder.createFile(e.files.resit);
-    file.setSharing(
-      DriveApp.Access.ANYONE_WITH_LINK,
-      DriveApp.Permission.VIEW
-    );
-    fileUrl = file.getUrl();
-  }
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(r => r.text())
+    .then(() => {
+      alert("Pendaftaran berjaya");
+      form.reset();
+    })
+    .catch(() => alert("Gagal hantar"));
+  };
 
-  sheet.appendRow([
-    new Date(),
-    e.parameter.jenis_pendaftaran || "",
-    e.parameter.nama_penuh || "",
-    e.parameter.kelab || "",
-    e.parameter.arrow_carbon || "",
-    e.parameter.arrow_natural || "",
-    e.parameter.negeri || "",
-    e.parameter.saiz_baju || "",
-    e.parameter.alamat_penghantaran || "",
-    e.parameter.ic || "",
-    e.parameter.telefon || "",
-    fileUrl
-  ]);
-
-  return ContentService.createTextOutput("SUCCESS");
-}
+  reader.readAsDataURL(file);
+});
