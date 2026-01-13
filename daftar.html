@@ -2,17 +2,33 @@
 <html>
 <body>
 
-<form method="POST"
-      action="https://script.google.com/macros/s/AKfycbxmjLCG9X7YQpZMqC0Imo8uS04f0SfFPV-Xrzqfetk2GfUJEtd67l_hOsSFnMsrSn3RfA/exec"
-      enctype="multipart/form-data">
-
-  <input type="text" name="nama" placeholder="Nama" required><br><br>
-
-  <input type="file" name="resit" accept="image/*,.pdf" required><br><br>
-
-  <button type="submit">Hantar</button>
+<form id="f">
+  <input name="nama" placeholder="Nama" required><br><br>
+  <input type="file" id="file" accept="image/*,.pdf" required><br><br>
+  <button>Hantar</button>
 </form>
+
+<script>
+document.getElementById('f').onsubmit = e => {
+  e.preventDefault();
+
+  const file = document.getElementById('file').files[0];
+  const r = new FileReader();
+
+  r.onload = () => {
+    google.script.run.upload({
+      nama: e.target.nama.value,
+      name: file.name,
+      type: file.type,
+      file: r.result.split(',')[1]
+    });
+    alert('Berjaya');
+    e.target.reset();
+  };
+
+  r.readAsDataURL(file);
+};
+</script>
 
 </body>
 </html>
-
