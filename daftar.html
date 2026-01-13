@@ -1,50 +1,67 @@
-<form id="daftarForm">
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Festival Memanah Tradisional OWL916 3.0</title>
+</head>
+<body>
 
-  <label>Jenis Pendaftaran</label>
-  <select name="jenis_pendaftaran" required>
-    <option value="">— Pilih —</option>
-    <option value="dengan_baju">Daftar dan baju</option>
-    <option value="tanpa_baju">Daftar tanpa baju</option>
-  </select>
+<form
+  method="POST"
+  action="https://script.google.com/macros/s/AKfycby-j8h4hqiC4-r95KBGKG1tdnqZeCebSyLHU5yOKIgSdF66rmscFY0fyVtZE4rj6pOQWQ/exec"
+  enctype="multipart/form-data"
+>
 
-  <label>Nama Penuh</label>
-  <input type="text" name="nama_penuh" required>
+<label>Jenis Pendaftaran</label>
+<select name="jenis_pendaftaran" required>
+  <option value="">— Pilih —</option>
+  <option>dengan_baju</option>
+  <option>tanpa_baju</option>
+</select>
 
-  <label>Nama Kelab</label>
-  <input type="text" name="kelab" required>
+<label>Nama Penuh</label>
+<input name="nama_penuh" required>
 
-  <label>Kategori Arrow Carbon</label>
-  <select name="arrow_carbon">
-    <option value="">— Tidak Pilih —</option>
-    <option>VETERAN LELAKI</option>
-    <option>LELAKI DEWASA</option>
-  </select>
+<label>Kelab</label>
+<input name="kelab" required>
 
-  <label>Kategori Arrow Natural</label>
-  <select name="arrow_natural">
-    <option value="">— Tidak Pilih —</option>
-    <option>TERBUKA LELAKI</option>
-  </select>
+<label>Arrow Carbon</label>
+<select name="arrow_carbon">
+  <option value="">— Tidak Pilih —</option>
+  <option>LELAKI DEWASA</option>
+  <option>VETERAN LELAKI</option>
+</select>
 
-  <label>Negeri</label>
-  <input type="text" name="negeri" required>
+<label>Arrow Natural</label>
+<select name="arrow_natural">
+  <option value="">— Tidak Pilih —</option>
+  <option>TERBUKA LELAKI</option>
+</select>
 
-  <label>Saiz Baju</label>
-  <input type="text" name="saiz_baju">
+<label>Negeri</label>
+<select name="negeri" required>
+  <option value="">— Pilih —</option>
+  <option>SELANGOR</option>
+  <option>TERENGGANU</option>
+</select>
 
-  <label>Alamat Penghantaran</label>
-  <textarea name="alamat_penghantaran"></textarea>
+<label>Saiz Baju</label>
+<input name="saiz_baju">
 
-  <label>No IC</label>
-  <input type="text" name="ic" required>
+<label>Alamat Penghantaran</label>
+<textarea name="alamat_penghantaran"></textarea>
 
-  <label>No Telefon</label>
-  <input type="tel" name="telefon" required>
+<label>No IC</label>
+<input name="ic" required>
 
-  <label>Bukti Pembayaran</label>
-  <input type="file" name="resit" accept="image/*,.pdf" required>
+<label>No Telefon</label>
+<input name="telefon" required>
 
-  <button type="submit">Hantar</button>
+<label>Resit (PDF / Gambar)</label>
+<input type="file" name="resit" accept="image/*,.pdf" required>
+
+<button type="submit">Hantar</button>
 </form>
 
-<script src="daftar.js"></script>
+</body>
+</html>
