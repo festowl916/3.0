@@ -1,32 +1,54 @@
-function doPost(e) {
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbwoI_tI-WCNWLL9ACUfDgb5mI4jiFyZLF5Hj8v_aIWzoOHmqkErWVqdhA7dviZE7MoT4g/exec";
 
-  const SHEET_ID = "ID_SHEET_KAU";
-  const FOLDER_ID = "ID_FOLDER_KAU";
-  const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName("OWL916");
-  const folder = DriveApp.getFolderById(FOLDER_ID);
+document.getElementById("daftarForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  let fileLink = "";
+  const form = e.target;
+  const fileInput = form.querySelector('input[name="resit"]');
+  const file = fileInput.files[0];
 
-  if (e.files && e.files.resit) {
-    const file = folder.createFile(e.files.resit);
-    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-    fileLink = file.getUrl();
+  if (!file) {
+    alert("Sila upload resit");
+    return;
   }
 
-  sheet.appendRow([
-    new Date(),
-    e.parameter.jenis_pendaftaran || "",
-    e.parameter.nama_penuh || "",
-    e.parameter.kelab || "",
-    e.parameter.arrow_carbon || "",
-    e.parameter.arrow_natural || "",
-    e.parameter.negeri || "",
-    e.parameter.saiz_baju || "",
-    e.parameter.alamat_penghantaran || "",
-    e.parameter.ic || "",
-    e.parameter.telefon || "",
-    fileLink
-  ]);
+  const reader = new FileReader();
 
-  return ContentService.createTextOutput("SUCCESS");
-}
+  reader.onload = function () {
+    const payload = {
+      jenis_pendaftaran: form.jenis_pendaftaran.value,
+      nama_penuh: form.nama_penuh.value,
+      kelab: form.kelab.value,
+      arrow_carbon: form.arrow_carbon.value,
+      arrow_natural: form.arrow_natural.value,
+      negeri: form.negeri.value,
+      saiz_baju: form.saiz_baju.value,
+      alamat_penghantaran: form.alamat_penghantaran.value,
+      ic: form.ic.value,
+      telefon: form.telefon.value,
+
+      // FILE
+      fileName: file.name,
+      fileType: file.type,
+      fileData: reader.result.split(",")[1] // base64
+    };
+
+    fetch(scriptURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then((res) => res.text())
+      .then(() => {
+        alert("Pendaftaran berjaya");
+        form.reset();
+      })
+      .catch((err) => {
+        alert("Gagal hantar borang");
+        console.error(err);
+      });
+  };
+
+  reader.readAsDataURL(file);
+});
