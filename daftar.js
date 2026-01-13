@@ -1,5 +1,5 @@
 const scriptURL =
-  "https://script.google.com/macros/s/AKfycbwoI_tI-WCNWLL9ACUfDgb5mI4jiFyZLF5Hj8v_aIWzoOHmqkErWVqdhA7dviZE7MoT4g/exec";
+  "https://script.google.com/macros/s/AKfycbxlXXWkwGdPFeIKCpvDa_CkvtXB0wZfOQnSeUxOncHx48A83J1v2WAIm_sBCZrPSs7YAQ/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -52,3 +52,4 @@ document.getElementById("daftarForm").addEventListener("submit", function (e) {
 
   reader.readAsDataURL(file);
 });
+
