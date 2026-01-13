@@ -1,4 +1,4 @@
-const SCRIPT_URL = "PASTE_EXEC_URL_KAU";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmU1BgQ7h1w_-Hfu417Gjtb-FgwWqmpGJjPLZSwBLrXonQyM0gSK24hn8OngyDHHXDJQ/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -41,3 +41,4 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
 
   reader.readAsDataURL(file);
 });
+
