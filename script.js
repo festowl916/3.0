@@ -122,4 +122,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+function openBaju() {
+  document.getElementById("bajuModal").style.display = "flex";
+}
+
+function closeBaju() {
+  document.getElementById("bajuModal").style.display = "none";
+}
 
