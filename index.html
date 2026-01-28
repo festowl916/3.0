@@ -110,10 +110,10 @@
         <span>Group WhatsApp Peserta</span>
       </a>
 
-      <a href="https://chat.whatsapp.com/XXXXXXXXXXXX" class="card">
-        <img src="baju.png" alt="Baju Festival">
-        <span>Baju Festival</span>
-      </a>
+      <div class="card" onclick="openBaju()">
+  <img src="baju.png" alt="Carta Saiz Baju Festival">
+  <span>Baju Festival</span>
+</div>
 
       <a href="https://maps.app.goo.gl/8DtMF13yND7QZL639"
          class="card" target="_blank" rel="noopener">
@@ -156,19 +156,30 @@
         </div>
       </div>
 
-    </nav>
+</nav>
 
-      <footer>
-    <p>Do not share personal information</p>
-    © 2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
-    © 2026 festOWL 916 3.0
-  </footer>
+<footer>
+  <p>Do not share personal information</p>
+  © 2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
+  © 2026 festOWL 916 3.0
+</footer>
+
+<!-- ===== MODAL BAJU (LETAK SINI) ===== -->
+<div id="bajuModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeBaju()">&times;</span>
+    <h3>Saiz Baju Festival</h3>
+    <img src="baju.png" alt="Carta Saiz Baju Festival" class="baju-img">
+  </div>
+</div>
+<!-- ===== TAMAT MODAL ===== -->
 
 <script src="script.js"></script>
 </body>
 </html>
 
   
+
 
 
 
