@@ -109,10 +109,13 @@
         <img src="whatsapp.png" alt="WhatsApp">
         <span>Group WhatsApp Peserta</span>
       </a>
-
-      <div class="card" onclick="openBaju()">
-  <img src="baju.png" alt="Carta Saiz Baju Festival">
-  <span>Baju Festival</span>
+<!-- ===== MODAL BAJU ===== -->
+<div id="bajuModal" class="modal" onclick="closeBaju(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="close" onclick="closeBaju()">&times;</span>
+    <h3>Saiz Baju Festival</h3>
+    <img src="baju.png" alt="Carta Saiz Baju Festival" class="baju-img">
+  </div>
 </div>
 
       <a href="https://maps.app.goo.gl/8DtMF13yND7QZL639"
@@ -179,6 +182,7 @@
 </html>
 
   
+
 
 
 
