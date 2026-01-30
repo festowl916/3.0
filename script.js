@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       statusDot.classList.add("belum");
       statusText.innerHTML = `
-        Belum dibuka
+
         <small>Buka: 1 Mac 2026 | Tutup: 20 Jun 2026</small>
       `;
 
@@ -128,5 +128,6 @@ function openBaju() {
 function closeBaju(event) {
   document.getElementById("bajuModal").style.display = "none";
 }
+
 
 
