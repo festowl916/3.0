@@ -379,3 +379,24 @@ img {
 }
 
 
+/* DESKTOP MODE */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 900px;   /* asal mungkin 400-500 */
+    padding: 30px;
+  }
+
+  .card {
+    font-size: 18px;
+  }
+
+  .card img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .countdown {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
