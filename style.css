@@ -75,9 +75,9 @@ header {
 }
 
 .partner-logo {
-  height: 70px;      /* saiz macam syarat */
-  width: auto;      /* biar ikut bentuk logo */
-  max-width: 100%;
+  height: 50px;      /* lebih kecil */
+  width: auto;
+  max-width: 70px;   /* had maksimum */
   object-fit: contain;
   display: block;
 }
@@ -420,6 +420,7 @@ img {
     height: 110px;
   }
 }
+
 
 
 
