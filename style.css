@@ -379,7 +379,17 @@ img {
 }
 
 
-@media (min-width: 600px) {
+/* TABLET */
+@media (min-width: 768px) {
+  .wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
   .wrapper {
     max-width: 900px;
     margin: 0 auto;
@@ -399,10 +409,8 @@ img {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
-}
-@media (min-width: 1024px) {
+
   body {
     background-attachment: fixed;
   }
 }
-
