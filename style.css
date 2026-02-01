@@ -67,10 +67,10 @@ header {
 
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
-  max-width: 320px;
-  margin: 0 auto 4px;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto 10px;
   align-items: center;
   justify-items: center;
 }
@@ -414,3 +414,4 @@ img {
     background-attachment: fixed;
   }
 }
+
