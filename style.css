@@ -64,22 +64,19 @@ header {
   padding: 2px 0 6px;
 }
 
-.header-logos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  max-width: 420px;
-  margin: 0 auto 20px auto;
+.logo-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin-top:0px;
 }
 
-.header-logos img {
-  height: 50px;
-  width: auto;
-  max-width: 70px;
-  object-fit: contain;
-  display: block;
+.logo-row img{
+  max-height:90px;
+  width:auto;
+  object-fit:contain;
 }
 /* =====================
    TITLE
@@ -405,6 +402,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
