@@ -313,7 +313,7 @@ footer {
    MOBILE
 ===================== */
 @media (max-width: 480px) {
-  .partner-logo { height: 72px; }
+   
   h1 { font-size: 26px; }
   .countdown span { font-size: 22px; }
 
@@ -421,6 +421,7 @@ img {
     height: 110px;
   }
 }
+
 
 
 
