@@ -24,8 +24,8 @@ html, body {
 ===================== */
 body {
   background:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg.png") center / cover no-repeat fixed;
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+    url("festival-bg.png") 60% center / cover no-repeat fixed;
   color: #fff;
 }
 
@@ -415,6 +415,7 @@ img {
     height: 110px;
   }
 }
+
 
 
 
