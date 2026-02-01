@@ -67,7 +67,7 @@ header {
 
 .logo-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* mobile: 3 atas 3 bawah */
   gap: 12px;
   max-width: 420px;
   margin: 0 auto 10px;
@@ -421,5 +421,6 @@ img {
     height: 110px;
   }
 }
+
 
 
