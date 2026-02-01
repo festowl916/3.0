@@ -63,18 +63,18 @@ header {
 .logo-area {
   padding: 2px 0 6px;
 }
-
-.logo-row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+.header-logos{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+  max-width:360px;
+  margin:20px auto;
+  justify-items:center;
   align-items:center;
-  gap:16px;
-  margin-top:0px;
 }
 
-.logo-row img{
-  max-height:90px;
+.header-logos img{
+  max-height:70px;
   width:auto;
   object-fit:contain;
 }
@@ -402,6 +402,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
