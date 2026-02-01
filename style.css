@@ -45,8 +45,8 @@ header {
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: 0 auto 60px;
-  padding: 20px;
+  margin: 20px auto 60px;
+  padding: 24px 28px;
   text-align: center;
 
   background: rgba(80,130,200,0.22);
@@ -415,6 +415,7 @@ img {
     height: 110px;
   }
 }
+
 
 
 
