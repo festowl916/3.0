@@ -292,6 +292,7 @@ h1 {
 footer {
   font-size: 12px;
   margin-top: 20px;
+  color: #fff;
 }
 .payment-deadline{
   margin-top:14px;
@@ -402,6 +403,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
