@@ -61,6 +61,9 @@ header {
    LOGO PENAJA
 ===================== */
 .logo-area {
+  padding: 2px 0 6px;
+}
+
 .header-logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -402,6 +405,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
