@@ -400,3 +400,8 @@ img {
     gap: 20px;
   }
 }
+@media (min-width: 1024px) {
+  body {
+    background-attachment: fixed;
+  }
+}
