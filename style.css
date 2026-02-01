@@ -44,11 +44,9 @@ header {
 ===================== */
 .wrapper {
   max-width: 480px;
-  margin: 20px auto 60px;
-  padding: 24px 20px;   /* jangan besar sangat kiri kanan */
+  margin: 0 auto 60px;
+  padding: 20px;
   text-align: center;
-  box-sizing: border-box;
-  text-align: center;}
 
   background: rgba(80,130,200,0.22);
   backdrop-filter: blur(2px);
@@ -422,6 +420,7 @@ img {
     height: 110px;
   }
 }
+
 
 
 
