@@ -62,21 +62,26 @@ header {
 /* =====================
    LOGO PENAJA
 ===================== */
+/* LOGO HEADER (3 atas 3 bawah, betul-betul center) */
 .header-logos{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:18px 20px;
-  justify-items:center;
-  align-items:center;
-  margin-bottom:26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 20px;
+  justify-items: center;
+  align-items: center;
+
+  max-width: 480px;      /* sama lebar dengan wrapper */
+  margin: 0 auto 26px;  /* auto = center kiri kanan */
+  padding: 0 12px;      /* sikit ruang tepi */
 }
 
 .header-logos img{
-  display:block;
-  max-height:90px;
-  width:auto;
-  object-fit:contain;
+  display: block;
+  max-height: 90px;
+  width: auto;
+  object-fit: contain;
 }
+
 
 /* =====================
    TITLE
@@ -416,6 +421,7 @@ img {
     height: 110px;
   }
 }
+
 
 
 
