@@ -77,7 +77,8 @@ header {
 
 .partner-logo {
   width: 100%;
-  height: 180px;
+  max-width: 90px;
+  height: 90px;
   object-fit: contain;
   display: block;
 }
@@ -412,6 +413,12 @@ img {
 
   body {
     background-attachment: fixed;
+  }
+}
+@media (min-width: 1024px) {
+  .partner-logo {
+    max-width: 110px;
+    height: 110px;
   }
 }
 
