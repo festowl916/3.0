@@ -414,12 +414,7 @@ img {
     background-attachment: fixed;
   }
 }
-@media (min-width: 1024px) {
-  .partner-logo {
-    max-width: 110px;
-    height: 110px;
-  }
-}
+
 
 
 
