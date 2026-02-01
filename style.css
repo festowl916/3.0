@@ -379,10 +379,10 @@ img {
 }
 
 
-/* DESKTOP MODE */
 @media (min-width: 1024px) {
-  .container {
-    max-width: 900px;   /* asal mungkin 400-500 */
+  .wrapper {
+    max-width: 900px;
+    margin: 0 auto;
     padding: 30px;
   }
 
