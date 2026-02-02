@@ -403,6 +403,13 @@ footer {
   }
 }
 
+/* FORCE TEKS URUSETIA PUTIH */
+.urusetia-title,
+.urusetia-title strong,
+.urusetia-group,
+.urusetia-group * {
+  color: #fff !important;
+}
 
 
 
