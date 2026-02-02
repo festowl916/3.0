@@ -83,7 +83,7 @@ header {
 h1 {
   font-family: 'Alfa Slab One', cursive;
   color: var(--emas);
-  margin: 10px 0 14px;
+  margin: 12px 0 16px;
   text-shadow: 0 3px 8px rgba(0,0,0,0.5);
 }
 
@@ -402,6 +402,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
