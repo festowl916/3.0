@@ -97,6 +97,17 @@ h1 {
     0 6px 10px rgba(0,0,0,0.9); /* bayang jatuh */
 }
 
+.festival-title {
+  font-size: 22px;   /* cuba 22–26 */
+  font-weight: 900;
+  color: #f5c542;
+  text-shadow:
+    0 1px 0 #ffe8a3,
+    0 2px 0 #f3c94b,
+    0 3px 0 #d4a017,
+    0 4px 0 #b88900,
+    0 6px 10px rgba(0,0,0,0.9);
+}
 /* =====================
    EVENT INFO
 ===================== */
@@ -441,6 +452,7 @@ footer {
 .wrapper {
   margin: 0 auto 6px;
 }
+
 
 
 
