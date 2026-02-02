@@ -27,13 +27,6 @@ body {
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
     url("festival-bg.webp") center / cover no-repeat fixed;
 }
-
-@media (min-width: 768px) {
-  body {
-    background:
-      linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-      url("festival-bg.webp") center / cover no-repeat fixed;
-  }
 /* =====================
    HEADER
 ===================== */
@@ -409,6 +402,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
