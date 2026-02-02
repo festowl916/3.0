@@ -244,6 +244,11 @@ h1 {
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
+.status-text,
+.status-text small {
+  color: #fff;
+}
+
 
 .urusetia-header {
   display: flex;
@@ -423,6 +428,7 @@ footer {
 .event-info strong {
   font-weight: 800;
 }
+
 
 
 
