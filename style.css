@@ -318,9 +318,10 @@ footer {
 
 .event-details {
   margin-top: 6px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
-  color: #333;
+  color: #fff;   /* PUTIH */
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8); /* bagi jelas atas bg gelap */
 }
 
 /* ===== MODAL BAJU ===== */
@@ -401,6 +402,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
