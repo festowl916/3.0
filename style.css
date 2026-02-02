@@ -26,6 +26,7 @@ body {
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
     url("festival-bg.webp") center / cover no-repeat;
+  min-height: 100vh;
 }
 
 /* =====================
@@ -403,6 +404,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
