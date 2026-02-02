@@ -25,14 +25,14 @@ html, body {
 body {
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-    url("festival-bg-mobile.webp") center / cover no-repeat fixed;
+    url("festival-bg.webp") center / cover no-repeat fixed;
 }
 
 @media (min-width: 768px) {
   body {
     background:
       linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-      url("festival-bg-desktop.webp") center / cover no-repeat fixed;
+      url("festival-bg.webp") center / cover no-repeat fixed;
   }
 }
 
@@ -411,6 +411,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
