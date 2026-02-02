@@ -241,6 +241,11 @@ h1 {
   padding: 16px 18px;
   border-bottom: 1px solid rgba(255,255,255,0.25);
 }
+.urusetia-header,
+.urusetia-title {
+  color: #fff;
+}
+
 
 .urusetia-header img {
   width: 36px;
@@ -403,13 +408,8 @@ footer {
   }
 }
 
-/* FORCE TEKS URUSETIA PUTIH */
-.urusetia-title,
-.urusetia-title strong,
-.urusetia-group,
-.urusetia-group * {
-  color: #fff !important;
-}
+
+
 
 
 
