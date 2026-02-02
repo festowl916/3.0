@@ -25,7 +25,7 @@ html, body {
 body {
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url("festival-bg.png") center / cover no-repeat fixed;
+    url("festival-bg.webp") center / cover no-repeat;
 }
 
 /* =====================
@@ -403,6 +403,7 @@ footer {
     background-attachment: fixed;
   }
 }
+
 
 
 
