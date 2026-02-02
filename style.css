@@ -88,12 +88,13 @@ h1 {
 }
 
 .festival-title {
-  color: #ffe066;
+  color: #f5c542; /* emas utama */
   text-shadow:
-    0 1px 0 #ffeb99,
-    0 2px 0 #ffd43b,
-    0 3px 0 #f5c000,
-    0 4px 6px rgba(0,0,0,0.9);
+    0 1px 0 #ffe8a3,   /* highlight atas */
+    0 2px 0 #f3c94b,
+    0 3px 0 #d4a017,
+    0 4px 0 #b88900,
+    0 6px 10px rgba(0,0,0,0.9); /* bayang jatuh */
 }
 
 /* =====================
@@ -261,7 +262,14 @@ h1 {
 .urusetia-title {
   color: #fff;
 }
-
+.event-details strong {
+  color: #e6e6e6;
+  text-shadow:
+    0 1px 0 #ffffff,
+    0 2px 0 #bfbfbf,
+    0 3px 0 #8c8c8c,
+    0 4px 8px rgba(0,0,0,0.9);
+}
 
 .urusetia-header img {
   width: 36px;
@@ -433,6 +441,7 @@ footer {
 .wrapper {
   margin: 0 auto 6px;
 }
+
 
 
 
