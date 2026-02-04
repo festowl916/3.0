@@ -1,4 +1,3 @@
-<script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz27PbzQzPc_JEm3RnhR1dGzUYPuNsLLRiFapQHxis0Scon3uPqMSVVFR_8gAcpSSzU/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
@@ -6,23 +5,12 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
 
   const form = e.target;
   const file = form.resit.files[0];
-  if (!file) { alert("Sila upload resit"); return; }
+  if (!file) return alert("Upload resit dulu");
 
   const reader = new FileReader();
   reader.onload = function () {
-
     const data = {
-      jenis_pendaftaran: form.jenis_pendaftaran.value,
       nama_penuh: form.nama_penuh.value,
-      kelab: form.kelab.value,
-      kategori: Array.from(
-        document.querySelectorAll("input[name='kategori[]']:checked")
-      ).map(i=>i.value).join(", "),
-      negeri: form.negeri.value,
-      saiz_baju: form.saiz_baju.value,
-      alamat_penghantaran: form.alamat_penghantaran.value,
-      ic: form.ic.value,
-      telefon: form.telefon.value,
       fileName: file.name,
       fileType: file.type,
       fileData: reader.result.split(",")[1]
@@ -33,14 +21,8 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     })
-    .then(r => r.text())
-    .then(() => {
-      alert("Pendaftaran berjaya");
-      form.reset();
-    })
-    .catch(() => alert("Gagal hantar"));
+    .then(()=>alert("Berjaya"))
+    .catch(()=>alert("Gagal"));
   };
-
   reader.readAsDataURL(file);
 });
-</script>
