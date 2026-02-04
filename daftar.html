@@ -1,128 +1,46 @@
-.<!DOCTYPE html>
-<html lang="ms">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Festival Memanah Tradisional OWL916 3.0</title>
-<link rel="stylesheet" href="daftar.css">
-</head>
-<body>
-
-<main class="form-wrapper">
-
-<div class="logo-bar">
-  <img src="logo1.png" alt="Logo 1">
-  <img src="logo2.png" alt="Logo 2">
-  <img src="logo3.png" alt="Logo 3">
-  <img src="logo4.png" alt="Logo 4">
-  <img src="logo5.png" alt="Logo 5">
-  <img src="logo6.png" alt="Logo 6">
-</div>
-
-<h2 class="festival-title">Festival Memanah Tradisional OWL916 3.0</h2>
-<h1>Pendaftaran Peserta</h1>
-
-<form method="POST"
- action="https://script.google.com/macros/s/AKfycbylIVnnlzn77pKJxLnt7aPUQKNKiEHN1UA5xe0XHXQyztnh3p1h-UbbLrWb2NxzB-Em/exec">
-
-<label>Jenis Pendaftaran</label>
-<select name="jenis_pendaftaran" id="jenis" required>
-  <option value="">— Pilih —</option>
-  <option value="dengan_baju">Daftar dan baju</option>
-  <option value="tanpa_baju">Daftar tanpa baju</option>
-</select>
-
-<label>Nama Penuh</label>
-<input name="nama_penuh" required>
-
-<label>Nama Kelab</label>
-<input name="kelab" required>
-
-<label>Kategori Dipilih</label>
-<label><input type="checkbox" name="kategori[]" value="CARBON"> Arrow Carbon</label>
-<label><input type="checkbox" name="kategori[]" value="NATURAL"> Arrow Natural</label>
-
-<label>Negeri / Negara</label>
-<select name="negeri" required>
-  <option value="">— Pilih —</option>
-  <option>JOHOR</option>
-  <option>KEDAH</option>
-  <option>KELANTAN</option>
-  <option>MELAKA</option>
-  <option>NEGERI SEMBILAN</option>
-  <option>PAHANG</option>
-  <option>PULAU PINANG</option>
-  <option>PERAK</option>
-  <option>PERLIS</option>
-  <option>SELANGOR</option>
-  <option>TERENGGANU</option>
-  <option>SABAH</option>
-  <option>SARAWAK</option>
-  <option>KUALA LUMPUR</option>
-  <option>LABUAN</option>
-  <option>BRUNEI</option>
-  <option>SINGAPURA</option>
-  <option>INDONESIA</option>
-  <option>THAILAND</option>
-</select>
-
-<label>Saiz Baju</label>
-<input name="saiz_baju" id="saiz" placeholder="S / M / L / XL">
-
-<label>Alamat Penghantaran</label>
-<textarea name="alamat_penghantaran" id="alamat" rows="3"></textarea>
-
-<label>No IC (12 digit)</label>
-<input name="ic" inputmode="numeric" pattern="[0-9]{12}" required>
-
-<label>No Telefon</label>
-<input name="telefon" inputmode="numeric" pattern="[0-9]{9,11}" required>
-
-<div class="bank-info">
-<strong>Maklumat Bayaran</strong><br>
-Bank Rakyat<br>
-1102358633<br>
-Persatuan Memanah Tradisional Negeri Terengganu
-</div>
-
-<label>Link Resit (Google Drive)</label>
-<input type="url" name="resit_link" required
- placeholder="https://drive.google.com/...">
-
-<button type="submit" class="btn-submit">
-Hantar Pendaftaran
-</button>
-
-</form>
-
-<a href="index.html">← Kembali laman utama</a>
-</main>
-
-<footer>
-<p>Maklumat peribadi peserta adalah sulit &amp; tidak dikongsi</p>
-© 2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
-© 2026 festOWL 916 3.0
-</footer>
-
 <script>
-document.querySelector("form").addEventListener("submit", e => {
-  const jenis = document.getElementById("jenis").value;
-  const saiz = document.getElementById("saiz").value;
-  const alamat = document.getElementById("alamat").value;
-  const kategori = document.querySelectorAll("input[name='kategori[]']:checked");
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylIVnnlzn77pKJxLnt7aPUQKNKiEHN1UA5xe0XHXQyztnh3p1h-UbbLrWb2NxzB-Em/exec";
 
-  if (kategori.length === 0) {
-    alert("Sila pilih sekurang-kurangnya satu kategori");
-    e.preventDefault();
-  }
+document.getElementById("daftarForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
-  if (jenis === "dengan_baju" && (saiz === "" || alamat === "")) {
-    alert("Sila isi saiz baju dan alamat penghantaran");
-    e.preventDefault();
-  }
+  const form = e.target;
+  const file = form.resit.files[0];
+  if (!file) { alert("Sila upload resit"); return; }
+
+  const reader = new FileReader();
+  reader.onload = function () {
+
+    const data = {
+      jenis_pendaftaran: form.jenis_pendaftaran.value,
+      nama_penuh: form.nama_penuh.value,
+      kelab: form.kelab.value,
+      kategori: Array.from(
+        document.querySelectorAll("input[name='kategori[]']:checked")
+      ).map(i=>i.value).join(", "),
+      negeri: form.negeri.value,
+      saiz_baju: form.saiz_baju.value,
+      alamat_penghantaran: form.alamat_penghantaran.value,
+      ic: form.ic.value,
+      telefon: form.telefon.value,
+      fileName: file.name,
+      fileType: file.type,
+      fileData: reader.result.split(",")[1]
+    };
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(r => r.text())
+    .then(() => {
+      alert("Pendaftaran berjaya");
+      form.reset();
+    })
+    .catch(() => alert("Gagal hantar"));
+  };
+
+  reader.readAsDataURL(file);
 });
 </script>
-
-</body>
-</html>
-
