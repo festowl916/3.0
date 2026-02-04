@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<h2>Test Upload Paling Bodoh</h2>
+
 <form id="daftarForm">
   <input type="text" name="nama_penuh" placeholder="Nama" required>
   <br><br>
@@ -26,6 +28,7 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
 
   const reader = new FileReader();
   reader.onload = function () {
+
     const data = {
       nama_penuh: form.nama_penuh.value,
       fileName: file.name,
@@ -38,8 +41,9 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     })
-    .then(()=>alert("Berjaya"))
-    .catch(()=>alert("Gagal"));
+    .then(r => r.text())
+    .then(t => alert("Response: " + t))
+    .catch(err => alert("GAGAL FETCH"));
   };
 
   reader.readAsDataURL(file);
@@ -48,4 +52,3 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
 
 </body>
 </html>
-
