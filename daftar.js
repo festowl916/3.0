@@ -1,4 +1,4 @@
-const SCRIPT_URL = "PASTE_WEB_APP_URL_KAU";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxPe3dONuSm9IWmjbIatP64zkBwXXRmvN4HGQupz0n5OEf_Gpv6Y8v60ERvGdy5Ko8Asg/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -28,3 +28,4 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
 
   reader.readAsDataURL(file);
 });
+
