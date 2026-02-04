@@ -1,11 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Upload</title>
+</head>
+<body>
+
 <form id="daftarForm">
-  <input type="text" name="nama_penuh">
-  <input type="file" name="resit">
-  <button>Hantar</button>
+  <input type="text" name="nama_penuh" placeholder="Nama" required>
+  <br><br>
+  <input type="file" name="resit" required>
+  <br><br>
+  <button type="submit">Hantar</button>
 </form>
 
 <script>
-const SCRIPT_URL = "URL_EXEC_KAU";
+const SCRIPT_URL = "PASTE_URL_EXEC_KAU_DI_SINI";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -35,3 +45,6 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
   reader.readAsDataURL(file);
 });
 </script>
+
+</body>
+</html>
