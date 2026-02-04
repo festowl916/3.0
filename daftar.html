@@ -1,7 +1,37 @@
 <form id="daftarForm">
-  <input type="text" name="nama_penuh" placeholder="Nama">
-  <input type="file" name="resit" required>
-  <button type="submit">Hantar</button>
+  <input type="text" name="nama_penuh">
+  <input type="file" name="resit">
+  <button>Hantar</button>
 </form>
 
-<script src="daftar.js"></script>
+<script>
+const SCRIPT_URL = "URL_EXEC_KAU";
+
+document.getElementById("daftarForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const file = form.resit.files[0];
+  if (!file) return alert("Pilih fail");
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const data = {
+      nama_penuh: form.nama_penuh.value,
+      fileName: file.name,
+      fileType: file.type,
+      fileData: reader.result.split(",")[1]
+    };
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(()=>alert("Berjaya"))
+    .catch(()=>alert("Gagal"));
+  };
+
+  reader.readAsDataURL(file);
+});
+</script>
