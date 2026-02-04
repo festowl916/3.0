@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxPe3dONuSm9IWmjbIatP64zkBwXXRmvN4HGQupz0n5OEf_Gpv6Y8v60ERvGdy5Ko8Asg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxecOLS5O-gr3l4fo9TJ6-5a2iOBs6UwuWtzBVOUswtWeZ6b3H_777hQudIpsu45q5TiA/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -28,4 +28,5 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
 
   reader.readAsDataURL(file);
 });
+
 
