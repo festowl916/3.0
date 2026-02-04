@@ -1,4 +1,5 @@
-const SCRIPT_URL = "PASTE_URL_DEPLOY_BARU_KAU_DI_SINI";
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz27PbzQzPc_JEm3RnhR1dGzUYPuNsLLRiFapQHxis0Scon3uPqMSVVFR_8gAcpSSzU/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -37,11 +38,9 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
       alert("Pendaftaran berjaya");
       form.reset();
     })
-    .catch(err => {
-      console.error(err);
-      alert("Gagal hantar");
-    });
+    .catch(() => alert("Gagal hantar"));
   };
 
   reader.readAsDataURL(file);
 });
+</script>
