@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("daftarForm");
   if (!form) return;
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwgUTTlXo37xUvYnLYMDtdt6nrwh7lFq2T3Wx-CId9ZEZsBnQ29qszcqXFjpb4T_UAH/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6dDf5cmVAMNrJL1xdGslzvYCtI4y1LK_e6Y2s8AABb3nxHeNvIcz0LlVwPokKY-lx/exec";
 
   form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -30,4 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 });
+
 
