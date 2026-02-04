@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("daftarForm");
   if (!form) return;
 
-  const SCRIPT_URL = "URL_DEPLOY_APPS_SCRIPT_KAU";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwgUTTlXo37xUvYnLYMDtdt6nrwh7lFq2T3Wx-CId9ZEZsBnQ29qszcqXFjpb4T_UAH/exec";
 
   form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -30,3 +30,4 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 });
+
