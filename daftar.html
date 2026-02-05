@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<title>Test Upload</title>
+</head>
+<body>
+
+<h2>Test Upload Resit</h2>
+
+<form id="daftarForm">
+  <input type="text" name="nama_penuh" placeholder="Nama" required><br><br>
+  <input type="file" name="resit" required><br><br>
+  <button type="submit">Hantar</button>
+</form>
+
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
 
@@ -29,3 +45,6 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
   reader.readAsDataURL(file);
 });
 </script>
+
+</body>
+</html>
