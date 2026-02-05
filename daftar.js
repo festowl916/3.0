@@ -1,4 +1,4 @@
-const SCRIPT_URL = "const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypzO3x19nFJsybSCSYWUVhXzT9ec2RKwtxdPzNk6k_Z6eF-YSR4T4iPuSFWxvoZorK/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypzO3x19nFJsybSCSYWUVhXzT9ec2RKwtxdPzNk6k_Z6eF-YSR4T4iPuSFWxvoZorK/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -22,11 +22,10 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     })
-    .then(()=>alert("Berjaya upload"))
-    .catch(()=>alert("Gagal"));
+    .then(res => res.text())
+    .then(txt => alert("Response: " + txt))
+    .catch(err => alert("Error: " + err));
   };
 
   reader.readAsDataURL(file);
 });
-
-
