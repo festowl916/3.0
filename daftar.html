@@ -2,37 +2,252 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<title>Test Upload Resit</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendaftaran OWL 916</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f4f4;
+  padding:20px;
+}
+
+form{
+  max-width:500px;
+  margin:auto;
+  background:white;
+  padding:20px;
+  border-radius:8px;
+}
+
+label{
+  font-weight:bold;
+}
+
+input, select, textarea, button{
+  width:100%;
+  padding:10px;
+  margin-top:5px;
+  margin-bottom:15px;
+  box-sizing:border-box;
+}
+
+button{
+  background:#b68b2c;
+  color:white;
+  border:none;
+  font-size:16px;
+}
+</style>
 </head>
 <body>
 
-<h2>Test Upload Resit</h2>
+<form id="daftarForm">
 
-<form id="uploadForm">
-  <input type="text" name="nama_penuh" placeholder="Nama" required><br><br>
-  <input type="file" name="resit" required><br><br>
-  <button type="submit">Hantar</button>
+<h2>Maklumat Peserta</h2>
+
+<label>Nama Penuh *</label>
+<input type="text" name="nama_penuh" required>
+
+<label>Nama Kelab *</label>
+<input type="text" name="nama_kelab" required>
+
+<label>Kategori Arrow Karbon</label>
+<select name="kategori_karbon">
+  <option value="">Tiada</option>
+  <option>VETERAN</option>
+  <option>DEWASA LELAKI</option>
+  <option>DEWASA WANITA</option>
+  <option>REMAJA LELAKI</option>
+  <option>REMAJA PEREMPUAN</option>
+  <option>CILIK LELAKI</option>
+  <option>CILIK PEREMPUAN</option>
+</select>
+
+<label>Kategori Arrow Natural</label>
+<select name="kategori_natural">
+  <option value="">Tiada</option>
+  <option>TERBUKA LELAKI</option>
+  <option>TERBUKA WANITA</option>
+</select>
+
+<label>Negara/Negeri *</label>
+<select name="negeri" id="negeri" required>
+  <option value="">Pilih Negeri</option>
+  <option>JOHOR</option>
+  <option>KEDAH</option>
+  <option>KELANTAN</option>
+  <option>MELAKA</option>
+  <option>NEGERI SEMBILAN</option>
+  <option>PAHANG</option>
+  <option>PULAU PINANG</option>
+  <option>PERAK</option>
+  <option>PERLIS</option>
+  <option>SELANGOR</option>
+  <option>TERENGGANU</option>
+  <option>SABAH</option>
+  <option>SARAWAK</option>
+  <option>KUALA LUMPUR</option>
+  <option>LABUAN</option>
+  <option>BRUNEI</option>
+  <option>SINGAPURA</option>
+  <option>INDONESIA</option>
+  <option>THAILAND</option>
+  <option>PUTRAJAYA</option>
+  <option value="lain">Lain-lain</option>
+</select>
+
+<input
+  type="text"
+  name="negeri_lain"
+  id="inputNegeriLain"
+  placeholder="Tulis negeri / negara lain"
+  style="display:none;">
+
+<label>Nombor IC *</label>
+<input type="text" name="ic" pattern="[0-9]{12}" required>
+
+<label>Nombor Telefon *</label>
+<input type="tel" name="telefon" pattern="[0-9]{9,11}" required>
+
+<hr>
+
+<h2>Jenis Pendaftaran</h2>
+<select name="jenis" id="jenis">
+  <option value="sahaja">Pendaftaran sahaja</option>
+  <option value="baju">Pendaftaran + baju</option>
+</select>
+
+<div id="sectionBaju">
+  <h3>Maklumat Baju</h3>
+
+  <label>Saiz Baju</label>
+
+  <p><strong>Lelaki</strong></p>
+  <label><input type="radio" name="saiz_baju" value="Lelaki S"> S</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki M"> M</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki L"> L</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki XL"> XL</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki XXL"> XXL</label>
+
+  <p><strong>Muslimah</strong></p>
+  <label><input type="radio" name="saiz_baju" value="Muslimah S"> S</label>
+  <label><input type="radio" name="saiz_baju" value="Muslimah M"> M</label>
+  <label><input type="radio" name="saiz_baju" value="Muslimah L"> L</label>
+  <label><input type="radio" name="saiz_baju" value="Muslimah XL"> XL</label>
+  <label><input type="radio" name="saiz_baju" value="Muslimah XXL"> XXL</label>
+
+  <p><strong>Kanak-kanak</strong></p>
+  <label><input type="radio" name="saiz_baju" value="Kanak 22"> 22</label>
+  <label><input type="radio" name="saiz_baju" value="Kanak 24"> 24</label>
+  <label><input type="radio" name="saiz_baju" value="Kanak 28"> 28</label>
+  <label><input type="radio" name="saiz_baju" value="Kanak 30"> 30</label>
+
+  <br>
+
+  <label>
+    <input type="radio" name="saiz_baju" value="lain">
+    Lain-lain
+  </label>
+
+  <input
+    type="text"
+    name="saiz_baju_lain"
+    id="inputSaizLain"
+    placeholder="Contoh: 3XL, 4XL"
+    style="display:none;">
+
+  <br><br>
+
+  <label>Catatan Tempahan</label>
+  <textarea name="catatan_baju"></textarea>
+
+  <label>Alamat Penghantaran</label>
+  <textarea name="alamat"></textarea>
+</div>
+
+<hr>
+
+<label>Upload Resit *</label>
+<input type="file" name="resit" accept="image/*,application/pdf" required>
+
+<button type="submit">Hantar Pendaftaran</button>
+
 </form>
 
 <script>
+/* AUTO HIDE BAJU */
+const jenis = document.getElementById("jenis");
+const sectionBaju = document.getElementById("sectionBaju");
+
+function toggleBaju(){
+  sectionBaju.style.display =
+    jenis.value === "baju" ? "block" : "none";
+}
+jenis.addEventListener("change", toggleBaju);
+toggleBaju();
+
+/* NEGERI LAIN-LAIN */
+const negeriSelect = document.getElementById("negeri");
+const inputNegeriLain = document.getElementById("inputNegeriLain");
+
+negeriSelect.addEventListener("change", function () {
+  if (this.value === "lain") {
+    inputNegeriLain.style.display = "block";
+  } else {
+    inputNegeriLain.style.display = "none";
+  }
+});
+
+/* SAIZ LAIN-LAIN */
+const radios = document.querySelectorAll("input[name='saiz_baju']");
+const inputSaizLain = document.getElementById("inputSaizLain");
+
+radios.forEach(radio => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "lain" && radio.checked) {
+      inputSaizLain.style.display = "block";
+    } else if (radio.checked) {
+      inputSaizLain.style.display = "none";
+    }
+  });
+});
+
+/* HANTAR DATA KE GOOGLE SCRIPT */
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
 
-document.getElementById("uploadForm").addEventListener("submit", function(e){
+document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
 
   const form = e.target;
   const file = form.resit.files[0];
-  if (!file) {
-    alert("Pilih fail dulu");
-    return;
-  }
+  if (!file) return alert("Sila upload resit");
 
   const reader = new FileReader();
   reader.onload = async function () {
 
+    const saiz =
+      form.saiz_baju.value === "lain"
+        ? form.saiz_baju_lain.value
+        : form.saiz_baju.value;
+
+    const negeri =
+      form.negeri.value === "lain"
+        ? form.negeri_lain.value
+        : form.negeri.value;
+
     const data = {
       nama_penuh: form.nama_penuh.value,
+      nama_kelab: form.nama_kelab.value,
+      kategori_karbon: form.kategori_karbon.value,
+      kategori_natural: form.kategori_natural.value,
+      negeri: negeri,
+      ic: form.ic.value,
+      telefon: form.telefon.value,
+      jenis: form.jenis.value,
+      saiz_baju: saiz,
+      catatan_baju: form.catatan_baju.value,
+      alamat: form.alamat.value,
       fileName: file.name,
       fileType: file.type,
       fileData: reader.result.split(",")[1]
@@ -46,6 +261,8 @@ document.getElementById("uploadForm").addEventListener("submit", function(e){
 
       const text = await res.text();
       alert(text);
+      form.reset();
+      toggleBaju();
 
     } catch(err) {
       alert("Gagal hantar");
