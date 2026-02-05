@@ -1,22 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<title>Test Daftar</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Upload Resit</title>
 </head>
 <body>
 
 <h2>Test Upload Resit</h2>
 
 <form id="daftarForm">
-  <input type="text" name="nama_penuh" placeholder="Nama penuh" required><br><br>
+  <input type="text" name="nama_penuh" placeholder="Nama" required><br><br>
   <input type="file" name="resit" required><br><br>
   <button type="submit">Hantar</button>
 </form>
 
-<script src="daftar.js"></script>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypzO3x19nFJsybSCSYWUVhXzT9ec2RKwtxdPzNk6k_Z6eF-YSR4T4iPuSFWxvoZorK/exec";
+
+document.getElementById("daftarForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const form = e.target;
+  const file = form.resit.files[0];
+  if (!file) return alert("Pilih fail dulu");
+
+  const reader = new FileReader();
+  reader.onload = function () {
+
+    const data = {
+      nama_penuh: form.nama_penuh.value,
+      fileName: file.name,
+      fileType: file.type,
+      fileData: reader.result.split(",")[1]
+    };
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(()=>alert("Berjaya upload"))
+    .catch(()=>alert("Gagal"));
+  };
+
+  reader.readAsDataURL(file);
+});
+</script>
 
 </body>
 </html>
