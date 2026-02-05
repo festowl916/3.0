@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html lang="ms">
-<head>
-<meta charset="UTF-8">
-<title>Test Upload Resit</title>
-</head>
+<html>
 <body>
 
-<h2>Test Upload Resit</h2>
+<h2>Test Upload</h2>
 
 <form id="daftarForm">
   <input type="text" name="nama_penuh" placeholder="Nama" required><br><br>
@@ -15,7 +11,7 @@
 </form>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbypzO3x19nFJsybSCSYWUVhXzT9ec2RKwtxdPzNk6k_Z6eF-YSR4T4iPuSFWxvoZorK/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
 
 document.getElementById("daftarForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -39,8 +35,9 @@ document.getElementById("daftarForm").addEventListener("submit", function(e){
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     })
-    .then(()=>alert("Berjaya upload"))
-    .catch(()=>alert("Gagal"));
+    .then(res => res.text())
+    .then(txt => alert(txt))
+    .catch(() => alert("Gagal"));
   };
 
   reader.readAsDataURL(file);
