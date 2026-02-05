@@ -23,7 +23,7 @@ document.querySelector("form").addEventListener("submit", async function(e) {
     };
 
     try {
-      const response = await fetch("PASTE_URL_SCRIPT_KAU", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec", {
         method: "POST",
         body: JSON.stringify(data)
       });
@@ -39,3 +39,4 @@ document.querySelector("form").addEventListener("submit", async function(e) {
   reader.readAsDataURL(file);
 });
 </script>
+
