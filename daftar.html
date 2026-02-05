@@ -1,50 +1,41 @@
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-<meta charset="UTF-8">
-<title>Test Upload</title>
-</head>
-<body>
-
-<h2>Test Upload Resit</h2>
-
-<form id="daftarForm">
-  <input type="text" name="nama_penuh" placeholder="Nama" required><br><br>
-  <input type="file" name="resit" required><br><br>
-  <button type="submit">Hantar</button>
-</form>
-
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
-
-document.getElementById("daftarForm").addEventListener("submit", function(e){
+document.querySelector("form").addEventListener("submit", async function(e) {
   e.preventDefault();
 
-  const form = e.target;
-  const file = form.resit.files[0];
-  if (!file) return alert("Pilih fail dulu");
+  const nama = document.querySelector("input[name='nama_penuh']").value;
+  const fileInput = document.querySelector("input[type='file']");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Sila pilih fail.");
+    return;
+  }
 
   const reader = new FileReader();
-  reader.onload = function () {
+  reader.onload = async function() {
+    const base64 = reader.result.split(",")[1];
 
-    const formData = new FormData();
-    formData.append("nama_penuh", form.nama_penuh.value);
-    formData.append("fileName", file.name);
-    formData.append("fileType", file.type);
-    formData.append("fileData", reader.result.split(",")[1]);
+    const data = {
+      nama_penuh: nama,
+      fileData: base64,
+      fileType: file.type,
+      fileName: file.name
+    };
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      body: formData
-    })
-    .then(res => res.text())
-    .then(txt => alert(txt))
-    .catch(() => alert("Gagal"));
+    try {
+      const response = await fetch("PASTE_URL_SCRIPT_KAU", {
+        method: "POST",
+        body: JSON.stringify(data)
+      });
+
+      const text = await response.text();
+      alert(text);
+
+    } catch (err) {
+      alert("Gagal hantar: " + err);
+    }
   };
 
   reader.readAsDataURL(file);
 });
 </script>
-
-</body>
-</html>
