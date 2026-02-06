@@ -31,16 +31,17 @@ const inputNegeriLain = document.getElementById("inputNegeriLain");
 if (negeriSelect && inputNegeriLain) {
 
   function toggleNegeri(){
-    inputNegeriLain.style.display =
-      negeriSelect.value === "lain" ? "block" : "none";
+    if (negeriSelect.value === "lain") {
+      inputNegeriLain.style.display = "block";
+    } else {
+      inputNegeriLain.style.display = "none";
+      inputNegeriLain.value = "";
+    }
   }
 
   negeriSelect.addEventListener("change", toggleNegeri);
-
-  // penting: check masa page load
   toggleNegeri();
 }
-
 /* =========================
    SAIZ LAIN-LAIN
 ========================= */
@@ -227,6 +228,7 @@ if (jenisValue === "baju") {
   }
 
 });
+
 
 
 
