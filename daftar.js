@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("daftarForm");
   if (!form) return;
 
-  const SCRIPT_URL = "PASTE_URL_WEB_APP_KAU_DI_SINI";
+  const SCRIPT_URL = "PASTE_URL_WEB_APP_KAU";
 
   const jenis = document.getElementById("jenis");
   const sectionBaju = document.getElementById("sectionBaju");
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sectionBaju.style.display =
       jenis.value === "baju" ? "block" : "none";
   }
+
   if (jenis) {
     jenis.addEventListener("change", toggleBaju);
     toggleBaju();
@@ -39,35 +40,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const umur = kiraUmur(ic);
     const karbon = (form.kategori_karbon.value || "").toUpperCase();
 
-    // ≤12 → CILIK sahaja
-    if (umur <= 12) {
-      if (!karbon.includes("CILIK")) {
-        alert("Umur 12 tahun ke bawah hanya kategori CILIK.");
-        return false;
-      }
+    if (umur <= 12 && !karbon.includes("CILIK")) {
+      alert("Umur 12 tahun ke bawah hanya kategori CILIK.");
+      return false;
     }
 
-    // 13–17 → REMAJA sahaja
-    else if (umur >= 13 && umur <= 17) {
-      if (!karbon.includes("REMAJA")) {
-        alert("Umur 13–17 hanya kategori REMAJA.");
-        return false;
-      }
+    if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
+      alert("Umur 13–17 hanya kategori REMAJA.");
+      return false;
     }
 
-    // ≥18 → tak boleh CILIK/REMAJA
-    else if (umur >= 18) {
-      if (karbon.includes("CILIK") || karbon.includes("REMAJA")) {
-        alert("Umur 18 tahun ke atas tidak boleh kategori CILIK/REMAJA.");
-        return false;
-      }
+    if (umur >= 18 &&
+        (karbon.includes("CILIK") || karbon.includes("REMAJA"))) {
+      alert("Umur 18 tahun ke atas tidak boleh kategori CILIK/REMAJA.");
+      return false;
     }
 
     return true;
   }
 
   /* =========================
-     SUBMIT
+     SUBMIT FORM
   ========================= */
   form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -82,15 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function hantarData(fileData="", fileName="", fileType="") {
 
-      const saiz =
-        form.saiz_baju && form.saiz_baju.value === "lain"
-          ? form.saiz_baju_lain.value
-          : (form.saiz_baju ? form.saiz_baju.value : "");
+      // ambil negeri
+      let negeri = form.negeri.value;
+      if (negeri === "lain" && form.negeri_lain) {
+        negeri = form.negeri_lain.value;
+      }
 
-      const negeri =
-        form.negeri.value === "lain"
-          ? form.negeri_lain.value
-          : form.negeri.value;
+      // ambil saiz baju
+      let saiz = "";
+      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+
+      if (saizRadio) {
+        if (saizRadio.value === "lain" && form.saiz_baju_lain) {
+          saiz = form.saiz_baju_lain.value;
+        } else {
+          saiz = saizRadio.value;
+        }
+      }
 
       const data = {
         nama_penuh: form.nama_penuh.value,
@@ -107,7 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
         catatan_baju: form.catatan_baju
           ? form.catatan_baju.value
           : "",
-        alamat: form.alamat ? form.alamat.value : "",
+        alamat: form.alamat
+          ? form.alamat.value
+          : "",
         fileName,
         fileType,
         fileData
@@ -119,14 +122,18 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then(res => res.text())
       .then(text => {
+
+        // Papar mesej dari Google Script
         form.innerHTML = `
           <div style="text-align:center;padding:30px">
             <h2>${text}</h2>
+            <p>Data telah diterima oleh pihak penganjur.</p>
             <button onclick="location.reload()">
               Daftar peserta lain
             </button>
           </div>
         `;
+
       })
       .catch(()=>{
         alert("Gagal hantar");
@@ -135,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Jika ada resit
+    // jika ada resit
     if (file) {
       if (file.size > 10 * 1024 * 1024) {
         alert("Saiz fail melebihi 10MB");
@@ -155,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
       reader.readAsDataURL(file);
 
     } else {
-      // Tanpa resit
       hantarData();
     }
 
