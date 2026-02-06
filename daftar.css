@@ -33,12 +33,6 @@ body {
   flex-wrap:nowrap;
   overflow-x:auto;
 }
-
-.logo-bar img{
-  height:28px;
-  width:auto;
-  object-fit:contain;
-}
 /* TAJUK FESTIVAL */
 .festival-title{
   text-align:center;
@@ -306,6 +300,7 @@ input[type="radio"]{
 .note p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
