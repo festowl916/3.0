@@ -8,10 +8,9 @@
 <style>
 body{
   font-family: Arial, sans-serif;
-  background:#f4f4f4;
+  background:#e8f1fb;
   padding:20px;
 }
-
 form{
   max-width:500px;
   margin:auto;
@@ -19,24 +18,17 @@ form{
   padding:20px;
   border-radius:8px;
 }
-
-label{
-  font-weight:bold;
-}
-
+label{ font-weight:bold; }
 input, select, textarea, button{
   width:100%;
   padding:10px;
   margin-top:5px;
   margin-bottom:15px;
-  box-sizing:border-box;
 }
-
 button{
-  background:#b68b2c;
+  background:#2b6cb0;
   color:white;
   border:none;
-  font-size:16px;
 }
 </style>
 </head>
@@ -53,8 +45,8 @@ button{
 <input type="text" name="nama_kelab" required>
 
 <label>Kategori Arrow Karbon</label>
-<select name="kategori_karbon">
-  <option value="">Tiada</option>
+<select name="kategori_karbon" required>
+  <option value="">Pilih</option>
   <option>VETERAN</option>
   <option>DEWASA LELAKI</option>
   <option>DEWASA WANITA</option>
@@ -64,120 +56,41 @@ button{
   <option>CILIK PEREMPUAN</option>
 </select>
 
-<label>Kategori Arrow Natural</label>
-<select name="kategori_natural">
-  <option value="">Tiada</option>
-  <option>TERBUKA LELAKI</option>
-  <option>TERBUKA WANITA</option>
-</select>
-
-<label>Negara/Negeri *</label>
-<select name="negeri" id="negeri" required>
-  <option value="">Pilih Negeri</option>
-  <option>JOHOR</option>
-  <option>KEDAH</option>
-  <option>KELANTAN</option>
-  <option>MELAKA</option>
-  <option>NEGERI SEMBILAN</option>
-  <option>PAHANG</option>
-  <option>PULAU PINANG</option>
-  <option>PERAK</option>
-  <option>PERLIS</option>
+<label>Negeri *</label>
+<select name="negeri" required>
+  <option value="">Pilih</option>
   <option>SELANGOR</option>
   <option>TERENGGANU</option>
-  <option>SABAH</option>
-  <option>SARAWAK</option>
-  <option>KUALA LUMPUR</option>
-  <option>LABUAN</option>
-  <option>BRUNEI</option>
-  <option>SINGAPURA</option>
-  <option>INDONESIA</option>
-  <option>THAILAND</option>
-  <option>PUTRAJAYA</option>
-  <option value="lain">Lain-lain</option>
+  <option>KEDAH</option>
 </select>
 
-<input
-  type="text"
-  name="negeri_lain"
-  id="inputNegeriLain"
-  placeholder="Tulis negeri / negara lain"
-  style="display:none;">
+<label>No IC *</label>
+<input type="text" name="ic" required>
 
-<label>Nombor IC *</label>
-<input type="text" name="ic" pattern="[0-9]{12}" required>
-
-<label>Nombor Telefon *</label>
-<input type="tel" name="telefon" pattern="[0-9]{9,11}" required>
+<label>No Telefon *</label>
+<input type="tel" name="telefon" required>
 
 <hr>
 
-<h2>Jenis Pendaftaran (Hanya untuk Pendaftaran Percuma Baju</h2>
+<h2>Jenis Pendaftaran</h2>
 <select name="jenis" id="jenis">
   <option value="sahaja">Pendaftaran sahaja</option>
   <option value="baju">Pendaftaran + baju</option>
 </select>
 
 <div id="sectionBaju">
-  <h3>Maklumat Baju</h3>
-
   <label>Saiz Baju</label>
-
-  <p><strong>Lelaki</strong></p>
-  <label><input type="radio" name="saiz_baju" value="Lelaki S"> S</label>
-  <label><input type="radio" name="saiz_baju" value="Lelaki M"> M</label>
-  <label><input type="radio" name="saiz_baju" value="Lelaki L"> L</label>
-  <label><input type="radio" name="saiz_baju" value="Lelaki XL"> XL</label>
-  <label><input type="radio" name="saiz_baju" value="Lelaki XXL"> XXL</label>
-
-  <p><strong>Muslimah</strong></p>
-  <label><input type="radio" name="saiz_baju" value="Muslimah S"> S</label>
-  <label><input type="radio" name="saiz_baju" value="Muslimah M"> M</label>
-  <label><input type="radio" name="saiz_baju" value="Muslimah L"> L</label>
-  <label><input type="radio" name="saiz_baju" value="Muslimah XL"> XL</label>
-  <label><input type="radio" name="saiz_baju" value="Muslimah XXL"> XXL</label>
-
-  <p><strong>Kanak-kanak</strong></p>
-  <label><input type="radio" name="saiz_baju" value="Kanak 22"> 22</label>
-  <label><input type="radio" name="saiz_baju" value="Kanak 24"> 24</label>
-  <label><input type="radio" name="saiz_baju" value="Kanak 28"> 28</label>
-  <label><input type="radio" name="saiz_baju" value="Kanak 30"> 30</label>
-
-  <br>
-
-  <label>
-    <input type="radio" name="saiz_baju" value="lain">
-    Lain-lain
-  </label>
-
-  <input
-    type="text"
-    name="saiz_baju_lain"
-    id="inputSaizLain"
-    placeholder="Contoh: 3XL, 4XL"
-    style="display:none;">
-
-  <br><br>
-
-  <label>Catatan Tempahan</label>
-  <textarea name="catatan_baju"></textarea>
-
-  <label>Alamat Penghantaran</label>
-  <textarea name="alamat"></textarea>
+  <input type="radio" name="saiz_baju" value="L"> L
+  <input type="radio" name="saiz_baju" value="XL"> XL
 </div>
 
-<hr>
+<label>Upload Resit (optional)</label>
+<input type="file" name="resit">
 
-<label>Upload Resit (pilihan)</label>
-<input type="file" name="resit" accept="image/*,application/pdf">
-
-<button type="submit">Hantar Pendaftaran</button>
+<button type="submit">Hantar</button>
 
 </form>
 
 <script src="daftar.js"></script>
 </body>
 </html>
-
-
-
