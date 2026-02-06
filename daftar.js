@@ -9,9 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const sectionBaju = document.getElementById("sectionBaju");
 
   function toggleBaju(){
-    if (!sectionBaju) return;
-    sectionBaju.style.display =
-      jenis.value === "baju" ? "block" : "none";
+  if (!sectionBaju) return;
+
+  if (jenis.value === "baju") {
+    sectionBaju.style.display = "block";
+  } else {
+    sectionBaju.style.display = "none";
   }
 
   if (jenis) {
@@ -217,4 +220,5 @@ if (jenisValue === "baju") {
   }
 
 });
+
 
