@@ -40,7 +40,7 @@ body {
   height:36px;
   width:auto;
   object-fit:contain;
-  max-height:42px;
+  max-height:36px;
 }
 /* =========================
    TAJUK
@@ -317,6 +317,7 @@ input[type="radio"]{
 .note p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
