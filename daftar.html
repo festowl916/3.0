@@ -145,19 +145,57 @@ button{
   <div id="sectionBaju">
     <h3>Maklumat Baju</h3>
 
-    <div class="radio-group">
-      <label><input type="radio" name="saiz_baju" value="L"> Lelaki L</label>
-      <label><input type="radio" name="saiz_baju" value="XL"> Lelaki XL</label>
-      <label><input type="radio" name="saiz_baju" value="XXL"> Lelaki XXL</label>
-      <label><input type="radio" name="saiz_baju" value="lain"> Lain-lain</label>
-    </div>
+    <div id="sectionBaju">
+  <h3>Maklumat Baju</h3>
 
-    <input
-      type="text"
-      name="saiz_baju_lain"
-      id="inputSaizLain"
-      placeholder="Contoh: 3XL"
-      style="display:none;">
+  <label>Saiz Baju *</label>
+
+  <p><strong>Lelaki</strong></p>
+  <label><input type="radio" name="saiz_baju" value="Lelaki XS"> XS</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki S"> S</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki M"> M</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki L"> L</label>
+  <label><input type="radio" name="saiz_baju" value="Lelaki XL"> XL</label>
+
+  <p><strong>Wanita</strong></p>
+  <label><input type="radio" name="saiz_baju" value="Wanita XS"> XS</label>
+  <label><input type="radio" name="saiz_baju" value="Wanita S"> S</label>
+  <label><input type="radio" name="saiz_baju" value="Wanita M"> M</label>
+  <label><input type="radio" name="saiz_baju" value="Wanita L"> L</label>
+  <label><input type="radio" name="saiz_baju" value="Wanita XL"> XL</label>
+
+  <p><strong>Cilik</strong></p>
+  <label><input type="radio" name="saiz_baju" value="Cilik 22"> 22</label>
+  <label><input type="radio" name="saiz_baju" value="Cilik 24"> 24</label>
+  <label><input type="radio" name="saiz_baju" value="Cilik 28"> 28</label>
+  <label><input type="radio" name="saiz_baju" value="Cilik 30"> 30</label>
+  <label><input type="radio" name="saiz_baju" value="Cilik 32"> 32</label>
+
+  <br>
+
+  <label>
+    <input type="radio" name="saiz_baju" value="lain" id="saizLain">
+    Lain-lain
+  </label>
+
+  <input
+    type="text"
+    name="saiz_baju_lain"
+    id="inputSaizLain"
+    placeholder="Contoh: Lelaki 3XL, Wanita 4XL, Cilik 32"
+    style="display:none; margin-top:10px;">
+
+  <small>
+    Lain-lain sila nyatakan saiz.<br>
+    Contoh:<br>
+    Lelaki: 2XL – 7XL<br>
+    Wanita: 2XL – 7XL<br>
+    Cilik: 30 / 32
+  </small>
+
+  <label>Alamat Penghantaran</label>
+  <textarea name="alamat"></textarea>
+</div>
 
     <label>Alamat Penghantaran</label>
     <textarea name="alamat"></textarea>
@@ -178,3 +216,4 @@ button{
 <script src="daftar.js"></script>
 </body>
 </html>
+
