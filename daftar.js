@@ -8,57 +8,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const jenis = document.getElementById("jenis");
   const sectionBaju = document.getElementById("sectionBaju");
 
+  /* =========================
+     TOGGLE SECTION BAJU
+  ========================= */
   function toggleBaju(){
-  if (!sectionBaju || !jenis) return;
-
-  if (jenis.value === "baju") {
-    sectionBaju.style.display = "block";
-  } else {
-    sectionBaju.style.display = "none";
+    if (!sectionBaju || !jenis) return;
+    sectionBaju.style.display =
+      jenis.value === "baju" ? "block" : "none";
   }
-}
 
   if (jenis) {
     jenis.addEventListener("change", toggleBaju);
     toggleBaju();
   }
-/* =========================
-   NEGERI LAIN-LAIN
-========================= */
-const negeriSelect = document.getElementById("negeri");
-const inputNegeriLain = document.getElementById("inputNegeriLain");
 
-if (negeriSelect && inputNegeriLain) {
+  /* =========================
+     NEGERI LAIN-LAIN
+  ========================= */
+  const negeriSelect = document.getElementById("negeri");
+  const inputNegeriLain = document.getElementById("inputNegeriLain");
 
-  function toggleNegeri(){
-    if (negeriSelect.value === "lain") {
-      inputNegeriLain.style.display = "block";
-    } else {
-      inputNegeriLain.style.display = "none";
-      inputNegeriLain.value = "";
+  if (negeriSelect && inputNegeriLain) {
+
+    function toggleNegeri(){
+      if (negeriSelect.value === "lain") {
+        inputNegeriLain.style.display = "block";
+      } else {
+        inputNegeriLain.style.display = "none";
+        inputNegeriLain.value = "";
+      }
     }
+
+    negeriSelect.addEventListener("change", toggleNegeri);
+    toggleNegeri();
   }
 
-  negeriSelect.addEventListener("change", toggleNegeri);
-  toggleNegeri();
-}
-/* =========================
-   SAIZ LAIN-LAIN
-========================= */
-const radios = document.querySelectorAll("input[name='saiz_baju']");
-const inputSaizLain = document.getElementById("inputSaizLain");
+  /* =========================
+     SAIZ LAIN-LAIN
+  ========================= */
+  const radios = document.querySelectorAll("input[name='saiz_baju']");
+  const inputSaizLain = document.getElementById("inputSaizLain");
 
-if (radios && inputSaizLain) {
-  radios.forEach(radio => {
-    radio.addEventListener("change", () => {
-      inputSaizLain.style.display =
-        (radio.value === "lain" && radio.checked)
-        ? "block"
-        : "none";
+  if (radios.length && inputSaizLain) {
+    radios.forEach(radio => {
+      radio.addEventListener("change", () => {
+        inputSaizLain.style.display =
+          (radio.value === "lain" && radio.checked)
+          ? "block"
+          : "none";
+      });
     });
-  });
-}
-
+  }
 
   /* =========================
      KIRA UMUR DARI IC
@@ -100,138 +100,128 @@ if (radios && inputSaizLain) {
     return true;
   }
 
+  /* =========================
+     SUBMIT FORM
+  ========================= */
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
 
-/* =========================
-   SUBMIT FORM
-========================= */
-form.addEventListener("submit", function(e){
-  e.preventDefault();
+    if (!semakKategoriUmur()) return;
 
-  if (!semakKategoriUmur()) return;
+    const button = form.querySelector("button");
 
-  const button = form.querySelector("button");
+    // VALIDASI BAJU (hanya bila pilih baju)
+    if (form.jenis.value === "baju") {
 
-  // =========================
-  // VALIDASI BAJU
-  // =========================
-const jenisValue = form.jenis.value;
+      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
 
-if (jenisValue === "baju") {
+      if (!saizRadio) {
+        alert("Sila pilih saiz baju.");
+        return;
+      }
 
-  const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+      if (
+        saizRadio.value === "lain" &&
+        (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
+      ) {
+        alert("Sila nyatakan saiz baju lain-lain.");
+        return;
+      }
 
-  if (!saizRadio) {
-    alert("Sila pilih saiz baju.");
-    return;
-  }
-
-  if (
-    saizRadio.value === "lain" &&
-    (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
-  ) {
-    alert("Sila nyatakan saiz baju lain-lain.");
-    return;
-  }
-
-  if (!form.alamat || !form.alamat.value.trim()) {
-    alert("Sila isi alamat penghantaran.");
-    return;
-  }
-}
-
-  const file = form.resit.files[0];
-
-  button.disabled = true;
-  button.textContent = "Menghantar...";
-
-  function hantarData(fileData="", fileName="", fileType="") {
-
-    let negeri = form.negeri.value;
-    if (negeri === "lain" && form.negeri_lain) {
-      negeri = form.negeri_lain.value;
-    }
-
-    let saiz = "";
-    const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
-
-    if (saizRadio) {
-      if (saizRadio.value === "lain") {
-        saiz = form.saiz_baju_lain.value;
-      } else {
-        saiz = saizRadio.value;
+      if (!form.alamat || !form.alamat.value.trim()) {
+        alert("Sila isi alamat penghantaran.");
+        return;
       }
     }
 
-    const data = {
-      nama_penuh: form.nama_penuh.value,
-      nama_kelab: form.nama_kelab.value,
-      kategori_karbon: form.kategori_karbon.value,
-      kategori_natural: form.kategori_natural.value,
-      negeri: negeri,
-      ic: form.ic.value,
-      telefon: form.telefon.value,
-      jenis: form.jenis.value,
-      saiz_baju: saiz,
-      catatan_baju: form.catatan_baju
-        ? form.catatan_baju.value
-        : "",
-      alamat: form.alamat
-        ? form.alamat.value
-        : "",
-      fileName,
-      fileType,
-      fileData
-    };
+    const file = form.resit.files[0];
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(data)
-    })
-    .then(res => res.text())
-    .then(text => {
-      form.innerHTML = `
-        <div style="text-align:center;padding:30px">
-          <h2>${text}</h2>
-          <p>Data telah diterima oleh pihak penganjur.</p>
-          <button onclick="location.reload()">
-            Daftar peserta lain
-          </button>
-        </div>
-      `;
-    })
-    .catch(()=>{
-      alert("Gagal hantar");
-      button.disabled = false;
-      button.textContent = "Hantar Pendaftaran";
-    });
-  }
+    button.disabled = true;
+    button.textContent = "Menghantar...";
 
-  if (file) {
-    if (file.size > 10 * 1024 * 1024) {
-      alert("Saiz fail melebihi 10MB");
-      button.disabled = false;
-      button.textContent = "Hantar Pendaftaran";
-      return;
+    function hantarData(fileData="", fileName="", fileType="") {
+
+      let negeri = form.negeri.value;
+      if (negeri === "lain" && form.negeri_lain) {
+        negeri = form.negeri_lain.value;
+      }
+
+      let saiz = "";
+      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+
+      if (saizRadio) {
+        if (saizRadio.value === "lain") {
+          saiz = form.saiz_baju_lain.value;
+        } else {
+          saiz = saizRadio.value;
+        }
+      }
+
+      const data = {
+        nama_penuh: form.nama_penuh.value,
+        nama_kelab: form.nama_kelab.value,
+        kategori_karbon: form.kategori_karbon.value,
+        kategori_natural: form.kategori_natural.value,
+        negeri: negeri,
+        ic: form.ic.value,
+        telefon: form.telefon.value,
+        jenis: form.jenis.value,
+        saiz_baju: saiz,
+        catatan_baju: form.catatan_baju
+          ? form.catatan_baju.value
+          : "",
+        alamat: form.alamat
+          ? form.alamat.value
+          : "",
+        fileName,
+        fileType,
+        fileData
+      };
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.text())
+      .then(text => {
+        form.innerHTML = `
+          <div style="text-align:center;padding:30px">
+            <h2>${text}</h2>
+            <p>Data telah diterima oleh pihak penganjur.</p>
+            <button onclick="location.reload()">
+              Daftar peserta lain
+            </button>
+          </div>
+        `;
+      })
+      .catch(()=>{
+        alert("Gagal hantar");
+        button.disabled = false;
+        button.textContent = "Hantar Pendaftaran";
+      });
     }
 
-    const reader = new FileReader();
-    reader.onload = function () {
-      hantarData(
-        reader.result.split(",")[1],
-        file.name,
-        file.type
-      );
-    };
-    reader.readAsDataURL(file);
-  } else {
-    hantarData();
-  }
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        alert("Saiz fail melebihi 10MB");
+        button.disabled = false;
+        button.textContent = "Hantar Pendaftaran";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        hantarData(
+          reader.result.split(",")[1],
+          file.name,
+          file.type
+        );
+      };
+      reader.readAsDataURL(file);
+    } else {
+      hantarData();
+    }
+
+  });
 
 });
-
-
-
-
-
-
-
