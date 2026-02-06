@@ -33,30 +33,17 @@ body {
   align-items:center;
   gap:8px;
   margin-bottom:12px;
-  flex-wrap:wrap;
-}
-
-.logo-bar img{
-  height:36px;
-  width:auto;
-  object-fit:contain;
-  max-height:36px;
+  flex-wrap:nowrap;   /* paksa satu baris */
+  overflow-x:auto;    /* boleh scroll kalau sempit */
 }
 /* =========================
    TAJUK
 ========================= */
-h2 {
-  text-align: center;
-  font-size: 19px;
-  font-weight: 600;
-  margin: 6px 0 4px;
-}
-
-h1 {
-  text-align: center;
-  font-size: 17px;
-  font-weight: 600;
-  margin: 4px 0 14px;
+.festival-title{
+  text-align:center;
+  font-size:22px;
+  font-weight:600;
+  margin:10px 0 16px;
 }
 
 /* =========================
@@ -318,12 +305,7 @@ input[type="radio"]{
   margin-bottom: 0;
 }
 
-.festival-title{
-  text-align:center;
-  font-size:22px;   /* saiz baru, lebih kemas */
-  font-weight:600;
-  margin:10px 0 16px;
-}
+
 
 
 
