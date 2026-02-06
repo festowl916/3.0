@@ -18,6 +18,35 @@ document.addEventListener("DOMContentLoaded", () => {
     jenis.addEventListener("change", toggleBaju);
     toggleBaju();
   }
+/* =========================
+   NEGERI LAIN-LAIN
+========================= */
+const negeriSelect = document.getElementById("negeri");
+const inputNegeriLain = document.getElementById("inputNegeriLain");
+
+if (negeriSelect && inputNegeriLain) {
+  negeriSelect.addEventListener("change", function () {
+    inputNegeriLain.style.display =
+      this.value === "lain" ? "block" : "none";
+  });
+}
+
+/* =========================
+   SAIZ LAIN-LAIN
+========================= */
+const radios = document.querySelectorAll("input[name='saiz_baju']");
+const inputSaizLain = document.getElementById("inputSaizLain");
+
+radios.forEach(radio => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "lain" && radio.checked) {
+      inputSaizLain.style.display = "block";
+    } else if (radio.checked) {
+      inputSaizLain.style.display = "none";
+    }
+  });
+});
+
 
   /* =========================
      KIRA UMUR DARI IC
