@@ -88,13 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Sila isi alamat penghantaran");
         return;
       }
-    }
+    
 
     const file = form.resit.files[0];
-    if (!file) {
-      alert("Resit wajib dimuat naik");
-      return;
-    }
 
     if (file.size > 10 * 1024 * 1024) {
       alert("Saiz fail melebihi 10MB");
@@ -162,3 +158,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
