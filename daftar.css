@@ -300,11 +300,20 @@ input[type="radio"]{
 }
 
 .note {
-  background: #f7f7f7;
-  padding: 12px;
-  border-left: 4px solid #c9a24d;
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-left: 5px solid #2b6cb0;
   font-size: 14px;
   line-height: 1.6;
-  margin-bottom: 20px;
-  border-radius: 6px;
+}
+
+.note p {
+  margin: 0 0 10px;
+}
+
+.note p:last-child {
+  margin-bottom: 0;
 }
