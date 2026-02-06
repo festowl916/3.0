@@ -20,11 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputNegeriLain = document.getElementById("inputNegeriLain");
 
   negeriSelect.addEventListener("change", function () {
-    if (this.value === "lain") {
-      inputNegeriLain.style.display = "block";
-    } else {
-      inputNegeriLain.style.display = "none";
-    }
+    inputNegeriLain.style.display =
+      this.value === "lain" ? "block" : "none";
   });
 
   /* SAIZ LAIN-LAIN */
@@ -33,11 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   radios.forEach(radio => {
     radio.addEventListener("change", () => {
-      if (radio.value === "lain" && radio.checked) {
-        inputSaizLain.style.display = "block";
-      } else if (radio.checked) {
-        inputSaizLain.style.display = "none";
-      }
+      inputSaizLain.style.display =
+        (radio.value === "lain" && radio.checked)
+        ? "block" : "none";
     });
   });
 
@@ -61,12 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const karbon = form.kategori_karbon.value;
 
     if (umur <= 12 && karbon.includes("REMAJA")) {
-      alert("Umur peserta kategori cilik sahaja (12 tahun ke bawah).");
+      alert("Umur 12 tahun ke bawah hanya kategori cilik.");
       return false;
     }
 
     if (umur >= 13 && umur <= 17 && karbon.includes("DEWASA")) {
-      alert("Peserta remaja hanya boleh masuk kategori remaja.");
+      alert("Peserta remaja hanya kategori remaja.");
       return false;
     }
 
@@ -88,21 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Sila isi alamat penghantaran");
         return;
       }
-    
-
-    const file = form.resit.files[0];
-
-    if (file.size > 10 * 1024 * 1024) {
-      alert("Saiz fail melebihi 10MB");
-      return;
     }
 
+    const file = form.resit.files[0];
     const button = form.querySelector("button");
+
     button.disabled = true;
     button.textContent = "Menghantar...";
 
-    const reader = new FileReader();
-    reader.onload = async function () {
+    function hantarData(fileData = "", fileName = "", fileType = "") {
 
       const saiz =
         form.saiz_baju.value === "lain"
@@ -126,17 +115,17 @@ document.addEventListener("DOMContentLoaded", () => {
         saiz_baju: saiz,
         catatan_baju: form.catatan_baju.value,
         alamat: form.alamat.value,
-        fileName: file.name,
-        fileType: file.type,
-        fileData: reader.result.split(",")[1]
+        fileName: fileName,
+        fileType: fileType,
+        fileData: fileData
       };
 
-      try {
-        const res = await fetch(SCRIPT_URL, {
-          method: "POST",
-          body: JSON.stringify(data)
-        });
-
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.text())
+      .then(() => {
         form.innerHTML = `
           <div style="text-align:center;padding:30px">
             <h2>Terima kasih atas pendaftaran anda</h2>
@@ -146,16 +135,38 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
         `;
-
-      } catch(err) {
+      })
+      .catch(() => {
         alert("Gagal hantar");
         button.disabled = false;
         button.textContent = "Hantar Pendaftaran";
-      }
-    };
+      });
+    }
 
-    reader.readAsDataURL(file);
+    // Jika ada resit
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        alert("Saiz fail melebihi 10MB");
+        button.disabled = false;
+        button.textContent = "Hantar Pendaftaran";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        hantarData(
+          reader.result.split(",")[1],
+          file.name,
+          file.type
+        );
+      };
+      reader.readAsDataURL(file);
+
+    } else {
+      // Hantar tanpa resit
+      hantarData();
+    }
+
   });
 
 });
-
