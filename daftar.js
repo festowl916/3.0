@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     sectionBaju.style.display = "none";
   }
+}
 
   if (jenis) {
     jenis.addEventListener("change", toggleBaju);
@@ -220,6 +221,7 @@ if (jenisValue === "baju") {
   }
 
 });
+
 
 
 
