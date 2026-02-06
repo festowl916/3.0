@@ -95,32 +95,39 @@ button{
     <option>TERBUKA WANITA</option>
   </select>
 
-  <label>Negeri / Negara *</label>
-  <select name="negeri" id="negeri" required>
-    <option value="">Pilih</option>
-    <option>JOHOR</option>
-    <option>KEDAH</option>
-    <option>KELANTAN</option>
-    <option>MELAKA</option>
-    <option>NEGERI SEMBILAN</option>
-    <option>PAHANG</option>
-    <option>PULAU PINANG</option>
-    <option>PERAK</option>
-    <option>PERLIS</option>
-    <option>SELANGOR</option>
-    <option>TERENGGANU</option>
-    <option>SABAH</option>
-    <option>SARAWAK</option>
-    <option>KUALA LUMPUR</option>
-    <option>LABUAN</option>
-    <option>BRUNEI</option>
-    <option>SINGAPURA</option>
-    <option>INDONESIA</option>
-    <option>THAILAND</option>
-    <option>PUTRAJAYA</option>
-    <option value="lain">Lain-lain</option>
-  </select>
+<label>Negara/Negeri *</label>
+<select name="negeri" id="negeri" required>
+  <option value="">Pilih Negeri</option>
+  <option>JOHOR</option>
+  <option>KEDAH</option>
+  <option>KELANTAN</option>
+  <option>MELAKA</option>
+  <option>NEGERI SEMBILAN</option>
+  <option>PAHANG</option>
+  <option>PULAU PINANG</option>
+  <option>PERAK</option>
+  <option>PERLIS</option>
+  <option>SELANGOR</option>
+  <option>TERENGGANU</option>
+  <option>SABAH</option>
+  <option>SARAWAK</option>
+  <option>KUALA LUMPUR</option>
+  <option>LABUAN</option>
+  <option>BRUNEI</option>
+  <option>SINGAPURA</option>
+  <option>INDONESIA</option>
+  <option>THAILAND</option>
+  <option>PUTRAJAYA</option>
+  <option value="lain">Lain-lain</option>
+</select>
 
+<input
+  type="text"
+  name="negeri_lain"
+  id="inputNegeriLain"
+  placeholder="Tulis negeri / negara lain"
+  style="display:none;">
+  
   <input
     type="text"
     name="negeri_lain"
@@ -191,6 +198,19 @@ button{
     Lelaki: 2XL – 7XL<br>
     Wanita: 2XL – 7XL<br>
     Cilik: 30 / 32
+<label>
+  <input type="radio" name="saiz_baju" value="lain">
+  Lain-lain (nyatakan saiz)
+</label>
+
+<input
+  type="text"
+  name="saiz_baju_lain"
+  id="inputSaizLain"
+  placeholder="Contoh: Lelaki 3XL, Wanita 4XL, Cilik 32"
+  style="display:none;">
+
+    
   </small>
 
   <label>Alamat Penghantaran</label>
@@ -216,4 +236,5 @@ button{
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
