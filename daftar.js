@@ -29,10 +29,16 @@ const negeriSelect = document.getElementById("negeri");
 const inputNegeriLain = document.getElementById("inputNegeriLain");
 
 if (negeriSelect && inputNegeriLain) {
-  negeriSelect.addEventListener("change", function () {
+
+  function toggleNegeri(){
     inputNegeriLain.style.display =
-      this.value === "lain" ? "block" : "none";
-  });
+      negeriSelect.value === "lain" ? "block" : "none";
+  }
+
+  negeriSelect.addEventListener("change", toggleNegeri);
+
+  // penting: check masa page load
+  toggleNegeri();
 }
 
 /* =========================
@@ -221,6 +227,7 @@ if (jenisValue === "baju") {
   }
 
 });
+
 
 
 
