@@ -36,12 +36,11 @@ body {
 /* TAJUK FESTIVAL */
 .festival-title{
   text-align:center;
-  font-size:18px;
+  font-size:16px;
   font-weight:600;
-  margin:6px 0 14px;
+  margin:8px 0 14px;
   line-height:1.3;
 }
-
 /* =========================
    LABEL & INPUT
 ========================= */
@@ -300,6 +299,7 @@ input[type="radio"]{
 .note p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
