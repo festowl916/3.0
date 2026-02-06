@@ -118,14 +118,6 @@ button:hover {
 }
 
 /* =========================
-   SECTION TITLE
-========================= */
-.section-title {
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-/* =========================
    (LEGACY – TAK DIGUNAKAN SEKARANG)
    Selamat biarkan, tak rosakkan apa-apa
 ========================= */
@@ -295,6 +287,7 @@ input[type="radio"]{
 .note p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
