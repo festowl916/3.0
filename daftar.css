@@ -298,3 +298,13 @@ select:focus {
 input[type="radio"]{
   width: auto;
 }
+
+.note {
+  background: #f7f7f7;
+  padding: 12px;
+  border-left: 4px solid #c9a24d;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
