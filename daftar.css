@@ -318,6 +318,12 @@ input[type="radio"]{
   margin-bottom: 0;
 }
 
+.festival-title{
+  text-align:center;
+  font-size:22px;   /* saiz baru, lebih kemas */
+  font-weight:600;
+  margin:10px 0 16px;
+}
 
 
 
