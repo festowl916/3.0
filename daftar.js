@@ -15,9 +15,33 @@ document.addEventListener("DOMContentLoaded", () => {
   jenis.addEventListener("change", toggleBaju);
   toggleBaju();
 
-  /* =========================
-     SEMAKAN UMUR DARI IC
-  ========================= */
+  /* NEGERI LAIN-LAIN */
+  const negeriSelect = document.getElementById("negeri");
+  const inputNegeriLain = document.getElementById("inputNegeriLain");
+
+  negeriSelect.addEventListener("change", function () {
+    if (this.value === "lain") {
+      inputNegeriLain.style.display = "block";
+    } else {
+      inputNegeriLain.style.display = "none";
+    }
+  });
+
+  /* SAIZ LAIN-LAIN */
+  const radios = document.querySelectorAll("input[name='saiz_baju']");
+  const inputSaizLain = document.getElementById("inputSaizLain");
+
+  radios.forEach(radio => {
+    radio.addEventListener("change", () => {
+      if (radio.value === "lain" && radio.checked) {
+        inputSaizLain.style.display = "block";
+      } else if (radio.checked) {
+        inputSaizLain.style.display = "none";
+      }
+    });
+  });
+
+  /* SEMAKAN UMUR */
   function kiraUmur(ic) {
     const tahun = parseInt(ic.substring(0,2));
     const currentYear = new Date().getFullYear() % 100;
@@ -34,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ic.length < 6) return true;
 
     const umur = kiraUmur(ic);
-
     const karbon = form.kategori_karbon.value;
 
     if (umur <= 12 && karbon.includes("REMAJA")) {
@@ -50,16 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
-  /* =========================
-     HANTAR DATA
-  ========================= */
+  /* HANTAR DATA */
   form.addEventListener("submit", function(e){
     e.preventDefault();
 
-    // semakan umur
     if (!semakKategoriUmur()) return;
 
-    // semakan baju
     if (form.jenis.value === "baju") {
       if (!form.saiz_baju.value) {
         alert("Sila pilih saiz baju");
@@ -122,9 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify(data)
         });
 
-        const text = await res.text();
-
-        // Paparan ucapan terima kasih
         form.innerHTML = `
           <div style="text-align:center;padding:30px">
             <h2>Terima kasih atas pendaftaran anda</h2>
