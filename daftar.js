@@ -105,7 +105,15 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
   form.addEventListener("submit", function(e){
     e.preventDefault();
-
+// WAJIB PILIH SEKURANG-KURANGNYA SATU KATEGORI
+if (
+  !form.kategori_karbon.value &&
+  !form.kategori_natural.value
+) {
+  alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
+  return;
+}
+    
     if (!semakKategoriUmur()) return;
 
     const button = form.querySelector("button");
@@ -225,3 +233,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
