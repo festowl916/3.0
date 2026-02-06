@@ -49,24 +49,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function semakKategoriUmur() {
-    const ic = form.ic.value;
-    if (ic.length < 6) return true;
+  const ic = form.ic.value;
+  if (ic.length < 6) return true;
 
-    const umur = kiraUmur(ic);
-    const karbon = form.kategori_karbon.value;
+  const umur = kiraUmur(ic);
+  const karbon = (form.kategori_karbon.value || "").toUpperCase();
 
-    if (umur <= 12 && karbon.includes("REMAJA")) {
-      alert("Umur 12 tahun ke bawah hanya kategori cilik.");
-      return false;
-    }
-
-    if (umur >= 13 && umur <= 17 && karbon.includes("DEWASA")) {
-      alert("Peserta remaja hanya kategori remaja.");
-      return false;
-    }
-
-    return true;
+  // CILIK
+  if (umur <= 12 && !karbon.includes("CILIK")) {
+    alert("Peserta umur 12 tahun ke bawah hanya kategori CILIK.");
+    return false;
   }
+
+  // REMAJA
+  if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
+    alert("Peserta umur 13–17 hanya kategori REMAJA.");
+    return false;
+  }
+
+  return true;
+}
 
   /* HANTAR DATA */
   form.addEventListener("submit", function(e){
@@ -170,3 +172,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
