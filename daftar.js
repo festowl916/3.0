@@ -103,25 +103,30 @@ form.addEventListener("submit", function(e){
   // =========================
   // VALIDASI BAJU
   // =========================
-  if (form.jenis.value === "baju") {
+const jenisValue = form.jenis.value;
 
-    const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+if (jenisValue === "baju") {
 
-    if (!saizRadio) {
-      alert("Sila pilih saiz baju.");
-      return;
-    }
+  const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
 
-    if (saizRadio.value === "lain" && !form.saiz_baju_lain.value.trim()) {
-      alert("Sila nyatakan saiz baju lain-lain.");
-      return;
-    }
-
-    if (!form.alamat.value.trim()) {
-      alert("Sila isi alamat penghantaran.");
-      return;
-    }
+  if (!saizRadio) {
+    alert("Sila pilih saiz baju.");
+    return;
   }
+
+  if (
+    saizRadio.value === "lain" &&
+    (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
+  ) {
+    alert("Sila nyatakan saiz baju lain-lain.");
+    return;
+  }
+
+  if (!form.alamat || !form.alamat.value.trim()) {
+    alert("Sila isi alamat penghantaran.");
+    return;
+  }
+}
 
   const file = form.resit.files[0];
 
@@ -212,3 +217,4 @@ form.addEventListener("submit", function(e){
   }
 
 });
+
