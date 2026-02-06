@@ -37,15 +37,16 @@ if (negeriSelect && inputNegeriLain) {
 const radios = document.querySelectorAll("input[name='saiz_baju']");
 const inputSaizLain = document.getElementById("inputSaizLain");
 
-radios.forEach(radio => {
-  radio.addEventListener("change", () => {
-    if (radio.value === "lain" && radio.checked) {
-      inputSaizLain.style.display = "block";
-    } else if (radio.checked) {
-      inputSaizLain.style.display = "none";
-    }
+if (radios && inputSaizLain) {
+  radios.forEach(radio => {
+    radio.addEventListener("change", () => {
+      inputSaizLain.style.display =
+        (radio.value === "lain" && radio.checked)
+        ? "block"
+        : "none";
+    });
   });
-});
+}
 
 
   /* =========================
