@@ -153,10 +153,6 @@ form.addEventListener("submit", function(e){
       negeri = form.negeri_lain.value;
     }
 
- // AKTIFKAN SPINNER
-const button = document.getElementById("submitBtn");
-const spinner = document.getElementById("spinner");
-const btnText = document.getElementById("btnText");
 
 button.disabled = true;
 spinner.style.display = "inline";
@@ -261,6 +257,7 @@ btnText.textContent = "Menghantar...";
   });
 
 });
+
 
 
 
