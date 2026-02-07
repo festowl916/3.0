@@ -151,7 +151,25 @@ input[type="radio"]{
 
   <div class="card">
     <h2>Maklumat Peserta</h2>
+    
+<form id="daftarForm">
 
+<div id="bulkControls" style="display:none;">
+  <button type="button" id="tambahPeserta">
+    + Tambah Peserta
+  </button>
+</div>
+
+<div id="pesertaTambahan"></div>
+  
+  <div class="card">
+    <label>Mode Pendaftaran</label>
+    <select id="mode">
+      <option value="individu">Individu</option>
+      <option value="pukal">Pendaftaran Kelab / Pukal</option>
+    </select>
+  </div>
+    
   <label>Nama Penuh *</label>
   <input type="text" name="nama_penuh" required>
 
@@ -311,6 +329,7 @@ sila nyatakan pada ruangan catatan di bawah.
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
