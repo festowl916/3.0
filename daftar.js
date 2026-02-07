@@ -123,6 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
   form.addEventListener("submit", function(e){
     e.preventDefault();
+const button = document.getElementById("submitBtn");
+const spinner = document.getElementById("spinner");
+
+button.disabled = true;
+spinner.style.display = "block";
+    
 
     // ambil saiz baju
     let saiz = "";
@@ -237,3 +243,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
