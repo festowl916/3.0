@@ -237,3 +237,55 @@ if (
   });
 
 });
+
+// ===============================
+// MODE PENDAFTARAN PUKAL
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+
+  const mode = document.getElementById("mode");
+  const bulkControls = document.getElementById("bulkControls");
+  const tambahBtn = document.getElementById("tambahPeserta");
+  const pesertaContainer = document.getElementById("pesertaTambahan");
+
+  if (mode && bulkControls && pesertaContainer) {
+    mode.addEventListener("change", () => {
+      if (mode.value === "pukal") {
+        bulkControls.style.display = "block";
+      } else {
+        bulkControls.style.display = "none";
+        pesertaContainer.innerHTML = "";
+      }
+    });
+  }
+
+  if (tambahBtn && pesertaContainer) {
+    tambahBtn.addEventListener("click", () => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h3>Peserta Tambahan</h3>
+
+        <label>Nama Penuh *</label>
+        <input type="text" name="nama_penuh_tambahan[]" required>
+
+        <label>Kategori Arrow Karbon</label>
+        <select name="kategori_karbon_tambahan[]">
+          <option value="">pilih kategori</option>
+          <option>VETERAN</option>
+          <option>DEWASA LELAKI</option>
+          <option>DEWASA WANITA</option>
+        </select>
+
+        <label>Kategori Arrow Natural</label>
+        <select name="kategori_natural_tambahan[]">
+          <option value="">pilih kategori</option>
+          <option>TERBUKA LELAKI</option>
+          <option>TERBUKA WANITA</option>
+        </select>
+      `;
+      pesertaContainer.appendChild(card);
+    });
+  }
+
+});
