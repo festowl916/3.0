@@ -1,3 +1,7 @@
+window.onerror = function(msg, url, line) {
+  alert("JS Error: " + msg + " (line " + line + ")");
+};
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("daftarForm");
@@ -282,3 +286,4 @@ if (tambahBtn) {
     pesertaContainer.appendChild(card);
   });
 }
+
