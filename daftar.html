@@ -147,27 +147,21 @@ input[type="radio"]{
     </p>
   </div>
 
-<form id="daftarForm">
+<div class="card">
+  <h2>Maklumat Peserta</h2>
 
-  <div class="card">
-    <h2>Maklumat Peserta</h2>
-    
-<form id="daftarForm">
+  <!-- MODE PENDAFTARAN -->
+  <label>Mode Pendaftaran</label>
+  <select id="mode">
+    <option value="individu">Individu</option>
+    <option value="pukal">Pendaftaran Kelab / Pukal</option>
+  </select>
 
-<div id="bulkControls" style="display:none;">
-  <button type="button" id="tambahPeserta">
-    + Tambah Peserta
-  </button>
-</div>
-
-<div id="pesertaTambahan"></div>
-  
-  <div class="card">
-    <label>Mode Pendaftaran</label>
-    <select id="mode">
-      <option value="individu">Individu</option>
-      <option value="pukal">Pendaftaran Kelab / Pukal</option>
-    </select>
+  <!-- KAWALAN PUKAL -->
+  <div id="bulkControls" style="display:none; margin-top:10px;">
+    <button type="button" id="tambahPeserta">
+      + Tambah Peserta
+    </button>
   </div>
     
   <label>Nama Penuh *</label>
@@ -329,6 +323,7 @@ sila nyatakan pada ruangan catatan di bawah.
 <script src="daftar.js"></script>
 </body>
 </html>
+
 
 
 
