@@ -121,13 +121,19 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      SUBMIT FORM
   ========================= */
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-const button = document.getElementById("submitBtn");
-const spinner = document.getElementById("spinner");
+form.addEventListener("submit", function(e){
+  e.preventDefault();
 
-button.disabled = true;
-spinner.style.display = "block";
+  // AKTIFKAN SPINNER DI SINI
+  const button = document.getElementById("submitBtn");
+  const spinner = document.getElementById("spinner");
+  const btnText = document.getElementById("btnText");
+
+  button.disabled = true;
+  spinner.style.display = "inline";
+  btnText.textContent = "Menghantar...";
+
+  const semuaPeserta = [];
     
 
     // ambil saiz baju
@@ -234,17 +240,18 @@ spinner.style.display = "block";
           </div>
         `;
       })
-      .catch(()=>{
-        alert("Gagal hantar");
-        button.disabled = false;
-        spinner.style.display = "none";
-        
-      });
+    .catch(()=>{
+  alert("Gagal hantar");
+  button.disabled = false;
+  spinner.style.display = "none";
+  btnText.textContent = "Hantar Pendaftaran";
+});  
 
     }
 
   });
 
 });
+
 
 
