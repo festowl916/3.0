@@ -9,12 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
 
+  /* =========================
+     TOGGLE BAJU
+  ========================= */
   const jenis = document.getElementById("jenis");
   const sectionBaju = document.getElementById("sectionBaju");
 
-  /* =========================
-     TOGGLE SECTION BAJU
-  ========================= */
   function toggleBaju(){
     if (!sectionBaju || !jenis) return;
     sectionBaju.style.display =
@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputNegeriLain = document.getElementById("inputNegeriLain");
 
   if (negeriSelect && inputNegeriLain) {
-
     function toggleNegeri(){
       if (negeriSelect.value === "lain") {
         inputNegeriLain.style.display = "block";
@@ -65,190 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     KIRA UMUR DARI IC
+     MODE PUKAL
   ========================= */
-  function kiraUmur(ic) {
-    const tahun = parseInt(ic.substring(0,2));
-    const currentYear = new Date().getFullYear() % 100;
-
-    let fullYear = tahun > currentYear
-      ? 1900 + tahun
-      : 2000 + tahun;
-
-    return new Date().getFullYear() - fullYear;
-  }
-
-  function semakKategoriUmur() {
-    const ic = form.ic.value;
-    if (ic.length < 6) return true;
-
-    const umur = kiraUmur(ic);
-    const karbon = (form.kategori_karbon.value || "").toUpperCase();
-
-    if (umur <= 12 && !karbon.includes("CILIK")) {
-      alert("Umur 12 tahun ke bawah hanya kategori CILIK.");
-      return false;
-    }
-
-    if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
-      alert("Umur 13–17 hanya kategori REMAJA.");
-      return false;
-    }
-
-    if (umur >= 18 &&
-        (karbon.includes("CILIK") || karbon.includes("REMAJA"))) {
-      alert("Umur 18 tahun ke atas tidak boleh kategori CILIK/REMAJA.");
-      return false;
-    }
-
-    return true;
-  }
-
-  /* =========================
-     SUBMIT FORM
-  ========================= */
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-// WAJIB PILIH SEKURANG-KURANGNYA SATU KATEGORI
-if (
-  !form.kategori_karbon.value &&
-  !form.kategori_natural.value
-) {
-  alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
-  return;
-}
-    
-    if (!semakKategoriUmur()) return;
-
-    const button = form.querySelector("button");
-
-    // VALIDASI BAJU (hanya bila pilih baju)
-    if (form.jenis.value === "baju") {
-
-      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
-
-      if (!saizRadio) {
-        alert("Sila pilih saiz baju.");
-        return;
-      }
-
-      if (
-        saizRadio.value === "lain" &&
-        (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
-      ) {
-        alert("Sila nyatakan saiz baju lain-lain.");
-        return;
-      }
-
-      if (!form.alamat || !form.alamat.value.trim()) {
-        alert("Sila isi alamat penghantaran.");
-        return;
-      }
-    }
-
-    const file = form.resit.files[0];
-
-    button.disabled = true;
-    button.textContent = "Menghantar...";
-
-    function hantarData(fileData="", fileName="", fileType="") {
-
-      let negeri = form.negeri.value;
-      if (negeri === "lain" && form.negeri_lain) {
-        negeri = form.negeri_lain.value;
-      }
-
-      let saiz = "";
-      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
-
-      if (saizRadio) {
-        if (saizRadio.value === "lain") {
-          saiz = form.saiz_baju_lain.value;
-        } else {
-          saiz = saizRadio.value;
-        }
-      }
-
-      const data = {
-        nama_penuh: form.nama_penuh.value,
-        nama_kelab: form.nama_kelab.value,
-        kategori_karbon: form.kategori_karbon.value,
-        kategori_natural: form.kategori_natural.value,
-        negeri: negeri,
-        ic: form.ic.value,
-        telefon: form.telefon.value,
-        jenis: form.jenis.value,
-        saiz_baju: saiz,
-        catatan_baju: form.catatan_baju
-          ? form.catatan_baju.value
-          : "",
-        alamat: form.alamat
-          ? form.alamat.value
-          : "",
-        fileName,
-        fileType,
-        fileData
-      };
-
-      fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify(data)
-      })
-      .then(res => res.text())
-      .then(text => {
-        form.innerHTML = `
-          <div style="text-align:center;padding:30px">
-            <h2>${text}</h2>
-            <p>Data telah diterima oleh pihak penganjur.</p>
-            <button onclick="location.reload()">
-              Daftar peserta lain
-            </button>
-          </div>
-        `;
-      })
-      .catch(()=>{
-        alert("Gagal hantar");
-        button.disabled = false;
-        button.textContent = "Hantar Pendaftaran";
-      });
-    }
-
-    if (file) {
-      if (file.size > 10 * 1024 * 1024) {
-        alert("Saiz fail melebihi 10MB");
-        button.disabled = false;
-        button.textContent = "Hantar Pendaftaran";
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function () {
-        hantarData(
-          reader.result.split(",")[1],
-          file.name,
-          file.type
-        );
-      };
-      reader.readAsDataURL(file);
-    } else {
-      hantarData();
-    }
-
-  });
-
-});
-
-// ===============================
-// MODE PENDAFTARAN PUKAL
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-
   const mode = document.getElementById("mode");
   const bulkControls = document.getElementById("bulkControls");
   const tambahBtn = document.getElementById("tambahPeserta");
   const pesertaContainer = document.getElementById("pesertaTambahan");
 
-  if (mode && bulkControls && pesertaContainer) {
+  if (mode && bulkControls) {
     mode.addEventListener("change", () => {
       if (mode.value === "pukal") {
         bulkControls.style.display = "block";
@@ -269,12 +92,19 @@ document.addEventListener("DOMContentLoaded", () => {
         <label>Nama Penuh *</label>
         <input type="text" name="nama_penuh_tambahan[]" required>
 
+        <label>No IC *</label>
+        <input type="text" name="ic_tambahan[]" required>
+
         <label>Kategori Arrow Karbon</label>
         <select name="kategori_karbon_tambahan[]">
           <option value="">pilih kategori</option>
           <option>VETERAN</option>
           <option>DEWASA LELAKI</option>
           <option>DEWASA WANITA</option>
+          <option>REMAJA LELAKI</option>
+          <option>REMAJA PEREMPUAN</option>
+          <option>CILIK LELAKI</option>
+          <option>CILIK PEREMPUAN</option>
         </select>
 
         <label>Kategori Arrow Natural</label>
@@ -287,5 +117,81 @@ document.addEventListener("DOMContentLoaded", () => {
       pesertaContainer.appendChild(card);
     });
   }
+
+  /* =========================
+     SUBMIT FORM
+  ========================= */
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const semuaPeserta = [];
+
+    // peserta utama
+    semuaPeserta.push({
+      nama_penuh: form.nama_penuh.value,
+      nama_kelab: form.nama_kelab.value,
+      kategori_karbon: form.kategori_karbon.value,
+      kategori_natural: form.kategori_natural.value,
+      negeri: form.negeri.value,
+      ic: form.ic.value,
+      telefon: form.telefon.value,
+      jenis: form.jenis.value,
+      saiz_baju: "",
+      catatan_baju: "",
+      alamat: "",
+      fileName: "",
+      fileType: "",
+      fileData: ""
+    });
+
+    // peserta tambahan
+    const namaTambahan = form.querySelectorAll("input[name='nama_penuh_tambahan[]']");
+    const icTambahan = form.querySelectorAll("input[name='ic_tambahan[]']");
+    const karbonTambahan = form.querySelectorAll("select[name='kategori_karbon_tambahan[]']");
+    const naturalTambahan = form.querySelectorAll("select[name='kategori_natural_tambahan[]']");
+
+    for (let i = 0; i < namaTambahan.length; i++) {
+
+      if (!namaTambahan[i].value.trim()) continue;
+
+      semuaPeserta.push({
+        nama_penuh: namaTambahan[i].value,
+        nama_kelab: form.nama_kelab.value,
+        kategori_karbon: karbonTambahan[i].value,
+        kategori_natural: naturalTambahan[i].value,
+        negeri: "",
+        ic: icTambahan[i].value,
+        telefon: "",
+        jenis: "pukal",
+        saiz_baju: "",
+        catatan_baju: "",
+        alamat: "",
+        fileName: "",
+        fileType: "",
+        fileData: ""
+      });
+    }
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(semuaPeserta)
+    })
+    .then(res => res.text())
+    .then(text => {
+      form.innerHTML = `
+        <div style="text-align:center;padding:30px">
+          <h2>${text}</h2>
+          <p>Data telah diterima oleh pihak penganjur.</p>
+          <button onclick="location.reload()">
+            Daftar peserta lain
+          </button>
+        </div>
+      `;
+    })
+    .catch(()=>{
+      alert("Gagal hantar");
+    });
+
+  });
 
 });
