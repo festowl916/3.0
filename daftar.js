@@ -127,22 +127,58 @@ document.addEventListener("DOMContentLoaded", () => {
     const semuaPeserta = [];
 
     // peserta utama
-    semuaPeserta.push({
-      nama_penuh: form.nama_penuh.value,
-      nama_kelab: form.nama_kelab.value,
-      kategori_karbon: form.kategori_karbon.value,
-      kategori_natural: form.kategori_natural.value,
-      negeri: form.negeri.value,
-      ic: form.ic.value,
-      telefon: form.telefon.value,
-      jenis: form.jenis.value,
-      saiz_baju: "",
-      catatan_baju: "",
-      alamat: "",
-      fileName: "",
-      fileType: "",
-      fileData: ""
-    });
+    // ambil saiz baju
+let saiz = "";
+const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+if (saizRadio) {
+  if (saizRadio.value === "lain") {
+    saiz = form.saiz_baju_lain.value;
+  } else {
+    saiz = saizRadio.value;
+  }
+}
+
+// ambil resit
+const file = form.resit.files[0];
+
+let fileData = "";
+let fileName = "";
+let fileType = "";
+
+if (file) {
+  const reader = new FileReader();
+  reader.onload = function () {
+    fileData = reader.result.split(",")[1];
+    fileName = file.name;
+    fileType = file.type;
+    hantarSemua();
+  };
+  reader.readAsDataURL(file);
+} else {
+  hantarSemua();
+}
+
+function hantarSemua() {
+
+  const semuaPeserta = [];
+
+  // peserta utama
+  semuaPeserta.push({
+    nama_penuh: form.nama_penuh.value,
+    nama_kelab: form.nama_kelab.value,
+    kategori_karbon: form.kategori_karbon.value,
+    kategori_natural: form.kategori_natural.value,
+    negeri: form.negeri.value,
+    ic: form.ic.value,
+    telefon: form.telefon.value,
+    jenis: form.jenis.value,
+    saiz_baju: saiz,
+    catatan_baju: form.catatan_baju?.value || "",
+    alamat: form.alamat?.value || "",
+    fileName,
+    fileType,
+    fileData
+  });
 
     // peserta tambahan
     const namaTambahan = form.querySelectorAll("input[name='nama_penuh_tambahan[]']");
@@ -195,3 +231,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
