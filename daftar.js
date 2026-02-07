@@ -236,6 +236,9 @@ spinner.style.display = "block";
       })
       .catch(()=>{
         alert("Gagal hantar");
+        button.disabled = false;
+        spinner.style.display = "none";
+        
       });
 
     }
@@ -243,4 +246,5 @@ spinner.style.display = "block";
   });
 
 });
+
 
