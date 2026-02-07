@@ -170,9 +170,6 @@ form.addEventListener("submit", function(e){
     }
   }
 
-  // ambil saiz baju
-  let saiz = "";
-
     // ambil saiz baju
     let saiz = "";
     const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
@@ -294,6 +291,7 @@ btnText.textContent = "Menghantar...";
   });
 
 });
+
 
 
 
