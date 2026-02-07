@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tambahBtn = document.getElementById("tambahPeserta");
   const pesertaContainer = document.getElementById("pesertaTambahan");
 
-  if (mode && bulkControls) {
+  if (mode && bulkControls && pesertaContainer) {
     mode.addEventListener("change", () => {
       if (mode.value === "pukal") {
         bulkControls.style.display = "block";
@@ -124,111 +124,116 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", function(e){
     e.preventDefault();
 
-    const semuaPeserta = [];
-
-    // peserta utama
     // ambil saiz baju
-let saiz = "";
-const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
-if (saizRadio) {
-  if (saizRadio.value === "lain") {
-    saiz = form.saiz_baju_lain.value;
-  } else {
-    saiz = saizRadio.value;
-  }
-}
-
-// ambil resit
-const file = form.resit.files[0];
-
-let fileData = "";
-let fileName = "";
-let fileType = "";
-
-if (file) {
-  const reader = new FileReader();
-  reader.onload = function () {
-    fileData = reader.result.split(",")[1];
-    fileName = file.name;
-    fileType = file.type;
-    hantarSemua();
-  };
-  reader.readAsDataURL(file);
-} else {
-  hantarSemua();
-}
-
-function hantarSemua() {
-
-  const semuaPeserta = [];
-
-  // peserta utama
-  semuaPeserta.push({
-    nama_penuh: form.nama_penuh.value,
-    nama_kelab: form.nama_kelab.value,
-    kategori_karbon: form.kategori_karbon.value,
-    kategori_natural: form.kategori_natural.value,
-    negeri: form.negeri.value,
-    ic: form.ic.value,
-    telefon: form.telefon.value,
-    jenis: form.jenis.value,
-    saiz_baju: saiz,
-    catatan_baju: form.catatan_baju?.value || "",
-    alamat: form.alamat?.value || "",
-    fileName,
-    fileType,
-    fileData
-  });
-
-    // peserta tambahan
-    const namaTambahan = form.querySelectorAll("input[name='nama_penuh_tambahan[]']");
-    const icTambahan = form.querySelectorAll("input[name='ic_tambahan[]']");
-    const karbonTambahan = form.querySelectorAll("select[name='kategori_karbon_tambahan[]']");
-    const naturalTambahan = form.querySelectorAll("select[name='kategori_natural_tambahan[]']");
-
-    for (let i = 0; i < namaTambahan.length; i++) {
-
-      if (!namaTambahan[i].value.trim()) continue;
-
-      semuaPeserta.push({
-        nama_penuh: namaTambahan[i].value,
-        nama_kelab: form.nama_kelab.value,
-        kategori_karbon: karbonTambahan[i].value,
-        kategori_natural: naturalTambahan[i].value,
-        negeri: "",
-        ic: icTambahan[i].value,
-        telefon: "",
-        jenis: "pukal",
-        saiz_baju: "",
-        catatan_baju: "",
-        alamat: "",
-        fileName: "",
-        fileType: "",
-        fileData: ""
-      });
+    let saiz = "";
+    const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+    if (saizRadio) {
+      if (saizRadio.value === "lain") {
+        saiz = form.saiz_baju_lain.value;
+      } else {
+        saiz = saizRadio.value;
+      }
     }
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(semuaPeserta)
-    })
-    .then(res => res.text())
-    .then(text => {
-      form.innerHTML = `
-        <div style="text-align:center;padding:30px">
-          <h2>${text}</h2>
-          <p>Data telah diterima oleh pihak penganjur.</p>
-          <button onclick="location.reload()">
-            Daftar peserta lain
-          </button>
-        </div>
-      `;
-    })
-    .catch(()=>{
-      alert("Gagal hantar");
-    });
+    // ambil negeri
+    let negeri = form.negeri.value;
+    if (negeri === "lain" && form.negeri_lain) {
+      negeri = form.negeri_lain.value;
+    }
+
+    // ambil resit
+    const file = form.resit.files[0];
+    let fileData = "";
+    let fileName = "";
+    let fileType = "";
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      if (file) {
+        fileData = reader.result.split(",")[1];
+        fileName = file.name;
+        fileType = file.type;
+      }
+      hantarSemua();
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      hantarSemua();
+    }
+
+    function hantarSemua() {
+
+      const semuaPeserta = [];
+
+      // peserta utama
+      semuaPeserta.push({
+        nama_penuh: form.nama_penuh.value,
+        nama_kelab: form.nama_kelab.value,
+        kategori_karbon: form.kategori_karbon.value,
+        kategori_natural: form.kategori_natural.value,
+        negeri: negeri,
+        ic: form.ic.value,
+        telefon: form.telefon.value,
+        jenis: form.jenis.value,
+        saiz_baju: saiz,
+        catatan_baju: form.catatan_baju?.value || "",
+        alamat: form.alamat?.value || "",
+        fileName,
+        fileType,
+        fileData
+      });
+
+      // peserta tambahan
+      const namaTambahan = form.querySelectorAll("input[name='nama_penuh_tambahan[]']");
+      const icTambahan = form.querySelectorAll("input[name='ic_tambahan[]']");
+      const karbonTambahan = form.querySelectorAll("select[name='kategori_karbon_tambahan[]']");
+      const naturalTambahan = form.querySelectorAll("select[name='kategori_natural_tambahan[]']");
+
+      for (let i = 0; i < namaTambahan.length; i++) {
+        if (!namaTambahan[i].value.trim()) continue;
+
+        semuaPeserta.push({
+          nama_penuh: namaTambahan[i].value,
+          nama_kelab: form.nama_kelab.value,
+          kategori_karbon: karbonTambahan[i].value,
+          kategori_natural: naturalTambahan[i].value,
+          negeri: "",
+          ic: icTambahan[i].value,
+          telefon: "",
+          jenis: "pukal",
+          saiz_baju: "",
+          catatan_baju: "",
+          alamat: "",
+          fileName: "",
+          fileType: "",
+          fileData: ""
+        });
+      }
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(semuaPeserta)
+      })
+      .then(res => res.text())
+      .then(text => {
+        form.innerHTML = `
+          <div style="text-align:center;padding:30px">
+            <h2>${text}</h2>
+            <button onclick="location.reload()">
+              Daftar peserta lain
+            </button>
+          </div>
+        `;
+      })
+      .catch(()=>{
+        alert("Gagal hantar");
+      });
+
+    }
 
   });
 
 });
-
