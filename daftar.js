@@ -134,7 +134,44 @@ form.addEventListener("submit", function(e){
   btnText.textContent = "Menghantar...";
 
   const semuaPeserta = [];
-    
+
+   // =========================
+  // VALIDASI BAJU (LETak SINI)
+  // =========================
+  if (form.jenis.value === "baju") {
+
+    const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+
+    if (!saizRadio) {
+      alert("Sila pilih saiz baju.");
+      button.disabled = false;
+      spinner.style.display = "none";
+      btnText.textContent = "Hantar Pendaftaran";
+      return;
+    }
+
+    if (
+      saizRadio.value === "lain" &&
+      (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
+    ) {
+      alert("Sila nyatakan saiz baju lain-lain.");
+      button.disabled = false;
+      spinner.style.display = "none";
+      btnText.textContent = "Hantar Pendaftaran";
+      return;
+    }
+
+    if (!form.alamat || !form.alamat.value.trim()) {
+      alert("Sila isi alamat penghantaran.");
+      button.disabled = false;
+      spinner.style.display = "none";
+      btnText.textContent = "Hantar Pendaftaran";
+      return;
+    }
+  }
+
+  // ambil saiz baju
+  let saiz = "";
 
     // ambil saiz baju
     let saiz = "";
@@ -257,6 +294,7 @@ btnText.textContent = "Menghantar...";
   });
 
 });
+
 
 
 
