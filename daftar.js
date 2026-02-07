@@ -168,7 +168,7 @@ form.addEventListener("submit", function(e){
       btnText.textContent = "Hantar Pendaftaran";
       return;
     }
-  }
+    }
 
     // ambil saiz baju
     let saiz = "";
@@ -291,6 +291,7 @@ btnText.textContent = "Menghantar...";
   });
 
 });
+
 
 
 
