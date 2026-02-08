@@ -135,10 +135,51 @@ form.addEventListener("submit", function(e){
 
   const semuaPeserta = [];
 
-   // =========================
-  // VALIDASI BAJU (LETak SINI)
-  // =========================
-  if (form.jenis.value === "baju") {
+// =========================
+// VALIDASI UMUR DARI IC
+// =========================
+const ic = form.ic.value.trim();
+const karbon = form.kategori_karbon.value.toUpperCase();
+
+if (!/^\d{12}$/.test(ic)) {
+  alert("Nombor IC mesti 12 digit.");
+  button.disabled = false;
+  spinner.style.display = "none";
+  btnText.textContent = "Hantar Pendaftaran";
+  return;
+}
+
+const tahun = parseInt(ic.substring(0, 2));
+const currentYear = new Date().getFullYear() % 100;
+
+let fullYear = tahun > currentYear
+  ? 1900 + tahun
+  : 2000 + tahun;
+
+const umur = new Date().getFullYear() - fullYear;
+
+// CILIK ≤12
+if (umur <= 12 && !karbon.includes("CILIK")) {
+  alert("Umur 12 tahun ke bawah hanya kategori CILIK.");
+  button.disabled = false;
+  spinner.style.display = "none";
+  btnText.textContent = "Hantar Pendaftaran";
+  return;
+}
+
+// REMAJA 13–17
+if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
+  alert("Umur 13–17 hanya kategori REMAJA.");
+  button.disabled = false;
+  spinner.style.display = "none";
+  btnText.textContent = "Hantar Pendaftaran";
+  return;
+}
+
+// =========================
+// VALIDASI BAJU (LETak SINI)
+// =========================
+if (form.jenis.value === "baju") {
 
     const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
 
@@ -287,6 +328,7 @@ form.addEventListener("submit", function(e){
   });
 
 });
+
 
 
 
