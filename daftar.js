@@ -188,10 +188,6 @@ form.addEventListener("submit", function(e){
     }
 
 
-button.disabled = true;
-spinner.style.display = "inline";
-btnText.textContent = "Menghantar...";
-
     // ambil resit
     const file = form.resit.files[0];
     let fileData = "";
@@ -291,6 +287,7 @@ btnText.textContent = "Menghantar...";
   });
 
 });
+
 
 
 
