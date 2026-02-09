@@ -288,12 +288,21 @@ input[type="radio"]{
   margin-bottom: 0;
 }
 
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
 
 .card.card-peserta{
   background:#eef4ff !important;
   border-left:6px solid #2b6cb0 !important;
   box-shadow:0 4px 12px rgba(43,108,176,0.15);
 }
+
 
 
 
