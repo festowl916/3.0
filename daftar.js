@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("daftarForm");
   if (!form) return;
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYIEIatnIu3-aah8PawT4NV29r_upDMCnhrQzUAudMh1Uaqi7ncpfBnZQfVI47iSpvRQ/exec";
 
   const jenis = document.getElementById("jenis");
   const sectionBaju = document.getElementById("sectionBaju");
@@ -301,6 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
