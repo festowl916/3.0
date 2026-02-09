@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const spinner = document.getElementById("spinner");
   const btnText = document.getElementById("btnText");
 
+  function resetBtn(){
+    button.disabled = false;
+    spinner.style.display = "none";
+    btnText.textContent = "Hantar Pendaftaran";
+  }
 
   /* =========================
      TOGGLE BAJU
@@ -165,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    // spinner ON
     button.disabled = true;
     spinner.style.display = "inline-block";
     btnText.textContent = "Menghantar...";
@@ -215,5 +221,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
-
