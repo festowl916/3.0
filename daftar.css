@@ -37,6 +37,13 @@ body {
 .festival-title{
   font-size:16px !important;
 }
+h1 {
+  font-size: clamp(22px, 5vw, 32px);
+}
+
+
+
+
 /* =========================
    LABEL & INPUT
 ========================= */
@@ -301,6 +308,7 @@ input[type="radio"]{
   background:#fff7d6;   /* kuning lembut */
   border:2px solid #e0b200;
 }
+
 
 
 
