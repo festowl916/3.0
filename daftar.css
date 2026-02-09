@@ -305,6 +305,11 @@ input[type="radio"]{
   background:#fff7d6;   /* kuning lembut */
   border:2px solid #e0b200;
 }
+/* KECILKAN TAJUK FESTIVAL */
+.festival-title{
+  font-size: 20px !important;
+  text-align: center;
+}
 
 
 
