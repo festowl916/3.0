@@ -121,8 +121,12 @@ if (
     if (!semakKategoriUmur()) return;
 
      const button = document.getElementById("submitBtn");
-     const spinner = document.getElementById("spinner");
-    const btnText = document.getElementById("btnText");
+const spinner = document.getElementById("spinner");
+const btnText = document.getElementById("btnText");
+
+button.disabled = true;
+spinner.style.display = "inline-block";
+btnText.textContent = "Menghantar...";
 
 
     const button = form.querySelector("button");
@@ -153,8 +157,9 @@ if (
 
     const file = form.resit.files[0];
 
-    button.disabled = true;
-    button.textContent = "Menghantar...";
+    button.disabled = false;
+spinner.style.display = "none";
+btnText.textContent = "Hantar Pendaftaran";
 
     function hantarData(fileData="", fileName="", fileType="") {
 
@@ -222,7 +227,8 @@ if (
       if (file.size > 10 * 1024 * 1024) {
         alert("Saiz fail melebihi 10MB");
         button.disabled = false;
-        button.textContent = "Hantar Pendaftaran";
+spinner.style.display = "none";
+btnText.textContent = "Hantar Pendaftaran";
         return;
       }
 
@@ -294,4 +300,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
