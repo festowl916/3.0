@@ -278,8 +278,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <option>VETERAN</option>
           <option>DEWASA LELAKI</option>
           <option>DEWASA WANITA</option>
+          <option>REMAJA LELAKI</option>
+          <option>REMAJA PEREMPUAN</option>
+          <option>CILIK LELAKI</option>
+          <option>CILIK PEREMPUAN</option>
         </select>
-
+        
         <label>Kategori Arrow Natural</label>
         <select name="kategori_natural_tambahan[]">
           <option value="">pilih kategori</option>
@@ -292,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
