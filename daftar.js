@@ -93,7 +93,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return true;
   }
+  
+if (!semakKategoriUmur()) return;
 
+/* =========================
+   VALIDASI BAJU (WAJIB)
+========================= */
+if (form.jenis.value === "baju") {
+
+  const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+
+  if (!saizRadio) {
+    alert("Sila pilih saiz baju.");
+    return;
+  }
+
+  if (
+    saizRadio.value === "lain" &&
+    (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
+  ) {
+    alert("Sila nyatakan saiz baju lain-lain.");
+    return;
+  }
+
+  if (!form.alamat || !form.alamat.value.trim()) {
+    alert("Sila isi alamat penghantaran.");
+    return;
+  }
+}
+
+const button = document.getElementById("submitBtn");
+const spinner = document.getElementById("spinner");
+const btnText = document.getElementById("btnText");
+
+const file = form.resit.files[0];
+ 
   /* SUBMIT */
   form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -206,3 +240,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
