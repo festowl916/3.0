@@ -172,28 +172,55 @@ if (form.jenis.value === "baju") {
           ? form.saiz_baju_lain.value
           : saizRadio.value;
       }
+      let data = [];
 
-      const data = {
-        nama_penuh: form.nama_penuh.value,
-        nama_kelab: form.nama_kelab.value,
-        kategori_karbon: form.kategori_karbon.value,
-        kategori_natural: form.kategori_natural.value,
-        negeri: negeri,
-        ic: form.ic.value,
-        telefon: form.telefon.value,
-        jenis: form.jenis.value,
-        saiz_baju: saiz,
-        catatan_baju: form.catatan_baju
-          ? form.catatan_baju.value
-          : "",
-        alamat: form.alamat
-          ? form.alamat.value
-          : "",
-        fileName,
-        fileType,
-        fileData
-      };
+// peserta utama
+data.push({
+  nama_penuh: form.nama_penuh.value,
+  nama_kelab: form.nama_kelab.value,
+  kategori_karbon: form.kategori_karbon.value,
+  kategori_natural: form.kategori_natural.value,
+  negeri: negeri,
+  ic: form.ic.value,
+  telefon: form.telefon.value,
+  jenis: form.jenis.value,
+  saiz_baju: saiz,
+  catatan_baju: form.catatan_baju
+    ? form.catatan_baju.value
+    : "",
+  alamat: form.alamat
+    ? form.alamat.value
+    : "",
+  fileName,
+  fileType,
+  fileData
+});
 
+// peserta tambahan (mode pukal)
+const namaList = form.querySelectorAll("input[name='nama_penuh_tambahan[]']");
+const icList = form.querySelectorAll("input[name='ic_tambahan[]']");
+const telList = form.querySelectorAll("input[name='telefon_tambahan[]']");
+const karbonList = form.querySelectorAll("select[name='kategori_karbon_tambahan[]']");
+const naturalList = form.querySelectorAll("select[name='kategori_natural_tambahan[]']");
+
+for (let i = 0; i < namaList.length; i++) {
+  data.push({
+    nama_penuh: namaList[i].value,
+    nama_kelab: form.nama_kelab.value,
+    kategori_karbon: karbonList[i].value,
+    kategori_natural: naturalList[i].value,
+    negeri: negeri,
+    ic: icList[i].value,
+    telefon: telList[i].value,
+    jenis: "sahaja",
+    saiz_baju: "",
+    catatan_baju: "",
+    alamat: "",
+    fileName: "",
+    fileType: "",
+    fileData: ""
+  });
+}
       fetch(SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify(data)
@@ -301,6 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
