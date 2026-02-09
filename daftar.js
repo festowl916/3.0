@@ -204,13 +204,37 @@ const karbonList = form.querySelectorAll("select[name='kategori_karbon_tambahan[
 const naturalList = form.querySelectorAll("select[name='kategori_natural_tambahan[]']");
 
 for (let i = 0; i < namaList.length; i++) {
+
+  const icTambahan = icList[i].value;
+  const karbonTambahan = (karbonList[i].value || "").toUpperCase();
+
+  // kira umur peserta tambahan
+  const umur = kiraUmur(icTambahan);
+
+  // semakan umur ikut kategori
+  if (umur <= 12 && !karbonTambahan.includes("CILIK")) {
+    alert("Peserta tambahan umur 12 ke bawah hanya kategori CILIK.");
+    return;
+  }
+
+  if (umur >= 13 && umur <= 17 && !karbonTambahan.includes("REMAJA")) {
+    alert("Peserta tambahan umur 13–17 hanya kategori REMAJA.");
+    return;
+  }
+
+  if (umur >= 18 &&
+      (karbonTambahan.includes("CILIK") || karbonTambahan.includes("REMAJA"))) {
+    alert("Peserta tambahan umur 18 ke atas tidak boleh kategori CILIK/REMAJA.");
+    return;
+  }
+
   data.push({
     nama_penuh: namaList[i].value,
     nama_kelab: form.nama_kelab.value,
     kategori_karbon: karbonList[i].value,
     kategori_natural: naturalList[i].value,
     negeri: negeri,
-    ic: icList[i].value,
+    ic: icTambahan,
     telefon: telList[i].value,
     jenis: "sahaja",
     saiz_baju: "",
@@ -328,6 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
