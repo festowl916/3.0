@@ -76,18 +76,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const karbon = (form.kategori_karbon.value || "").toUpperCase();
 
     if (umur <= 12 && !karbon.includes("CILIK")) {
-      alert("Umur 12 tahun ke bawah hanya kategori CILIK.");
+      alert("Sila semak IC dimasukan untuk kategori CILIK.");
       return false;
     }
 
     if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
-      alert("Umur 13–17 hanya kategori REMAJA.");
+      alert("13–17 kategori REMAJA,sila semak IC yang dimasukan.");
       return false;
     }
 
     if (umur >= 18 &&
         (karbon.includes("CILIK") || karbon.includes("REMAJA"))) {
-      alert("Umur 18 tahun ke atas tidak boleh kategori CILIK/REMAJA.");
+      alert("Sila semak IC yang dimasukan untuk pilih kategori.");
       return false;
     }
 
@@ -355,6 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
