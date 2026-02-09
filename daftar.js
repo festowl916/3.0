@@ -253,17 +253,26 @@ return;
         body: JSON.stringify(data)
       })
       .then(res => res.text())
-      .then(text => {
-        form.innerHTML = `
-          <div style="text-align:center;padding:30px">
-            <h2>${text}</h2>
-            <p>Data telah diterima oleh pihak penganjur.</p>
-            <button onclick="location.reload()">
-              Daftar peserta lain
-            </button>
-          </div>
-        `;
-      })
+        .then(text => {
+
+  // jika gagal (duplicate IC atau error lain)
+  if (text.startsWith("Gagal")) {
+    alert(text);
+    resetBtn();
+    return;
+  }
+
+  // jika berjaya
+  form.innerHTML = `
+    <div style="text-align:center;padding:30px">
+      <h2>${text}</h2>
+      <p>Data telah diterima oleh pihak penganjur.</p>
+      <button onclick="location.reload()">
+        Daftar peserta lain
+      </button>
+    </div>
+  `;
+})              
       .catch(()=>{
         alert("Gagal hantar");
         resetBtn();
@@ -355,6 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
