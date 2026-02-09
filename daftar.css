@@ -172,19 +172,20 @@ button:hover {
 ========================= */
 footer {
   margin-top: 20px;
-  padding: 6px 5px;
+footer {
+  margin-top: 20px;
+  padding: 4px 5px;
   text-align: center;
-
   font-size: 8px;
-  line-height: 1.3;
+  line-height: 1.2;
   color: #666;
-
   background: transparent;
   border-top: none;
 }
 
 footer p{
   margin:2px 0;
+  font-weight: normal;
 }
 
 
@@ -310,6 +311,7 @@ input[type="radio"]{
   font-size: 10px !important;
   text-align: center;
 }
+
 
 
 
