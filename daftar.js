@@ -164,7 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if (!form.alamat.value.trim()) {
+      const alamatField = form.querySelector("[name='alamat']");
+      if (!alamatField || !alamatField.value.trim()) {
         alert("Sila isi alamat penghantaran.");
         return;
       }
@@ -196,8 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
       telefon: form.telefon.value,
       jenis: form.jenis.value,
       saiz_baju: saiz,
-      catatan_baju: form.catatan_baju.value,
-      alamat: form.alamat.value
+      catatan_baju: form.querySelector("[name='catatan_baju']")?.value || "",
+      alamat: form.querySelector("[name='alamat']")?.value || ""
     };
 
     fetch(SCRIPT_URL, {
