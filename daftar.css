@@ -291,11 +291,15 @@ input[type="radio"]{
 
 .card{
   background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
 .card-peserta{
-  background:#dbe8ff;
-  border:2px solid #2b6cb0;
+  background:#fff7d6;   /* kuning lembut */
+  border:2px solid #e0b200;
 }
 
 
