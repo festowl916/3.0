@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const spinner = document.getElementById("spinner");
   const btnText = document.getElementById("btnText");
 
-  function resetBtn(){
-
-  }
 
   /* =========================
      TOGGLE BAJU
@@ -218,4 +215,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
 
