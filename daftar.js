@@ -120,6 +120,11 @@ if (
     
     if (!semakKategoriUmur()) return;
 
+     const button = document.getElementById("submitBtn");
+     const spinner = document.getElementById("spinner");
+    const btnText = document.getElementById("btnText");
+
+
     const button = form.querySelector("button");
 
     // VALIDASI BAJU (hanya bila pilih baju)
@@ -289,3 +294,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
