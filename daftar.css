@@ -289,11 +289,12 @@ input[type="radio"]{
 }
 
 
-.card-peserta{
-  background:#eef4ff;
-  border-left:6px solid #2b6cb0;
-  box-shadow:0 2px 8px rgba(43,108,176,0.15);
+.card.card-peserta{
+  background:#eef4ff !important;
+  border-left:6px solid #2b6cb0 !important;
+  box-shadow:0 4px 12px rgba(43,108,176,0.15);
 }
+
 
 
 
