@@ -33,16 +33,13 @@ body {
   flex-wrap:nowrap;
   overflow-x:auto;
 }
+
 /* TAJUK FESTIVAL */
 .festival-title{
-  font-size:16px !important;
+  font-size: clamp(18px, 4.5vw, 26px);
+  text-align: center;
+  margin: 10px 0 20px;
 }
-h1 {
-  font-size: clamp(22px, 5vw, 32px);
-}
-
-
-
 
 /* =========================
    LABEL & INPUT
@@ -308,6 +305,7 @@ input[type="radio"]{
   background:#fff7d6;   /* kuning lembut */
   border:2px solid #e0b200;
 }
+
 
 
 
