@@ -10,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnText = document.getElementById("btnText");
 
   function resetBtn(){
-    button.disabled = false;
-    spinner.style.display = "none";
-    btnText.textContent = "Hantar Pendaftaran";
+
   }
 
   /* =========================
@@ -220,3 +218,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
