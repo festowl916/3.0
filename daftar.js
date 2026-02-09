@@ -96,9 +96,28 @@ document.addEventListener("DOMContentLoaded", () => {
   
 if (!semakKategoriUmur()) return;
 
-/* =========================
+const button = document.getElementById("submitBtn");
+const spinner = document.getElementById("spinner");
+const btnText = document.getElementById("btnText");
+
+const file = form.resit.files[0];
+ 
+  /* SUBMIT */
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if (
+      !form.kategori_karbon.value &&
+      !form.kategori_natural.value
+    ) {
+      alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
+      return;
+    }
+
+    if (!semakKategoriUmur()) return;
+    /* =========================
    VALIDASI BAJU (WAJIB)
-========================= */
+      ========================= */
 if (form.jenis.value === "baju") {
 
   const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
@@ -121,26 +140,6 @@ if (form.jenis.value === "baju") {
     return;
   }
 }
-
-const button = document.getElementById("submitBtn");
-const spinner = document.getElementById("spinner");
-const btnText = document.getElementById("btnText");
-
-const file = form.resit.files[0];
- 
-  /* SUBMIT */
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-
-    if (
-      !form.kategori_karbon.value &&
-      !form.kategori_natural.value
-    ) {
-      alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
-      return;
-    }
-
-    if (!semakKategoriUmur()) return;
 
     const button = document.getElementById("submitBtn");
     const spinner = document.getElementById("spinner");
@@ -240,4 +239,5 @@ const file = form.resit.files[0];
   });
 
 });
+
 
