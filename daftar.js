@@ -1,3 +1,7 @@
+window.onerror = function(msg, url, line) {
+  alert("JS Error: " + msg + " (line " + line + ")");
+};
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("daftarForm");
@@ -5,219 +9,199 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Irmyl9MK242dz7nz8NQCJ4XWIv6GsCsUEL4-rnWEvF0VFVFMEwnxRY91JrEmG-ErBg/exec";
 
-  const button = document.getElementById("submitBtn");
-  const spinner = document.getElementById("spinner");
-  const btnText = document.getElementById("btnText");
-
-  function resetBtn(){
-    button.disabled = false;
-    spinner.style.display = "none";
-    btnText.textContent = "Hantar Pendaftaran";
-  }
-
-  /* =========================
-     TOGGLE BAJU
-  ========================= */
   const jenis = document.getElementById("jenis");
   const sectionBaju = document.getElementById("sectionBaju");
 
+  /* TOGGLE BAJU */
   function toggleBaju(){
+    if (!sectionBaju || !jenis) return;
     sectionBaju.style.display =
       jenis.value === "baju" ? "block" : "none";
   }
-  jenis.addEventListener("change", toggleBaju);
-  toggleBaju();
 
-  /* =========================
-     NEGERI LAIN
-  ========================= */
+  if (jenis) {
+    jenis.addEventListener("change", toggleBaju);
+    toggleBaju();
+  }
+
+  /* NEGERI LAIN */
   const negeriSelect = document.getElementById("negeri");
   const inputNegeriLain = document.getElementById("inputNegeriLain");
 
-  negeriSelect.addEventListener("change", () => {
-    if (negeriSelect.value === "lain") {
-      inputNegeriLain.style.display = "block";
-    } else {
-      inputNegeriLain.style.display = "none";
-      inputNegeriLain.value = "";
+  if (negeriSelect && inputNegeriLain) {
+    function toggleNegeri(){
+      if (negeriSelect.value === "lain") {
+        inputNegeriLain.style.display = "block";
+      } else {
+        inputNegeriLain.style.display = "none";
+        inputNegeriLain.value = "";
+      }
     }
-  });
+    negeriSelect.addEventListener("change", toggleNegeri);
+    toggleNegeri();
+  }
 
-  /* =========================
-     SAIZ LAIN
-  ========================= */
+  /* SAIZ LAIN */
   const radios = document.querySelectorAll("input[name='saiz_baju']");
   const inputSaizLain = document.getElementById("inputSaizLain");
 
-  radios.forEach(radio => {
-    radio.addEventListener("change", () => {
-      inputSaizLain.style.display =
-        (radio.value === "lain" && radio.checked)
-        ? "block"
-        : "none";
+  if (radios.length && inputSaizLain) {
+    radios.forEach(radio => {
+      radio.addEventListener("change", () => {
+        inputSaizLain.style.display =
+          (radio.value === "lain" && radio.checked)
+          ? "block"
+          : "none";
+      });
     });
-  });
+  }
 
-  /* =========================
-     MODE PUKAL
-  ========================= */
-  const mode = document.getElementById("mode");
-  const bulkControls = document.getElementById("bulkControls");
-  const tambahBtn = document.getElementById("tambahPeserta");
-  const pesertaContainer = document.getElementById("pesertaTambahan");
-
-  mode.addEventListener("change", () => {
-    if (mode.value === "pukal") {
-      bulkControls.style.display = "block";
-    } else {
-      bulkControls.style.display = "none";
-      pesertaContainer.innerHTML = "";
-    }
-  });
-
-  tambahBtn.addEventListener("click", () => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <h3>Peserta Tambahan</h3>
-
-      <label>Nama Penuh *</label>
-      <input type="text" name="nama_penuh_tambahan[]" required>
-
-      <label>No IC *</label>
-      <input type="text" name="ic_tambahan[]" required>
-
-      <label>Kategori Arrow Karbon</label>
-      <select name="kategori_karbon_tambahan[]">
-        <option value="">pilih kategori</option>
-        <option>VETERAN</option>
-        <option>DEWASA LELAKI</option>
-        <option>DEWASA WANITA</option>
-        <option>REMAJA LELAKI</option>
-        <option>REMAJA PEREMPUAN</option>
-        <option>CILIK LELAKI</option>
-        <option>CILIK PEREMPUAN</option>
-      </select>
-
-      <label>Kategori Arrow Natural</label>
-      <select name="kategori_natural_tambahan[]">
-        <option value="">pilih kategori</option>
-        <option>TERBUKA LELAKI</option>
-        <option>TERBUKA WANITA</option>
-      </select>
-    `;
-    pesertaContainer.appendChild(card);
-  });
-
-  /* =========================
-     KIRA UMUR
-  ========================= */
+  /* KIRA UMUR */
   function kiraUmur(ic) {
     const tahun = parseInt(ic.substring(0,2));
     const currentYear = new Date().getFullYear() % 100;
-    let fullYear = tahun > currentYear ? 1900 + tahun : 2000 + tahun;
+
+    let fullYear = tahun > currentYear
+      ? 1900 + tahun
+      : 2000 + tahun;
+
     return new Date().getFullYear() - fullYear;
   }
 
-  /* =========================
-     SUBMIT
-  ========================= */
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-
-    if (!form.kategori_karbon.value &&
-        !form.kategori_natural.value) {
-      alert("Sila pilih sekurang-kurangnya satu kategori.");
-      return;
-    }
-
-    const ic = form.ic.value.trim();
-    if (!/^\d{12}$/.test(ic)) {
-      alert("Nombor IC mesti 12 digit.");
-      return;
-    }
+  function semakKategoriUmur() {
+    const ic = form.ic.value;
+    if (ic.length < 6) return true;
 
     const umur = kiraUmur(ic);
-    const karbon = form.kategori_karbon.value.toUpperCase();
+    const karbon = (form.kategori_karbon.value || "").toUpperCase();
 
     if (umur <= 12 && !karbon.includes("CILIK")) {
       alert("Umur 12 tahun ke bawah hanya kategori CILIK.");
-      return;
+      return false;
     }
 
     if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
       alert("Umur 13–17 hanya kategori REMAJA.");
+      return false;
+    }
+
+    if (umur >= 18 &&
+        (karbon.includes("CILIK") || karbon.includes("REMAJA"))) {
+      alert("Umur 18 tahun ke atas tidak boleh kategori CILIK/REMAJA.");
+      return false;
+    }
+
+    return true;
+  }
+
+  /* SUBMIT */
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if (
+      !form.kategori_karbon.value &&
+      !form.kategori_natural.value
+    ) {
+      alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
       return;
     }
 
-    if (form.jenis.value === "baju") {
-      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+    if (!semakKategoriUmur()) return;
 
-      if (!saizRadio) {
-        alert("Sila pilih saiz baju.");
-        return;
-      }
+    const button = document.getElementById("submitBtn");
+    const spinner = document.getElementById("spinner");
+    const btnText = document.getElementById("btnText");
 
-      if (saizRadio.value === "lain" &&
-          !form.saiz_baju_lain.value.trim()) {
-        alert("Sila nyatakan saiz lain.");
-        return;
-      }
+    const file = form.resit.files[0];
 
-      const alamatField = form.querySelector("[name='alamat']");
-      if (!alamatField || !alamatField.value.trim()) {
-        alert("Sila isi alamat penghantaran.");
-        return;
-      }
-    }
-
-    // spinner ON
     button.disabled = true;
     spinner.style.display = "inline-block";
     btnText.textContent = "Menghantar...";
 
-    let negeri = form.negeri.value;
-    if (negeri === "lain") negeri = form.negeri_lain.value;
-
-    let saiz = "";
-    const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
-    if (saizRadio) {
-      saiz = saizRadio.value === "lain"
-        ? form.saiz_baju_lain.value
-        : saizRadio.value;
+    function resetBtn(){
+      button.disabled = false;
+      spinner.style.display = "none";
+      btnText.textContent = "Hantar Pendaftaran";
     }
 
-    const data = {
-      nama_penuh: form.nama_penuh.value,
-      nama_kelab: form.nama_kelab.value,
-      kategori_karbon: form.kategori_karbon.value,
-      kategori_natural: form.kategori_natural.value,
-      negeri: negeri,
-      ic: form.ic.value,
-      telefon: form.telefon.value,
-      jenis: form.jenis.value,
-      saiz_baju: saiz,
-      catatan_baju: form.querySelector("[name='catatan_baju']")?.value || "",
-      alamat: form.querySelector("[name='alamat']")?.value || ""
-    };
+    function hantarData(fileData="", fileName="", fileType="") {
 
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(data)
-    })
-    .then(res => res.text())
-    .then(text => {
-      form.innerHTML = `
-        <div style="text-align:center;padding:30px">
-          <h2>${text}</h2>
-          <button onclick="location.reload()">Daftar peserta lain</button>
-        </div>
-      `;
-    })
-    .catch(()=>{
-      alert("Gagal hantar");
-      resetBtn();
-    });
+      let negeri = form.negeri.value;
+      if (negeri === "lain" && form.negeri_lain) {
+        negeri = form.negeri_lain.value;
+      }
+
+      let saiz = "";
+      const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
+
+      if (saizRadio) {
+        saiz = saizRadio.value === "lain"
+          ? form.saiz_baju_lain.value
+          : saizRadio.value;
+      }
+
+      const data = {
+        nama_penuh: form.nama_penuh.value,
+        nama_kelab: form.nama_kelab.value,
+        kategori_karbon: form.kategori_karbon.value,
+        kategori_natural: form.kategori_natural.value,
+        negeri: negeri,
+        ic: form.ic.value,
+        telefon: form.telefon.value,
+        jenis: form.jenis.value,
+        saiz_baju: saiz,
+        catatan_baju: form.catatan_baju
+          ? form.catatan_baju.value
+          : "",
+        alamat: form.alamat
+          ? form.alamat.value
+          : "",
+        fileName,
+        fileType,
+        fileData
+      };
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.text())
+      .then(text => {
+        form.innerHTML = `
+          <div style="text-align:center;padding:30px">
+            <h2>${text}</h2>
+            <p>Data telah diterima oleh pihak penganjur.</p>
+            <button onclick="location.reload()">
+              Daftar peserta lain
+            </button>
+          </div>
+        `;
+      })
+      .catch(()=>{
+        alert("Gagal hantar");
+        resetBtn();
+      });
+    }
+
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        alert("Saiz fail melebihi 10MB");
+        resetBtn();
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        hantarData(
+          reader.result.split(",")[1],
+          file.name,
+          file.type
+        );
+      };
+      reader.readAsDataURL(file);
+    } else {
+      hantarData();
+    }
 
   });
 
