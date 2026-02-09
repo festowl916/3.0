@@ -240,7 +240,6 @@ if (form.jenis.value === "baju") {
 
 });
 
-
 // ===============================
 // MODE PENDAFTARAN PUKAL
 // ===============================
@@ -271,6 +270,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <label>Nama Penuh *</label>
         <input type="text" name="nama_penuh_tambahan[]" required>
+
+        <label>Nombor IC *</label>
+        <input type="text" name="ic_tambahan[]" pattern="[0-9]{12}" required>
+
+        <label>Nombor Telefon *</label>
+        <input type="tel" name="telefon_tambahan[]" required>
 
         <label>Kategori Arrow Karbon</label>
         <select name="kategori_karbon_tambahan[]">
