@@ -214,18 +214,21 @@ for (let i = 0; i < namaList.length; i++) {
   // semakan umur ikut kategori
   if (umur <= 12 && !karbonTambahan.includes("CILIK")) {
     alert("Peserta tambahan umur 12 ke bawah hanya kategori CILIK.");
-    return;
+resetBtn();
+return;
   }
 
   if (umur >= 13 && umur <= 17 && !karbonTambahan.includes("REMAJA")) {
     alert("Peserta tambahan umur 13–17 hanya kategori REMAJA.");
-    return;
+resetBtn();
+return;
   }
 
   if (umur >= 18 &&
       (karbonTambahan.includes("CILIK") || karbonTambahan.includes("REMAJA"))) {
     alert("Peserta tambahan umur 18 ke atas tidak boleh kategori CILIK/REMAJA.");
-    return;
+resetBtn();
+return;
   }
 
   data.push({
@@ -352,6 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
