@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (tambahBtn && pesertaContainer) {
     tambahBtn.addEventListener("click", () => {
       const card = document.createElement("div");
-      card.className = "card";
+      card.className = "card card-peserta";
       card.innerHTML = `
         <h3>Peserta Tambahan</h3>
 
@@ -301,6 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
