@@ -167,13 +167,6 @@ button:hover {
 .baju-card input[type="radio"]:checked {
   accent-color: #2f5faa;
 }
-/* =========================
-   FOOTER
-========================= */
-footer,
-footer p {
-  font-size: 8px !important;
-}
 
 /* =========================
    SELECT – VISUAL PERINGATAN
@@ -298,6 +291,12 @@ input[type="radio"]{
   text-align: center;
 }
 
+footer,
+footer p{
+  font-size:8px !important;
+  line-height:1.3;
+  margin:2px 0;
+}
 
 
 
