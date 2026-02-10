@@ -171,12 +171,12 @@ button:hover {
    FOOTER
 ========================= */
 footer {
-  margin-top: 20px;
+  margin-top: 10px;
 footer {
-  margin-top: 20px;
-  padding: 3px 4px;
+  margin-top: 10px;
+  padding: 2px 3px;
   text-align: center;
-  font-size: 6px;
+  font-size: 3px;
   line-height: 1.2;
   color: #666;
   background: transparent;
@@ -184,7 +184,7 @@ footer {
 }
 
 footer p{
-  margin:2px 0;
+  margin:1px 0;
   font-weight: normal;
 }
 
@@ -311,6 +311,7 @@ input[type="radio"]{
   font-size: 10px !important;
   text-align: center;
 }
+
 
 
 
