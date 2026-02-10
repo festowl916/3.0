@@ -304,5 +304,15 @@ footer p{
 }
 
 
+.bank-info{
+  background:#f8f8f8;
+  padding:12px;
+  border-left:4px solid #2f5faa;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+
 
 
