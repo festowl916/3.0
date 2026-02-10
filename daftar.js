@@ -125,18 +125,18 @@ const descBaju = document.getElementById("descBaju");
     const karbon = (form.kategori_karbon.value || "").toUpperCase();
 
     if (umur <= 12 && !karbon.includes("CILIK")) {
-      alert("Sila semak IC dimasukan untuk kategori CILIK.");
+      alert("“No. IC tidak sepadan dengan kategori CILIK. Sila masukan semula IC 12 thn kebawah.”.");
       return false;
     }
 
     if (umur >= 13 && umur <= 17 && !karbon.includes("REMAJA")) {
-      alert("13–17 kategori REMAJA,sila semak IC yang dimasukan.");
+      alert("No. IC tidak sepadan dengan kategori REMAJA. Sila masukan semula IC 13-17 thn");
       return false;
     }
 
     if (umur >= 18 &&
         (karbon.includes("CILIK") || karbon.includes("REMAJA"))) {
-      alert("Sila semak IC yang dimasukan untuk pilih kategori.");
+      alert("Sila semak no. IC yang sepadan dengan kategori.");
       return false;
     }
 
@@ -422,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
