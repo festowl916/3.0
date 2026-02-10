@@ -36,7 +36,7 @@ body {
 
 /* TAJUK FESTIVAL */
 .festival-title{
-  font-size:26px;
+  font-size:20px;
   font-weight:bold;
   text-align:center;
   margin:10px 0 15px;
@@ -310,6 +310,13 @@ footer p{
   margin-bottom:10px;
 }
 
+
+.desc-merah{
+  display:block;
+  color:#c0392b;
+  font-size:13px;
+  margin:4px 0 10px;
+}
 
 
 
