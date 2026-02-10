@@ -14,11 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* TOGGLE BAJU */
   function toggleBaju(){
-    if (!sectionBaju || !jenis) return;
-    sectionBaju.style.display =
-      jenis.value === "baju" ? "block" : "none";
-  }
+  if (!sectionBaju || !jenis) return;
 
+  const show = jenis.value === "baju";
+
+  sectionBaju.style.display = show ? "block" : "none";
+
+  if (descBaju) {
+    descBaju.style.display = show ? "block" : "none";
+  }
+}
   if (jenis) {
     jenis.addEventListener("change", toggleBaju);
     toggleBaju();
@@ -364,6 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
