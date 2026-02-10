@@ -36,13 +36,40 @@ const descBaju = document.getElementById("descBaju");
 
   if (negeriSelect && inputNegeriLain) {
     function toggleNegeri(){
-      if (negeriSelect.value === "lain") {
-        inputNegeriLain.style.display = "block";
-      } else {
-        inputNegeriLain.style.display = "none";
-        inputNegeriLain.value = "";
-      }
-    }
+  if (negeriSelect.value === "lain") {
+    inputNegeriLain.style.display = "block";
+  } else {
+    inputNegeriLain.style.display = "none";
+    inputNegeriLain.value = "";
+  }
+
+  const icInput = document.querySelector("input[name='ic']");
+  if (!icInput) return;
+
+  const negeri = negeriSelect.value;
+
+  const luarNegara = [
+    "BRUNEI",
+    "SINGAPURA",
+    "INDONESIA",
+    "THAILAND"
+  ];
+
+  if (luarNegara.includes(negeri) || negeri === "lain") {
+    // luar negara → pasport bebas
+    icInput.removeAttribute("pattern");
+    icInput.removeAttribute("maxlength");
+    icInput.removeAttribute("inputmode");
+    icInput.placeholder = "contoh: A1234567 (Pasport)";
+  } else {
+    // Malaysia → IC 12 digit
+    icInput.setAttribute("pattern", "[0-9]{12}");
+    icInput.setAttribute("maxlength", "12");
+    icInput.setAttribute("inputmode", "numeric");
+    icInput.placeholder = "contoh: 900110115678 (12 digit)";
+  }
+}
+      
     negeriSelect.addEventListener("change", toggleNegeri);
     toggleNegeri();
   }
@@ -370,6 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
