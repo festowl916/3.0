@@ -287,10 +287,6 @@ input[type="radio"]{
   border:2px solid #e0b200;
 }
 /* KECILKAN TAJUK FESTIVAL */
-.festival-title{
-  font-size: 12px !important;
-  text-align: center;
-}
 
 footer{
   text-align:center;
@@ -313,6 +309,7 @@ footer p{
   line-height:1.6;
   margin-bottom:10px;
 }
+
 
 
 
