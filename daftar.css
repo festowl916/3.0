@@ -174,9 +174,9 @@ footer {
   margin-top: 20px;
 footer {
   margin-top: 20px;
-  padding: 4px 5px;
+  padding: 3px 4px;
   text-align: center;
-  font-size: 8px;
+  font-size: 6px;
   line-height: 1.2;
   color: #666;
   background: transparent;
@@ -311,6 +311,7 @@ input[type="radio"]{
   font-size: 10px !important;
   text-align: center;
 }
+
 
 
 
