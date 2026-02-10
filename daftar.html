@@ -321,12 +321,24 @@ sila nyatakan pada ruangan catatan di bawah.
   <textarea name="alamat"></textarea>
 </div>
 </div> <!-- tutup card Jenis Pendaftaran -->
-
-<div class="card">
+   <div class="card">
   <h2>Bukti Bayaran</h2>
+  <div class="note">
+    <strong>Maklumat Pembayaran:</strong><br>
+    Bank: Bank Rakyat<br>
+    No. Akaun: 1102358633<br>
+    Penama: Persatuan Memanah Tradisional Negeri Terengganu
+  </div>
+
   <label>Upload Resit (pilihan)</label>
+  <small>
+    Sila upload bukti bayaran dalam format gambar atau PDF.
+    Saiz maksimum 10MB.
+  </small>
+
   <input type="file" name="resit" accept="image/*,application/pdf">
 </div>
+
 <button type="submit" id="submitBtn">
   <span id="btnText">Hantar Pendaftaran</span>
   <span id="spinner" style="display:none;"> ⏳</span>
@@ -343,6 +355,7 @@ sila nyatakan pada ruangan catatan di bawah.
 </body>
 </html>
   
+
 
 
 
