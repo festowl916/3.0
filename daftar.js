@@ -43,9 +43,6 @@ const descBaju = document.getElementById("descBaju");
     inputNegeriLain.value = "";
   }
 
-  const icInput = document.querySelector("input[name='ic']");
-  if (!icInput) return;
-
   const negeri = negeriSelect.value;
 
   const luarNegara = [
@@ -55,19 +52,38 @@ const descBaju = document.getElementById("descBaju");
     "THAILAND"
   ];
 
-  if (luarNegara.includes(negeri) || negeri === "lain") {
-    // luar negara → pasport bebas
-    icInput.removeAttribute("pattern");
-    icInput.removeAttribute("maxlength");
-    icInput.removeAttribute("inputmode");
-    icInput.placeholder = "contoh: A1234567 (Pasport)";
-  } else {
-    // Malaysia → IC 12 digit
-    icInput.setAttribute("pattern", "[0-9]{12}");
-    icInput.setAttribute("maxlength", "12");
-    icInput.setAttribute("inputmode", "numeric");
-    icInput.placeholder = "contoh: 900110115678 (12 digit)";
+  const isLuar = luarNegara.includes(negeri) || negeri === "lain";
+
+  // peserta utama
+  const icInput = document.querySelector("input[name='ic']");
+  if (icInput) {
+    if (isLuar) {
+      icInput.removeAttribute("pattern");
+      icInput.removeAttribute("maxlength");
+      icInput.removeAttribute("inputmode");
+      icInput.placeholder = "contoh: A1234567 (Pasport)";
+    } else {
+      icInput.setAttribute("pattern", "[0-9]{12}");
+      icInput.setAttribute("maxlength", "12");
+      icInput.setAttribute("inputmode", "numeric");
+      icInput.placeholder = "contoh: 900110115678 (12 digit)";
+    }
   }
+
+  // peserta tambahan
+  const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
+
+  icTambahanList.forEach(input => {
+    if (isLuar) {
+      input.removeAttribute("pattern");
+      input.removeAttribute("maxlength");
+      input.placeholder = "Pasport";
+    } else {
+      input.setAttribute("pattern", "[0-9]{12}");
+      input.setAttribute("maxlength", "12");
+      input.placeholder = "IC 12 digit";
+    }
+  });
 }
       
     negeriSelect.addEventListener("change", toggleNegeri);
@@ -397,6 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
