@@ -183,12 +183,6 @@ footer {
   border-top: none;
 }
 
-footer p{
-  margin:1px 0;
-  font-weight: normal;
-}
-
-
 /* =========================
    SELECT – VISUAL PERINGATAN
 ========================= */
@@ -311,6 +305,7 @@ input[type="radio"]{
   font-size: 10px !important;
   text-align: center;
 }
+
 
 
 
