@@ -244,8 +244,11 @@ Pilih:<br>
 <input
   type="text"
   name="ic"
-  placeholder="contoh: 900110115678 (12 digit)"
-  required> 
+  pattern="[0-9]{12}"
+  maxlength="12"
+  inputmode="numeric"
+  placeholder="contoh: 900110115678"
+  required>
   
   <label>Nombor Telefon *</label>
   <input type="tel" name="telefon" required>
@@ -372,6 +375,7 @@ sila nyatakan pada ruangan catatan di bawah.
 </body>
 </html>
   
+
 
 
 
