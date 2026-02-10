@@ -301,15 +301,16 @@ footer p{
 
 /* FORCE SMALL FOOTER */
 footer{
-  font-size:8px !important;
+  font-size:6px !important;
   line-height:1.2 !important;
   padding:4px 0 !important;
 }
 
 footer p{
-  font-size:8px !important;
+  font-size:6px !important;
   margin:2px 0 !important;
 }
+
 
 
 
