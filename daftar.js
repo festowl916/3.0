@@ -253,6 +253,15 @@ const karbonList = form.querySelectorAll("select[name='kategori_karbon_tambahan[
 const naturalList = form.querySelectorAll("select[name='kategori_natural_tambahan[]']");
 
 for (let i = 0; i < namaList.length; i++) {
+  // wajib pilih sekurang-kurangnya satu kategori
+  if (
+    !karbonList[i].value &&
+    !naturalList[i].value
+  ) {
+    alert("Peserta tambahan mesti pilih sekurang-kurangnya satu kategori.");
+    resetBtn();
+    return;
+  }
 
   const icTambahan = icList[i].value;
   const karbonTambahan = (karbonList[i].value || "").toUpperCase();
@@ -413,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
