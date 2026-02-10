@@ -17,7 +17,7 @@ const descBaju = document.getElementById("descBaju");
   function toggleBaju(){
   if (!sectionBaju || !jenis) return;
 
-  const show = jenis.value === "baju";
+  const show = jenis.value === "daftar+baju";
 
   sectionBaju.style.display = show ? "block" : "none";
 
@@ -167,7 +167,7 @@ const file = form.resit.files[0];
     /* =========================
    VALIDASI BAJU (WAJIB)
       ========================= */
-if (form.jenis.value === "baju") {
+if (form.jenis.value === "daftar+baju") {
 
   const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
 
@@ -422,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
