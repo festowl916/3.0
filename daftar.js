@@ -297,7 +297,7 @@ return;
     negeri: negeri,
     ic: icTambahan,
     telefon: telList[i].value,
-    jenis: "sahaja",
+    jenis: "pukal/kelab",
     saiz_baju: "",
     catatan_baju: "",
     alamat: "",
@@ -422,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
