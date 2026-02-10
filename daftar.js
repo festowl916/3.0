@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYIEIatnIu3-aah8PawT4NV29r_upDMCnhrQzUAudMh1Uaqi7ncpfBnZQfVI47iSpvRQ/exec";
 
   const jenis = document.getElementById("jenis");
-  const sectionBaju = document.getElementById("sectionBaju");
+const sectionBaju = document.getElementById("sectionBaju");
+const descBaju = document.getElementById("descBaju");
 
   /* TOGGLE BAJU */
   function toggleBaju(){
@@ -369,6 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
