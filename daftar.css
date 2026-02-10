@@ -36,10 +36,10 @@ body {
 
 /* TAJUK FESTIVAL */
 .festival-title{
-  font-size:20px;
+  font-size:22px;
   font-weight:bold;
   text-align:center;
-  margin:10px 0 15px;
+  margin:11px 0 16px;
 }
 
 /* =========================
@@ -324,6 +324,7 @@ footer p{
 .card h2{
   font-size:20px;
 }
+
 
 
 
