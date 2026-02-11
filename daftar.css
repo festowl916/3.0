@@ -290,7 +290,7 @@ input[type="radio"]{
 
 footer{
   text-align:center;
-  font-size:9px;
+  font-size:10px;
   color:#666;
   margin:20px 0 8px;
   line-height:1.3;
@@ -375,6 +375,7 @@ footer p{
   from{ transform:rotate(0deg); }
   to{ transform:rotate(360deg); }
 }
+
 
 
 
