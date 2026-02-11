@@ -313,7 +313,34 @@ return;
 resetBtn();
 return;
   }
+  // ==========================
+// TAMBAHAN KATEGORI DEWASA
+// ==========================
+const naturalTambahan = (naturalList[i].value || "").toUpperCase();
 
+if (karbonTambahan.includes("VETERAN LELAKI") && umur < 50) {
+  alert("Peserta tambahan kategori VETERAN LELAKI mesti umur 50 tahun ke atas.");
+  resetBtn();
+  return;
+}
+
+if (karbonTambahan.includes("DEWASA LELAKI") && (umur < 18 || umur > 49)) {
+  alert("Peserta tambahan DEWASA LELAKI hanya umur 18–49 tahun.");
+  resetBtn();
+  return;
+}
+
+if (karbonTambahan.includes("DEWASA WANITA") && umur < 18) {
+  alert("Peserta tambahan DEWASA WANITA hanya umur 18 tahun ke atas.");
+  resetBtn();
+  return;
+}
+
+if (naturalTambahan.includes("TERBUKA") && umur < 18) {
+  alert("Peserta tambahan kategori TERBUKA hanya untuk umur 18 tahun ke atas.");
+  resetBtn();
+  return;
+}
   data.push({
     nama_penuh: namaList[i].value,
     nama_kelab: form.nama_kelab.value,
@@ -457,6 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
