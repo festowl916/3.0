@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <label>Kategori Arrow Karbon</label>
         <select name="kategori_karbon_tambahan[]">
           <option value="">pilih kategori</option>
-          <option>VETERAN</option>
+          <option>VETERAN LELAKI</option>
           <option>DEWASA LELAKI</option>
           <option>DEWASA WANITA</option>
           <option>REMAJA LELAKI</option>
@@ -433,6 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
