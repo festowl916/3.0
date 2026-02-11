@@ -82,7 +82,7 @@ const descBaju = document.getElementById("descBaju");
     input.setAttribute("pattern", "[0-9]{12}");
     input.setAttribute("maxlength", "12");
     input.setAttribute("inputmode", "numeric");
-    input.placeholder = "IC 12 digit";
+    input.placeholder = "contoh: 900110115678 (12 digit)";
   }
 });  
 }
@@ -430,6 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
