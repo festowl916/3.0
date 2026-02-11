@@ -140,6 +140,30 @@ const descBaju = document.getElementById("descBaju");
       alert("Sila semak no. IC yang sepadan dengan kategori.");
       return false;
     }
+    // ======================
+  // TAMBAHAN KATEGORI BARU
+  // ======================
+  const natural = (form.kategori_natural.value || "").toUpperCase();
+
+  if (karbon.includes("VETERAN LELAKI") && umur < 50) {
+    alert("Kategori VETERAN LELAKI hanya untuk umur 50 tahun ke atas.");
+    return false;
+  }
+
+  if (karbon.includes("DEWASA LELAKI") && (umur < 18 || umur > 49)) {
+    alert("Kategori DEWASA LELAKI hanya untuk umur 18 hingga 49 tahun.");
+    return false;
+  }
+
+  if (karbon.includes("DEWASA WANITA") && umur < 18) {
+    alert("Kategori DEWASA WANITA hanya untuk umur 18 tahun ke atas.");
+    return false;
+  }
+
+  if (natural.includes("TERBUKA") && umur < 18) {
+    alert("Kategori TERBUKA hanya untuk umur 18 tahun ke atas.");
+    return false;
+  }
 
     return true;
   }
@@ -433,6 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
