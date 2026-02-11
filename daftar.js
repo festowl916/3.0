@@ -399,9 +399,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <label>Nama Penuh *</label>
         <input type="text" name="nama_penuh_tambahan[]" required>
-
         <label>Nombor IC *</label>
-        <input type="text" name="ic_tambahan[]" pattern="[0-9]{12}" inputmode="numeric" required>
+<input type="text" name="ic_tambahan[]" 
+       pattern="[0-9]{12}" 
+       inputmode="numeric"
+       placeholder="contoh: 900110115678 (12 digit)"
+       required>
 
         <label>Nombor Telefon *</label>
         <input type="tel" name="telefon_tambahan[]" required>
@@ -430,6 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
