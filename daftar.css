@@ -325,7 +325,39 @@ footer p{
   font-size:20px;
 }
 
+.btn-home{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 16px;
+  background:#555;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
 
+.btn-home:hover{
+  background:#333;
+}
+
+.btn-daftar{
+  background:#1e7a4f;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-home,
+.btn-daftar{
+  transition:0.3s;
+}
+
+.btn-daftar:hover{
+  background:#155c3b;
+}
 
 
 
