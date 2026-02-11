@@ -319,11 +319,10 @@ return;
     resetBtn();
     return;
   }
-
-  // jika berjaya
-          form.innerHTML = `
+         // jika berjaya
+form.innerHTML = `
   <div style="text-align:center;padding:30px">
-    <h2>${text}</h2>
+    <h2>Terima kasih atas pendaftaran anda.</h2>
     <p>Data telah diterima oleh pihak penganjur.</p>
 
     <button onclick="location.reload()" class="btn-daftar">
@@ -333,11 +332,11 @@ return;
     <br><br>
 
     <a href="index.html" class="btn-home">
-      ← Kembali ke Home
+      ← Kembali
     </a>
   </div>
-`;
-          
+`; 
+         
 })              
       .catch(()=>{
         alert("Gagal hantar");
@@ -430,6 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
