@@ -72,18 +72,19 @@ const descBaju = document.getElementById("descBaju");
 
   // peserta tambahan
   const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
-
-  icTambahanList.forEach(input => {
-    if (isLuar) {
-      input.removeAttribute("pattern");
-      input.removeAttribute("maxlength");
-      input.placeholder = "Pasport";
-    } else {
-      input.setAttribute("pattern", "[0-9]{12}");
-      input.setAttribute("maxlength", "12");
-      input.placeholder = "IC 12 digit";
-    }
-  });
+      icTambahanList.forEach(input => {
+  if (isLuar) {
+    input.removeAttribute("pattern");
+    input.removeAttribute("maxlength");
+    input.removeAttribute("inputmode");
+    input.placeholder = "Pasport";
+  } else {
+    input.setAttribute("pattern", "[0-9]{12}");
+    input.setAttribute("maxlength", "12");
+    input.setAttribute("inputmode", "numeric");
+    input.placeholder = "IC 12 digit";
+  }
+});  
 }
       
     negeriSelect.addEventListener("change", toggleNegeri);
@@ -429,6 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
