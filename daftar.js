@@ -321,15 +321,23 @@ return;
   }
 
   // jika berjaya
-  form.innerHTML = `
-    <div style="text-align:center;padding:30px">
-      <h2>${text}</h2>
-      <p>Data telah diterima oleh pihak penganjur.</p>
-      <button onclick="location.reload()">
-        Daftar peserta lain
-      </button>
-    </div>
-  `;
+          form.innerHTML = `
+  <div style="text-align:center;padding:30px">
+    <h2>${text}</h2>
+    <p>Data telah diterima oleh pihak penganjur.</p>
+
+    <button onclick="location.reload()" class="btn-daftar">
+      Daftar peserta lain
+    </button>
+
+    <br><br>
+
+    <a href="index.html" class="btn-home">
+      ← Kembali ke Home
+    </a>
+  </div>
+`;
+          
 })              
       .catch(()=>{
         alert("Gagal hantar");
@@ -422,6 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
