@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =====================
      TARIKH PENDAFTARAN
   ===================== */
-  const DAFTAR_BUKA  = new Date("2026-03-01T00:00:00").getTime();
+  const DAFTAR_BUKA  = new Date("2026-01-01T00:00:00").getTime();
   const DAFTAR_TUTUP = new Date("2026-06-20T23:59:59").getTime();
 
   const btn        = document.getElementById("btn-daftar");
@@ -127,6 +127,7 @@ function openBaju() {
 function closeBaju(event) {
   document.getElementById("bajuModal").style.display = "none";
 }
+
 
 
 
