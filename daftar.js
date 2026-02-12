@@ -91,21 +91,6 @@ const descBaju = document.getElementById("descBaju");
     toggleNegeri();
   }
 
-  /* SAIZ LAIN */
-  const radios = document.querySelectorAll("input[name='saiz_baju']");
-  const inputSaizLain = document.getElementById("inputSaizLain");
-
-  if (radios.length && inputSaizLain) {
-    radios.forEach(radio => {
-      radio.addEventListener("change", () => {
-        inputSaizLain.style.display =
-          (radio.value === "lain" && radio.checked)
-          ? "block"
-          : "none";
-      });
-    });
-  }
-
   /* KIRA UMUR */
   function kiraUmur(ic) {
     const tahun = parseInt(ic.substring(0,2));
@@ -497,6 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
