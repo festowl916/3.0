@@ -237,6 +237,13 @@ select:focus {
   margin:10px 0 4px;
 }
 
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+
 .size-grid label{
   display: flex;
   align-items: center;
@@ -370,18 +377,6 @@ footer p{
   to{ transform:rotate(360deg); }
 }
 
-.size-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px 12px;
-  margin-bottom: 12px;
-}
-
-.size-grid label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
 
 
 
