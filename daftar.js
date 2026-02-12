@@ -233,21 +233,51 @@ if (form.jenis.value === "daftar+baju") {
       }
       let data = [];
       // gabung catatan lelaki, wanita, cilik
-let catatanGabung = "";
+let data = [];
 
-if (form.catatan_lelaki && form.catatan_lelaki.value.trim()) {
-  catatanGabung += "Lelaki: " + form.catatan_lelaki.value.trim();
+// ===== KIRA BAJU TAMBAHAN PUKAL =====
+let catatanGabung = [];
+
+function ambilJumlah(name, label) {
+  if (form[name] && form[name].value) {
+    const val = parseInt(form[name].value);
+    if (val > 0) {
+      catatanGabung.push(label + " (" + val + ")");
+    }
+  }
 }
 
-if (form.catatan_wanita && form.catatan_wanita.value.trim()) {
-  if (catatanGabung) catatanGabung += " | ";
-  catatanGabung += "Wanita: " + form.catatan_wanita.value.trim();
-}
+// Lelaki
+ambilJumlah("lelaki_xs", "Lelaki XS");
+ambilJumlah("lelaki_s", "Lelaki S");
+ambilJumlah("lelaki_m", "Lelaki M");
+ambilJumlah("lelaki_l", "Lelaki L");
+ambilJumlah("lelaki_xl", "Lelaki XL");
+ambilJumlah("lelaki_2xl", "Lelaki 2XL");
+ambilJumlah("lelaki_3xl", "Lelaki 3XL");
+ambilJumlah("lelaki_4xl", "Lelaki 4XL");
+ambilJumlah("lelaki_5xl", "Lelaki 5XL");
 
-if (form.catatan_cilik && form.catatan_cilik.value.trim()) {
-  if (catatanGabung) catatanGabung += " | ";
-  catatanGabung += "Cilik: " + form.catatan_cilik.value.trim();
-}
+// Wanita
+ambilJumlah("wanita_xs", "Wanita XS");
+ambilJumlah("wanita_s", "Wanita S");
+ambilJumlah("wanita_m", "Wanita M");
+ambilJumlah("wanita_l", "Wanita L");
+ambilJumlah("wanita_xl", "Wanita XL");
+ambilJumlah("wanita_2xl", "Wanita 2XL");
+ambilJumlah("wanita_3xl", "Wanita 3XL");
+ambilJumlah("wanita_4xl", "Wanita 4XL");
+ambilJumlah("wanita_5xl", "Wanita 5XL");
+
+// Cilik
+ambilJumlah("cilik_22", "Cilik 22");
+ambilJumlah("cilik_24", "Cilik 24");
+ambilJumlah("cilik_26", "Cilik 26");
+ambilJumlah("cilik_28", "Cilik 28");
+ambilJumlah("cilik_30", "Cilik 30");
+ambilJumlah("cilik_32", "Cilik 32");
+
+catatanGabung = catatanGabung.join(" | ");
       // peserta utama
 data.push({
   nama_penuh: form.nama_penuh.value,
@@ -482,6 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
