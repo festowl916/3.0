@@ -247,7 +247,23 @@ if (form.jenis.value === "daftar+baju") {
           : saizRadio.value;
       }
       let data = [];
+      // gabung catatan lelaki, wanita, cilik
+let catatanGabung = "";
 
+if (form.catatan_lelaki && form.catatan_lelaki.value.trim()) {
+  catatanGabung += "Lelaki: " + form.catatan_lelaki.value.trim();
+}
+
+if (form.catatan_wanita && form.catatan_wanita.value.trim()) {
+  if (catatanGabung) catatanGabung += " | ";
+  catatanGabung += "Wanita: " + form.catatan_wanita.value.trim();
+}
+
+if (form.catatan_cilik && form.catatan_cilik.value.trim()) {
+  if (catatanGabung) catatanGabung += " | ";
+  catatanGabung += "Cilik: " + form.catatan_cilik.value.trim();
+}
+      
 // peserta utama
 data.push({
   nama_penuh: form.nama_penuh.value,
@@ -484,6 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
