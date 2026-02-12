@@ -233,7 +233,6 @@ if (form.jenis.value === "daftar+baju") {
       }
       let data = [];
       // gabung catatan lelaki, wanita, cilik
-let data = [];
 
 // ===== KIRA BAJU TAMBAHAN PUKAL =====
 let catatanGabung = [];
@@ -512,6 +511,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
