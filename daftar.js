@@ -263,8 +263,7 @@ if (form.catatan_cilik && form.catatan_cilik.value.trim()) {
   if (catatanGabung) catatanGabung += " | ";
   catatanGabung += "Cilik: " + form.catatan_cilik.value.trim();
 }
-      
-// peserta utama
+      // peserta utama
 data.push({
   nama_penuh: form.nama_penuh.value,
   nama_kelab: form.nama_kelab.value,
@@ -275,9 +274,7 @@ data.push({
   telefon: form.telefon.value,
   jenis: form.jenis.value,
   saiz_baju: saiz,
-  catatan_baju: form.catatan_baju
-    ? form.catatan_baju.value
-    : "",
+  catatan_baju: catatanGabung,
   alamat: form.alamat
     ? form.alamat.value
     : "",
@@ -500,6 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
