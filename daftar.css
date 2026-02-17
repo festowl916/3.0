@@ -377,6 +377,11 @@ footer p{
   to{ transform:rotate(360deg); }
 }
 
+.note h2{
+  text-align:center;
+  margin-bottom:15px;
+  color:#0b4da2;
+}
 
 
 
