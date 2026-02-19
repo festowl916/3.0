@@ -395,7 +395,7 @@ footer p{
 
 .size-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 
@@ -417,6 +417,7 @@ footer p{
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+
 
 
 
