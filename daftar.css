@@ -385,6 +385,11 @@ footer p{
 }
 
 
+.section-box {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 3px solid #444;
+}
 
 
 
