@@ -393,6 +393,30 @@ footer p{
 
 
 
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.size-item {
+  background: #f4f6f8;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.size-item label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.size-item input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
 
 
 
