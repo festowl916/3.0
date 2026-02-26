@@ -523,11 +523,32 @@ Pilih:<br>
   <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const cara = document.getElementById("caraPenghantaran");
+  const alamatBox = document.getElementById("alamatContainer");
+  const alamatField = document.getElementById("alamatField");
+
+  cara.addEventListener("change", function() {
+    if (this.value === "pos") {
+      alamatBox.style.display = "block";
+      alamatField.required = true;
+    } else {
+      alamatBox.style.display = "none";
+      alamatField.required = false;
+      alamatField.value = "";
+    }
+  });
+
+});
+</script>
 
 <script src="daftar.js"></script>
 </body>
 </html>
   
+
 
 
 
