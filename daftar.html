@@ -523,9 +523,6 @@ Pilih:<br>
   <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
-  <script>
-do</footer>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -538,10 +535,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (this.value === "pos") {
       alamatBox.style.display = "block";
       alamatField.required = true;
+      alamatField.readOnly = false;
       alamatField.value = "";
-    } else if (this.value === "walkin") {
-      alamatBox.style.display = "none";
+    } 
+
+    if (this.value === "walkin") {
+      alamatBox.style.display = "block";
       alamatField.required = false;
+      alamatField.readOnly = true;
       alamatField.value = "WALK-IN";
     }
 
@@ -552,16 +553,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script src="daftar.js"></script>
 </body>
-</html>
-  });
+</html> 
 
-});
-</script>
-
-<script src="daftar.js"></script>
-</body>
-</html>
-  
 
 
 
