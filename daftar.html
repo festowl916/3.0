@@ -477,34 +477,37 @@ Pilih:<br>
       </div>
 
     </div>
-  </div>  <!-- tutup size section -->
-</div>  <!-- tutup content dalam card -->
-
-<!-- JANGAN tutup card lagi -->
+    </div> <!-- tutup size section -->
+</div> <!-- tutup content dalam card -->
 
 <!-- Bahagian Cara Penghantaran -->
-<label>Cara Penghantaran</label>
-<select name="cara_penghantaran" id="caraPenghantaran">
-  <option value="">-- Pilih --</option>
-  <option value="walkin">Walk-in / Pickup</option>
-  <option value="pos">Penghantaran</option>
-</select>
+<div class="section">
 
-<div id="alamatContainer" style="display:none;">
-  <label>Alamat Penghantaran</label>
+  <label for="caraPenghantaran">Cara Penghantaran</label>
+  <select name="cara_penghantaran" id="caraPenghantaran">
+    <option value="" selected>-- Pilih --</option>
+    <option value="walkin">Walk-in / Pickup</option>
+    <option value="pos">Penghantaran</option>
+  </select>
 
-  <div style="font-size:12px; color:#666; margin-bottom:5px;">
-    Kos penghantaran:
-    1–2 helai = RM10 |
-    3 helai ke atas = RM15
+  <div id="alamatContainer" style="display:none; margin-top:10px;">
+    <label for="alamatField">Alamat Penghantaran</label>
+
+    <div style="font-size:12px; color:#666; margin-bottom:5px;">
+      Kos penghantaran:
+      1–2 helai = RM10 |
+      3 helai ke atas = RM15
+    </div>
+
+    <textarea name="alamat" id="alamatField"></textarea>
   </div>
 
-  <textarea name="alamat" id="alamatField"></textarea>
-</div>
+</div> <!-- tamat section dalam card -->
 
-</div> <!-- SEKARANG baru tutup card -->
+</div> <!-- SEKARANG baru tutup card utama -->
 
 <div class="card">
+  
   <h2>Bukti Bayaran</h2>
   <div class="note">
     <strong>Maklumat Pembayaran:</strong><br>
@@ -566,6 +569,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <script src="daftar.js"></script>
 </body>
 </html> 
+
 
 
 
