@@ -516,6 +516,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+document.addEventListener("DOMContentLoaded", function() {
+
+  const jenis = document.getElementById("jenis");
+  const nota = document.getElementById("notaPos");
+
+  if (jenis && nota) {
+    jenis.addEventListener("change", function() {
+      nota.style.display = this.value === "daftar+baju" ? "block" : "none";
+    });
+  }
+
+});
 
 
 
