@@ -194,10 +194,12 @@ if (form.jenis.value === "daftar+baju") {
     return;
   }
 
-  if (!form.alamat || !form.alamat.value.trim()) {
-    alert("Sila isi alamat penghantaran.");
-    return;
-  }
+  const cara = document.getElementById("caraPenghantaran").value;
+
+if (cara === "pos" && (!form.alamat || !form.alamat.value.trim())) {
+  alert("Sila isi alamat penghantaran.");
+  return;
+}
 }
 
     const button = document.getElementById("submitBtn");
@@ -511,6 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
