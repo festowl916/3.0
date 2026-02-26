@@ -477,15 +477,20 @@ Pilih:<br>
       </div>
 
     </div>
-  </div>
+  </div>  <!-- tutup size section -->
+</div>  <!-- tutup content dalam card -->
 
-</div>
-  <!-- Bahagian Cara Penghantaran -->
+<!-- JANGAN tutup card lagi -->
 
+<!-- Bahagian Cara Penghantaran -->
 <label>Cara Penghantaran</label>
-<select ...>...</select>
+<select name="cara_penghantaran" id="caraPenghantaran">
+  <option value="">-- Pilih --</option>
+  <option value="walkin">Walk-in / Pickup</option>
+  <option value="pos">Penghantaran</option>
+</select>
 
-<div id="alamatContainer">
+<div id="alamatContainer" style="display:none;">
   <label>Alamat Penghantaran</label>
 
   <div style="font-size:12px; color:#666; margin-bottom:5px;">
@@ -497,7 +502,7 @@ Pilih:<br>
   <textarea name="alamat" id="alamatField"></textarea>
 </div>
 
-</div> <!-- tutup card -->
+</div> <!-- SEKARANG baru tutup card -->
 
 <div class="card">
   <h2>Bukti Bayaran</h2>
@@ -561,6 +566,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <script src="daftar.js"></script>
 </body>
 </html> 
+
 
 
 
