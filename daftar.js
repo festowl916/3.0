@@ -514,6 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
 document.addEventListener("DOMContentLoaded", function() {
 
   const jenis = document.getElementById("jenis");
@@ -522,17 +523,11 @@ document.addEventListener("DOMContentLoaded", function() {
   if (!jenis || !nota) return;
 
   function updateNota() {
-    const val = (jenis.value || "").toLowerCase();
-
-    if (val.includes("baju")) {
-      nota.style.display = "block";
-    } else {
-      nota.style.display = "none";
-    }
+    nota.style.display = jenis.value === "daftar+baju" ? "block" : "none";
   }
 
   jenis.addEventListener("change", updateNota);
-  updateNota(); // run masa page load
+  updateNota();
 
 });
 
