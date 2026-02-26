@@ -524,6 +524,9 @@ Pilih:<br>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
   <script>
+do</footer>
+
+<script>
 document.addEventListener("DOMContentLoaded", function() {
 
   const cara = document.getElementById("caraPenghantaran");
@@ -531,14 +534,25 @@ document.addEventListener("DOMContentLoaded", function() {
   const alamatField = document.getElementById("alamatField");
 
   cara.addEventListener("change", function() {
+
     if (this.value === "pos") {
       alamatBox.style.display = "block";
       alamatField.required = true;
-    } else {
+      alamatField.value = "";
+    } else if (this.value === "walkin") {
       alamatBox.style.display = "none";
       alamatField.required = false;
-      alamatField.value = "";
+      alamatField.value = "WALK-IN";
     }
+
+  });
+
+});
+</script>
+
+<script src="daftar.js"></script>
+</body>
+</html>
   });
 
 });
@@ -548,6 +562,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 </html>
   
+
 
 
 
