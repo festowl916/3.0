@@ -522,19 +522,19 @@ document.addEventListener("DOMContentLoaded", function() {
   if (!jenis || !nota) return;
 
   function updateNota() {
-    nota.style.display = jenis.value === "daftar+baju" ? "block" : "none";
+    const val = (jenis.value || "").toLowerCase();
+
+    if (val.includes("baju")) {
+      nota.style.display = "block";
+    } else {
+      nota.style.display = "none";
+    }
   }
 
   jenis.addEventListener("change", updateNota);
-
-  // 🔥 penting: jalankan sekali masa page load
-  updateNota();
+  updateNota(); // run masa page load
 
 });
-
-
-
-
 
 
 
