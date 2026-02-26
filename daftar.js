@@ -514,20 +514,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
 
   const jenis = document.getElementById("jenis");
   const nota = document.getElementById("notaPos");
 
-  if (jenis && nota) {
-    jenis.addEventListener("change", function() {
-      nota.style.display = this.value === "daftar+baju" ? "block" : "none";
-    });
+  if (!jenis || !nota) return;
+
+  function updateNota() {
+    nota.style.display = jenis.value === "daftar+baju" ? "block" : "none";
   }
 
+  jenis.addEventListener("change", updateNota);
+
+  // 🔥 penting: jalankan sekali masa page load
+  updateNota();
+
 });
+
+
+
+
 
 
 
