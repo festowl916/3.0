@@ -531,38 +531,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  const cara = document.getElementById("caraPenghantaran");
-  const alamatSection = document.getElementById("alamatSection");
-  const alamatInput = document.getElementById("alamatInput");
-
-  cara.addEventListener("change", function () {
-
-    if (this.value === "POS") {
-      alamatSection.style.display = "block";
-      alamatInput.required = true;
-      alamatInput.readOnly = false;
-      alamatInput.value = "";
-    }
-
-    if (this.value === "WALK-IN") {
-      alamatSection.style.display = "block";
-      alamatInput.required = false;
-      alamatInput.readOnly = true;
-      alamatInput.value = "WALK-IN";
-    }
-
-    if (this.value === "") {
-      alamatSection.style.display = "none";
-      alamatInput.value = "";
-    }
-
-  });
-
-});
-</script>
 
 
 
