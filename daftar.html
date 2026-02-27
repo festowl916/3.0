@@ -174,20 +174,21 @@ Pilih:<br>
   <option value="individu">Individu</option>
   <option value="pukal">Pendaftaran Kelab / Pukal</option>
 </select>
-   <!-- CARA PENGHANTARAN -->
+
+<!-- CARA PENGHANTARAN -->
 <label>Cara Penghantaran *</label>
-<select id="caraPenghantaran" name="alamat" required>
+<select id="caraPenghantaran" name="cara_penghantaran">
   <option value="">-- Pilih --</option>
   <option value="WALK-IN">WALK-IN</option>
   <option value="POS">POS</option>
 </select>
 
 <!-- Alamat Pos (hidden dulu) -->
-<div id="alamatSection" style="display:none; margin-top:10px;">
+<div id="alamatSection" style="display:none;">
   <label>Alamat Penghantaran *</label>
-  <textarea id="alamatInput" placeholder="Isi alamat penuh untuk penghantaran POS"></textarea>
+  <textarea id="alamatInput" name="alamat"
+    placeholder="Isi alamat penuh jika pilih POS"></textarea>
 </div>
-
   <!-- KAWALAN PUKAL -->
   <div id="bulkControls" style="display:none; margin-top:10px;">
     <button type="button" id="tambahPeserta">
@@ -583,6 +584,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <script src="daftar.js"></script>
 </body>
 </html> 
+
 
 
 
