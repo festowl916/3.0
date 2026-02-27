@@ -292,9 +292,9 @@ data.push({
   jenis: form.jenis.value,
   saiz_baju: saiz,
   catatan_baju: catatanGabung,
-  alamat: form.alamat
-    ? form.alamat.value
-    : "",
+  alamat: document.getElementById("alamatField")
+  ? document.getElementById("alamatField").value
+  : "",
   fileName,
   fileType,
   fileData
@@ -556,6 +556,7 @@ if (caraSelect && alamatContainer) {
   caraSelect.addEventListener("change", toggleAlamat);
   toggleAlamat();
 }
+
 
 
 
