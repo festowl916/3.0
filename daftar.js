@@ -195,8 +195,9 @@ if (form.jenis.value === "daftar+baju") {
   }
 
   const cara = document.getElementById("caraPenghantaran").value;
+const alamatValue = document.getElementById("alamatField").value.trim();
 
-if (cara === "pos" && (!form.alamat || !form.alamat.value.trim())) {
+if (cara === "pos" && alamatValue === "") {
   alert("Sila isi alamat penghantaran.");
   return;
 }
@@ -555,6 +556,7 @@ if (caraSelect && alamatContainer) {
   caraSelect.addEventListener("change", toggleAlamat);
   toggleAlamat();
 }
+
 
 
 
