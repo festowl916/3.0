@@ -533,6 +533,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+const caraSelect = document.getElementById("caraPenghantaran");
+const alamatContainer = document.getElementById("alamatContainer");
+const alamatField = document.getElementById("alamatField");
+
+if (caraSelect && alamatContainer) {
+
+  function toggleAlamat() {
+    if (caraSelect.value === "pos") {
+      alamatContainer.style.display = "block";
+      if (alamatField) alamatField.required = true;
+    } else {
+      alamatContainer.style.display = "none";
+      if (alamatField) {
+        alamatField.required = false;
+        alamatField.value = "";
+      }
+    }
+  }
+
+  caraSelect.addEventListener("change", toggleAlamat);
+  toggleAlamat();
+}
 
 
 
