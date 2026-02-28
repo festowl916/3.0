@@ -185,23 +185,20 @@ if (form.jenis.value === "daftar+baju") {
     alert("Sila pilih saiz baju.");
     return;
   }
-const jenis = document.getElementById("jenis").value;
-const cara = document.getElementById("caraHantar").value;
-const alamat = document.getElementById("alamat").value.trim();
 
-if (jenis === "daftar+baju") {
+  const cara = document.getElementById("caraPenghantaran").value;
+  const alamat = document.getElementById("alamatField").value.trim();
 
   if (!cara) {
     alert("Sila pilih cara penghantaran.");
-    return false;
+    return;
   }
 
-  if (cara !== "WALK-IN" && !alamat) {
+  if (cara === "pos" && !alamat) {
     alert("Sila isi alamat penghantaran.");
-    return false;
+    return;
   }
 
-}
   if (
     saizRadio.value === "lain" &&
     (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
@@ -209,14 +206,6 @@ if (jenis === "daftar+baju") {
     alert("Sila nyatakan saiz baju lain-lain.");
     return;
   }
-
-  const cara = document.getElementById("caraPenghantaran").value;
-const alamatValue = document.getElementById("alamatField").value.trim();
-
-if (cara === "pos" && alamatValue === "") {
-  alert("Sila isi alamat penghantaran.");
-  return;
-}
 }
 
     const button = document.getElementById("submitBtn");
@@ -572,6 +561,7 @@ if (caraSelect && alamatContainer) {
   caraSelect.addEventListener("change", toggleAlamat);
   toggleAlamat();
 }
+
 
 
 
