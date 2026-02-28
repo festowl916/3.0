@@ -185,7 +185,23 @@ if (form.jenis.value === "daftar+baju") {
     alert("Sila pilih saiz baju.");
     return;
   }
+const jenis = document.getElementById("jenis").value;
+const cara = document.getElementById("caraHantar").value;
+const alamat = document.getElementById("alamat").value.trim();
 
+if (jenis === "daftar+baju") {
+
+  if (!cara) {
+    alert("Sila pilih cara penghantaran.");
+    return false;
+  }
+
+  if (cara !== "WALK-IN" && !alamat) {
+    alert("Sila isi alamat penghantaran.");
+    return false;
+  }
+
+}
   if (
     saizRadio.value === "lain" &&
     (!form.saiz_baju_lain || !form.saiz_baju_lain.value.trim())
@@ -556,6 +572,7 @@ if (caraSelect && alamatContainer) {
   caraSelect.addEventListener("change", toggleAlamat);
   toggleAlamat();
 }
+
 
 
 
