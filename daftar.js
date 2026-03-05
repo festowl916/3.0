@@ -402,21 +402,21 @@ if (naturalTambahan.includes("TERBUKA") && umur < 18) {
   }
          // jika berjaya
 form.innerHTML = `
-  <div style="text-align:center;padding:30px">
-    <h2>Terima kasih atas pendaftaran anda.</h2>
-    <p>Data telah diterima oleh pihak penganjur.</p>
 
-    <button onclick="location.reload()" class="btn-daftar">
-      Daftar peserta lain
-    </button>
+  <div style="text-align:center;padding:30px">  
+    <h2>Terima kasih atas pendaftaran anda.</h2>  
+    <p>Data telah diterima oleh pihak penganjur.</p>  <button type="button" onclick="location.reload()" class="btn-daftar">  
+  Daftar peserta lain  
+</button>  
 
-    <br><br>
+<br><br>  
 
-    <a href="index.html" class="btn-home">
-      ← Kembali
-    </a>
-  </div>
-`; 
+<a href="index.html" class="btn-home">  
+  ← Kembali  
+</a>
+
+  </div>  
+`;
          
 })              
       .catch(()=>{
@@ -530,6 +530,7 @@ document.addEventListener("DOMContentLoaded", function() {
   updateNota();
 
 });
+
 
 
 
