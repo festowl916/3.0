@@ -157,17 +157,17 @@ const descBaju = document.getElementById("descBaju");
  
   /* SUBMIT */
   form.addEventListener("submit", function(e){
-    e.preventDefault();
+  e.preventDefault();
 
-    if (
-      !form.kategori_karbon.value &&
-      !form.kategori_natural.value
-    ) {
-      alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
-      return;
-    }
+  const karbon = form.kategori_karbon ? form.kategori_karbon.value : "";
+  const natural = form.kategori_natural ? form.kategori_natural.value : "";
 
-    if (!semakKategoriUmur()) return;
+  if (!karbon && !natural) {
+    alert("Sila pilih sekurang-kurangnya satu kategori (Karbon atau Natural).");
+    return;
+  }
+
+  if (!semakKategoriUmur()) return;
     /* =========================
    VALIDASI BAJU (WAJIB)
       ========================= */
@@ -530,6 +530,7 @@ document.addEventListener("DOMContentLoaded", function() {
   updateNota();
 
 });
+
 
 
 
