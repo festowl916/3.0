@@ -419,7 +419,14 @@ footer p{
 }
 
 
+.note strong{
+  font-weight:700;
+  color:#0b4da2;
+}
 
+.note p{
+  margin-bottom:6px;
+}
 
 
 
