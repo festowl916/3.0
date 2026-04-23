@@ -519,6 +519,18 @@ document.addEventListener("DOMContentLoaded", () => {
         </select>
       `;
       pesertaContainer.appendChild(card);
+        const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
+  icTambahanList.forEach(input => {
+    const label = input.previousElementSibling; // Ini untuk cari tulisan "Nombor IC"
+    if (isLuar) {
+      if(label) label.innerText = "Nombor Pasport *"; // Tukar tulisan tajuk
+      input.placeholder = "Pasport";
+    } else {
+      if(label) label.innerText = "Nombor IC *";
+      input.placeholder = "contoh: 900110115678 (12 digit)";
+    }
+  });
+
     });
   }
 
