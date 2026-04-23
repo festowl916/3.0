@@ -70,32 +70,22 @@ const descBaju = document.getElementById("descBaju");
     }
   }
 
-// peserta tambahan
-const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
-
-icTambahanList.forEach(input => {
-  // Kita cari label yang berada tepat di atas input ini
-  const label = input.previousElementSibling; 
-
+  // peserta tambahan
+  const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
+      icTambahanList.forEach(input => {
   if (isLuar) {
-    // Tukar tajuk label jadi Pasport
-    if(label && label.tagName === "LABEL") label.innerText = "Nombor Pasport *";
-    
     input.removeAttribute("pattern");
     input.removeAttribute("maxlength");
     input.removeAttribute("inputmode");
-    input.placeholder = "Masukkan No. Pasport";
+    input.placeholder = "Pasport";
   } else {
-    // Tukar tajuk label balik jadi IC
-    if(label && label.tagName === "LABEL") label.innerText = "Nombor IC *";
-    
     input.setAttribute("pattern", "[0-9]{12}");
     input.setAttribute("maxlength", "12");
     input.setAttribute("inputmode", "numeric");
     input.placeholder = "contoh: 900110115678 (12 digit)";
   }
-});
-
+});  
+}
       
     negeriSelect.addEventListener("change", toggleNegeri);
     toggleNegeri();
@@ -519,18 +509,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </select>
       `;
       pesertaContainer.appendChild(card);
-        const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
-  icTambahanList.forEach(input => {
-    const label = input.previousElementSibling; // Ini untuk cari tulisan "Nombor IC"
-    if (isLuar) {
-      if(label) label.innerText = "Nombor Pasport *"; // Tukar tulisan tajuk
-      input.placeholder = "Pasport";
-    } else {
-      if(label) label.innerText = "Nombor IC *";
-      input.placeholder = "contoh: 900110115678 (12 digit)";
-    }
-  });
-
     });
   }
 
@@ -552,7 +530,6 @@ document.addEventListener("DOMContentLoaded", function() {
   updateNota();
 
 });
-
 
 
 
