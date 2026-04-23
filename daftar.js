@@ -70,22 +70,32 @@ const descBaju = document.getElementById("descBaju");
     }
   }
 
-  // peserta tambahan
-  const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
-      icTambahanList.forEach(input => {
+// peserta tambahan
+const icTambahanList = document.querySelectorAll("input[name='ic_tambahan[]']");
+
+icTambahanList.forEach(input => {
+  // Kita cari label yang berada tepat di atas input ini
+  const label = input.previousElementSibling; 
+
   if (isLuar) {
+    // Tukar tajuk label jadi Pasport
+    if(label && label.tagName === "LABEL") label.innerText = "Nombor Pasport *";
+    
     input.removeAttribute("pattern");
     input.removeAttribute("maxlength");
     input.removeAttribute("inputmode");
-    input.placeholder = "Pasport";
+    input.placeholder = "Masukkan No. Pasport";
   } else {
+    // Tukar tajuk label balik jadi IC
+    if(label && label.tagName === "LABEL") label.innerText = "Nombor IC *";
+    
     input.setAttribute("pattern", "[0-9]{12}");
     input.setAttribute("maxlength", "12");
     input.setAttribute("inputmode", "numeric");
     input.placeholder = "contoh: 900110115678 (12 digit)";
   }
-});  
-}
+});
+
       
     negeriSelect.addEventListener("change", toggleNegeri);
     toggleNegeri();
