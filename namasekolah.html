@@ -64,11 +64,13 @@ button:hover { opacity: 0.9; }
 <div class="container">
   <h2>Kemaskini Sekolah</h2>
 
-  <div class="row">
-    <input type="text" id="ic" placeholder="Masukkan No IC">
-    <button onclick="searchIC()">🔍</button>
-  </div>
+  <!-- IC + BUTTON SEARCH -->
+<div class="row">
+  <input type="text" id="ic" placeholder="Masukkan No IC">
+  <button class="search-btn" onclick="searchIC()"></button>
+</div>
 
+  <!-- RESULT -->
   <div class="info" id="infoBox">
     <p><b>Nama:</b> <span id="name"></span></p>
     <p><b>Kelab:</b> <span id="club"></span></p>
@@ -85,11 +87,11 @@ button:hover { opacity: 0.9; }
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
-let currentIc = "";
+let currentIc = '';
 
-const icInput = document.getElementById("ic");
-const infoBox = document.getElementById("infoBox");
-const message = document.getElementById("message");
+const icInput = document.getElementById('ic');
+const infoBox = document.getElementById('infoBox');
+const message = document.getElementById('message');
 
 async function searchIC() {
 
@@ -98,14 +100,15 @@ async function searchIC() {
   message.innerHTML = "";
   infoBox.style.display = "none";
 
-  if (!/^\d{12}$/.test(ic)) {
-    message.innerHTML = "<div class='error'>IC mesti 12 digit</div>";
+  if (!ic) {
+    message.innerHTML = "<div class='error'>Sila masukkan IC</div>";
     return;
   }
 
   message.innerHTML = "Mencari...";
 
   try {
+
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
     const data = await res.json();
 
@@ -123,10 +126,10 @@ async function searchIC() {
 
     currentIc = ic;
 
-    document.getElementById("name").textContent = data.name || "-";
-    document.getElementById("club").textContent = data.club || "-";
-    document.getElementById("category").textContent = data.category || "-";
-    document.getElementById("state").textContent = data.state || "-";
+    document.getElementById('name').textContent = data.name || "-";
+    document.getElementById('club').textContent = data.club || "-";
+    document.getElementById('category').textContent = data.category || "-";
+    document.getElementById('state').textContent = data.state || "-";
 
     infoBox.style.display = "block";
     message.innerHTML = "";
@@ -137,45 +140,3 @@ async function searchIC() {
   }
 }
 
-async function submitForm() {
-
-  const school = document.getElementById("school").value.trim();
-
-  if (!school) {
-    message.innerHTML = "<div class='error'>Sila isi nama sekolah</div>";
-    return;
-  }
-
-  message.innerHTML = "Menghantar...";
-
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ic: currentIc,
-        school: school
-      })
-    });
-
-    const data = await res.json();
-
-    if (data.status === "success") {
-      message.innerHTML = "<div class='success'>Berjaya update</div>";
-
-      infoBox.style.display = "none";
-      icInput.value = "";
-      document.getElementById("school").value = "";
-    } else {
-      message.innerHTML = "<div class='error'>" + (data.message || "Gagal update") + "</div>";
-    }
-
-  } catch (err) {
-    console.log(err);
-    message.innerHTML = "<div class='error'>Ralat sambungan API</div>";
-  }
-}
-</script>
-
-</body>
-</html>
