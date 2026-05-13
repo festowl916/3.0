@@ -115,7 +115,7 @@ async function searchIC() {
     console.log(data);
 
 // CHECK DUPLICATE
-if (data.school) {
+if (data.status === "exists") {
   message.innerHTML = "<div class='error'>IC sudah update sekolah</div>";
   return;
 }
