@@ -67,7 +67,7 @@ button:hover { opacity: 0.9; }
   <!-- IC + BUTTON SEARCH -->
   <div class="row">
     <input type="text" id="ic" placeholder="Masukkan No IC">
-    <button onclick="searchIC()">🔍</button>
+    <button onclick="searchIC()"></button>
   </div>
 
   <!-- RESULT -->
@@ -105,7 +105,7 @@ async function searchIC() {
     return;
   }
 
-  message.innerHTML = "🔄 Mencari...";
+  message.innerHTML = " Mencari...";
 
   try {
 
@@ -149,18 +149,16 @@ async function submitForm() {
 
     const res = await fetch(API_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify({
         ic: currentIc,
         school: school
       })
     });
 
-    const data = await res.json();
+    const text = await res.text();
+    console.log("RAW RESPONSE:", text);
 
-    console.log(data);
+    const data = JSON.parse(text);
 
     if (data.status === "success") {
 
@@ -171,10 +169,11 @@ async function submitForm() {
       document.getElementById('school').value = "";
 
     } else {
-      message.innerHTML = "<div class='error'>Gagal update</div>";
+      message.innerHTML = "<div class='error'>" + (data.message || "Gagal update") + "</div>";
     }
 
   } catch (err) {
+    console.log(err);
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
   }
 }
