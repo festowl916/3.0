@@ -105,12 +105,26 @@ async function searchIC() {
     return;
   }
 
-  message.innerHTML = " Mencari...";
+  message.innerHTML = "🔍 Mencari...";
 
-  try {
+  const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
+  const data = await res.json();
 
-    const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
-    const data = await res.json();
+  // 🔥 LETAK SINI
+  if (data.status === "exists") {
+    message.innerHTML = "<div class='error'>IC dah update</div>";
+    return;
+  }
+
+  if (data.status !== "found") {
+    message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
+    return;
+  }
+
+  // sambung code display data
+  currentIc = ic;
+  document.getElementById('name').textContent = data.name;
+}
 
     console.log(data);
 
@@ -181,3 +195,4 @@ async function submitForm() {
 
 </body>
 </html>
+
