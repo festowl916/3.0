@@ -114,20 +114,26 @@ async function searchIC() {
 
     console.log(data);
 
-    if (data.status !== "found") {
-      message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
-      return;
-    }
+// CHECK DUPLICATE
+if (data.school) {
+  message.innerHTML = "<div class='error'>IC sudah update sekolah</div>";
+  return;
+}
 
-    currentIc = ic;
+if (data.status !== "found") {
+  message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
+  return;
+}
 
-    document.getElementById('name').textContent = data.name || "-";
-    document.getElementById('club').textContent = data.club || "-";
-    document.getElementById('category').textContent = data.category || "-";
-    document.getElementById('state').textContent = data.state || "-";
+currentIc = ic;
 
-    infoBox.style.display = "block";
-    message.innerHTML = "";
+document.getElementById('name').textContent = data.name || "-";
+document.getElementById('club').textContent = data.club || "-";
+document.getElementById('category').textContent = data.category || "-";
+document.getElementById('state').textContent = data.state || "-";
+
+infoBox.style.display = "block";
+message.innerHTML = "";
 
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
@@ -143,7 +149,7 @@ async function submitForm() {
     return;
   }
 
-  message.innerHTML = "ðŸ”„ Menghantar...";
+  message.innerHTML = "🔄 Menghantar...";
 
   try {
 
