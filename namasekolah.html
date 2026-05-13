@@ -144,20 +144,22 @@ async function submitForm() {
 
     const data = await res.json();
 
+    console.log("RESPONSE:", data);
+
     if (data.status === "success") {
+
       message.innerHTML = `<div class="success">${data.message}</div>`;
+
       infoBox.style.display = 'none';
       icInput.value = '';
       document.getElementById('school').value = '';
+
     } else {
       message.innerHTML = `<div class="error">${data.message || "Ralat sistem"}</div>`;
     }
 
   } catch (err) {
+    console.log(err);
     message.innerHTML = `<div class="error">Ralat sambungan</div>`;
   }
 }
-</script>
-
-</body>
-</html>
