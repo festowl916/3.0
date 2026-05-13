@@ -67,7 +67,7 @@ button:hover { opacity: 0.9; }
   <!-- IC + BUTTON SEARCH -->
   <div class="row">
     <input type="text" id="ic" placeholder="Masukkan No IC">
-    <button onclick="searchIC()"></button>
+<button onclick="searchIC()">🔍</button>
   </div>
 
   <!-- RESULT -->
@@ -100,12 +100,13 @@ async function searchIC() {
   message.innerHTML = "";
   infoBox.style.display = "none";
 
-  if (!ic) {
-    message.innerHTML = "<div class='error'>Sila masukkan IC</div>";
+  // VALIDATION
+  if (!/^\d{12}$/.test(ic)) {
+    message.innerHTML = "<div class='error'>IC mesti 12 digit nombor</div>";
     return;
   }
 
-  message.innerHTML = " Mencari...";
+  message.innerHTML = "<div>🔍 Mencari...</div>";
 
   try {
 
@@ -133,50 +134,54 @@ async function searchIC() {
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
   }
 }
-
 async function submitForm() {
+
+  const btn = document.querySelector("button[onclick='submitForm()']");
+  btn.disabled = true;
+  btn.innerText = "Menghantar...";
 
   const school = document.getElementById('school').value.trim();
 
   if (!school) {
     message.innerHTML = "<div class='error'>Sila isi nama sekolah</div>";
+
+    btn.disabled = false;
+    btn.innerText = "Hantar";
     return;
   }
-
-  message.innerHTML = "🔄 Menghantar...";
 
   try {
 
     const res = await fetch(API_URL, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ic: currentIc,
         school: school
       })
     });
 
-    const text = await res.text();
-    console.log("RAW RESPONSE:", text);
-
-    const data = JSON.parse(text);
+    const data = await res.json();
 
     if (data.status === "success") {
-
       message.innerHTML = "<div class='success'>Berjaya update</div>";
 
       infoBox.style.display = "none";
       icInput.value = "";
       document.getElementById('school').value = "";
-
     } else {
       message.innerHTML = "<div class='error'>" + (data.message || "Gagal update") + "</div>";
     }
 
   } catch (err) {
-    console.log(err);
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
   }
+
+  btn.disabled = false;
+  btn.innerText = "Hantar";
 }
+
+
 </script>
 
 </body>
