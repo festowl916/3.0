@@ -64,13 +64,11 @@ button:hover { opacity: 0.9; }
 <div class="container">
   <h2>Kemaskini Sekolah</h2>
 
-  <!-- IC + BUTTON SEARCH -->
-<div class="row">
-  <input type="text" id="ic" placeholder="Masukkan No IC">
-  <button class="search-btn" onclick="searchIC()">🔍</button>
-</div>
+  <div class="row">
+    <input type="text" id="ic" placeholder="Masukkan No IC">
+    <button onclick="searchIC()">🔍</button>
+  </div>
 
-  <!-- RESULT -->
   <div class="info" id="infoBox">
     <p><b>Nama:</b> <span id="name"></span></p>
     <p><b>Kelab:</b> <span id="club"></span></p>
@@ -87,46 +85,33 @@ button:hover { opacity: 0.9; }
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
-let currentIc = '';
+let currentIc = "";
 
-const icInput = document.getElementById('ic');
-const infoBox = document.getElementById('infoBox');
-const message = document.getElementById('message');
+const icInput = document.getElementById("ic");
+const infoBox = document.getElementById("infoBox");
+const message = document.getElementById("message");
 
 async function searchIC() {
-
   const ic = icInput.value.trim();
 
   message.innerHTML = "";
   infoBox.style.display = "none";
 
-  if (!ic) {
-    message.innerHTML = "<div class='error'>Sila masukkan IC</div>";
+  if (!/^\d{12}$/.test(ic)) {
+    message.innerHTML = "<div class='error'>IC mesti 12 digit</div>";
     return;
   }
 
   message.innerHTML = "🔍 Mencari...";
 
-  const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
-  const data = await res.json();
+  try {
+    const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
+    const data = await res.json();
 
-  // 🔥 LETAK SINI
-  if (data.status === "exists") {
-    message.innerHTML = "<div class='error'>IC dah update</div>";
-    return;
-  }
-
-  if (data.status !== "found") {
-    message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
-    return;
-  }
-
-  // sambung code display data
-  currentIc = ic;
-  document.getElementById('name').textContent = data.name;
-}
-
-    console.log(data);
+    if (data.status === "exists") {
+      message.innerHTML = "<div class='error'>IC dah pernah update</div>";
+      return;
+    }
 
     if (data.status !== "found") {
       message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
@@ -135,10 +120,10 @@ async function searchIC() {
 
     currentIc = ic;
 
-    document.getElementById('name').textContent = data.name || "-";
-    document.getElementById('club').textContent = data.club || "-";
-    document.getElementById('category').textContent = data.category || "-";
-    document.getElementById('state').textContent = data.state || "-";
+    document.getElementById("name").textContent = data.name || "-";
+    document.getElementById("club").textContent = data.club || "-";
+    document.getElementById("category").textContent = data.category || "-";
+    document.getElementById("state").textContent = data.state || "-";
 
     infoBox.style.display = "block";
     message.innerHTML = "";
@@ -149,50 +134,51 @@ async function searchIC() {
 }
 
 async function submitForm() {
+  const btn = document.querySelector("button[onclick='submitForm()']");
+  const school = document.getElementById("school").value.trim();
 
-  const school = document.getElementById('school').value.trim();
+  btn.disabled = true;
+  btn.innerText = "Menghantar...";
 
   if (!school) {
     message.innerHTML = "<div class='error'>Sila isi nama sekolah</div>";
+    btn.disabled = false;
+    btn.innerText = "Hantar";
     return;
   }
 
-  message.innerHTML = "ðŸ”„ Menghantar...";
-
   try {
-
     const res = await fetch(API_URL, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         ic: currentIc,
         school: school
       })
     });
 
-    const text = await res.text();
-    console.log("RAW RESPONSE:", text);
-
-    const data = JSON.parse(text);
+    const data = await res.json();
 
     if (data.status === "success") {
-
       message.innerHTML = "<div class='success'>Berjaya update</div>";
 
       infoBox.style.display = "none";
       icInput.value = "";
-      document.getElementById('school').value = "";
-
+      document.getElementById("school").value = "";
     } else {
       message.innerHTML = "<div class='error'>" + (data.message || "Gagal update") + "</div>";
     }
 
   } catch (err) {
-    console.log(err);
-    message.innerHTML = "<div class='error'>Ralat sambungan</div>";
+    message.innerHTML = "<div class='error'>Ralat sambungan API</div>";
   }
+
+  btn.disabled = false;
+  btn.innerText = "Hantar";
 }
 </script>
 
 </body>
 </html>
-
