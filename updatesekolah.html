@@ -1,81 +1,10 @@
-const API_URL ="https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
-
-const icInput = document.getElementById('ic');
-const infoBox = document.getElementById('infoBox');
-const message = document.getElementById('message');
-
-let currentIc = '';
-
-icInput.addEventListener('input', async () => {
-
-  const ic = icInput.value.trim();
-
-  message.innerHTML = '';
-  infoBox.style.display = 'none';
-
-  if (ic.length < 6) return;
-
-  try {
-
-    const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
-    const data = await res.json();
-
-    if (data.status === "duplicate") {
-
-      message.innerHTML = `<div class="error">${data.message}</div>`;
-      return;
-
-    }
-
-    if (data.status === "notfound") {
-
-      message.innerHTML = `<div class="error">${data.message}</div>`;
-      return;
-
-    }
-
-    if (data.status === "found") {
-
-      currentIc = ic;
-
-      message.innerHTML = `
-        <div class="success">
-          Nama: ${data.name}
-        </div>
-      `;
-
-      infoBox.style.display = 'block';
-
-    }
-
-  } catch(err) {
-
-    console.log(err);
-
-    message.innerHTML = `
-      <div class="error">
-        Ralat sambungan
-      </div>
-    `;
-
-  }
-
-});
-
 async function submitForm() {
 
   const school = document.getElementById('school').value.trim();
 
   if (!school) {
-
-    message.innerHTML = `
-      <div class="error">
-        Isi nama sekolah
-      </div>
-    `;
-
+    message.innerHTML = `<div class="error">Isi nama sekolah</div>`;
     return;
-
   }
 
   try {
@@ -96,7 +25,6 @@ async function submitForm() {
     `;
 
     infoBox.style.display = 'none';
-
     icInput.value = '';
     document.getElementById('school').value = '';
 
