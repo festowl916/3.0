@@ -39,7 +39,6 @@ icInput.addEventListener('input', async () => {
     message.innerHTML = `<div class="error">Ralat sambungan</div>`;
   }
 });
-
 async function submitForm() {
   const school = document.getElementById('school').value.trim();
 
@@ -50,7 +49,7 @@ async function submitForm() {
 
   try {
     const res = await fetch(API_URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
@@ -82,6 +81,7 @@ async function submitForm() {
     message.innerHTML = `<div class="error">Ralat sambungan</div>`;
   }
 }
+
 </script>
 
 </body>
