@@ -1,3 +1,44 @@
+<script>
+const API_URL ="https://script.google.com/macros/s/AKfycbwhpdhvYZP7KHgQYq-zjS1mRaik46A2_PsDYea58qvKtQ5NjIF0Lhl_caNOJketrzxR/exec";
+
+const icInput = document.getElementById('ic');
+const infoBox = document.getElementById('infoBox');
+const message = document.getElementById('message');
+
+let currentIc = '';
+
+icInput.addEventListener('input', async () => {
+  const ic = icInput.value.trim();
+
+  message.innerHTML = '';
+  infoBox.style.display = 'none';
+
+  if (ic.length < 6) return;
+
+  try {
+    const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
+    const data = await res.json();
+
+    if (data.status === "duplicate") {
+      message.innerHTML = `<div class="error">${data.message}</div>`;
+      return;
+    }
+
+    if (data.status === "notfound") {
+      message.innerHTML = `<div class="error">${data.message}</div>`;
+      return;
+    }
+
+    if (data.status === "found") {
+      currentIc = ic;
+      message.innerHTML = `<div class="success">Nama: ${data.name}</div>`;
+      infoBox.style.display = 'block';
+    }
+
+  } catch (err) {
+    message.innerHTML = `<div class="error">Ralat sambungan</div>`;
+  }
+});
 async function submitForm() {
   const school = document.getElementById('school').value.trim();
 
@@ -39,3 +80,9 @@ async function submitForm() {
     message.innerHTML = `<div class="error">Ralat sambungan</div>`;
   }
 }
+
+
+</script>
+
+</body>
+</html>
