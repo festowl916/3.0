@@ -43,15 +43,16 @@ async function submitForm() {
   const school = document.getElementById('school').value.trim();
 
   if (!school) {
-    message.innerHTML = `<div class="error">Sila isi nama sekolah.</div>`;
+    message.innerHTML = `<div class="error">Isi nama sekolah</div>`;
     return;
   }
 
   try {
-    const res = await fetch(API_URL, {
+    await fetch(API_URL, {
       method: "POST",
+      mode: "no-cors",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "text/plain"
       },
       body: JSON.stringify({
         ic: currentIc,
@@ -59,29 +60,16 @@ async function submitForm() {
       })
     });
 
-    const data = await res.json();
+    message.innerHTML = `<div class="success">Hantar berjaya</div>`;
 
-    if (data.status === "success") {
-      message.innerHTML = `<div class="success">${data.message}</div>`;
-      infoBox.style.display = 'none';
-      icInput.value = '';
-      document.getElementById('school').value = '';
-    }
-
-    else if (data.status === "duplicate") {
-      message.innerHTML = `<div class="error">${data.message}</div>`;
-    }
-
-    else {
-      message.innerHTML = `<div class="error">Ralat sistem</div>`;
-    }
+    infoBox.style.display = 'none';
+    icInput.value = '';
+    document.getElementById('school').value = '';
 
   } catch (err) {
-    console.log(err);
     message.innerHTML = `<div class="error">Ralat sambungan</div>`;
   }
 }
-
 </script>
 
 </body>
