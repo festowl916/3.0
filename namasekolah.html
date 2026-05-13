@@ -133,29 +133,24 @@ async function submitForm() {
 
     const res = await fetch(API_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify({
         ic: currentIc,
         school: school
       })
     });
 
-    const data = await res.json();
+    const text = await res.text();
+    console.log("RAW:", text);
 
-    console.log("RESPONSE:", data);
+    const data = JSON.parse(text);
 
     if (data.status === "success") {
-
       message.innerHTML = `<div class="success">${data.message}</div>`;
-
       infoBox.style.display = 'none';
       icInput.value = '';
       document.getElementById('school').value = '';
-
     } else {
-      message.innerHTML = `<div class="error">${data.message || "Ralat sistem"}</div>`;
+      message.innerHTML = `<div class="error">${data.message}</div>`;
     }
 
   } catch (err) {
