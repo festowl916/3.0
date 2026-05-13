@@ -1,4 +1,3 @@
-<script>
 const API_URL ="https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
 const icInput = document.getElementById('ic');
@@ -8,6 +7,7 @@ const message = document.getElementById('message');
 let currentIc = '';
 
 icInput.addEventListener('input', async () => {
+
   const ic = icInput.value.trim();
 
   message.innerHTML = '';
@@ -16,73 +16,100 @@ icInput.addEventListener('input', async () => {
   if (ic.length < 6) return;
 
   try {
+
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
     const data = await res.json();
 
     if (data.status === "duplicate") {
+
       message.innerHTML = `<div class="error">${data.message}</div>`;
       return;
+
     }
 
     if (data.status === "notfound") {
+
       message.innerHTML = `<div class="error">${data.message}</div>`;
       return;
+
     }
 
     if (data.status === "found") {
+
       currentIc = ic;
-      message.innerHTML = `<div class="success">Nama: ${data.name}</div>`;
+
+      message.innerHTML = `
+        <div class="success">
+          Nama: ${data.name}
+        </div>
+      `;
+
       infoBox.style.display = 'block';
+
     }
 
-  } catch (err) {
-    message.innerHTML = `<div class="error">Ralat sambungan</div>`;
+  } catch(err) {
+
+    console.log(err);
+
+    message.innerHTML = `
+      <div class="error">
+        Ralat sambungan
+      </div>
+    `;
+
   }
+
 });
+
 async function submitForm() {
+
   const school = document.getElementById('school').value.trim();
 
   if (!school) {
-    message.innerHTML = `<div class="error">Isi nama sekolah</div>`;
+
+    message.innerHTML = `
+      <div class="error">
+        Isi nama sekolah
+      </div>
+    `;
+
     return;
+
   }
 
   try {
-    const res = await fetch(API_URL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "text/plain"
-  },
-  body: JSON.stringify({
-    ic: currentIc,
-    school: school
-  })
-});
 
-    const data = await res.json();
+    await fetch(API_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({
+        ic: currentIc,
+        school: school
+      })
+    });
 
-    if (data.status === "success") {
-      message.innerHTML = `<div class="success">${data.message}</div>`;
-    } 
-    else if (data.status === "duplicate") {
-      message.innerHTML = `<div class="error">${data.message}</div>`;
-    } 
-    else {
-      message.innerHTML = `<div class="error">Ralat sistem</div>`;
-    }
+    message.innerHTML = `
+      <div class="success">
+        Kemas kini berjaya
+      </div>
+    `;
 
     infoBox.style.display = 'none';
+
     icInput.value = '';
     document.getElementById('school').value = '';
 
-  } catch (err) {
+  } catch(err) {
+
     console.log(err);
-    message.innerHTML = `<div class="error">Ralat sambungan</div>`;
+
+    message.innerHTML = `
+      <div class="error">
+        Ralat sambungan
+      </div>
+    `;
+
   }
+
 }
-
-
-</script>
-
-</body>
-</html>
