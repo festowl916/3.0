@@ -92,6 +92,7 @@ const infoBox = document.getElementById("infoBox");
 const message = document.getElementById("message");
 
 async function searchIC() {
+
   const ic = icInput.value.trim();
 
   message.innerHTML = "";
@@ -102,19 +103,21 @@ async function searchIC() {
     return;
   }
 
-  message.innerHTML = "🔍 Mencari...";
+  message.innerHTML = "Mencari...";
 
   try {
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
     const data = await res.json();
 
-    if (data.status === "exists") {
-      message.innerHTML = "<div class='error'>IC dah pernah update</div>";
+    console.log(data);
+
+    if (data.status === "notfound") {
+      message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
       return;
     }
 
-    if (data.status !== "found") {
-      message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
+    if (data.status === "exists") {
+      message.innerHTML = "<div class='error'>IC dah update</div>";
       return;
     }
 
@@ -129,30 +132,26 @@ async function searchIC() {
     message.innerHTML = "";
 
   } catch (err) {
-    message.innerHTML = "<div class='error'>Ralat sambungan</div>";
+    console.log(err);
+    message.innerHTML = "<div class='error'>Ralat sambungan API</div>";
   }
 }
 
 async function submitForm() {
-  const btn = document.querySelector("button[onclick='submitForm()']");
-  const school = document.getElementById("school").value.trim();
 
-  btn.disabled = true;
-  btn.innerText = "Menghantar...";
+  const school = document.getElementById("school").value.trim();
 
   if (!school) {
     message.innerHTML = "<div class='error'>Sila isi nama sekolah</div>";
-    btn.disabled = false;
-    btn.innerText = "Hantar";
     return;
   }
+
+  message.innerHTML = "Menghantar...";
 
   try {
     const res = await fetch(API_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ic: currentIc,
         school: school
@@ -172,11 +171,9 @@ async function submitForm() {
     }
 
   } catch (err) {
+    console.log(err);
     message.innerHTML = "<div class='error'>Ralat sambungan API</div>";
   }
-
-  btn.disabled = false;
-  btn.innerText = "Hantar";
 }
 </script>
 
