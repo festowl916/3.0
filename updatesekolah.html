@@ -49,15 +49,15 @@ async function submitForm() {
 
   try {
     const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        ic: currentIc,
-        school: school
-      })
-    });
+  method: "POST",
+  headers: {
+    "Content-Type": "text/plain"
+  },
+  body: JSON.stringify({
+    ic: currentIc,
+    school: school
+  })
+});
 
     const data = await res.json();
 
