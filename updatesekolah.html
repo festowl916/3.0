@@ -141,6 +141,9 @@ async function submitForm() {
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         ic: currentIc,
         school: school
@@ -159,7 +162,8 @@ async function submitForm() {
     }
 
   } catch (err) {
-    message.innerHTML = `<div class="error">Ralat semasa submit.</div>`;
+    console.log(err);
+    message.innerHTML = `<div class="error">Ralat sambungan: ${err.message}</div>`;
   }
 }
 </script>
