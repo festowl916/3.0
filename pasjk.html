@@ -161,10 +161,9 @@ async function searchIC() {
 
 async function submitForm() {
 
-  const school = document.getElementById('school').value.trim();
-  const level = document.getElementById('level').value.trim();
-  const district = document.getElementById('district').value.trim();
-
+  const school = (document.getElementById('school')?.value || "").toUpperCase().trim();
+const level = (document.getElementById('level')?.value || "").toUpperCase().trim();
+const district = (document.getElementById('district')?.value || "").toUpperCase().trim();
   if (!school || !level || !district) {
     message.innerHTML = "<div class='error'>Sila lengkapkan semua maklumat</div>";
     return;
