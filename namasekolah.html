@@ -39,7 +39,27 @@ button {
   cursor: pointer;
 }
 
-button:hover { opacity: 0.9; }
+button:hover {
+  opacity: 0.9;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row input {
+  flex: 1;
+}
+
+.search-btn {
+  width: 60px !important;
+  min-width: 60px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .info {
   margin-top: 20px;
@@ -51,11 +71,6 @@ button:hover { opacity: 0.9; }
 
 .error { color: red; margin-top: 10px; }
 .success { color: green; margin-top: 10px; }
-
-.row {
-  display: flex;
-  gap: 10px;
-}
 </style>
 </head>
 
@@ -64,14 +79,14 @@ button:hover { opacity: 0.9; }
 <div class="container">
   <h2>Kemaskini Maklumat (PASJK)</h2>
 
-  <!-- IC + BUTTON SEARCH -->
-<div class="row">
-  <input type="text" id="ic" placeholder="Masukkan No IC">
+  <!-- IC SEARCH -->
+  <div class="row">
+    <input type="text" id="ic" placeholder="Masukkan No IC">
 
- <button type="button" class="search-btn" onclick="searchIC()">
-  🔍
-</button>
-</div>
+    <button type="button" class="search-btn" onclick="searchIC()">
+      🔍
+    </button>
+  </div>
 
   <!-- RESULT -->
   <div class="info" id="infoBox">
@@ -81,14 +96,11 @@ button:hover { opacity: 0.9; }
     <p><b>Negeri:</b> <span id="state"></span></p>
 
     <input type="text" id="school" placeholder="Nama Sekolah">
+    <input type="text" id="level" placeholder="Tingkatan / Darjah">
+    <input type="text" id="district" placeholder="Daerah">
 
-<input type="text" id="level" placeholder="Tingkatan / Darjah">
-
-<input type="text" id="district" placeholder="Daerah">
-
-<button onclick="submitForm()">Hantar</button>
-
-    
+    <button type="button" onclick="submitForm()">Hantar</button>
+  </div>
 
   <div id="message"></div>
 </div>
@@ -116,34 +128,31 @@ async function searchIC() {
 
   message.innerHTML = "🔄 Mencari...";
 
-
   try {
-
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
     const data = await res.json();
 
     console.log(data);
 
-// CHECK DUPLICATE
-if (data.status === "exists") {
-  message.innerHTML = "<div class='error'>IC sudah update sekolah</div>";
-  return;
-}
+    if (data.status === "exists") {
+      message.innerHTML = "<div class='error'>IC sudah update sekolah</div>";
+      return;
+    }
 
-if (data.status !== "found") {
-  message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
-  return;
-}
+    if (data.status !== "found") {
+      message.innerHTML = "<div class='error'>IC tidak dijumpai</div>";
+      return;
+    }
 
-currentIc = ic;
+    currentIc = ic;
 
-document.getElementById('name').textContent = data.name || "-";
-document.getElementById('club').textContent = data.club || "-";
-document.getElementById('category').textContent = data.category || "-";
-document.getElementById('state').textContent = data.state || "-";
+    document.getElementById('name').textContent = data.name || "-";
+    document.getElementById('club').textContent = data.club || "-";
+    document.getElementById('category').textContent = data.category || "-";
+    document.getElementById('state').textContent = data.state || "-";
 
-infoBox.style.display = "block";
-message.innerHTML = "";
+    infoBox.style.display = "block";
+    message.innerHTML = "";
 
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
@@ -153,16 +162,15 @@ message.innerHTML = "";
 async function submitForm() {
 
   const school = document.getElementById('school').value.trim();
-const level = document.getElementById('level').value.trim();
-const district = document.getElementById('district').value.trim();
+  const level = document.getElementById('level').value.trim();
+  const district = document.getElementById('district').value.trim();
 
-  if (!school) {
-    message.innerHTML = "<div class='error'>Sila isi nama sekolah</div>";
+  if (!school || !level || !district) {
+    message.innerHTML = "<div class='error'>Sila lengkapkan semua maklumat</div>";
     return;
   }
 
   message.innerHTML = "🔄 Menghantar...";
-
 
   try {
 
@@ -170,14 +178,13 @@ const district = document.getElementById('district').value.trim();
       method: "POST",
       body: JSON.stringify({
         ic: currentIc,
-        school: school
+        school,
+        level,
+        district
       })
     });
 
-    const text = await res.text();
-    console.log("RAW RESPONSE:", text);
-
-    const data = JSON.parse(text);
+    const data = await res.json();
 
     if (data.status === "success") {
 
@@ -186,13 +193,14 @@ const district = document.getElementById('district').value.trim();
       infoBox.style.display = "none";
       icInput.value = "";
       document.getElementById('school').value = "";
+      document.getElementById('level').value = "";
+      document.getElementById('district').value = "";
 
     } else {
-      message.innerHTML = "<div class='error'>" + (data.message || "Gagal update") + "</div>";
+      message.innerHTML = "<div class='error'>Gagal update</div>";
     }
 
   } catch (err) {
-    console.log(err);
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
   }
 }
