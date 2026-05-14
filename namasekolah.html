@@ -153,6 +153,8 @@ message.innerHTML = "";
 async function submitForm() {
 
   const school = document.getElementById('school').value.trim();
+const level = document.getElementById('level').value.trim();
+const district = document.getElementById('district').value.trim();
 
   if (!school) {
     message.innerHTML = "<div class='error'>Sila isi nama sekolah</div>";
