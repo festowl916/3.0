@@ -67,7 +67,8 @@ button:hover { opacity: 0.9; }
   <!-- IC + BUTTON SEARCH -->
 <div class="row">
   <input type="text" id="ic" placeholder="Masukkan No IC">
-  <button class="search-btn" onclick="searchIC()">ðŸ”</button>
+  <button class="search-btn" onclick="searchIC()">🔄 mencari...";
+/button>
 </div>
 
   <!-- RESULT -->
@@ -107,7 +108,8 @@ async function searchIC() {
     return;
   }
 
-  message.innerHTML = " Mencari...";
+  message.innerHTML = "🔄 Mencari...";
+
 
   try {
 
@@ -151,7 +153,8 @@ async function submitForm() {
     return;
   }
 
-  message.innerHTML = "ðŸ”„ Menghantar...";
+  message.innerHTML = "🔄 Menghantar...";
+
 
   try {
 
