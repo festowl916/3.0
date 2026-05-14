@@ -62,7 +62,7 @@ button:hover { opacity: 0.9; }
 <body>
 
 <div class="container">
-  <h2>Kemaskini Sekolah</h2>
+  <h2>Kemaskini Maklumat</h2>
 
   <!-- IC + BUTTON SEARCH -->
 <div class="row">
@@ -78,8 +78,10 @@ button:hover { opacity: 0.9; }
     <p><b>Negeri:</b> <span id="state"></span></p>
 
     <input type="text" id="school" placeholder="Nama Sekolah">
-    <button onclick="submitForm()">Hantar</button>
-  </div>
+<input type="text" id="level" placeholder="Tingkatan / Darjah">
+<input type="text" id="district" placeholder="Daerah">
+
+<button onclick="submitForm()">Hantar</button>
 
   <div id="message"></div>
 </div>
