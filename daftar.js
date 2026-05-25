@@ -278,9 +278,7 @@ data.push({
   jenis: form.jenis.value,
   saiz_baju: saiz,
   catatan_baju: catatanGabung,
-  alamat: document.getElementById("alamatField")
-  ? document.getElementById("alamatField").value
-  : "",
+  alamat: "WALK-IN",
   fileName,
   fileType,
   fileData
