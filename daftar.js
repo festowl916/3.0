@@ -170,26 +170,13 @@ const descBaju = document.getElementById("descBaju");
   if (!semakKategoriUmur()) return;
     /* =========================
    VALIDASI BAJU (WAJIB)
-      ========================= */
+   ========================= */
 if (form.jenis.value === "daftar+baju") {
 
   const saizRadio = form.querySelector("input[name='saiz_baju']:checked");
 
   if (!saizRadio) {
     alert("Sila pilih saiz baju.");
-    return;
-  }
-
-  const cara = document.getElementById("caraPenghantaran").value;
-  const alamat = document.getElementById("alamatField").value.trim();
-
-  if (!cara) {
-    alert("Sila pilih cara penghantaran.");
-    return;
-  }
-
-  if (cara === "pos" && !alamat) {
-    alert("Sila isi alamat penghantaran.");
     return;
   }
 
