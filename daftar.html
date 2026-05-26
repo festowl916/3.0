@@ -125,7 +125,6 @@ input[type="radio"]{
 <body>
 <main class="form-wrapper">
 
-  <!-- LOGO -->
   <div class="logo-bar">
     <img src="logo1.webp">
     <img src="logo2.webp">
@@ -139,8 +138,7 @@ input[type="radio"]{
   Festival Memanah Tradisional OWL916 3.0
 </h1>
   
-    <!-- NOTE -->
-<div class="note">
+    <div class="note">
   <h2>Pendaftaran Festival Memanah Tradisional OWL 916 3.0</h2>
 
 <p>
@@ -191,7 +189,7 @@ dengan pihak urusetia pendaftaran.
 
 <p>
 6. Dengan meneruskan pendaftaran ini, peserta dianggap telah bersetuju
-dengan semua syarat dan peraturan.
+with semua syarat dan peraturan.
 </p>
    
 </div>
@@ -199,8 +197,7 @@ dengan semua syarat dan peraturan.
  <div class="card">
    <h2 class="tajuk-peserta">Maklumat Peserta</h2>
    
-  <!-- MODE PENDAFTARAN -->
-   <label>Mode Pendaftaran</label>
+  <label>Mode Pendaftaran</label>
 <small>
 Pilih:<br>
 1. Individu: seorang peserta.<br>
@@ -213,14 +210,12 @@ Pilih:<br>
 </select>
 
 
-  <!-- KAWALAN PUKAL -->
   <div id="bulkControls" style="display:none; margin-top:10px;">
     <button type="button" id="tambahPeserta">
       + Tambah Peserta
     </button>
   </div>
 
-  <!-- TEMPAT PESERTA TAMBAHAN -->
   <div id="pesertaTambahan"></div>
     
   <label>Nama Penuh *</label>
@@ -317,9 +312,10 @@ Pilih:<br>
 *Tiada caj untuk walk-in / ambil sendiri.*
 </p>
   <select name="jenis" id="jenis">
-    <option value="daftar sahaja">Pendaftaran sahaja</option>
+    <option value="daftar sahaja" selected>Pendaftaran sahaja</option>
     <option value="daftar+baju">Pendaftaran + baju</option>
   </select>
+
 <div id="sectionBaju" style="display:none;">
   <h3>Maklumat Baju</h3>
 
@@ -381,7 +377,6 @@ Pilih:<br>
   </h4>
   <small>Isi bilangan baju bagi setiap saiz jika ada.</small>
 
-  <!-- ================= LELAKI ================= -->
   <div class="size-wrapper">
     <div class="size-title">Lelaki</div>
 
@@ -435,8 +430,7 @@ Pilih:<br>
     </div>
   </div>
 
-  <!-- ================= WANITA ================= -->
-<div class="size-wrapper">
+  <div class="size-wrapper">
   <div class="size-title">Wanita/Muslimah</div>
 
   <div class="size-grid">
@@ -488,7 +482,6 @@ Pilih:<br>
   </div>
 </div>
 
-  <!-- ================= CILIK ================= -->
   <div class="size-wrapper">
     <div class="size-title">Cilik</div>
 
@@ -525,27 +518,18 @@ Pilih:<br>
       </div>
 
     </div>
-  </div> <!-- tutup size section -->  
-</div> <!-- tutup content dalam card -->
-
-<!-- BEKUKAN PILIHAN: SAYA LETAK DISABLED PADA KOTAK POS DAN PAKSA VALUE KEPADA WALKIN -->
-<label for="caraPenghantaran">Cara Penghantaran</label>
+  </div> </div> <label for="caraPenghantaran">Cara Penghantaran</label>
 <select name="cara_penghantaran" id="caraPenghantaran">
   <option value="walkin" selected>Walk-in / Ambil sendiri</option>
   <option value="pos" disabled style="color: #999; background: #eee;">Penghantaran POS (Tutup/Beku)</option>
 </select>
 
-<!-- KOTAK ALAMAT SENTIASA ADA BILA DAFTAR+BAJU, TAPI KUNCI PADA TEKS WALK-IN -->
 <div id="alamatContainer" style="display:block; margin-top:10px;">
   <label for="alamatField">Alamat Penghantaran</label>
   <textarea id="alamatField" name="alamat" readonly style="width:100%; min-height:80px; background-color:#f0f0f0; color:#555;">WALK-IN</textarea>
 </div>
 
-</div> <!-- tutup sectionBaju -->
-
-</div> <!-- SEKARANG baru tutup card utama -->
-
-<div class="card">
+</div> </div> <div class="card">
   
   <h2>Bukti Bayaran</h2>
   <div class="note">
@@ -571,36 +555,49 @@ Pilih:<br>
 
 <a href="index.html" class="btn-home">← Home</a>
 
-</form>   <!-- WAJIB ADA -->
-
-  <footer>
+</form>   <footer>
   <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
 
-<!-- SCRIPT LAMA ABANG DIKEMASKINI SUPAYA POS KEKAL BEKU & ALAMAT TERKUNCI -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  const jenis = document.getElementById("jenis");
+  const sectionBaju = document.getElementById("sectionBaju");
   const cara = document.getElementById("caraPenghantaran");
-  const alamatBox = document.getElementById("alamatContainer");
   const alamatField = document.getElementById("alamatField");
 
-  if (cara) {
-    // Paksa pilihan sentiasa pada walkin walaupun diusik
-    cara.value = "walkin";
-    
-    cara.addEventListener("change", function() {
-      this.value = "walkin"; // Bekukan terus pilihan value
-    });
+  function kemaskiniSistem() {
+    if (jenis && jenis.value === "daftar+baju") {
+      sectionBaju.style.display = "block"; // Buka skrin maklumat baju & pos beku
+      if (cara) cara.value = "walkin";
+      if (alamatField) {
+        alamatField.value = "WALK-IN";
+        alamatField.readOnly = true;
+      }
+    } else {
+      sectionBaju.style.display = "none";  // Ghaibkan terus dari skrin telefon (Macam asal abang)
+      if (cara) cara.value = "";           // Kosongkan value belakang tabir (Supaya excel kosong)
+      if (alamatField) {
+        alamatField.value = "";
+        alamatField.readOnly = true;
+      }
+    }
   }
 
-  if (alamatField) {
-    alamatField.value = "WALK-IN";
-    alamatField.readOnly = true; // Kunci kotak teks supaya tak boleh taip
+  if (jenis) {
+    jenis.addEventListener("change", kemaskiniSistem);
+    kemaskiniSistem(); // Run masa mula-mula buka borang
   }
-  
-  if (alamatBox) {
-    alamatBox.style.display = "block"; // Kekalkan paparan kotak info kunci
+
+  if (cara) {
+    cara.addEventListener("change", function() {
+      if (jenis && jenis.value === "daftar+baju") {
+        this.value = "walkin";
+      } else {
+        this.value = "";
+      }
+    });
   }
 });
 </script>
