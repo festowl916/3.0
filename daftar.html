@@ -190,7 +190,7 @@ dengan pihak urusetia pendaftaran.
 <p>(Walk-in dikecualikan)</p>
 
 <p>
-6. With meneruskan pendaftaran ini, peserta dianggap telah bersetuju
+6. Dengan meneruskan pendaftaran ini, peserta dianggap telah bersetuju
 dengan semua syarat dan peraturan.
 </p>
    
@@ -528,9 +528,18 @@ Pilih:<br>
   </div> <!-- tutup size section -->  
 </div> <!-- tutup content dalam card -->
 
-<!-- INPUT RAHSIA UNTUK BEKUKAN POS & ALAMAT (SELAMAT UNTUK GOOGLE SCRIPT) -->
-<input type="hidden" id="caraPenghantaran" value="walkin">
-<input type="hidden" id="alamatField" name="alamat" value="WALK-IN">
+<!-- BEKUKAN PILIHAN: SAYA LETAK DISABLED PADA KOTAK POS DAN PAKSA VALUE KEPADA WALKIN -->
+<label for="caraPenghantaran">Cara Penghantaran</label>
+<select name="cara_penghantaran" id="caraPenghantaran">
+  <option value="walkin" selected>Walk-in / Ambil sendiri</option>
+  <option value="pos" disabled style="color: #999; background: #eee;">Penghantaran POS (Tutup/Beku)</option>
+</select>
+
+<!-- KOTAK ALAMAT SENTIASA ADA BILA DAFTAR+BAJU, TAPI KUNCI PADA TEKS WALK-IN -->
+<div id="alamatContainer" style="display:block; margin-top:10px;">
+  <label for="alamatField">Alamat Penghantaran</label>
+  <textarea id="alamatField" name="alamat" readonly style="width:100%; min-height:80px; background-color:#f0f0f0; color:#555;">WALK-IN</textarea>
+</div>
 
 </div> <!-- tutup sectionBaju -->
 
@@ -568,6 +577,33 @@ Pilih:<br>
   <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
+
+<!-- SCRIPT LAMA ABANG DIKEMASKINI SUPAYA POS KEKAL BEKU & ALAMAT TERKUNCI -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const cara = document.getElementById("caraPenghantaran");
+  const alamatBox = document.getElementById("alamatContainer");
+  const alamatField = document.getElementById("alamatField");
+
+  if (cara) {
+    // Paksa pilihan sentiasa pada walkin walaupun diusik
+    cara.value = "walkin";
+    
+    cara.addEventListener("change", function() {
+      this.value = "walkin"; // Bekukan terus pilihan value
+    });
+  }
+
+  if (alamatField) {
+    alamatField.value = "WALK-IN";
+    alamatField.readOnly = true; // Kunci kotak teks supaya tak boleh taip
+  }
+  
+  if (alamatBox) {
+    alamatBox.style.display = "block"; // Kekalkan paparan kotak info kunci
+  }
+});
+</script>
 
 <script src="daftar.js"></script>
 </body>
