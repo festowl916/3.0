@@ -190,7 +190,7 @@ dengan pihak urusetia pendaftaran.
 <p>(Walk-in dikecualikan)</p>
 
 <p>
-6. Dengan meneruskan pendaftaran ini, peserta dianggap telah bersetuju
+6. With meneruskan pendaftaran ini, peserta dianggap telah bersetuju
 dengan semua syarat dan peraturan.
 </p>
    
@@ -528,35 +528,11 @@ Pilih:<br>
   </div> <!-- tutup size section -->  
 </div> <!-- tutup content dalam card -->
 
-<!-- LETAK SINI -->
-
-<label>Cara Penghantaran</label>
-<select name="cara_penghantaran" id="caraPenghantaran">
-  <option value="walkin">Walk-in / Ambil sendiri</option>
-</select>
-<div id="alamatContainer" style="display:none; margin-top:10px;">
-  <label for="alamatField">Alamat Penghantaran</label>
-
-  <div style="font-size:12px; color:#666; margin-bottom:5px;">
-    Kos penghantaran:
-    Semenanjung
-    1–2 helai = RM10 |
-    3 helai ke atas = RM15
-    
-    Sabah & Sarawak
-    1–5 helai RM30
-    5 helai ke atas RM35 
-    kecuali walk-in/ambil sendiri
-  </div>
-
-  <textarea id="alamatField" name="alamat"
-    placeholder="Isi alamat penuh untuk penghantaran POS"
-    style="width:100%; min-height:80px;"></textarea>
-</div>
+<!-- INPUT RAHSIA UNTUK BEKUKAN POS & ALAMAT (SELAMAT UNTUK GOOGLE SCRIPT) -->
+<input type="hidden" id="caraPenghantaran" value="walkin">
+<input type="hidden" id="alamatField" name="alamat" value="WALK-IN">
 
 </div> <!-- tutup sectionBaju -->
-
-
 
 </div> <!-- SEKARANG baru tutup card utama -->
 
@@ -592,95 +568,7 @@ Pilih:<br>
   <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-
-  const cara = document.getElementById("caraPenghantaran");
-  const alamatBox = document.getElementById("alamatContainer");
-  const alamatField = document.getElementById("alamatField");
-
-  cara.addEventListener("change", function() {
-
-    if (this.value === "pos") {
-      alamatBox.style.display = "block";
-      alamatField.required = true;
-      alamatField.readOnly = false;
-      alamatField.value = "";
-    } 
-
-    if (this.value === "walkin") {
-      alamatBox.style.display = "block";
-      alamatField.required = false;
-      alamatField.readOnly = true;
-      alamatField.value = "WALK-IN";
-    }
-
-  });
-
-});
-</script>
 
 <script src="daftar.js"></script>
 </body>
-</html> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</html>
