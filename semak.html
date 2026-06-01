@@ -16,36 +16,34 @@ async function search() {
     const rows = json.table.rows;
 
     let isIC = /[0-9]/.test(val);
+    let inputBersih = val.replace(/[^0-9]/g, '').trim();
     
     let found = rows.find(r => {
-      // Pastikan baris ada data (A=0, F=5)
-      if (!r.c || !r.c[0]) return false;
-      
+      if (!r.c) return false;
       let icSheet = r.c[5] ? String(r.c[5].v || "").split('.')[0].replace(/[^0-9]/g, '').trim() : "";
-      let namaSheet = String(r.c[0].v || "").toLowerCase().trim();
-      let inputBersih = val.replace(/[^0-9]/g, '').trim();
-
+      let namaSheet = r.c[0] ? String(r.c[0].v || "").toLowerCase().trim() : "";
+      
       if (isIC) return icSheet.includes(inputBersih);
       return namaSheet.includes(val.toLowerCase().trim());
     });
 
     if (found) {
+      // Guna fungsi selamat supaya tak crash kalau data kosong
       const get = (i) => (found.c[i] && found.c[i].v !== null) ? String(found.c[i].v).trim() : "-";
       
-      // MAPPING TEPAT IKUT GAMBAR:
-      document.getElementById('name').textContent = get(0);    // A: Nama
-      document.getElementById('club').textContent = get(1);    // B: Kelab
-      document.getElementById('category').textContent = get(2); // C: Kategori
-      document.getElementById('state').textContent = get(4);   // E: Negeri
-      document.getElementById('regType').textContent = get(6); // G: Jenis Daftar
+      document.getElementById('name').textContent = get(0);
+      document.getElementById('club').textContent = get(1);
+      document.getElementById('category').textContent = get(2);
+      document.getElementById('state').textContent = get(4);
+      document.getElementById('regType').textContent = get(6);
       
-      // I: Status Bayar (J dalam gambar)
-      const pay = get(9).toUpperCase(); 
+      // Status Bayar - Saya buat simple supaya tak crash
+      let pay = get(9).toUpperCase(); 
       document.getElementById('paymentStatus').innerHTML = (pay === "TRUE") ? 
         `<span style="color:green; font-weight:bold;">Jelas</span>` : `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
       
-      document.getElementById('shirt').textContent = get(7);   // H: Saiz Baju
-      document.getElementById('shirtNote').textContent = "-";  // Tiada catatan baju khusus
+      document.getElementById('shirt').textContent = get(7);
+      document.getElementById('shirtNote').textContent = "-";
 
       infoBox.style.display = "block";
       msg.innerHTML = "";
@@ -53,7 +51,8 @@ async function search() {
       msg.innerHTML = "<div class='error'>❌ Tidak dijumpai.</div>";
     }
   } catch (e) {
-    msg.innerHTML = "<div class='error'>Ralat teknikal.</div>";
+    // Kalau ada ralat, dia akan bagitau kat mana
+    msg.innerHTML = "<div class='error'>Ralat: " + e.message + "</div>";
   }
 }
 </script>
