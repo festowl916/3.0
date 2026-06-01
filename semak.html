@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semakan Pendaftaran Fest OWL 916</title>
+
+<style>
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+h2 { text-align: center; color: #111; margin-bottom: 5px; }
+h4 { text-align: center; color: #666; margin-top: 0; margin-bottom: 25px; font-weight: 400; }
+.container {
+  max-width: 550px;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.row { display: flex; gap: 10px; margin-bottom: 15px; }
+.row input {
+  flex: 1; padding: 12px 15px; border: 2px solid #ddd;
+  border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.3s;
+}
+.row input:focus { border-color: #000; }
+button {
+  background: #000; color: white; border: none; border-radius: 8px;
+  font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s;
+}
+button:hover { background: #222; }
+.search-btn {
+  width: 60px; min-width: 60px; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+}
+.info {
+  margin-top: 25px; padding: 20px; background: #f8f9fa;
+  border-left: 5px solid #000; border-radius: 8px; display: none;
+}
+.info p { margin: 12px 0; font-size: 16px; border-bottom: 1px dashed #eee; padding-bottom: 8px; }
+.info p b { color: #555; display: inline-block; width: 130px; }
+#message { text-align: center; font-weight: bold; margin-top: 15px; font-size: 14px; }
+.error { color: #dc3545; }
+.contact-box {
+  text-align: center; margin-top: 30px; padding-top: 20px; font-size: 12px;
+  color: #555; border-top: 1px dashed #ddd; line-height: 1.6;
+}
+.contact-box a { color: #0066cc; text-decoration: none; font-weight: bold; }
+footer { text-align: center; margin-top: 40px; font-size: 10px; color: #888; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Semakan Pendaftaran</h2>
+  <h4>Fest OWL 916</h4>
+
+  <!-- CARIAN IC -->
+  <div class="row">
+    <input type="text" id="ic" placeholder="Masukkan No IC Peserta (Tanpa -)">
+    <button type="button" class="search-btn" onclick="searchIC()">🔍</button>
+  </div>
+
+  <!-- STATUS/MESEJ PROSES -->
+  <div id="message"></div>
+
+  <!-- HASIL PAPARAN DATA -->
+  <div class="info" id="infoBox">
+    <p><b>Nama Penuh:</b> <span id="name"></span></p>
+    <p><b>Nama Kelab:</b> <span id="club"></span></p>
+    <p><b>Negeri:</b> <span id="state"></span></p>
+    <p><b>Jenis Daftar:</b> <span id="regType"></span></p>
+    <p><b>Saiz Baju:</b> <span id="shirt"></span></p>
+    <p><b>Catatan Baju:</b> <span id="shirtNote"></span></p>
+    <p><b>Status Bayaran:</b> <span id="paymentStatus"></span></p>
+  </div>
+
+  <div class="contact-box">
+    <b>Bantuan Kemaskini / Urus Setia Peserta:</b><br>
+    📱 <a href="https://wa.me/60134267930" target="_blank">Din</a> | 
+    📱 <a href="https://wa.me/60199049587" target="_blank">Won</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024–2026 Fest OWL 916</p>
+</footer>
+
+<script>
+// ⚠️ PASTE LINK CSV TAB 'Pendaftaran OWL' ABANG KAT SINI
+const CSV_URL = "https://docs.google.com/spreadsheets/d/1GWETAU3THzK0XF0KQIE6MjytTUyFqLGUWPe_sCEaALA/edit?usp=drivesdk";
+
+async function searchIC() {
+  const icInput = document.getElementById('ic').value.trim();
+  const infoBox = document.getElementById('infoBox');
+  const message = document.getElementById('message');
+
+  message.innerHTML = "";
+  infoBox.style.display = "none";
+
+  if (!icInput) {
+    message.innerHTML = "<div class='error'>Sila masukkan No IC.</div>";
+    return;
+  }
+
+  message.innerHTML = "🔄 Sedang menyemak pendaftaran...";
+
+  try {
+    const response = await fetch(CSV_URL);
+    const dataText = await response.text();
+    
+    // Pecahkan data CSV mengikut baris
+    const rows = dataText.split("\n").map(row => {
+      return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
+    });
+
+    let dataTemui = null;
+
+    // Pemetaan Indeks Kolum (Komputer mula kira dari A=0)
+    const INDEX_NAMA   = 1;  // Kolum B
+    const INDEX_KELAB  = 2;  // Kolum C
+    const INDEX_NEGERI = 5;  // Kolum F
+    const INDEX_IC     = 6;  // Kolum G
+    const INDEX_TYPE   = 8;  // Kolum I
+    const INDEX_SAIZ   = 9;  // Kolum J
+    const INDEX_NOTE   = 10; // Kolum K
+    const INDEX_BAYAR  = 13; // Kolum N
+
+    // Proses mencari IC peserta
+    for (let i = 1; i < rows.length; i++) {
+      if (rows[i][INDEX_IC] === icInput) {
+        dataTemui = rows[i];
+        break;
+      }
+    }
+
+    if (!dataTemui) {
+      message.innerHTML = "<div class='error'>❌ No IC tidak dijumpai dalam rekod pendaftaran.</div>";
+      return;
+    }
+
+    // Papar maklumat ke dalam borang semakan web
+    document.getElementById('name').textContent = dataTemui[INDEX_NAMA] || "-";
+    document.getElementById('club').textContent = dataTemui[INDEX_KELAB] || "-";
+    document.getElementById('state').textContent = dataTemui[INDEX_NEGERI] || "-";
+    document.getElementById('regType').textContent = dataTemui[INDEX_TYPE] || "-";
+    document.getElementById('shirt').textContent = dataTemui[INDEX_SAIZ] || "Tiada Ambil Baju";
+    document.getElementById('shirtNote').textContent = dataTemui[INDEX_NOTE] || "-";
+    
+    // Semakan Status Bayaran Kolum N (TRUE = Jelas, FALSE = Belum Jelas)
+    const bayar = (dataTemui[INDEX_BAYAR] || "").toUpperCase();
+    if (bayar === "TRUE") {
+      document.getElementById('paymentStatus').innerHTML = `<span style="color:green; font-weight:bold;">Jelas (Dah Bayar)</span>`;
+    } else {
+      document.getElementById('paymentStatus').innerHTML = `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
+    }
+
+    infoBox.style.display = "block";
+    message.innerHTML = "";
+
+  } catch (err) {
+    console.error(err);
+    message.innerHTML = "<div class='error'>Ralat memuat turun data. Sila pastikan pautan CSV betul.</div>";
+  }
+}
+</script>
+
+</body>
+</html>
