@@ -166,7 +166,7 @@ async function searchIC() {
     const INDEX_BAYAR      = 8;  // Kolum I (Status Bayar)
     const INDEX_IC         = 9;  // Kolum J (No IC)
 
-    for (let i = 1; i < rows.length; i++) {
+    for (let i = 0; i < rows.length; i++) {
       if (rows[i][INDEX_IC] === icInput) {
         dataTemui = rows[i];
         break;
