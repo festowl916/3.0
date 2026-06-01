@@ -115,11 +115,12 @@
   <div id="infoBox" class="info-box">
     <p><strong>Nama Penuh:</strong> <span id="name">-</span></p>
     <p><strong>Kelab:</strong> <span id="club">-</span></p>
-    <p><strong>Kategori & Negeri:</strong> <span id="categoryState">-</span></p>
+    <p><strong>Kategori:</strong> <span id="category">-</span></p>
+    <p><strong>Negeri:</strong> <span id="state">-</span></p>
     <p><strong>Jenis Daftar:</strong> <span id="regType">-</span></p>
+    <p><strong>Status Bayaran:</strong> <span id="paymentStatus">-</span></p>
     <p><strong>Saiz Baju:</strong> <span id="shirt">-</span></p>
     <p><strong>Catatan Baju:</strong> <span id="shirtNote">-</span></p>
-    <p><strong>Status Bayaran:</strong> <span id="paymentStatus">-</span></p>
   </div>
 </div>
 
@@ -140,8 +141,8 @@ async function searchIC() {
   }
 
   let icInputTanpaKosong = icInput;
-  if (icInput.startsWith('0')) {
-    icInputTanpaKosong = icInput.replace(/^0+/, ''); 
+  if (icInput.startsWith('0') && icInput.length === 12) {
+    icInputTanpaKosong = icInput.substring(1);
   }
 
   message.innerHTML = "🔄 Sedang menyemak pendaftaran...";
@@ -155,34 +156,12 @@ async function searchIC() {
     const rows = data.table.rows;
 
     let rowTemui = null;
+    const COL_IC = 9; 
 
-    // 🛠️ ENJIN IMBAKAN PINTAR: Cari IC di MANA-MANA kolum sekalipun (Tak kisah kolum 6 atau 9)
     for (let i = 0; i < rows.length; i++) {
-      if (rows[i].c) {
-        let barisSempad = false;
-        
-        // Scan setiap sel dalam baris ini
-        for (let j = 0; j < rows[i].c.length; j++) {
-          if (rows[i].c[j]) {
-            let cellData = rows[i].c[j];
-            let valFormatted = cellData.f ? String(cellData.f).replace(/[^0-9]/g, '').trim() : "";
-            let valRaw = cellData.v !== null ? String(cellData.v).replace(/[^0-9]/g, '').trim() : "";
-            
-            if (valRaw.includes('.')) valRaw = valRaw.split('.')[0];
-
-            if (
-              valFormatted === icInput || 
-              valFormatted === icInputTanpaKosong ||
-              valRaw === icInput ||
-              valRaw === icInputTanpaKosong
-            ) {
-              barisSempad = true;
-              break;
-            }
-          }
-        }
-        
-        if (barisSempad) {
+      if (rows[i].c && rows[i].c[COL_IC]) {
+        let icSheet = String(rows[i].c[COL_IC].v).replace(/[^0-9]/g, '').trim();
+        if (icSheet === icInput || icSheet === icInputTanpaKosong) {
           rowTemui = rows[i].c;
           break;
         }
@@ -196,26 +175,27 @@ async function searchIC() {
 
     const getVal = (cell) => (cell && cell.v !== null) ? String(cell.v).trim() : "";
 
-    // PAPAR DATA (Susunan Kebal Kalis Ralat Ikut Struktur Asal Wakngoh)
+    // ISI DATA PESERTA
     document.getElementById('name').textContent = getVal(rowTemui[0]) || "-"; 
     document.getElementById('club').textContent = getVal(rowTemui[1]) || "-"; 
     
-    // Gabungan Kategori & Negeri automatik dinamik
     const katUmur = rowTemui[2] ? getVal(rowTemui[2]) : "";
     const katBusur = rowTemui[3] ? getVal(rowTemui[3]) : "";
-    let negeri = rowTemui[4] ? getVal(rowTemui[4]) : "";
-    
-    // Backup kalau negeri lari ke kolum sebelah disebabkan perubahan baris
-    if(negeri.toUpperCase().includes("TRUE") || negeri.toUpperCase().includes("FALSE") || !isNaN(negeri)) {
-      negeri = rowTemui[5] ? getVal(rowTemui[5]) : "";
-    }
-    
     const gabungKategori = [katUmur, katBusur].filter(Boolean).join(" | ");
-    document.getElementById('categoryState').textContent = gabungKategori ? `${gabungKategori} - ${negeri}` : negeri || "-";
+    document.getElementById('category').textContent = gabungKategori || "-";
     
-    // Mengesan Jenis Daftar & Baju secara selamat
+    document.getElementById('state').textContent = getVal(rowTemui[4]) || "-"; 
     document.getElementById('regType').textContent = getVal(rowTemui[5]) || "-"; 
     
+    // Status Bayar
+    const bayar = getVal(rowTemui[8]).toUpperCase();
+    if (bayar === "TRUE") {
+      document.getElementById('paymentStatus').innerHTML = `<span style="color:green; font-weight:bold;">Jelas</span>`;
+    } else {
+      document.getElementById('paymentStatus').innerHTML = `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
+    }
+
+    // 🛠️ LOGIK BARU: TUKAR "TIADA AMBIL BAJU" KEPADA "-" SAHAJA
     const saizBaju = getVal(rowTemui[6]);
     if (!saizBaju || saizBaju === "-" || saizBaju.toLowerCase() === "tiada" || saizBaju.toLowerCase().includes("tidak")) {
       document.getElementById('shirt').textContent = "-";
@@ -224,17 +204,6 @@ async function searchIC() {
     }
 
     document.getElementById('shirtNote').textContent = getVal(rowTemui[7]) || "-"; 
-
-    // Cari status bayar secara dinamik dalam baris tu (Sapu bersih TRUE/FALSE/RUE)
-    let statusBayarText = `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
-    for(let k=0; k<rowTemui.length; k++) {
-      let isi = getVal(rowTemui[k]).toUpperCase();
-      if(isi === "TRUE" || isi.includes("RUE") || isi === "JELAS" || isi === "DAH BAYAR") {
-        statusBayarText = `<span style="color:green; font-weight:bold;">Jelas (Dah Bayar)</span>`;
-        break;
-      }
-    }
-    document.getElementById('paymentStatus').innerHTML = statusBayarText;
 
     infoBox.style.display = "block";
     message.innerHTML = "";
