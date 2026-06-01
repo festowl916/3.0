@@ -25,10 +25,10 @@
 <div class="container">
   <h2>Semakan Pendaftaran OWL 916</h2>
   <div class="form-group">
-    <label for="ic">Masukkan No. IC Peserta:</label>
-    <input type="text" id="ic" placeholder="Contoh: 010012140496">
+    <label for="ic">Masukkan Nama atau No. IC:</label>
+    <input type="text" id="ic" placeholder="Taip nama atau IC...">
   </div>
-  <button onclick="searchIC()">🔍 Semak Pendaftaran</button>
+  <button onclick="search()">🔍 Semak Sekarang</button>
   <div id="message"></div>
   <div id="infoBox" class="info-box">
     <p><strong>Nama Penuh:</strong> <span id="name">-</span></p>
@@ -45,63 +45,49 @@
 <script>
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
 
-async function searchIC() {
-  let icInput = document.getElementById('ic').value.replace(/[^0-9]/g, '').trim();
+async function search() {
+  let val = document.getElementById('ic').value.trim();
   const infoBox = document.getElementById('infoBox');
-  const message = document.getElementById('message');
+  const msg = document.getElementById('message');
 
-  message.innerHTML = "🔄 Sedang menyemak...";
+  msg.innerHTML = "🔄 Mencari...";
   infoBox.style.display = "none";
 
-  if (!icInput) {
-    message.innerHTML = "<div class='error'>Sila masukkan No IC.</div>";
-    return;
-  }
-
   try {
-    const response = await fetch(API_URL + "&t=" + new Date().getTime());
-    const text = await response.text();
+    const res = await fetch(API_URL + "&t=" + new Date().getTime());
+    const text = await res.text();
     const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
     const rows = json.table.rows;
 
-    let rowTemui = null;
-    const COL_IC = 4; // F (Index 4)
+    let isIC = /[0-9]/.test(val);
+    let found = rows.find(r => {
+      if (!r.c) return false;
+      if (isIC) return r.c[4] && String(r.c[4].v || "").includes(val); // Kolum F (Indeks 4)
+      return r.c[0] && String(r.c[0].v || "").toLowerCase().includes(val.toLowerCase()); // Kolum B (Indeks 0)
+    });
 
-    for (let i = 0; i < rows.length; i++) {
-      if (rows[i].c && rows[i].c[COL_IC]) {
-        let icSheet = String(rows[i].c[COL_IC].v || "").replace(/[^0-9]/g, '').trim();
-        if (icSheet === icInput) {
-          rowTemui = rows[i].c;
-          break;
-        }
-      }
+    if (found) {
+      const get = (i) => (found.c[i] ? String(found.c[i].v || "-") : "-");
+      document.getElementById('name').textContent = get(0);
+      document.getElementById('club').textContent = get(1);
+      document.getElementById('category').textContent = get(2);
+      document.getElementById('state').textContent = get(3);
+      document.getElementById('regType').textContent = get(5);
+      
+      const pay = get(6).toUpperCase();
+      document.getElementById('paymentStatus').innerHTML = (pay === "TRUE") ? 
+        `<span style="color:green; font-weight:bold;">Jelas</span>` : `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
+      
+      document.getElementById('shirt').textContent = get(7);
+      document.getElementById('shirtNote').textContent = get(8);
+      
+      infoBox.style.display = "block";
+      msg.innerHTML = "";
+    } else {
+      msg.innerHTML = "<div class='error'>❌ Tidak dijumpai.</div>";
     }
-
-    if (!rowTemui) {
-      message.innerHTML = "<div class='error'>❌ No IC tidak dijumpai.</div>";
-      return;
-    }
-
-    const getVal = (cell) => (cell && cell.v !== null) ? String(cell.v).trim() : "-";
-
-    document.getElementById('name').textContent = getVal(rowTemui[0]);
-    document.getElementById('club').textContent = getVal(rowTemui[1]);
-    document.getElementById('category').textContent = getVal(rowTemui[2]);
-    document.getElementById('state').textContent = getVal(rowTemui[3]);
-    document.getElementById('regType').textContent = getVal(rowTemui[5]);
-    
-    // Status Bayar (Col I = Index 6)
-    const bayar = getVal(rowTemui[6]).toUpperCase();
-    document.getElementById('paymentStatus').innerHTML = (bayar === "TRUE") ? 
-      `<span style="color:green; font-weight:bold;">Jelas</span>` : `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
-
-    document.getElementById('shirt').textContent = getVal(rowTemui[7]);
-    document.getElementById('shirtNote').textContent = getVal(rowTemui[8]);
-
-    infoBox.style.display = "block";
-    message.innerHTML = "";
-  } catch (err) {
-    message.innerHTML = "<div class='error'>Ralat teknikal.</div>";
+  } catch (e) {
+    msg.innerHTML = "<div class='error'>Ralat teknikal.</div>";
   }
 }
 </script>
