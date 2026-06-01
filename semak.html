@@ -104,8 +104,8 @@
   <h2>Semakan Pendaftaran OWL 916</h2>
   
   <div class="form-group">
-    <label for="ic">Masukkan No. IC Peserta:</label>
-    <input type="text" id="ic" placeholder="Contoh: 010012140496 tanpa sengkang">
+    <label for="ic">Masukkan No. IC atau Nama Penuh:</label>
+    <input type="text" id="ic" placeholder="Masukkan No IC atau Nama Penuh">
   </div>
   
   <button onclick="searchIC()">🔍 Semak Pendaftaran</button>
@@ -128,21 +128,33 @@
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
 
 async function searchIC() {
-  let icInput = document.getElementById('ic').value.replace(/[^0-9]/g, '').trim();
+  let userInput = document.getElementById('ic').value.trim();
   const infoBox = document.getElementById('infoBox');
   const message = document.getElementById('message');
 
   message.innerHTML = "";
   infoBox.style.display = "none";
 
-  if (!icInput) {
-    message.innerHTML = "<div class='error'>Sila masukkan No IC.</div>";
+  if (!userInput) {
+    message.innerHTML = "<div class='error'>Sila masukkan No IC atau Nama Penuh.</div>";
     return;
   }
 
-  let icInputTanpaKosong = icInput;
-  if (icInput.startsWith('0') && icInput.length === 12) {
-    icInputTanpaKosong = icInput.substring(1);
+  // Tentukan jenis carian (Jika input mengandungi nombor, ia adalah carian IC)
+  let IsCarianIC = /[0-9]/.test(userInput);
+  
+  let icInput = "";
+  let icInputTanpaKosong = "";
+  let namaInput = "";
+
+  if (IsCarianIC) {
+    icInput = userInput.replace(/[^0-9]/g, '').trim();
+    icInputTanpaKosong = icInput;
+    if (icInput.startsWith('0') && icInput.length === 12) {
+      icInputTanpaKosong = icInput.substring(1);
+    }
+  } else {
+    namaInput = userInput.toLowerCase().replace(/\s+/g, ''); // Buang space & lower case untuk carian nama yang tepat
   }
 
   message.innerHTML = "🔄 Sedang menyemak pendaftaran...";
@@ -156,26 +168,49 @@ async function searchIC() {
     const rows = data.table.rows;
 
     let rowTemui = null;
-    const COL_IC = 9; 
+    const COL_NAMA = 0; // Kolum A
+    const COL_IC = 9;   // Kolum J
 
     for (let i = 0; i < rows.length; i++) {
-      if (rows[i].c && rows[i].c[COL_IC]) {
-        let icSheet = String(rows[i].c[COL_IC].v).replace(/[^0-9]/g, '').trim();
-        if (icSheet === icInput || icSheet === icInputTanpaKosong) {
-          rowTemui = rows[i].c;
-          break;
+      if (rows[i].c) {
+        
+        if (IsCarianIC) {
+          // 🛠️ LOGIK CARIAN IC (Kalis format saintifik / perpuluhan Google Sheet)
+          if (rows[i].c[COL_IC]) {
+            let cell = rows[i].c[COL_IC];
+            let icRaw = cell.v !== null ? String(cell.v).split('.')[0].replace(/[^0-9]/g, '').trim() : "";
+            let icFormatted = cell.f ? String(cell.f).replace(/[^0-9]/g, '').trim() : "";
+            
+            if (icRaw === icInput || icFormatted === icInput || icRaw === icInputTanpaKosong || icFormatted === icInputTanpaKosong) {
+              rowTemui = rows[i].c;
+              break;
+            }
+          }
+        } else {
+          // 🛠️ LOGIK CARIAN NAMA
+          if (rows[i].c[COL_NAMA] && rows[i].c[COL_NAMA].v !== null) {
+            let namaSheet = String(rows[i].c[COL_NAMA].v).toLowerCase().replace(/\s+/g, '');
+            // Menggunakan includes supaya taip nama pendek (contoh: "Arfa") pun boleh jumpa nama penuh
+            if (namaSheet.includes(namaInput)) {
+              rowTemui = rows[i].c;
+              break;
+            }
+          }
         }
+
       }
     }
 
     if (!rowTemui) {
-      message.innerHTML = "<div class='error'>❌ No IC tidak dijumpai dalam rekod pendaftaran.</div>";
+      message.innerHTML = IsCarianIC 
+        ? "<div class='error'>❌ No IC tidak dijumpai dalam rekod pendaftaran.</div>" 
+        : "<div class='error'>❌ Nama peserta tidak dijumpai dalam rekod pendaftaran.</div>";
       return;
     }
 
     const getVal = (cell) => (cell && cell.v !== null) ? String(cell.v).trim() : "";
 
-    // ISI DATA PESERTA
+    // ISI DATA PESERTA (100% SUSUNAN ASAL ABANG YANG BETUL)
     document.getElementById('name').textContent = getVal(rowTemui[0]) || "-"; 
     document.getElementById('club').textContent = getVal(rowTemui[1]) || "-"; 
     
@@ -195,7 +230,7 @@ async function searchIC() {
       document.getElementById('paymentStatus').innerHTML = `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
     }
 
-    // 🛠️ LOGIK BARU: TUKAR "TIADA AMBIL BAJU" KEPADA "-" SAHAJA
+    // Saiz Baju
     const saizBaju = getVal(rowTemui[6]);
     if (!saizBaju || saizBaju === "-" || saizBaju.toLowerCase() === "tiada" || saizBaju.toLowerCase().includes("tidak")) {
       document.getElementById('shirt').textContent = "-";
