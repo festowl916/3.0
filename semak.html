@@ -1,5 +1,131 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semakan Pendaftaran OWL 916</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+    input[type="text"]:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+    .error {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    .info-box {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-left: 5px solid #3498db;
+      border-radius: 4px;
+      display: none;
+    }
+    .info-box p {
+      margin: 10px 0;
+      font-size: 15px;
+      color: #444;
+      border-bottom: 1px dashed #eee;
+      padding-bottom: 5px;
+    }
+    .info-box strong {
+      color: #2c3e50;
+      display: inline-block;
+      width: 130px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Semakan Pendaftaran OWL 916</h2>
+  
+  <div class="form-group">
+    <label for="ic">Masukkan No. IC Peserta:</label>
+    <input type="text" id="ic" placeholder="Contoh: 100512115432 tanpa sengkang">
+  </div>
+  
+  <button onclick="searchIC()">🔍 Semak Pendaftaran</button>
+  
+  <div id="message"></div>
+  
+  <!-- Kotak Paparan Maklumat Hasil Carian -->
+  <div id="infoBox" class="info-box">
+    <p><strong>Nama Penuh:</strong> <span id="name">-</span></p>
+    <p><strong>Kelab:</strong> <span id="club">-</span></p>
+    <p><strong>Kategori & Negeri:</strong> <span id="state">-</span></p>
+    <p><strong>Jenis Daftar:</strong> <span id="regType">-</span></p>
+    <p><strong>Saiz Baju:</strong> <span id="shirt">-</span></p>
+    <p><strong>Catatan Baju:</strong> <span id="shirtNote">-</span></p>
+    <p><strong>Status Bayaran:</strong> <span id="paymentStatus">-</span></p>
+  </div>
+</div>
+
 <script>
-// ⚠️ TEPEK LINK CSV FAIL BARU YANG ABANG PUBLISH TO WEB TADI DEKAT SINI
+// ⚠️ GANTIKAN URL_CSV_DI_BAWAH DENGAN LINK CSV YANG ABANG PUBLISH TO WEB TADI
 const CSV_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/edit?usp=drivesdk";
 
 async function searchIC() {
@@ -21,26 +147,25 @@ async function searchIC() {
     const response = await fetch(CSV_URL);
     const dataText = await response.text();
     
-    // Pecahkan data CSV mengikut baris
+    // Pecahkan data CSV mengikut baris & kawal isu koma dalam tanda petik
     const rows = dataText.split("\n").map(row => {
       return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
     });
 
     let dataTemui = null;
 
-    // 📋 INDEKS BARU (Sebab ada Kategori 1 & Kategori 2)
+    // Pemetaan Indeks Ikut QUERY A=0, B=1, C=2...
     const INDEX_NAMA       = 0;  // Kolum A (Nama Penuh)
     const INDEX_KELAB      = 1;  // Kolum B (Nama Kelab)
-    const INDEX_KATEGORI1  = 2;  // Kolum C (Kategori Umur: Cilik/Remaja)
-    const INDEX_KATEGORI2  = 3;  // Kolum D (Kategori Busur: Carbon/Natural)
+    const INDEX_KATEGORI1  = 2;  // Kolum C (Kategori Umur)
+    const INDEX_KATEGORI2  = 3;  // Kolum D (Kategori Busur)
     const INDEX_NEGERI     = 4;  // Kolum E (Negeri)
     const INDEX_TYPE       = 5;  // Kolum F (Jenis Daftar)
     const INDEX_SAIZ       = 6;  // Kolum G (Saiz Baju)
     const INDEX_NOTE       = 7;  // Kolum H (Catatan Baju)
     const INDEX_BAYAR      = 8;  // Kolum I (Status Bayar)
-    const INDEX_IC         = 9;  // Kolum J (No IC - digunakan untuk carian)
+    const INDEX_IC         = 9;  // Kolum J (No IC)
 
-    // Proses mencari baris yang ada IC peserta
     for (let i = 1; i < rows.length; i++) {
       if (rows[i][INDEX_IC] === icInput) {
         dataTemui = rows[i];
@@ -53,22 +178,19 @@ async function searchIC() {
       return;
     }
 
-    // Papar maklumat ke dalam kotak semakan web
+    // Masukkan data ke dalam borang
     document.getElementById('name').textContent = dataTemui[INDEX_NAMA] || "-";
     document.getElementById('club').textContent = dataTemui[INDEX_KELAB] || "-";
     
-    // Kita gabungkan terus Kategori 1 & Kategori 2 dekat bahagian Negeri/Kategori web abang
     const kat1 = dataTemui[INDEX_KATEGORI1] || "";
     const kat2 = dataTemui[INDEX_KATEGORI2] || "";
     const gabungKat = [kat1, kat2].filter(Boolean).join(" | ");
-    
     document.getElementById('state').textContent = (gabungKat ? gabungKat + " - " : "") + (dataTemui[INDEX_NEGERI] || "-");
     
     document.getElementById('regType').textContent = dataTemui[INDEX_TYPE] || "-"; 
     document.getElementById('shirt').textContent = dataTemui[INDEX_SAIZ] || "Tiada Ambil Baju"; 
     document.getElementById('shirtNote').textContent = dataTemui[INDEX_NOTE] || "-";
     
-    // Semakan Status Bayaran (TRUE = Jelas, FALSE = Belum Jelas)
     const bayar = (dataTemui[INDEX_BAYAR] || "").toUpperCase();
     if (bayar === "TRUE") {
       document.getElementById('paymentStatus').innerHTML = `<span style="color:green; font-weight:bold;">Jelas (Dah Bayar)</span>`;
@@ -85,3 +207,6 @@ async function searchIC() {
   }
 }
 </script>
+
+</body>
+</html>
