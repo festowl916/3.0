@@ -1,8 +1,41 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Semakan Pendaftaran OWL 916</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f6f9; padding: 20px; display: flex; justify-content: center; }
+    .container { background: #fff; padding: 20px; border-radius: 8px; width: 100%; max-width: 500px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    input, button { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+    button { background: #3498db; color: white; border: none; cursor: pointer; font-weight: bold; }
+    .info-box { margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 5px solid #3498db; display: none; }
+    .error { color: red; text-align: center; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Semakan Pendaftaran</h2>
+  <input type="text" id="ic" placeholder="Masukkan Nama atau No. IC...">
+  <button onclick="search()">Semak Sekarang</button>
+  <div id="message"></div>
+  <div id="infoBox" class="info-box">
+    <p><strong>Nama:</strong> <span id="name">-</span></p>
+    <p><strong>Kelab:</strong> <span id="club">-</span></p>
+    <p><strong>Kategori:</strong> <span id="category">-</span></p>
+    <p><strong>Negeri:</strong> <span id="state">-</span></p>
+    <p><strong>Jenis:</strong> <span id="regType">-</span></p>
+    <p><strong>Bayaran:</strong> <span id="paymentStatus">-</span></p>
+    <p><strong>Saiz Baju:</strong> <span id="shirt">-</span></p>
+    <p><strong>Catatan:</strong> <span id="shirtNote">-</span></p>
+  </div>
+</div>
+
 <script>
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
 
 async function search() {
-  let val = document.getElementById('ic').value.trim();
+  const val = document.getElementById('ic').value.trim();
   const infoBox = document.getElementById('infoBox');
   const msg = document.getElementById('message');
 
@@ -15,40 +48,30 @@ async function search() {
     const json = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
     const rows = json.table.rows;
 
-    let isIC = /[0-9]/.test(val);
-    let inputBersih = val.replace(/[^0-9]/g, '').trim();
-    
-    let found = rows.find(r => {
-      if (!r.c) return false;
-      // Kolum F adalah indeks 5
-      let icSheet = r.c[5] ? String(r.c[5].v || "").split('.')[0].replace(/[^0-9]/g, '').trim() : "";
-      let namaSheet = r.c[0] ? String(r.c[0].v || "").toLowerCase().trim() : "";
-      if (isIC) return icSheet.includes(inputBersih);
-      return namaSheet.includes(val.toLowerCase().trim());
+    const isIC = /[0-9]/.test(val);
+    const inputClean = val.replace(/[^0-9]/g, '');
+
+    const found = rows.find(r => {
+      if (!r.c || !r.c[0]) return false;
+      const icSheet = r.c[5] ? String(r.c[5].v || "").replace(/[^0-9]/g, '') : "";
+      const namaSheet = String(r.c[0].v || "").toLowerCase();
+      return isIC ? icSheet.includes(inputClean) : namaSheet.includes(val.toLowerCase());
     });
 
     if (found) {
-      // Fungsi untuk ambil data dengan selamat
-      const get = (i) => (found.c[i] && found.c[i].v !== null) ? String(found.c[i].v).trim() : "-";
+      const get = (i) => (found.c[i] && found.c[i].v !== null) ? String(found.c[i].v) : "-";
       
-      document.getElementById('name').textContent = get(0);      // A: Nama
-      document.getElementById('club').textContent = get(1);      // B: Kelab
+      document.getElementById('name').textContent = get(0);
+      document.getElementById('club').textContent = get(1);
+      document.getElementById('category').textContent = get(2) + " | " + get(3);
+      document.getElementById('state').textContent = get(4);
+      document.getElementById('regType').textContent = get(6);
       
-      // Kategori: Gabung C + D
-      const katUtama = get(2);
-      const subKat = get(3);
-      document.getElementById('category').textContent = (subKat !== "-") ? katUtama + " / " + subKat : katUtama;
+      const pay = get(9).toUpperCase();
+      document.getElementById('paymentStatus').innerHTML = (pay === "TRUE") ? "✅ Jelas" : "❌ Belum Jelas";
       
-      document.getElementById('state').textContent = get(4);     // E: Negeri
-      document.getElementById('regType').textContent = get(6);   // G: Jenis Daftar
-      
-      // Status Bayar: J (Indeks 9)
-      let pay = get(9).toUpperCase(); 
-      document.getElementById('paymentStatus').innerHTML = (pay === "TRUE") ? 
-        `<span style="color:green; font-weight:bold;">Jelas</span>` : `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
-      
-      document.getElementById('shirt').textContent = get(7);     // H: Saiz Baju
-      document.getElementById('shirtNote').textContent = get(8); // I: Catatan
+      document.getElementById('shirt').textContent = get(7);
+      document.getElementById('shirtNote').textContent = get(8);
 
       infoBox.style.display = "block";
       msg.innerHTML = "";
@@ -60,3 +83,5 @@ async function search() {
   }
 }
 </script>
+</body>
+</html>
