@@ -112,7 +112,6 @@
   
   <div id="message"></div>
   
-  <!-- Kotak Paparan Maklumat Hasil Carian -->
   <div id="infoBox" class="info-box">
     <p><strong>Nama Penuh:</strong> <span id="name">-</span></p>
     <p><strong>Kelab:</strong> <span id="club">-</span></p>
@@ -125,8 +124,8 @@
 </div>
 
 <script>
-// ⚠️ GANTIKAN URL_CSV_DI_BAWAH DENGAN LINK CSV YANG ABANG PUBLISH TO WEB TADI
-const CSV_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/edit?usp=drivesdk";
+// 🛠️ LINK CSV YANG BETUL DAH SIAP DIUBAH (Ada output=csv kat hujung)
+const CSV_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/pub?output=csv";
 
 async function searchIC() {
   const icInput = document.getElementById('ic').value.trim();
@@ -145,6 +144,8 @@ async function searchIC() {
 
   try {
     const response = await fetch(CSV_URL);
+    if (!response.ok) throw new Error("Gagal load CSV");
+    
     const dataText = await response.text();
     
     // Pecahkan data CSV mengikut baris & kawal isu koma dalam tanda petik
@@ -154,7 +155,7 @@ async function searchIC() {
 
     let dataTemui = null;
 
-    // Pemetaan Indeks Ikut QUERY A=0, B=1, C=2...
+    // Pemetaan Indeks Ikut QUERY A=0, B=1, C=2... J=9
     const INDEX_NAMA       = 0;  // Kolum A (Nama Penuh)
     const INDEX_KELAB      = 1;  // Kolum B (Nama Kelab)
     const INDEX_KATEGORI1  = 2;  // Kolum C (Kategori Umur)
@@ -166,6 +167,7 @@ async function searchIC() {
     const INDEX_BAYAR      = 8;  // Kolum I (Status Bayar)
     const INDEX_IC         = 9;  // Kolum J (No IC)
 
+    // Cari dari baris kosong (0) sebab fail abang tak ada row tajuk
     for (let i = 0; i < rows.length; i++) {
       if (rows[i][INDEX_IC] === icInput) {
         dataTemui = rows[i];
@@ -203,7 +205,7 @@ async function searchIC() {
 
   } catch (err) {
     console.error(err);
-    message.innerHTML = "<div class='error'>Ralat memuat turun data. Sila pastikan pautan CSV betul.</div>";
+    message.innerHTML = "<div class='error'>Ralat memuat turun data. Sila pastikan pautan CSV betul dan fail telah di-Publish to Web.</div>";
   }
 }
 </script>
