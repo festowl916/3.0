@@ -101,7 +101,7 @@
 <body>
 
 <div class="container">
-  <h2>Semakan Pendaftaran OWL 916</h2>
+  <h2>Semakan Pendaftaran OWL 916 3.0 2026</h2>
   
   <div class="form-group">
     <label for="ic">Masukkan No. IC Peserta:</label>
@@ -184,7 +184,7 @@ async function searchIC() {
     document.getElementById('state').textContent = getVal(rowTemui[4]); // Kolum E (Negeri)
     
     document.getElementById('regType').textContent = getVal(rowTemui[5]); // Kolum F (Jenis Daftar)
-    document.getElementById('shirt').textContent = rowTemui[6] ? getVal(rowTemui[6]) : "Tiada Ambil Baju"; // Kolum G (Saiz)
+    document.getElementById('shirt').textContent = rowTemui[6] ? getVal(rowTemui[6]) : "-"; // Kolum G (Saiz)
     document.getElementById('shirtNote').textContent = getVal(rowTemui[7]); // Kolum H (Catatan)
     
     // Status Bayar di Kolum I
