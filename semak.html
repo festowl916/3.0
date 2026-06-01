@@ -125,7 +125,7 @@
 </div>
 
 <script>
-// 🚀 Guna teknik Google Visualization API (Tembak fail baru yang data pajak tu)
+// Pautan API Google Sheets abang
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
 
 async function searchIC() {
@@ -147,18 +147,15 @@ async function searchIC() {
     const response = await fetch(API_URL + "&t=" + new Date().getTime());
     const text = await response.text();
     
-    // Google API hantar data ada text extra, kita potong bagi jadi JSON bersih
+    // Bersihkan hasil maklum balas JSON dari Google API
     const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
     const data = JSON.parse(jsonText);
     const rows = data.table.rows;
 
     let rowTemui = null;
-
-    // Pemetaan indeks ikut Kolum A=0, B=1 ... J=9 (IC abang kat kolum J)
-    const COL_IC = 9; 
+    const COL_IC = 9; // No IC di Kolum J
 
     for (let i = 0; i < rows.length; i++) {
-      // Check kalau row tu wujud dan kolum J ada isi
       if (rows[i].c && rows[i].c[COL_IC] && String(rows[i].c[COL_IC].v).trim() === icInput) {
         rowTemui = rows[i].c;
         break;
@@ -170,24 +167,27 @@ async function searchIC() {
       return;
     }
 
-    // Fungsi pembantu untuk ambil text selamat dari cell Google
+    // Fungsi utiliti untuk membaca data sel secara selamat
     const getVal = (cell) => (cell && cell.v !== null) ? String(cell.v).trim() : "-";
 
-    // Masukkan data ke paparan (A=0, B=1, C=2, D=3, E=4, F=5, G=6, H=7, I=8)
-    document.getElementById('name').textContent = getVal(rowTemui[0]);
-    document.getElementById('club').textContent = getVal(rowTemui[1]);
+    // PENGAGIHAN DATA IKUT KOLUM YANG BETUL
+    document.getElementById('name').textContent = getVal(rowTemui[0]); // Kolum A (Nama)
+    document.getElementById('club').textContent = getVal(rowTemui[1]); // Kolum B (Kelab)
     
-    const kat1 = rowTemui[2] ? getVal(rowTemui[2]) : "";
-    const kat2 = rowTemui[3] ? getVal(rowTemui[3]) : "";
-    const gabungKat = [kat1, kat2].filter(Boolean).join(" | ");
-    const negeri = getVal(rowTemui[4]);
-    document.getElementById('state').textContent = (gabungKat ? gabungKat + " - " : "") + negeri;
+    // Gabung Kolum C (Kategori Umur) + Kolum D (Kategori Busur)
+    const katUmur = rowTemui[2] ? getVal(rowTemui[2]) : "";
+    const katBusur = rowTemui[3] ? getVal(rowTemui[3]) : "";
+    const gabungKategori = [katUmur, katBusur].filter(Boolean).join(" | ");
+    document.getElementById('category').textContent = gabungKategori || "-";
     
-    document.getElementById('regType').textContent = getVal(rowTemui[5]);
-    document.getElementById('shirt').textContent = rowTemui[6] ? getVal(rowTemui[6]) : "Tiada Ambil Baju";
-    document.getElementById('shirtNote').textContent = getVal(rowTemui[7]);
+    // Masukkan Kolum E secara berasingan untuk Negeri
+    document.getElementById('state').textContent = getVal(rowTemui[4]); // Kolum E (Negeri)
     
-    // Status Bayar dekat Kolum I (indeks 8)
+    document.getElementById('regType').textContent = getVal(rowTemui[5]); // Kolum F (Jenis Daftar)
+    document.getElementById('shirt').textContent = rowTemui[6] ? getVal(rowTemui[6]) : "Tiada Ambil Baju"; // Kolum G (Saiz)
+    document.getElementById('shirtNote').textContent = getVal(rowTemui[7]); // Kolum H (Catatan)
+    
+    // Status Bayar di Kolum I
     const bayar = getVal(rowTemui[8]).toUpperCase();
     if (bayar === "TRUE") {
       document.getElementById('paymentStatus').innerHTML = `<span style="color:green; font-weight:bold;">Jelas (Dah Bayar)</span>`;
