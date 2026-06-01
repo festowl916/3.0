@@ -125,7 +125,7 @@
 </div>
 
 <script>
-// Pautan API Google Sheets abang
+// Pautan API Google Sheets
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
 
 async function searchIC() {
@@ -190,7 +190,7 @@ async function searchIC() {
     // Status Bayar di Kolum I
     const bayar = getVal(rowTemui[8]).toUpperCase();
     if (bayar === "TRUE") {
-      document.getElementById('paymentStatus').innerHTML = `<span style="color:green; font-weight:bold;">Jelas (Dah Bayar)</span>`;
+      document.getElementById('paymentStatus').innerHTML = `<span style="color:green; font-weight:bold;">Jelas</span>`;
     } else {
       document.getElementById('paymentStatus').innerHTML = `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
     }
