@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semakan Pendaftaran OWL 916</title>
-  <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-    .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; box-sizing: border-box; }
-    h2 { text-align: center; color: #333; margin-bottom: 25px; }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
-    input[type="text"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-    button { width: 100%; padding: 12px; background-color: #3498db; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
-    #message { margin-top: 15px; text-align: center; font-size: 14px; color: #666; }
-    .error { color: #e74c3c; font-weight: bold; }
-    .info-box { margin-top: 25px; padding: 20px; background: #f9f9f9; border-left: 5px solid #3498db; border-radius: 4px; display: none; }
-    .info-box p { margin: 10px 0; font-size: 15px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
-    .info-box strong { color: #2c3e50; display: inline-block; width: 130px; }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <h2>Semakan Pendaftaran OWL 916</h2>
-  <div class="form-group">
-    <label for="ic">Masukkan Nama atau No. IC:</label>
-    <input type="text" id="ic" placeholder="Taip nama atau IC...">
-  </div>
-  <button onclick="search()">🔍 Semak Sekarang</button>
-  <div id="message"></div>
-  <div id="infoBox" class="info-box">
-    <p><strong>Nama Penuh:</strong> <span id="name">-</span></p>
-    <p><strong>Kelab:</strong> <span id="club">-</span></p>
-    <p><strong>Kategori:</strong> <span id="category">-</span></p>
-    <p><strong>Negeri:</strong> <span id="state">-</span></p>
-    <p><strong>Jenis Daftar:</strong> <span id="regType">-</span></p>
-    <p><strong>Status Bayaran:</strong> <span id="paymentStatus">-</span></p>
-    <p><strong>Saiz Baju:</strong> <span id="shirt">-</span></p>
-    <p><strong>Catatan Baju:</strong> <span id="shirtNote">-</span></p>
-  </div>
-</div>
-
 <script>
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
 
@@ -63,6 +20,7 @@ async function search() {
     
     let found = rows.find(r => {
       if (!r.c) return false;
+      // Kolum F adalah indeks 5
       let icSheet = r.c[5] ? String(r.c[5].v || "").split('.')[0].replace(/[^0-9]/g, '').trim() : "";
       let namaSheet = r.c[0] ? String(r.c[0].v || "").toLowerCase().trim() : "";
       if (isIC) return icSheet.includes(inputBersih);
@@ -70,19 +28,27 @@ async function search() {
     });
 
     if (found) {
+      // Fungsi untuk ambil data dengan selamat
       const get = (i) => (found.c[i] && found.c[i].v !== null) ? String(found.c[i].v).trim() : "-";
-      document.getElementById('name').textContent = get(0);
-      document.getElementById('club').textContent = get(1);
-      document.getElementById('category').textContent = get(2);
-      document.getElementById('state').textContent = get(4);
-      document.getElementById('regType').textContent = get(6);
       
+      document.getElementById('name').textContent = get(0);      // A: Nama
+      document.getElementById('club').textContent = get(1);      // B: Kelab
+      
+      // Kategori: Gabung C + D
+      const katUtama = get(2);
+      const subKat = get(3);
+      document.getElementById('category').textContent = (subKat !== "-") ? katUtama + " / " + subKat : katUtama;
+      
+      document.getElementById('state').textContent = get(4);     // E: Negeri
+      document.getElementById('regType').textContent = get(6);   // G: Jenis Daftar
+      
+      // Status Bayar: J (Indeks 9)
       let pay = get(9).toUpperCase(); 
       document.getElementById('paymentStatus').innerHTML = (pay === "TRUE") ? 
         `<span style="color:green; font-weight:bold;">Jelas</span>` : `<span style="color:red; font-weight:bold;">Belum Jelas</span>`;
       
-      document.getElementById('shirt').textContent = get(7);
-      document.getElementById('shirtNote').textContent = "-";
+      document.getElementById('shirt').textContent = get(7);     // H: Saiz Baju
+      document.getElementById('shirtNote').textContent = get(8); // I: Catatan
 
       infoBox.style.display = "block";
       msg.innerHTML = "";
@@ -94,5 +60,3 @@ async function search() {
   }
 }
 </script>
-</body>
-</html>
