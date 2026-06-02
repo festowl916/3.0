@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Semakan Pendaftaran OWL 916</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background-color: #f4f6f9; 
+      margin: 0; 
+      padding: 20px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      min-height: 100vh; 
+    }
     .container { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; box-sizing: border-box; }
     h2 { text-align: center; color: #333; margin-bottom: 25px; }
     .form-group { margin-bottom: 20px; }
@@ -18,14 +27,7 @@
     .info-box { margin-top: 25px; padding: 20px; background: #f9f9f9; border-left: 5px solid #3498db; border-radius: 4px; display: none; }
     .info-box p { margin: 10px 0; font-size: 15px; color: #444; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
     .info-box strong { color: #2c3e50; display: inline-block; width: 130px; }
-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
-  color: #888;
-  padding: 10px;
-}
-
+    footer { text-align: center; margin-top: 20px; font-size: 12px; color: #888; padding: 10px; }
   </style>
 </head>
 <body>
@@ -49,11 +51,11 @@ footer {
     <p><strong>Catatan Baju:</strong> <span id="shirtNote">-</span></p>
   </div>
 </div>
+
 <footer>
   <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
-  
 
 <script>
 const API_URL = "https://docs.google.com/spreadsheets/d/1Ty1A8JviU9DHw5qZN4evLyPPWP-L4npEUnjMorkuzkM/gviz/tq?tqx=out:json";
@@ -62,7 +64,6 @@ async function search() {
   let val = document.getElementById('ic').value.trim();
   const infoBox = document.getElementById('infoBox');
   const msg = document.getElementById('message');
-
   msg.innerHTML = "🔄 Mencari...";
   infoBox.style.display = "none";
 
