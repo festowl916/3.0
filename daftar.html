@@ -341,10 +341,11 @@ Pilih:<br>
 
 *Tiada caj untuk walk-in / ambil sendiri.*
 </p>
-  <select name="jenis" id="jenis">
-    <option value="daftar sahaja" selected>Pendaftaran sahaja</option>
-    <option value="daftar+baju">Pendaftaran + baju</option>
-  </select>
+<select name="jenis" id="jenis">
+  <option value="daftar sahaja" selected>Pendaftaran sahaja</option>
+  <option value="daftar+baju" disabled style="color: #999; background: #eee;">Pendaftaran + baju (DITUTUP)</option>
+</select>
+
 
 <div id="sectionBaju" style="display:none;">
   <h3>Maklumat Baju</h3>
@@ -598,16 +599,17 @@ document.addEventListener("DOMContentLoaded", function() {
   const alamatField = document.getElementById("alamatField");
 
   function kemaskiniSistem() {
-    if (jenis && jenis.value === "daftar+baju") {
-      sectionBaju.style.display = "block"; // Buka skrin maklumat baju & pos beku
+    // Memastikan jika pilihan ditutup atau pilih daftar sahaja, section baju disembunyikan
+    if (jenis && jenis.value === "daftar+baju" && !jenis.options[jenis.selectedIndex].disabled) {
+      sectionBaju.style.display = "block"; 
       if (cara) cara.value = "walkin";
       if (alamatField) {
         alamatField.value = "WALK-IN";
         alamatField.readOnly = true;
       }
     } else {
-      sectionBaju.style.display = "none";  // Ghaibkan terus dari skrin telefon (Macam asal abang)
-      if (cara) cara.value = "";           // Kosongkan value belakang tabir (Supaya excel kosong)
+      if (sectionBaju) sectionBaju.style.display = "none";  // Ghaibkan terus dari skrin
+      if (cara) cara.value = "";           // Kosongkan value belakang tabir
       if (alamatField) {
         alamatField.value = "";
         alamatField.readOnly = true;
@@ -622,7 +624,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (cara) {
     cara.addEventListener("change", function() {
-      if (jenis && jenis.value === "daftar+baju") {
+      if (jenis && jenis.value === "daftar+baju" && !jenis.options[jenis.selectedIndex].disabled) {
         this.value = "walkin";
       } else {
         this.value = "";
@@ -631,6 +633,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+
 
 <script src="daftar.js"></script>
 </body>
