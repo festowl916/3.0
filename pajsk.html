@@ -12,11 +12,9 @@ body {
   margin: 0;
   padding: 20px;
 }
-  
-h2 {
-  text-align: center;
-}
-/* footer */
+
+h2 { text-align: center; }
+
 footer {
   text-align: center;
   margin-top: 30px;
@@ -27,32 +25,24 @@ footer {
 
 .container {
   max-width: 700px;
-  margin:80px auto;
+  margin: 80px auto;
   background: white;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* button */
 button {
   background: black;
   color: white;
   cursor: pointer;
 }
 
-button:hover {
-  opacity: 0.9;
-}
+button:hover { opacity: 0.9; }
 
-.row {
-  display: flex;
-  gap: 10px;
-}
+.row { display: flex; gap: 10px; }
 
-.row input {
-  flex: 1;
-}
+.row input { flex: 1; }
 
 .search-btn {
   width: 60px !important;
@@ -73,12 +63,40 @@ button:hover {
 
 .error { color: red; margin-top: 10px; }
 .success { color: green; margin-top: 10px; }
+
+/* CLOSED BANNER */
+.closed {
+  background: #ffdddd;
+  color: #b30000;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
 </style>
 </head>
 
 <body>
 
+<script>
+const UPDATE_CLOSED = true; // 🔴 TUKAR false kalau nak buka semula
+
+if (UPDATE_CLOSED) {
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("closedBox").style.display = "block";
+    document.getElementById("ic").disabled = true;
+  });
+}
+</script>
+
 <div class="container">
+
+  <!-- CLOSED MESSAGE -->
+  <div id="closedBox" class="closed" style="display:none;">
+    ❌ KEMASKINI PAJSK TELAH DITUTUP
+  </div>
+
   <h2>Kemaskini Maklumat (PAJSK)</h2>
 
   <!-- IC SEARCH -->
@@ -89,26 +107,8 @@ button:hover {
       🔍
     </button>
   </div>
-<div style="text-align:center; margin-top:25px; font-size:14px; color:#444;">
 
-</div> <!-- container habis -->
-
-<div style="text-align:center; margin-top:25px; font-size:10px; color:#444;">
-
-  <b>Sebarang Pertanyaan Mengenai PAJSK</b><br>
-  📱 <a href="https://wa.me/60104156660">Pok Yunus</a><br>
-  📱 <a href="https://wa.me/60139804655">Kak Kuyah</a><br><br>
-
-  <b>Bantuan Kemaskini Peserta</b><br>
-  📱 <a href="https://wa.me/60134267930">Din</a><br>
-  📱 <a href="https://wa.me/60199049587">Won</a><br>
-
-</div>
-<!-- bawah container -->
-<div style="text-align:center; margin-top:25px; font-size:9px; color:#444;">
-</div>
-
-  <!-- RESULT -->
+  <!-- INFO BOX -->
   <div class="info" id="infoBox">
     <p><b>Nama:</b> <span id="name"></span></p>
     <p><b>Kelab:</b> <span id="club"></span></p>
@@ -123,6 +123,18 @@ button:hover {
   </div>
 
   <div id="message"></div>
+
+  <!-- CONTACT -->
+  <div style="text-align:center; margin-top:25px; font-size:10px; color:#444;">
+    <b>Sebarang Pertanyaan Mengenai PAJSK</b><br>
+    📱 <a href="https://wa.me/60104156660">Pok Yunus</a><br>
+    📱 <a href="https://wa.me/60139804655">Kak Kuyah</a><br><br>
+
+    <b>Bantuan Kemaskini Peserta</b><br>
+    📱 <a href="https://wa.me/60134267930">Din</a><br>
+    📱 <a href="https://wa.me/60199049587">Won</a><br>
+  </div>
+
 </div>
 
 <footer>
@@ -139,7 +151,17 @@ const icInput = document.getElementById('ic');
 const infoBox = document.getElementById('infoBox');
 const message = document.getElementById('message');
 
+function checkClosed() {
+  if (UPDATE_CLOSED) {
+    message.innerHTML = "<div class='error'>Kemaskini telah ditutup</div>";
+    return true;
+  }
+  return false;
+}
+
 async function searchIC() {
+
+  if (checkClosed()) return;
 
   const ic = icInput.value.trim();
 
@@ -156,8 +178,6 @@ async function searchIC() {
   try {
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
     const data = await res.json();
-
-    console.log(data);
 
     if (data.status === "exists") {
       message.innerHTML = "<div class='error'>IC sudah update sekolah</div>";
@@ -186,9 +206,12 @@ async function searchIC() {
 
 async function submitForm() {
 
+  if (checkClosed()) return;
+
   const school = (document.getElementById('school')?.value || "").toUpperCase().trim();
-const level = (document.getElementById('level')?.value || "").toUpperCase().trim();
-const district = (document.getElementById('district')?.value || "").toUpperCase().trim();
+  const level = (document.getElementById('level')?.value || "").toUpperCase().trim();
+  const district = (document.getElementById('district')?.value || "").toUpperCase().trim();
+
   if (!school || !level || !district) {
     message.innerHTML = "<div class='error'>Sila lengkapkan semua maklumat</div>";
     return;
@@ -197,7 +220,6 @@ const district = (document.getElementById('district')?.value || "").toUpperCase(
   message.innerHTML = "🔄 Menghantar...";
 
   try {
-
     const res = await fetch(API_URL, {
       method: "POST",
       body: JSON.stringify({
@@ -211,7 +233,6 @@ const district = (document.getElementById('district')?.value || "").toUpperCase(
     const data = await res.json();
 
     if (data.status === "success") {
-
       message.innerHTML = "<div class='success'>Berjaya update</div>";
 
       infoBox.style.display = "none";
@@ -219,7 +240,6 @@ const district = (document.getElementById('district')?.value || "").toUpperCase(
       document.getElementById('school').value = "";
       document.getElementById('level').value = "";
       document.getElementById('district').value = "";
-
     } else {
       message.innerHTML = "<div class='error'>Gagal update</div>";
     }
