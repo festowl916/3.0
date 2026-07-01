@@ -64,51 +64,20 @@ button:hover { opacity: 0.9; }
 .error { color: red; margin-top: 10px; }
 .success { color: green; margin-top: 10px; }
 
-/* CLOSED BANNER */
-.closed {
-  background: #ffdddd;
-  color: #b30000;
-  padding: 12px;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 15px;
-  border-radius: 8px;
-}
 </style>
 </head>
 
 <body>
 
-<script>
-const UPDATE_CLOSED = true; // 🔴 TUKAR false kalau nak buka semula
-
-if (UPDATE_CLOSED) {
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("closedBox").style.display = "block";
-    document.getElementById("ic").disabled = true;
-  });
-}
-</script>
-
 <div class="container">
-
-  <!-- CLOSED MESSAGE -->
-  <div id="closedBox" class="closed" style="display:none;">
-    ❌ KEMASKINI PAJSK TELAH DITUTUP
-  </div>
 
   <h2>Kemaskini Maklumat (PAJSK)</h2>
 
-  <!-- IC SEARCH -->
   <div class="row">
     <input type="text" id="ic" placeholder="Masukkan No IC">
-
-    <button type="button" class="search-btn" onclick="searchIC()">
-      🔍
-    </button>
+    <button type="button" class="search-btn" onclick="searchIC()">🔍</button>
   </div>
 
-  <!-- INFO BOX -->
   <div class="info" id="infoBox">
     <p><b>Nama:</b> <span id="name"></span></p>
     <p><b>Kelab:</b> <span id="club"></span></p>
@@ -124,17 +93,6 @@ if (UPDATE_CLOSED) {
 
   <div id="message"></div>
 
-  <!-- CONTACT -->
-  <div style="text-align:center; margin-top:25px; font-size:10px; color:#444;">
-    <b>Sebarang Pertanyaan Mengenai PAJSK</b><br>
-    📱 <a href="https://wa.me/60104156660">Pok Yunus</a><br>
-    📱 <a href="https://wa.me/60139804655">Kak Kuyah</a><br><br>
-
-    <b>Bantuan Kemaskini Peserta</b><br>
-    📱 <a href="https://wa.me/60134267930">Din</a><br>
-    📱 <a href="https://wa.me/60199049587">Won</a><br>
-  </div>
-
 </div>
 
 <footer>
@@ -143,6 +101,8 @@ if (UPDATE_CLOSED) {
 </footer>
 
 <script>
+const UPDATE_CLOSED = false;
+
 const API_URL = "https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
 let currentIc = '';
@@ -152,16 +112,10 @@ const infoBox = document.getElementById('infoBox');
 const message = document.getElementById('message');
 
 function checkClosed() {
-  if (UPDATE_CLOSED) {
-    message.innerHTML = "<div class='error'>Kemaskini telah ditutup</div>";
-    return true;
-  }
-  return false;
+  return false; // sistem sudah dibuka
 }
 
 async function searchIC() {
-
-  if (checkClosed()) return;
 
   const ic = icInput.value.trim();
 
@@ -206,11 +160,9 @@ async function searchIC() {
 
 async function submitForm() {
 
-  if (checkClosed()) return;
-
-  const school = (document.getElementById('school')?.value || "").toUpperCase().trim();
-  const level = (document.getElementById('level')?.value || "").toUpperCase().trim();
-  const district = (document.getElementById('district')?.value || "").toUpperCase().trim();
+  const school = (document.getElementById('school').value || "").toUpperCase().trim();
+  const level = (document.getElementById('level').value || "").toUpperCase().trim();
+  const district = (document.getElementById('district').value || "").toUpperCase().trim();
 
   if (!school || !level || !district) {
     message.innerHTML = "<div class='error'>Sila lengkapkan semua maklumat</div>";
