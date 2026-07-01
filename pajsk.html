@@ -100,8 +100,10 @@ button:hover { opacity: 0.9; }
   <p>© 2024–2026 Fest OWL 916</p>
 </footer>
 
+<!-- BAHAGIAN SCRIPT YANG TELAH DIGANTI -->
 <script>
-const UPDATE_CLOSED = false;
+// Tetapkan tarikh dan masa tutup: 3 Julai 2026 jam 9:00 Pagi (Zon Masa Malaysia +08:00)
+const TARIKH_TUTUP = new Date("2026-07-03T09:00:00+08:00").getTime();
 
 const API_URL = "https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
@@ -111,11 +113,24 @@ const icInput = document.getElementById('ic');
 const infoBox = document.getElementById('infoBox');
 const message = document.getElementById('message');
 
+// Fungsi utama untuk semak masa
 function checkClosed() {
-  return false; // sistem sudah dibuka
+  const masaSekarang = new Date().getTime();
+  
+  if (masaSekarang >= TARIKH_TUTUP) {
+    message.innerHTML = "<div class='error' style='font-weight:bold; font-size:16px; text-align:center;'>❌ MAAF, KEMASKINI TELAH DITUTUP PADA 3 JULAI JAM 9:00 PAGI.</div>";
+    infoBox.style.display = "none";
+    
+    // Sorokkan kotak carian IC supaya user tak boleh guna terus
+    document.querySelector('.row').style.display = 'none'; 
+    return true;
+  }
+  return false;
 }
 
 async function searchIC() {
+  // Sekat carian kalau dah lepas masa tutup
+  if (checkClosed()) return;
 
   const ic = icInput.value.trim();
 
@@ -159,6 +174,8 @@ async function searchIC() {
 }
 
 async function submitForm() {
+  // Sekat hantaran kalau dah lepas masa tutup sebelum hantar data ke database
+  if (checkClosed()) return;
 
   const school = (document.getElementById('school').value || "").toUpperCase().trim();
   const level = (document.getElementById('level').value || "").toUpperCase().trim();
@@ -200,6 +217,9 @@ async function submitForm() {
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
   }
 }
+
+// Jalankan semakan waktu sejurus sahaja page dibuka
+checkClosed();
 </script>
 
 </body>
