@@ -75,7 +75,7 @@ button:hover { opacity: 0.9; }
 
   <div class="row">
     <input type="text" id="ic" placeholder="Masukkan No IC">
-    <button type="button" class="search-btn" onclick="searchIC()">🔍</button>
+    <button type="button" class="search-btn" onclick="searchIC()">ðŸ”</button>
   </div>
 
   <div class="info" id="infoBox">
@@ -96,14 +96,12 @@ button:hover { opacity: 0.9; }
 </div>
 
 <footer>
-  <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
-  <p>© 2024–2026 Fest OWL 916</p>
+  <p>Â© 2022â€“2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
+  <p>Â© 2024â€“2026 Fest OWL 916</p>
 </footer>
 
-<!-- BAHAGIAN SCRIPT YANG TELAH DIGANTI -->
 <script>
-// Tetapkan tarikh dan masa tutup: 2 Julai 2026 jam 9:00 Pagi (Zon Masa Malaysia +08:00)
-const TARIKH_TUTUP = new Date("2026-07-02T09:00:00+08:00").getTime();
+const UPDATE_CLOSED = false;
 
 const API_URL = "https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
@@ -113,24 +111,11 @@ const icInput = document.getElementById('ic');
 const infoBox = document.getElementById('infoBox');
 const message = document.getElementById('message');
 
-// Fungsi utama untuk semak masa
 function checkClosed() {
-  const masaSekarang = new Date().getTime();
-  
-  if (masaSekarang >= TARIKH_TUTUP) {
-    message.innerHTML = "<div class='error' style='font-weight:bold; font-size:16px; text-align:center;'>❌ MAAF, KEMASKINI TELAH DITUTUP PADA 3 JULAI JAM 9:00 PAGI.</div>";
-    infoBox.style.display = "none";
-    
-    // Sorokkan kotak carian IC supaya user tak boleh guna terus
-    document.querySelector('.row').style.display = 'none'; 
-    return true;
-  }
-  return false;
+  return false; // sistem sudah dibuka
 }
 
 async function searchIC() {
-  // Sekat carian kalau dah lepas masa tutup
-  if (checkClosed()) return;
 
   const ic = icInput.value.trim();
 
@@ -142,7 +127,7 @@ async function searchIC() {
     return;
   }
 
-  message.innerHTML = "🔄 Mencari...";
+  message.innerHTML = "ðŸ”„ Mencari...";
 
   try {
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
@@ -174,8 +159,6 @@ async function searchIC() {
 }
 
 async function submitForm() {
-  // Sekat hantaran kalau dah lepas masa tutup sebelum hantar data ke database
-  if (checkClosed()) return;
 
   const school = (document.getElementById('school').value || "").toUpperCase().trim();
   const level = (document.getElementById('level').value || "").toUpperCase().trim();
@@ -186,7 +169,7 @@ async function submitForm() {
     return;
   }
 
-  message.innerHTML = "🔄 Menghantar...";
+  message.innerHTML = "ðŸ”„ Menghantar...";
 
   try {
     const res = await fetch(API_URL, {
@@ -217,9 +200,6 @@ async function submitForm() {
     message.innerHTML = "<div class='error'>Ralat sambungan</div>";
   }
 }
-
-// Jalankan semakan waktu sejurus sahaja page dibuka
-checkClosed();
 </script>
 
 </body>
