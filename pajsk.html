@@ -15,14 +15,6 @@ body {
 
 h2 { text-align: center; }
 
-footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 9px;
-  color: #666;
-  line-height: 1.4;
-}
-
 .container {
   max-width: 700px;
   margin: 80px auto;
@@ -36,13 +28,16 @@ button {
   background: black;
   color: white;
   cursor: pointer;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
 }
 
 button:hover { opacity: 0.9; }
 
 .row { display: flex; gap: 10px; }
 
-.row input { flex: 1; }
+.row input { flex: 1; padding: 10px; }
 
 .search-btn {
   width: 60px !important;
@@ -61,9 +56,25 @@ button:hover { opacity: 0.9; }
   display: none;
 }
 
+input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
 .error { color: red; margin-top: 10px; }
 .success { color: green; margin-top: 10px; }
 
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 9px;
+  color: #666;
+  line-height: 1.4;
+}
 </style>
 </head>
 
@@ -75,7 +86,7 @@ button:hover { opacity: 0.9; }
 
   <div class="row">
     <input type="text" id="ic" placeholder="Masukkan No IC">
-    <button type="button" class="search-btn" onclick="searchIC()">ðŸ”</button>
+    <button type="button" class="search-btn" onclick="searchIC()">🔍</button>
   </div>
 
   <div class="info" id="infoBox">
@@ -96,13 +107,11 @@ button:hover { opacity: 0.9; }
 </div>
 
 <footer>
-  <p>Â© 2022â€“2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
-  <p>Â© 2024â€“2026 Fest OWL 916</p>
+  <p>© 2022–2026 Persatuan Memanah Tradisional Negeri Terengganu</p>
+  <p>© 2024–2026 Fest OWL 916</p>
 </footer>
 
 <script>
-const UPDATE_CLOSED = false;
-
 const API_URL = "https://script.google.com/macros/s/AKfycbxvBA93PIuXnmdPSQKmEz3Op2INRN8MJyUNjQbYYUl8zHD5B1dBt8zILrv3tAY2XpW-/exec";
 
 let currentIc = '';
@@ -110,10 +119,6 @@ let currentIc = '';
 const icInput = document.getElementById('ic');
 const infoBox = document.getElementById('infoBox');
 const message = document.getElementById('message');
-
-function checkClosed() {
-  return false; // sistem sudah dibuka
-}
 
 async function searchIC() {
 
@@ -127,7 +132,7 @@ async function searchIC() {
     return;
   }
 
-  message.innerHTML = "ðŸ”„ Mencari...";
+  message.innerHTML = "🔄 Mencari...";
 
   try {
     const res = await fetch(`${API_URL}?ic=${encodeURIComponent(ic)}`);
@@ -160,20 +165,21 @@ async function searchIC() {
 
 async function submitForm() {
 
-  const school = (document.getElementById('school').value || "").toUpperCase().trim();
-  const level = (document.getElementById('level').value || "").toUpperCase().trim();
-  const district = (document.getElementById('district').value || "").toUpperCase().trim();
+  const school = document.getElementById('school').value.trim().toUpperCase();
+  const level = document.getElementById('level').value.trim().toUpperCase();
+  const district = document.getElementById('district').value.trim().toUpperCase();
 
   if (!school || !level || !district) {
     message.innerHTML = "<div class='error'>Sila lengkapkan semua maklumat</div>";
     return;
   }
 
-  message.innerHTML = "ðŸ”„ Menghantar...";
+  message.innerHTML = "🔄 Menghantar...";
 
   try {
     const res = await fetch(API_URL, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ic: currentIc,
         school,
