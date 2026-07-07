@@ -27,7 +27,7 @@ h3 {
 footer {
   text-align: center;
   margin-top: 30px;
-  font-size: 9px;
+  font-size: 10px;
   color: #666;
   line-height: 1.4;
 }
@@ -41,7 +41,6 @@ footer {
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Tab & Menu Buttons */
 .menu-container {
   display: flex;
   gap: 10px;
@@ -66,7 +65,6 @@ footer {
   color: white;
 }
 
-/* Form Buttons */
 .action-btn {
   background: black;
   color: white;
@@ -135,7 +133,6 @@ input[type="text"], input[type="number"], textarea, select {
   font-size: 14px;
 }
 
-/* Grid untuk susun saiz baju */
 .size-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -183,7 +180,7 @@ input[type="text"], input[type="number"], textarea, select {
   <div id="tab1Section" class="form-section">
     <div class="row">
       <input type="text" id="searchName" placeholder="Masukkan Nama Pendaftaran Asal">
-      <button type="button" class="search-btn" onclick="searchParticipant()"></button>
+      <button type="button" class="search-btn" onclick="searchParticipant()">🔍</button>
     </div>
 
     <div id="updateForm" style="display:none; margin-top:20px;">
@@ -232,7 +229,6 @@ input[type="text"], input[type="number"], textarea, select {
       <button type="button" class="action-btn" onclick="submitUpdateForm()">Hantar Kemaskini</button>
     </div>
   </div>
-
 
   <div id="tab2Section" class="form-section">
     <h3>Borang Tempahan Baju Baru</h3>
@@ -295,32 +291,18 @@ input[type="text"], input[type="number"], textarea, select {
 
     <button type="button" class="action-btn" onclick="submitNewOrderForm()">Hantar Tempahan Baru</button>
   </div>
-
 </div>
 
 <footer>
-  <p>� 2024�2026 Fest OWL 916</p>
-  <p>� Persatuan Memanah Tradisional Negeri Terengganu</p>
+  <p>2024-2026 Fest OWL 916</p>
+  <p>Persatuan Memanah Tradisional Negeri Terengganu</p>
 </footer>
 
 <script>
-const API_URL = "const API_URL = "https://script.google.com/macros/s/AKfycbyEnynKZdCmMEkcmmv1sZP2Iz3rgKXw8Xyp3zWfrckv0x3LJiEkQFyiA3UfiX0LoKmSrQ/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyEnynKZdCmMEkcmmv1sZP2Iz3rgKXw8Xyp3zWfrckv0x3LJiEkQFyiA3UfiX0LoKmSrQ/exec";
 
 let verifiedName = ''; 
 const message = document.getElementById('message');
-
-// Tukar paparan TAB borang
-function switchTab(tab) {
-  message.innerHTML = "";
-  document.getElementById('tab1Section').style.display = (tab === 'tab1') ? 'block' : 'none';
-  document.getElementById('tab2Section').style.display = (tab === 'tab2') ? 'block' : 'none';
-  
-  document.getElementById('btnTab1').className = (tab === 'tab1') ? 'menu-btn active' : 'menu-btn';
-  document.getElementById('btnTab2').className = (tab === 'tab2') ? 'menu-btn active' : 'menu-btn';
-}
-
-// Default buka Tab 1 dahulu semasa page load
-switchTab('tab1');
 
 function toggleDelivery() {
   const method = document.getElementById('deliveryMethod').value;
@@ -342,7 +324,6 @@ function fileToBase64(file) {
   });
 }
 
-// ================= JAVASCRIPT UNTUK TAB 1 (KEMASKINI) =================
 async function searchParticipant() {
   const nameQuery = document.getElementById('searchName').value.trim();
   message.innerHTML = "";
@@ -353,7 +334,7 @@ async function searchParticipant() {
     return;
   }
 
-  message.innerHTML = " Mencari nama peserta...";
+  message.innerHTML = "Mencari nama peserta...";
 
   try {
     const res = await fetch(`${API_URL}?name=${encodeURIComponent(nameQuery)}`);
@@ -397,7 +378,7 @@ async function submitUpdateForm() {
     return;
   }
 
-  message.innerHTML = " Menyimpan kemaskini... Sila tunggu.";
+  message.innerHTML = "Menyimpan kemaskini... Sila tunggu.";
 
   try {
     const fileInput = document.getElementById('receiptFile').files[0];
@@ -421,7 +402,7 @@ async function submitUpdateForm() {
     const data = await res.json();
 
     if (data.status === "success") {
-      message.innerHTML = "<div class='success'> Berjaya Dikemaskini! Terima kasih.</div>";
+      message.innerHTML = "<div class='success'>Berjaya Dikemaskini! Terima kasih.</div>";
       document.getElementById('updateForm').style.display = "none";
       document.getElementById('searchName').value = "";
     } else {
@@ -432,7 +413,6 @@ async function submitUpdateForm() {
   }
 }
 
-// ================= JAVASCRIPT UNTUK TAB 2 (ORDER BARU) =================
 async function submitNewOrderForm() {
   const newName = document.getElementById('newName').value.trim();
   const newPhone = document.getElementById('newPhone').value.trim();
@@ -448,4 +428,70 @@ async function submitNewOrderForm() {
     return;
   }
 
-  // Kumpul data
+  let orderSummary = [];
+  const allSizeInputs = document.querySelectorAll('.size-lkl, .size-wnt, .size-clk');
+  
+  allSizeInputs.forEach(input => {
+    const qty = parseInt(input.value) || 0;
+    if (qty > 0) {
+      orderSummary.push(`${input.getAttribute('data-size')} (${qty} helai)`);
+    }
+  });
+
+  if (orderSummary.length === 0) {
+    message.innerHTML = "<div class='error'>Sila masukkan sekurang-kurangnya 1 kuantiti baju untuk ditempah.</div>";
+    return;
+  }
+
+  message.innerHTML = "Menghantar tempahan baru... Sila tunggu.";
+
+  try {
+    const receiptData = await fileToBase64(receiptInput);
+
+    const payload = {
+      formType: "TEMPAHAN_BARU",
+      name: newName,
+      phone: newPhone,
+      address: newAddress,
+      orderDetails: orderSummary.join(', '),
+      receiptData: receiptData.data,
+      receiptName: receiptData.name
+    };
+
+    const res = await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+
+    if (data.status === "success") {
+      message.innerHTML = "<div class='success'>Tempahan Baju Baru Berjaya Dihantar!</div>";
+      
+      document.getElementById('newName').value = "";
+      document.getElementById('newPhone').value = "";
+      document.getElementById('newAddress').value = "";
+      document.getElementById('newOrderReceipt').value = "";
+      allSizeInputs.forEach(input => input.value = "0");
+    } else {
+      message.innerHTML = "<div class='error'>Gagal memproses tempahan baju baru.</div>";
+    }
+  } catch (err) {
+    message.innerHTML = "<div class='error'>Ralat menghantar tempahan / Fail resit terlalu besar.</div>";
+  }
+}
+
+function switchTab(tab) {
+  message.innerHTML = "";
+  document.getElementById('tab1Section').style.display = (tab === 'tab1') ? 'block' : 'none';
+  document.getElementById('tab2Section').style.display = (tab === 'tab2') ? 'block' : 'none';
+  
+  document.getElementById('btnTab1').className = (tab === 'tab1') ? 'menu-btn active' : 'menu-btn';
+  document.getElementById('btnTab2').className = (tab === 'tab2') ? 'menu-btn active' : 'menu-btn';
+}
+
+// Mengaktifkan tab secara rasmi selepas semua komponen sedia diisytihar
+switchTab('tab1');
+</script>
+
+</body>
+</html>
