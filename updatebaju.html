@@ -76,6 +76,16 @@ footer {
   width: 100%;
   margin-top: 20px;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.action-btn:disabled {
+  background: #888888 !important;
+  cursor: not-allowed;
 }
 
 button:hover {
@@ -165,6 +175,21 @@ input[type="text"], input[type="number"], textarea, select {
   margin: 0;
 }
 
+/* Animasi Spinner Loading Bulatan */
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .error { color: red; margin-top: 10px; font-weight: bold; text-align: center; }
 .success { color: green; margin-top: 10px; font-weight: bold; text-align: center; }
 </style>
@@ -182,11 +207,10 @@ input[type="text"], input[type="number"], textarea, select {
 
   <div id="message"></div>
 
-  <!-- ================= TAB 1 ================= -->
   <div id="tab1Section" class="form-section">
     <div class="row">
       <input type="text" id="searchName" placeholder="Masukkan Nama Pendaftaran Asal">
-      <button type="button" class="search-btn" onclick="searchParticipant()">🔍</button>
+      <button type="button" class="search-btn" id="btnSearch" onclick="searchParticipant()">🔍</button>
     </div>
 
     <div id="updateForm" style="display:none; margin-top:20px;">
@@ -232,11 +256,13 @@ input[type="text"], input[type="number"], textarea, select {
         </div>
       </div>
 
-      <button type="button" class="action-btn" onclick="submitUpdateForm()">Hantar Kemaskini</button>
+      <button type="button" class="action-btn" id="submitUpdateBtn" onclick="submitUpdateForm()">
+        <div class="spinner" id="spinnerUpdate"></div>
+        <span id="textUpdateBtn">Hantar Kemaskini</span>
+      </button>
     </div>
   </div>
 
-  <!-- ================= TAB 2 ================= -->
   <div id="tab2Section" class="form-section">
     <h3>Borang Tempahan Baju Baru</h3>
     
@@ -296,7 +322,10 @@ input[type="text"], input[type="number"], textarea, select {
       <input type="file" id="newOrderReceipt" accept="image/*,application/pdf" required>
     </div>
 
-    <button type="button" class="action-btn" onclick="submitNewOrderForm()">Hantar Tempahan Baru</button>
+    <button type="button" class="action-btn" id="submitNewOrderBtn" onclick="submitNewOrderForm()">
+      <div class="spinner" id="spinnerNewOrder"></div>
+      <span id="textNewOrderBtn">Hantar Tempahan Baru</span>
+    </button>
   </div>
 </div>
 
@@ -333,6 +362,7 @@ function fileToBase64(file) {
 
 async function searchParticipant() {
   const nameQuery = document.getElementById('searchName').value.trim();
+  const searchBtn = document.getElementById('btnSearch');
   message.innerHTML = "";
   document.getElementById('updateForm').style.display = "none";
 
@@ -342,6 +372,7 @@ async function searchParticipant() {
   }
 
   message.innerHTML = "Mencari nama peserta...";
+  searchBtn.disabled = true;
 
   try {
     const res = await fetch(`${API_URL}?name=${encodeURIComponent(nameQuery)}`);
@@ -349,6 +380,7 @@ async function searchParticipant() {
 
     if (data.status !== "found") {
       message.innerHTML = "<div class='error'>Nama tidak ditemui. Sila pastikan nama betul mengikut pendaftaran.</div>";
+      searchBtn.disabled = false;
       return;
     }
 
@@ -363,6 +395,8 @@ async function searchParticipant() {
 
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat sambungan internet</div>";
+  } finally {
+    searchBtn.disabled = false;
   }
 }
 
@@ -373,7 +407,10 @@ async function submitUpdateForm() {
   const missingSizes = document.getElementById('missingSizes').value.trim();
   const fileInput = document.getElementById('receiptFile').files[0];
 
-  // Sekatan wajib isi untuk Kemaskini
+  const submitBtn = document.getElementById('submitUpdateBtn');
+  const spinner = document.getElementById('spinnerUpdate');
+  const btnText = document.getElementById('textUpdateBtn');
+
   if (!deliveryMethod) {
     message.innerHTML = "<div class='error'>Sila pilih Kaedah Serahan!</div>";
     return;
@@ -397,7 +434,11 @@ async function submitUpdateForm() {
     }
   }
 
-  message.innerHTML = "Menyimpan kemaskini... Sila tunggu.";
+  // Set Status BAR LOADING / SEDANG MENGHANTAR
+  message.innerHTML = "";
+  submitBtn.disabled = true;
+  spinner.style.display = "block";
+  btnText.innerText = "Sedang Menghantar... ⏳";
 
   try {
     const fileData = await fileToBase64(fileInput);
@@ -428,6 +469,11 @@ async function submitUpdateForm() {
     }
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat sistem / Saiz fail resit terlalu besar.</div>";
+  } finally {
+    // Pulihkan butang asal semula
+    submitBtn.disabled = false;
+    spinner.style.display = "none";
+    btnText.innerText = "Hantar Kemaskini";
   }
 }
 
@@ -437,7 +483,10 @@ async function submitNewOrderForm() {
   const newAddress = document.getElementById('newAddress').value.trim();
   const receiptInput = document.getElementById('newOrderReceipt').files[0];
 
-  // Sekatan wajib isi untuk Tempahan Baru
+  const submitBtn = document.getElementById('submitNewOrderBtn');
+  const spinner = document.getElementById('spinnerNewOrder');
+  const btnText = document.getElementById('textNewOrderBtn');
+
   if (!newName) {
     message.innerHTML = "<div class='error'>Sila isi Nama Penuh pembeli!</div>";
     return;
@@ -471,7 +520,11 @@ async function submitNewOrderForm() {
     return;
   }
 
-  message.innerHTML = "Menghantar tempahan baru... Sila tunggu.";
+  // Set Status BAR LOADING / SEDANG MENGHANTAR
+  message.innerHTML = "";
+  submitBtn.disabled = true;
+  spinner.style.display = "block";
+  btnText.innerText = "Sedang Menghantar... ⏳";
 
   try {
     const receiptData = await fileToBase64(receiptInput);
@@ -505,6 +558,11 @@ async function submitNewOrderForm() {
     }
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat menghantar tempahan / Fail resit terlalu besar.</div>";
+  } finally {
+    // Pulihkan butang asal semula
+    submitBtn.disabled = false;
+    spinner.style.display = "none";
+    btnText.innerText = "Hantar Tempahan Baru";
   }
 }
 
