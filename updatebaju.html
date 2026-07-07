@@ -133,6 +133,11 @@ input[type="text"], input[type="number"], textarea, select {
   font-size: 14px;
 }
 
+.required-star {
+  color: red;
+  margin-left: 3px;
+}
+
 .size-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -177,6 +182,7 @@ input[type="text"], input[type="number"], textarea, select {
 
   <div id="message"></div>
 
+  <!-- ================= TAB 1 ================= -->
   <div id="tab1Section" class="form-section">
     <div class="row">
       <input type="text" id="searchName" placeholder="Masukkan Nama Pendaftaran Asal">
@@ -194,8 +200,8 @@ input[type="text"], input[type="number"], textarea, select {
 
       <h3>Kaedah Serahan</h3>
       <div class="form-group">
-        <label>Pilihan Serahan:</label>
-        <select id="deliveryMethod" onchange="toggleDelivery()">
+        <label>Pilihan Serahan:<span class="required-star">*</span></label>
+        <select id="deliveryMethod" onchange="toggleDelivery()" required>
           <option value="">-- Sila Pilih --</option>
           <option value="WALK-IN">WALK-IN (Ambil Sendiri)</option>
           <option value="POS">POS (Kawasan Jauh)</option>
@@ -204,24 +210,24 @@ input[type="text"], input[type="number"], textarea, select {
       
       <div id="addressSection" style="display:none;">
         <div class="form-group">
-          <label>Alamat Penuh Pengeposan:</label>
+          <label>Alamat Penuh Pengeposan:<span class="required-star">*</span></label>
           <textarea id="address" rows="3" placeholder="Masukkan alamat lengkap termasuk Poskod & Negeri"></textarea>
         </div>
       </div>
 
       <h3>Tuntutan Baju (Belum Dapat)</h3>
       <div class="form-group">
-        <label>Berapa helai baju sedia ada yang BELUM diterima?</label>
-        <input type="number" id="missingQty" min="0" value="0" onchange="toggleReceipt()">
+        <label>Berapa helai baju sedia ada yang BELUM diterima?<span class="required-star">*</span></label>
+        <input type="number" id="missingQty" min="0" value="0" onchange="toggleReceipt()" required>
       </div>
       
       <div id="receiptSection" style="display:none;">
         <div class="form-group">
-          <label>Sila Nyatakan Saiz Baju Tersebut:</label>
+          <label>Sila Nyatakan Saiz Baju Tersebut:<span class="required-star">*</span></label>
           <input type="text" id="missingSizes" placeholder="Contoh: Lelaki M - 1, Wanita XL - 1">
         </div>
         <div class="form-group">
-          <label>Muat Naik Resit Bukti Pembayaran / Pendaftaran Asal:</label>
+          <label>Muat Naik Resit Bukti Pembayaran / Pendaftaran Asal:<span class="required-star">*</span></label>
           <input type="file" id="receiptFile" accept="image/*,application/pdf">
         </div>
       </div>
@@ -230,25 +236,26 @@ input[type="text"], input[type="number"], textarea, select {
     </div>
   </div>
 
+  <!-- ================= TAB 2 ================= -->
   <div id="tab2Section" class="form-section">
     <h3>Borang Tempahan Baju Baru</h3>
     
     <div class="form-group">
-      <label>Nama Penuh:</label>
-      <input type="text" id="newName" placeholder="Masukkan nama penuh pembeli">
+      <label>Nama Penuh:<span class="required-star">*</span></label>
+      <input type="text" id="newName" placeholder="Masukkan nama penuh pembeli" required>
     </div>
 
     <div class="form-group">
-      <label>No. Telefon:</label>
-      <input type="text" id="newPhone" placeholder="Contoh: 0123456789">
+      <label>No. Telefon:<span class="required-star">*</span></label>
+      <input type="text" id="newPhone" placeholder="Contoh: 0123456789" required>
     </div>
 
     <div class="form-group">
-      <label>Alamat Penghantaran / Penuh:</label>
-      <textarea id="newAddress" rows="3" placeholder="Masukkan alamat lengkap untuk pos atau rujukan"></textarea>
+      <label>Alamat Penghantaran / Penuh:<span class="required-star">*</span></label>
+      <textarea id="newAddress" rows="3" placeholder="Masukkan alamat lengkap untuk pos atau rujukan" required></textarea>
     </div>
 
-    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Lelaki:</label>
+    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Lelaki:<span class="required-star">* (Pilih sekurang-kurangnya satu saiz baju)</span></label>
     <div class="size-grid">
       <div class="size-item"><label>XS</label><input type="number" class="size-lkl" data-size="Lelaki-XS" min="0" value="0"></div>
       <div class="size-item"><label>S</label><input type="number" class="size-lkl" data-size="Lelaki-S" min="0" value="0"></div>
@@ -285,8 +292,8 @@ input[type="text"], input[type="number"], textarea, select {
     </div>
 
     <div class="form-group" style="margin-top:20px;">
-      <label>Muat Naik Bukti Bayaran (Resit):</label>
-      <input type="file" id="newOrderReceipt" accept="image/*,application/pdf">
+      <label>Muat Naik Bukti Bayaran (Resit):<span class="required-star">*</span></label>
+      <input type="file" id="newOrderReceipt" accept="image/*,application/pdf" required>
     </div>
 
     <button type="button" class="action-btn" onclick="submitNewOrderForm()">Hantar Tempahan Baru</button>
@@ -364,24 +371,35 @@ async function submitUpdateForm() {
   const address = document.getElementById('address').value.trim();
   const missingQty = document.getElementById('missingQty').value;
   const missingSizes = document.getElementById('missingSizes').value.trim();
+  const fileInput = document.getElementById('receiptFile').files[0];
 
+  // Sekatan wajib isi untuk Kemaskini
   if (!deliveryMethod) {
-    message.innerHTML = "<div class='error'>Sila pilih Kaedah Serahan</div>";
+    message.innerHTML = "<div class='error'>Sila pilih Kaedah Serahan!</div>";
     return;
   }
   if (deliveryMethod === 'POS' && !address) {
-    message.innerHTML = "<div class='error'>Sila isi alamat lengkap untuk pos</div>";
+    message.innerHTML = "<div class='error'>Sila isi alamat lengkap untuk tujuan pengeposan!</div>";
     return;
   }
-  if (parseInt(missingQty) > 0 && !missingSizes) {
-    message.innerHTML = "<div class='error'>Sila nyatakan saiz baju tuntutan</div>";
+  if (missingQty === "" || parseInt(missingQty) < 0) {
+    message.innerHTML = "<div class='error'>Sila masukkan kuantiti baju tuntutan (Isi 0 jika tiada)!</div>";
     return;
+  }
+  if (parseInt(missingQty) > 0) {
+    if (!missingSizes) {
+      message.innerHTML = "<div class='error'>Sila nyatakan saiz baju yang dituntut!</div>";
+      return;
+    }
+    if (!fileInput) {
+      message.innerHTML = "<div class='error'>Sila muat naik resit bukti pembayaran/pendaftaran asal!</div>";
+      return;
+    }
   }
 
   message.innerHTML = "Menyimpan kemaskini... Sila tunggu.";
 
   try {
-    const fileInput = document.getElementById('receiptFile').files[0];
     const fileData = await fileToBase64(fileInput);
 
     const payload = {
@@ -390,7 +408,7 @@ async function submitUpdateForm() {
       deliveryMethod: deliveryMethod,
       address: deliveryMethod === 'POS' ? address : 'WALK-IN',
       missingQty: missingQty,
-      missingSizes: missingSizes,
+      missingSizes: parseInt(missingQty) > 0 ? missingSizes : '-',
       receiptData: fileData.data,
       receiptName: fileData.name
     };
@@ -419,12 +437,17 @@ async function submitNewOrderForm() {
   const newAddress = document.getElementById('newAddress').value.trim();
   const receiptInput = document.getElementById('newOrderReceipt').files[0];
 
-  if (!newName || !newPhone || !newAddress) {
-    message.innerHTML = "<div class='error'>Sila lengkapkan Nama, No Telefon dan Alamat.</div>";
+  // Sekatan wajib isi untuk Tempahan Baru
+  if (!newName) {
+    message.innerHTML = "<div class='error'>Sila isi Nama Penuh pembeli!</div>";
     return;
   }
-  if (!receiptInput) {
-    message.innerHTML = "<div class='error'>Sila muat naik resit bukti pembayaran baju baru.</div>";
+  if (!newPhone) {
+    message.innerHTML = "<div class='error'>Sila isi No. Telefon pembeli!</div>";
+    return;
+  }
+  if (!newAddress) {
+    message.innerHTML = "<div class='error'>Sila isi Alamat Penghantaran yang lengkap!</div>";
     return;
   }
 
@@ -439,7 +462,12 @@ async function submitNewOrderForm() {
   });
 
   if (orderSummary.length === 0) {
-    message.innerHTML = "<div class='error'>Sila masukkan sekurang-kurangnya 1 kuantiti baju untuk ditempah.</div>";
+    message.innerHTML = "<div class='error'>Sila masukkan sekurang-kurangnya 1 kuantiti baju untuk ditempah!</div>";
+    return;
+  }
+
+  if (!receiptInput) {
+    message.innerHTML = "<div class='error'>Sila muat naik resit bukti pembayaran baju baru!</div>";
     return;
   }
 
@@ -489,7 +517,6 @@ function switchTab(tab) {
   document.getElementById('btnTab2').className = (tab === 'tab2') ? 'menu-btn active' : 'menu-btn';
 }
 
-// Mengaktifkan tab secara rasmi selepas semua komponen sedia diisytihar
 switchTab('tab1');
 </script>
 
