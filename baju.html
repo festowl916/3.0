@@ -2,75 +2,450 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<title>Baju Festival OWL 916 3.0</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Baju & Serahan OWL</title>
+
 <style>
 body {
   font-family: Arial, sans-serif;
-  padding: 16px;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 20px;
 }
-
-img {
-  width: 100%;
-  max-width: 500px;
-  margin: 10px 0;
-}
-
-.section {
-  margin-bottom: 40px;
-}
-
-/* Footer kecil */
-.footer {
-  font-size: 12px;
-  color: #666;
+  
+h2, h3 {
   text-align: center;
-  margin-top: 40px;
 }
 
-/* Link kembali */
-.floating-home {
-  display: inline-block;
-  margin-top: 20px;
-  text-decoration: none;
-  color: #0066cc;
+h3 {
+  margin-top: 25px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  color: #333;
 }
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 9px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Tab & Menu Buttons */
+.menu-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.menu-btn {
+  flex: 1;
+  background: #e0e0e0;
+  color: #333;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.menu-btn.active {
+  background: black;
+  color: white;
+}
+
+/* Form Buttons */
+.action-btn {
+  background: black;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row input {
+  flex: 1;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-btn {
+  width: 60px !important;
+  min-width: 60px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-section {
+  display: none;
+  margin-top: 20px;
+}
+
+.info-box {
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* Grid untuk susun saiz baju */
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  background: #fdfdfd;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.size-item {
+  text-align: center;
+}
+
+.size-item label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.size-item input {
+  text-align: center;
+  padding: 5px;
+  margin: 0;
+}
+
+.error { color: red; margin-top: 10px; font-weight: bold; text-align: center; }
+.success { color: green; margin-top: 10px; font-weight: bold; text-align: center; }
 </style>
 </head>
 
 <body>
 
-<h2>Baju Festival OWL 916</h2>
-<p>Gambar dan carta saiz adalah untuk rujukan peserta.</p>
+<div class="container">
+  <h2>Sistem Pengurusan Baju OWL</h2>
 
-<div class="section">
-  <h3>Baju Lelaki</h3>
-  <img src="baju-lelaki.jpg" alt="Baju Lelaki">
-  <img src="saiz-lelaki.jpg" alt="Carta Saiz Baju Lelaki">
+  <div class="menu-container">
+    <button class="menu-btn" id="btnTab1" onclick="switchTab('tab1')">1. Kemaskini Alamat & Tuntutan Baju</button>
+    <button class="menu-btn" id="btnTab2" onclick="switchTab('tab2')">2. Pesanan Baju Baru</button>
+  </div>
+
+  <div id="message"></div>
+
+  <div id="tab1Section" class="form-section">
+    <div class="row">
+      <input type="text" id="searchName" placeholder="Masukkan Nama Pendaftaran Asal">
+      <button type="button" class="search-btn" onclick="searchParticipant()"></button>
+    </div>
+
+    <div id="updateForm" style="display:none; margin-top:20px;">
+      <div class="info-box">
+        <h4 style="margin-top:0;">Maklumat Peserta Ditemui:</h4>
+        <p><b>Nama:</b> <span id="displayName"></span></p>
+        <p><b>Kelab:</b> <span id="club"></span></p>
+        <p><b>Kategori:</b> <span id="category"></span></p>
+        <p><b>Negeri:</b> <span id="state"></span></p>
+      </div>
+
+      <h3>Kaedah Serahan</h3>
+      <div class="form-group">
+        <label>Pilihan Serahan:</label>
+        <select id="deliveryMethod" onchange="toggleDelivery()">
+          <option value="">-- Sila Pilih --</option>
+          <option value="WALK-IN">WALK-IN (Ambil Sendiri)</option>
+          <option value="POS">POS (Kawasan Jauh)</option>
+        </select>
+      </div>
+      
+      <div id="addressSection" style="display:none;">
+        <div class="form-group">
+          <label>Alamat Penuh Pengeposan:</label>
+          <textarea id="address" rows="3" placeholder="Masukkan alamat lengkap termasuk Poskod & Negeri"></textarea>
+        </div>
+      </div>
+
+      <h3>Tuntutan Baju (Belum Dapat)</h3>
+      <div class="form-group">
+        <label>Berapa helai baju sedia ada yang BELUM diterima?</label>
+        <input type="number" id="missingQty" min="0" value="0" onchange="toggleReceipt()">
+      </div>
+      
+      <div id="receiptSection" style="display:none;">
+        <div class="form-group">
+          <label>Sila Nyatakan Saiz Baju Tersebut:</label>
+          <input type="text" id="missingSizes" placeholder="Contoh: Lelaki M - 1, Wanita XL - 1">
+        </div>
+        <div class="form-group">
+          <label>Muat Naik Resit Bukti Pembayaran / Pendaftaran Asal:</label>
+          <input type="file" id="receiptFile" accept="image/*,application/pdf">
+        </div>
+      </div>
+
+      <button type="button" class="action-btn" onclick="submitUpdateForm()">Hantar Kemaskini</button>
+    </div>
+  </div>
+
+
+  <div id="tab2Section" class="form-section">
+    <h3>Borang Tempahan Baju Baru</h3>
+    
+    <div class="form-group">
+      <label>Nama Penuh:</label>
+      <input type="text" id="newName" placeholder="Masukkan nama penuh pembeli">
+    </div>
+
+    <div class="form-group">
+      <label>No. Telefon:</label>
+      <input type="text" id="newPhone" placeholder="Contoh: 0123456789">
+    </div>
+
+    <div class="form-group">
+      <label>Alamat Penghantaran / Penuh:</label>
+      <textarea id="newAddress" rows="3" placeholder="Masukkan alamat lengkap untuk pos atau rujukan"></textarea>
+    </div>
+
+    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Lelaki:</label>
+    <div class="size-grid">
+      <div class="size-item"><label>XS</label><input type="number" class="size-lkl" data-size="Lelaki-XS" min="0" value="0"></div>
+      <div class="size-item"><label>S</label><input type="number" class="size-lkl" data-size="Lelaki-S" min="0" value="0"></div>
+      <div class="size-item"><label>M</label><input type="number" class="size-lkl" data-size="Lelaki-M" min="0" value="0"></div>
+      <div class="size-item"><label>L</label><input type="number" class="size-lkl" data-size="Lelaki-L" min="0" value="0"></div>
+      <div class="size-item"><label>XL</label><input type="number" class="size-lkl" data-size="Lelaki-XL" min="0" value="0"></div>
+      <div class="size-item"><label>2XL</label><input type="number" class="size-lkl" data-size="Lelaki-2XL" min="0" value="0"></div>
+      <div class="size-item"><label>3XL</label><input type="number" class="size-lkl" data-size="Lelaki-3XL" min="0" value="0"></div>
+      <div class="size-item"><label>4XL</label><input type="number" class="size-lkl" data-size="Lelaki-4XL" min="0" value="0"></div>
+      <div class="size-item"><label>5XL</label><input type="number" class="size-lkl" data-size="Lelaki-5XL" min="0" value="0"></div>
+    </div>
+
+    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Wanita:</label>
+    <div class="size-grid">
+      <div class="size-item"><label>XS</label><input type="number" class="size-wnt" data-size="Wanita-XS" min="0" value="0"></div>
+      <div class="size-item"><label>S</label><input type="number" class="size-wnt" data-size="Wanita-S" min="0" value="0"></div>
+      <div class="size-item"><label>M</label><input type="number" class="size-wnt" data-size="Wanita-M" min="0" value="0"></div>
+      <div class="size-item"><label>L</label><input type="number" class="size-wnt" data-size="Wanita-L" min="0" value="0"></div>
+      <div class="size-item"><label>XL</label><input type="number" class="size-wnt" data-size="Wanita-XL" min="0" value="0"></div>
+      <div class="size-item"><label>2XL</label><input type="number" class="size-wnt" data-size="Wanita-2XL" min="0" value="0"></div>
+      <div class="size-item"><label>3XL</label><input type="number" class="size-wnt" data-size="Wanita-3XL" min="0" value="0"></div>
+      <div class="size-item"><label>4XL</label><input type="number" class="size-wnt" data-size="Wanita-4XL" min="0" value="0"></div>
+      <div class="size-item"><label>5XL</label><input type="number" class="size-wnt" data-size="Wanita-5XL" min="0" value="0"></div>
+    </div>
+
+    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Cilik:</label>
+    <div class="size-grid">
+      <div class="size-item"><label>22</label><input type="number" class="size-clk" data-size="Cilik-22" min="0" value="0"></div>
+      <div class="size-item"><label>24</label><input type="number" class="size-clk" data-size="Cilik-24" min="0" value="0"></div>
+      <div class="size-item"><label>26</label><input type="number" class="size-clk" data-size="Cilik-26" min="0" value="0"></div>
+      <div class="size-item"><label>28</label><input type="number" class="size-clk" data-size="Cilik-28" min="0" value="0"></div>
+      <div class="size-item"><label>30</label><input type="number" class="size-clk" data-size="Cilik-30" min="0" value="0"></div>
+      <div class="size-item"><label>32</label><input type="number" class="size-clk" data-size="Cilik-32" min="0" value="0"></div>
+    </div>
+
+    <div class="form-group" style="margin-top:20px;">
+      <label>Muat Naik Bukti Bayaran (Resit):</label>
+      <input type="file" id="newOrderReceipt" accept="image/*,application/pdf">
+    </div>
+
+    <button type="button" class="action-btn" onclick="submitNewOrderForm()">Hantar Tempahan Baru</button>
+  </div>
+
 </div>
 
-<div class="section">
-  <h3>Baju Wanita</h3>
-  <img src="baju-wanita.jpg" alt="Baju Wanita">
-  <img src="saiz-wanita.jpg" alt="Carta Saiz Baju Wanita">
-</div>
-
-<div class="section">
-  <h3>Baju Kanak-kanak</h3>
-  <img src="baju-cilik.jpg" alt="Baju Kanak-kanak">
-  <img src="saiz-cilik.jpg" alt="Carta Saiz Baju Kanak-kanak">
-</div>
-
-<a href="index.html" class="floating-home">← Kembali</a>
-
-<footer class="footer">
-© 2022-2026 Persatuan Memanah Tradisional Negeri Terengganu<br>
-© 2024-2026 Fest OWL 916
+<footer>
+  <p>� 2024�2026 Fest OWL 916</p>
+  <p>� Persatuan Memanah Tradisional Negeri Terengganu</p>
 </footer>
 
-</body>
-</html>
+<script>
+const API_URL = "const API_URL = "https://script.google.com/macros/s/AKfycbyEnynKZdCmMEkcmmv1sZP2Iz3rgKXw8Xyp3zWfrckv0x3LJiEkQFyiA3UfiX0LoKmSrQ/exec";
 
+let verifiedName = ''; 
+const message = document.getElementById('message');
 
+// Tukar paparan TAB borang
+function switchTab(tab) {
+  message.innerHTML = "";
+  document.getElementById('tab1Section').style.display = (tab === 'tab1') ? 'block' : 'none';
+  document.getElementById('tab2Section').style.display = (tab === 'tab2') ? 'block' : 'none';
+  
+  document.getElementById('btnTab1').className = (tab === 'tab1') ? 'menu-btn active' : 'menu-btn';
+  document.getElementById('btnTab2').className = (tab === 'tab2') ? 'menu-btn active' : 'menu-btn';
+}
 
+// Default buka Tab 1 dahulu semasa page load
+switchTab('tab1');
 
+function toggleDelivery() {
+  const method = document.getElementById('deliveryMethod').value;
+  document.getElementById('addressSection').style.display = (method === 'POS') ? 'block' : 'none';
+}
+
+function toggleReceipt() {
+  const qty = parseInt(document.getElementById('missingQty').value) || 0;
+  document.getElementById('receiptSection').style.display = (qty > 0) ? 'block' : 'none';
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    if (!file) resolve({ data: "", name: "" });
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve({ data: reader.result.split(',')[1], name: file.name });
+    reader.onerror = error => reject(error);
+  });
+}
+
+// ================= JAVASCRIPT UNTUK TAB 1 (KEMASKINI) =================
+async function searchParticipant() {
+  const nameQuery = document.getElementById('searchName').value.trim();
+  message.innerHTML = "";
+  document.getElementById('updateForm').style.display = "none";
+
+  if (!nameQuery) {
+    message.innerHTML = "<div class='error'>Sila masukkan Nama Penuh untuk carian</div>";
+    return;
+  }
+
+  message.innerHTML = " Mencari nama peserta...";
+
+  try {
+    const res = await fetch(`${API_URL}?name=${encodeURIComponent(nameQuery)}`);
+    const data = await res.json();
+
+    if (data.status !== "found") {
+      message.innerHTML = "<div class='error'>Nama tidak ditemui. Sila pastikan nama betul mengikut pendaftaran.</div>";
+      return;
+    }
+
+    verifiedName = data.name;
+    document.getElementById('displayName').textContent = data.name || "-";
+    document.getElementById('club').textContent = data.club || "-";
+    document.getElementById('category').textContent = data.category || "-";
+    document.getElementById('state').textContent = data.state || "-";
+
+    document.getElementById('updateForm').style.display = "block";
+    message.innerHTML = "";
+
+  } catch (err) {
+    message.innerHTML = "<div class='error'>Ralat sambungan internet</div>";
+  }
+}
+
+async function submitUpdateForm() {
+  const deliveryMethod = document.getElementById('deliveryMethod').value;
+  const address = document.getElementById('address').value.trim();
+  const missingQty = document.getElementById('missingQty').value;
+  const missingSizes = document.getElementById('missingSizes').value.trim();
+
+  if (!deliveryMethod) {
+    message.innerHTML = "<div class='error'>Sila pilih Kaedah Serahan</div>";
+    return;
+  }
+  if (deliveryMethod === 'POS' && !address) {
+    message.innerHTML = "<div class='error'>Sila isi alamat lengkap untuk pos</div>";
+    return;
+  }
+  if (parseInt(missingQty) > 0 && !missingSizes) {
+    message.innerHTML = "<div class='error'>Sila nyatakan saiz baju tuntutan</div>";
+    return;
+  }
+
+  message.innerHTML = " Menyimpan kemaskini... Sila tunggu.";
+
+  try {
+    const fileInput = document.getElementById('receiptFile').files[0];
+    const fileData = await fileToBase64(fileInput);
+
+    const payload = {
+      formType: "KEMASKINI_TUNTUTAN",
+      name: verifiedName,
+      deliveryMethod: deliveryMethod,
+      address: deliveryMethod === 'POS' ? address : 'WALK-IN',
+      missingQty: missingQty,
+      missingSizes: missingSizes,
+      receiptData: fileData.data,
+      receiptName: fileData.name
+    };
+
+    const res = await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+
+    if (data.status === "success") {
+      message.innerHTML = "<div class='success'> Berjaya Dikemaskini! Terima kasih.</div>";
+      document.getElementById('updateForm').style.display = "none";
+      document.getElementById('searchName').value = "";
+    } else {
+      message.innerHTML = "<div class='error'>Gagal mengemaskini data.</div>";
+    }
+  } catch (err) {
+    message.innerHTML = "<div class='error'>Ralat sistem / Saiz fail resit terlalu besar.</div>";
+  }
+}
+
+// ================= JAVASCRIPT UNTUK TAB 2 (ORDER BARU) =================
+async function submitNewOrderForm() {
+  const newName = document.getElementById('newName').value.trim();
+  const newPhone = document.getElementById('newPhone').value.trim();
+  const newAddress = document.getElementById('newAddress').value.trim();
+  const receiptInput = document.getElementById('newOrderReceipt').files[0];
+
+  if (!newName || !newPhone || !newAddress) {
+    message.innerHTML = "<div class='error'>Sila lengkapkan Nama, No Telefon dan Alamat.</div>";
+    return;
+  }
+  if (!receiptInput) {
+    message.innerHTML = "<div class='error'>Sila muat naik resit bukti pembayaran baju baru.</div>";
+    return;
+  }
+
+  // Kumpul data
