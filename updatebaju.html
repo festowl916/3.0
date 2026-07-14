@@ -33,7 +33,7 @@ footer {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 750px;
   margin: 40px auto;
   background: white;
   padding: 25px;
@@ -148,15 +148,64 @@ input[type="text"], input[type="number"], textarea, select {
   margin-left: 3px;
 }
 
+/* Susunan Flexbox Berkembar untuk Reka Bentuk A & B */
+.kategori-section {
+  background: #fdfdfd;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.kategori-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #111;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.versi-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.versi-box {
+  flex: 1;
+  min-width: 280px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.versi-header {
+  font-weight: bold;
+  text-align: center;
+  background: #f5f5f5;
+  padding: 5px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.model-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
 .size-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 10px;
-  background: #fdfdfd;
-  padding: 10px;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  margin-bottom: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+  gap: 6px;
 }
 
 .size-item {
@@ -164,18 +213,38 @@ input[type="text"], input[type="number"], textarea, select {
 }
 
 .size-item label {
-  font-size: 12px;
+  font-size: 11px;
   color: #555;
+  font-weight: bold;
+  display: block;
   margin-bottom: 2px;
 }
 
 .size-item input {
   text-align: center;
-  padding: 5px;
+  padding: 4px;
   margin: 0;
+  font-size: 13px;
 }
 
-/* Animasi Spinner Loading Bulatan */
+.charts-box {
+  text-align: center;
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.charts-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+/* Animasi Spinner */
 .spinner {
   display: none;
   width: 20px;
@@ -207,6 +276,7 @@ input[type="text"], input[type="number"], textarea, select {
 
   <div id="message"></div>
 
+  <!-- TAB 1: KEMASKINI ALAMAT & TUNTUTAN -->
   <div id="tab1Section" class="form-section">
     <div class="row">
       <input type="text" id="searchName" placeholder="Masukkan Nama Pendaftaran Asal">
@@ -263,11 +333,20 @@ input[type="text"], input[type="number"], textarea, select {
     </div>
   </div>
 
+  <!-- TAB 2: PESANAN BAJU BARU (REKA BENTUK BERKEMBAR GABUNGAN GAMBAR & GRID SAIZ) -->
   <div id="tab2Section" class="form-section">
     <h3>Borang Tempahan Baju Baru</h3>
     
+    <!-- CARTA SAIZ -->
     <div class="form-group">
-      <label>Nama Penuh:<span class="required-star">*</span></label>
+      <label>Carta Saiz Ukuran Baju (Klik gambar untuk besarkan):</label>
+      <div class="charts-box">
+        <img src="https://placehold.co/600x250?text=Carta+Saiz+Ukuran+Baju" alt="Carta Saiz Ukuran" onclick="window.open(this.src)">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Nama Penuh Pembeli:<span class="required-star">*</span></label>
       <input type="text" id="newName" placeholder="Masukkan nama penuh pembeli" required>
     </div>
 
@@ -277,44 +356,122 @@ input[type="text"], input[type="number"], textarea, select {
     </div>
 
     <div class="form-group">
-      <label>Alamat Penghantaran / Penuh:<span class="required-star">*</span></label>
-      <textarea id="newAddress" rows="3" placeholder="Masukkan alamat lengkap untuk pos atau rujukan" required></textarea>
+      <label>Alamat Penghantaran Penuh:<span class="required-star">*</span></label>
+      <textarea id="newAddress" rows="3" placeholder="Masukkan alamat lengkap untuk pos" required></textarea>
     </div>
 
-    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Lelaki:<span class="required-star">* (Pilih sekurang-kurangnya satu saiz baju)</span></label>
-    <div class="size-grid">
-      <div class="size-item"><label>XS</label><input type="number" class="size-lkl" data-size="Lelaki-XS" min="0" value="0"></div>
-      <div class="size-item"><label>S</label><input type="number" class="size-lkl" data-size="Lelaki-S" min="0" value="0"></div>
-      <div class="size-item"><label>M</label><input type="number" class="size-lkl" data-size="Lelaki-M" min="0" value="0"></div>
-      <div class="size-item"><label>L</label><input type="number" class="size-lkl" data-size="Lelaki-L" min="0" value="0"></div>
-      <div class="size-item"><label>XL</label><input type="number" class="size-lkl" data-size="Lelaki-XL" min="0" value="0"></div>
-      <div class="size-item"><label>2XL</label><input type="number" class="size-lkl" data-size="Lelaki-2XL" min="0" value="0"></div>
-      <div class="size-item"><label>3XL</label><input type="number" class="size-lkl" data-size="Lelaki-3XL" min="0" value="0"></div>
-      <div class="size-item"><label>4XL</label><input type="number" class="size-lkl" data-size="Lelaki-4XL" min="0" value="0"></div>
-      <div class="size-item"><label>5XL</label><input type="number" class="size-lkl" data-size="Lelaki-5XL" min="0" value="0"></div>
+    <h3 style="margin-top:30px;">Pilihan Reka Bentuk & Kuantiti Saiz Baju</h3>
+    <p style="text-align:center; font-size:12px; color:#666; margin-top:-5px;">Sila isi kuantiti baju pada kotak saiz di bawah imej pilihan anda.</p>
+
+    <!-- KATEGORI LELAKI (2 DESIGN) -->
+    <div class="kategori-section">
+      <div class="kategori-title">1. Baju Lelaki (Dewasa)</div>
+      <div class="versi-container">
+        <!-- Design A -->
+        <div class="versi-box">
+          <div class="versi-header">REKA BENTUK A</div>
+          <img src="https://placehold.co/300x350?text=Baju+Lelaki+Design+A" alt="Baju Lelaki Design A" class="model-img" onclick="window.open(this.src)">
+          <div class="size-grid">
+            <div class="size-item"><label>XS</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-XS" min="0" value="0"></div>
+            <div class="size-item"><label>S</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-S" min="0" value="0"></div>
+            <div class="size-item"><label>M</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-M" min="0" value="0"></div>
+            <div class="size-item"><label>L</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-L" min="0" value="0"></div>
+            <div class="size-item"><label>XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-XL" min="0" value="0"></div>
+            <div class="size-item"><label>2XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-2XL" min="0" value="0"></div>
+            <div class="size-item"><label>3XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-3XL" min="0" value="0"></div>
+            <div class="size-item"><label>4XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-4XL" min="0" value="0"></div>
+            <div class="size-item"><label>5XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignA-5XL" min="0" value="0"></div>
+          </div>
+        </div>
+        <!-- Design B -->
+        <div class="versi-box">
+          <div class="versi-header">REKA BENTUK B</div>
+          <img src="https://placehold.co/300x350?text=Baju+Lelaki+Design+B" alt="Baju Lelaki Design B" class="model-img" onclick="window.open(this.src)">
+          <div class="size-grid">
+            <div class="size-item"><label>XS</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-XS" min="0" value="0"></div>
+            <div class="size-item"><label>S</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-S" min="0" value="0"></div>
+            <div class="size-item"><label>M</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-M" min="0" value="0"></div>
+            <div class="size-item"><label>L</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-L" min="0" value="0"></div>
+            <div class="size-item"><label>XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-XL" min="0" value="0"></div>
+            <div class="size-item"><label>2XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-2XL" min="0" value="0"></div>
+            <div class="size-item"><label>3XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-3XL" min="0" value="0"></div>
+            <div class="size-item"><label>4XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-4XL" min="0" value="0"></div>
+            <div class="size-item"><label>5XL</label><input type="number" class="order-size-input" data-size="Lelaki-DesignB-5XL" min="0" value="0"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Wanita:</label>
-    <div class="size-grid">
-      <div class="size-item"><label>XS</label><input type="number" class="size-wnt" data-size="Wanita-XS" min="0" value="0"></div>
-      <div class="size-item"><label>S</label><input type="number" class="size-wnt" data-size="Wanita-S" min="0" value="0"></div>
-      <div class="size-item"><label>M</label><input type="number" class="size-wnt" data-size="Wanita-M" min="0" value="0"></div>
-      <div class="size-item"><label>L</label><input type="number" class="size-wnt" data-size="Wanita-L" min="0" value="0"></div>
-      <div class="size-item"><label>XL</label><input type="number" class="size-wnt" data-size="Wanita-XL" min="0" value="0"></div>
-      <div class="size-item"><label>2XL</label><input type="number" class="size-wnt" data-size="Wanita-2XL" min="0" value="0"></div>
-      <div class="size-item"><label>3XL</label><input type="number" class="size-wnt" data-size="Wanita-3XL" min="0" value="0"></div>
-      <div class="size-item"><label>4XL</label><input type="number" class="size-wnt" data-size="Wanita-4XL" min="0" value="0"></div>
-      <div class="size-item"><label>5XL</label><input type="number" class="size-wnt" data-size="Wanita-5XL" min="0" value="0"></div>
+    <!-- KATEGORI WANITA (2 MODEL) -->
+    <div class="kategori-section">
+      <div class="kategori-title">2. Baju Wanita (Muslimah)</div>
+      <div class="versi-container">
+        <!-- Design A -->
+        <div class="versi-box">
+          <div class="versi-header">REKA BENTUK A</div>
+          <img src="https://placehold.co/300x350?text=Baju+Wanita+Design+A" alt="Baju Wanita Design A" class="model-img" onclick="window.open(this.src)">
+          <div class="size-grid">
+            <div class="size-item"><label>XS</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-XS" min="0" value="0"></div>
+            <div class="size-item"><label>S</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-S" min="0" value="0"></div>
+            <div class="size-item"><label>M</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-M" min="0" value="0"></div>
+            <div class="size-item"><label>L</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-L" min="0" value="0"></div>
+            <div class="size-item"><label>XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-XL" min="0" value="0"></div>
+            <div class="size-item"><label>2XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-2XL" min="0" value="0"></div>
+            <div class="size-item"><label>3XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-3XL" min="0" value="0"></div>
+            <div class="size-item"><label>4XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-4XL" min="0" value="0"></div>
+            <div class="size-item"><label>5XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-5XL" min="0" value="0"></div>
+          </div>
+        </div>
+        <!-- Design B -->
+        <div class="versi-box">
+          <div class="versi-header">REKA BENTUK B</div>
+          <img src="https://placehold.co/300x350?text=Baju+Wanita+Design+B" alt="Baju Wanita Design B" class="model-img" onclick="window.open(this.src)">
+          <div class="size-grid">
+            <div class="size-item"><label>XS</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-XS" min="0" value="0"></div>
+            <div class="size-item"><label>S</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-S" min="0" value="0"></div>
+            <div class="size-item"><label>M</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-M" min="0" value="0"></div>
+            <div class="size-item"><label>L</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-L" min="0" value="0"></div>
+            <div class="size-item"><label>XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-XL" min="0" value="0"></div>
+            <div class="size-item"><label>2XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-2XL" min="0" value="0"></div>
+            <div class="size-item"><label>3XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-3XL" min="0" value="0"></div>
+            <div class="size-item"><label>4XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-4XL" min="0" value="0"></div>
+            <div class="size-item"><label>5XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-5XL" min="0" value="0"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <label style="font-weight:bold; color: #111; display:block; margin-top:15px;">Kuantiti Saiz Baju Cilik:</label>
-    <div class="size-grid">
-      <div class="size-item"><label>22</label><input type="number" class="size-clk" data-size="Cilik-22" min="0" value="0"></div>
-      <div class="size-item"><label>24</label><input type="number" class="size-clk" data-size="Cilik-24" min="0" value="0"></div>
-      <div class="size-item"><label>26</label><input type="number" class="size-clk" data-size="Cilik-26" min="0" value="0"></div>
-      <div class="size-item"><label>28</label><input type="number" class="size-clk" data-size="Cilik-28" min="0" value="0"></div>
-      <div class="size-item"><label>30</label><input type="number" class="size-clk" data-size="Cilik-30" min="0" value="0"></div>
-      <div class="size-item"><label>32</label><input type="number" class="size-clk" data-size="Cilik-32" min="0" value="0"></div>
+    <!-- KATEGORI KANAK-KANAK / CILIK (2 MODEL) -->
+    <div class="kategori-section">
+      <div class="kategori-title">3. Baju Kanak-Kanak (Cilik)</div>
+      <div class="versi-container">
+        <!-- Design A -->
+        <div class="versi-box">
+          <div class="versi-header">REKA BENTUK A</div>
+          <img src="https://placehold.co/300x350?text=Baju+Cilik+Design+A" alt="Baju Cilik Design A" class="model-img" onclick="window.open(this.src)">
+          <div class="size-grid">
+            <div class="size-item"><label>22</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-22" min="0" value="0"></div>
+            <div class="size-item"><label>24</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-24" min="0" value="0"></div>
+            <div class="size-item"><label>26</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-26" min="0" value="0"></div>
+            <div class="size-item"><label>28</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-28" min="0" value="0"></div>
+            <div class="size-item"><label>30</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-30" min="0" value="0"></div>
+            <div class="size-item"><label>32</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-32" min="0" value="0"></div>
+          </div>
+        </div>
+        <!-- Design B -->
+        <div class="versi-box">
+          <div class="versi-header">REKA BENTUK B</div>
+          <img src="https://placehold.co/300x350?text=Baju+Cilik+Design+B" alt="Baju Cilik Design B" class="model-img" onclick="window.open(this.src)">
+          <div class="size-grid">
+            <div class="size-item"><label>22</label><input type="number" class="order-size-input" data-size="Cilik-DesignB-22" min="0" value="0"></div>
+            <div class="size-item"><label>24</label><input type="number" class="order-size-input" data-size="Cilik-DesignB-24" min="0" value="0"></div>
+            <div class="size-item"><label>26</label><input type="number" class="order-size-input" data-size="Cilik-DesignB-26" min="0" value="0"></div>
+            <div class="size-item"><label>28</label><input type="number" class="order-size-input" data-size="Cilik-DesignB-28" min="0" value="0"></div>
+            <div class="size-item"><label>30</label><input type="number" class="order-size-input" data-size="Cilik-DesignB-30" min="0" value="0"></div>
+            <div class="size-item"><label>32</label><input type="number" class="order-size-input" data-size="Cilik-DesignB-32" min="0" value="0"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="form-group" style="margin-top:20px;">
@@ -434,7 +591,6 @@ async function submitUpdateForm() {
     }
   }
 
-  // Set Status BAR LOADING / SEDANG MENGHANTAR
   message.innerHTML = "";
   submitBtn.disabled = true;
   spinner.style.display = "block";
@@ -470,7 +626,6 @@ async function submitUpdateForm() {
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat sistem / Saiz fail resit terlalu besar.</div>";
   } finally {
-    // Pulihkan butang asal semula
     submitBtn.disabled = false;
     spinner.style.display = "none";
     btnText.innerText = "Hantar Kemaskini";
@@ -501,7 +656,7 @@ async function submitNewOrderForm() {
   }
 
   let orderSummary = [];
-  const allSizeInputs = document.querySelectorAll('.size-lkl, .size-wnt, .size-clk');
+  const allSizeInputs = document.querySelectorAll('.order-size-input');
   
   allSizeInputs.forEach(input => {
     const qty = parseInt(input.value) || 0;
@@ -520,7 +675,6 @@ async function submitNewOrderForm() {
     return;
   }
 
-  // Set Status BAR LOADING / SEDANG MENGHANTAR
   message.innerHTML = "";
   submitBtn.disabled = true;
   spinner.style.display = "block";
@@ -559,7 +713,6 @@ async function submitNewOrderForm() {
   } catch (err) {
     message.innerHTML = "<div class='error'>Ralat menghantar tempahan / Fail resit terlalu besar.</div>";
   } finally {
-    // Pulihkan butang asal semula
     submitBtn.disabled = false;
     spinner.style.display = "none";
     btnText.innerText = "Hantar Tempahan Baru";
