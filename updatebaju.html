@@ -545,11 +545,13 @@ async function searchParticipant() {
       return;
     }
 
-    verifiedName = data.name;
-    document.getElementById('displayName').textContent = data.name || "-";
-    document.getElementById('club').textContent = data.club || "-";
-    document.getElementById('category').textContent = data.category || "-";
-    document.getElementById('state').textContent = data.state || "-";
+    // KOD BARU YANG BETUL:
+verifiedName = data.name;
+document.getElementById('displayName').textContent = data.name || "-";
+document.getElementById('club').textContent = data.pukal || "-";          // Tukar ke data.pukal
+document.getElementById('category').textContent = data.categori || "-";    // Tukar ke data.categori
+document.getElementById('state').textContent = data.sizeutama || "-";      // Tukar ke data.sizeutama
+
 
     document.getElementById('updateForm').style.display = "block";
     message.innerHTML = "";
