@@ -286,6 +286,7 @@ input[type="text"], input[type="number"], textarea, select {
     <div id="updateForm" style="display:none; margin-top:20px;">
       <div class="info-box">
         <h4 style="margin-top:0;">Maklumat Peserta Ditemui:</h4>
+        <p><b>ID Peserta:</b> <span id="displayId" style="color: blue; font-weight: bold;"></span></p>
         <p><b>Nama:</b> <span id="displayName"></span></p>
         <p><b>Kategori Arrow Carbon:</b> <span id="carbonDisplay"></span></p>
         <p><b>Kategori Arrow Natural:</b> <span id="naturalDisplay"></span></p>
@@ -498,6 +499,7 @@ input[type="text"], input[type="number"], textarea, select {
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbyEnynKZdCmMEkcmmv1sZP2Iz3rgKXw8Xyp3zWfrckv0x3LJiEkQFyiA3UfiX0LoKmSrQ/exec";
 
+let verifiedId = '';
 let verifiedName = ''; 
 const message = document.getElementById('message');
 
@@ -546,7 +548,10 @@ async function searchParticipant() {
       return;
     }
 
+    verifiedId = data.id || "-"; // Simpan nilai ID (Col A / Index 0) dari Apps Script
     verifiedName = data.name;
+    
+    document.getElementById('displayId').textContent = data.id || "-";
     document.getElementById('displayName').textContent = data.name || "-";
     document.getElementById('carbonDisplay').textContent = data.arrowCarbon || "-";
     document.getElementById('naturalDisplay').textContent = data.arrowNatural || "-";
@@ -612,6 +617,7 @@ async function submitUpdateForm() {
 
     const payload = {
       formType: "KEMASKINI_TUNTUTAN",
+      id: verifiedId, // ID dari kolum pertama dihantar ke Google Apps Script
       name: verifiedName,
       deliveryMethod: deliveryMethod,
       address: deliveryMethod === 'POS' ? address : 'WALK-IN: ' + walkinLocation,
