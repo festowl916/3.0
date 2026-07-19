@@ -551,6 +551,8 @@ async function searchParticipant() {
     verifiedId = data.id || "-"; // Simpan nilai ID (Col A / Index 0) dari Apps Script
     verifiedName = data.name;
     
+    document.getElementById('userId').value = data.id;
+
     document.getElementById('displayId').textContent = data.id || "-";
     document.getElementById('displayName').textContent = data.name || "-";
     document.getElementById('carbonDisplay').textContent = data.arrowCarbon || "-";
