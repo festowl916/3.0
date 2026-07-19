@@ -283,8 +283,12 @@ input[type="text"], input[type="number"], textarea, select {
       <button type="button" class="search-btn" id="btnSearch" onclick="searchParticipant()">🔍</button>
     </div>
 
-    <div id="updateForm" style="display:none; margin-top:20px;">
+        <div id="updateForm" style="display:none; margin-top:20px;">
+      <!-- SELITKAN INPUT HALIMUNAN INI DI SINI -->
+      <input type="hidden" id="userId" name="id">
+
       <div class="info-box">
+
         <h4 style="margin-top:0;">Maklumat Peserta Ditemui:</h4>
         <p><b>ID Peserta:</b> <span id="displayId" style="color: blue; font-weight: bold;"></span></p>
         <p><b>Nama:</b> <span id="displayName"></span></p>
