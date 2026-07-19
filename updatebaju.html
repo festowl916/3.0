@@ -297,7 +297,7 @@ input[type="text"], input[type="number"], textarea, select {
 
 
 
-      <h3>Kaedah Serahan</h3>
+            <h3>Kaedah Serahan</h3>
       <div class="form-group">
         <label>Pilihan Serahan:<span class="required-star">*</span></label>
         <select id="deliveryMethod" onchange="toggleDelivery()" required>
@@ -307,12 +307,22 @@ input[type="text"], input[type="number"], textarea, select {
         </select>
       </div>
       
+      <!-- RUANGAN JIKA PILIH POS -->
       <div id="addressSection" style="display:none;">
         <div class="form-group">
           <label>Alamat Penuh Pengeposan:<span class="required-star">*</span></label>
           <textarea id="address" rows="3" placeholder="Masukkan alamat lengkap termasuk Poskod & Negeri"></textarea>
         </div>
       </div>
+
+      <!-- RUANGAN BARU JIKA PILIH WALK-IN -->
+      <div id="walkinSection" style="display:none;">
+        <div class="form-group">
+          <label>Lokasi / Tempat Pilihan Walk-In:<span class="required-star">*</span></label>
+          <input type="text" id="walkinLocation" placeholder="Contoh: Kaunter A (Kuala Terengganu), Tapak Karnival, dll.">
+        </div>
+      </div>
+
 
       <h3>Tuntutan Baju (Belum Dapat)</h3>
       <div class="form-group">
@@ -507,8 +517,12 @@ const message = document.getElementById('message');
 
 function toggleDelivery() {
   const method = document.getElementById('deliveryMethod').value;
+  // Papar kotak alamat jika POS
   document.getElementById('addressSection').style.display = (method === 'POS') ? 'block' : 'none';
+  // Papar kotak lokasi jika WALK-IN
+  document.getElementById('walkinSection').style.display = (method === 'WALK-IN') ? 'block' : 'none';
 }
+
 
 function toggleReceipt() {
   const qty = parseInt(document.getElementById('missingQty').value) || 0;
@@ -612,12 +626,15 @@ async function submitUpdateForm() {
     const fileData = await fileToBase64(fileInput);
 
     const payload = {
+          const payload = {
       formType: "KEMASKINI_TUNTUTAN",
       name: verifiedName,
       deliveryMethod: deliveryMethod,
-      address: deliveryMethod === 'POS' ? address : 'WALK-IN',
+      // Jika pilih POS, hantar alamat. Jika pilih WALK-IN, hantar lokasi walk-in yang ditulis.
+      address: deliveryMethod === 'POS' ? address : 'WALK-IN: ' + walkinLocation,
       missingQty: missingQty,
-      missingSizes: parseInt(missingQty) > 0 ? missingSizes : '-',
+      ...
+ > 0 ? missingSizes : '-',
       receiptData: fileData.data,
       receiptName: fileData.name
     };
