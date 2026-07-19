@@ -269,11 +269,10 @@ input[type="text"], input[type="number"], textarea, select {
 <div class="container">
   <h2>Sistem Pengurusan Baju OWL</h2>
 
-<div class="menu-container">
+  <div class="menu-container">
     <button class="menu-btn" id="btnTab1" onclick="switchTab('tab1')">1. Kemaskini Alamat & Tuntutan Baju</button>
     <button class="menu-btn" id="btnTab2" onclick="switchTab('tab2')" disabled style="cursor: not-allowed; opacity: 0.6;">2. Pesanan Baju Baru (Ditutup Sementara)</button>
   </div>
-
 
   <div id="message"></div>
 
@@ -284,20 +283,17 @@ input[type="text"], input[type="number"], textarea, select {
       <button type="button" class="search-btn" id="btnSearch" onclick="searchParticipant()">🔍</button>
     </div>
 
-            <div id="updateForm" style="display:none; margin-top:20px;">
+    <div id="updateForm" style="display:none; margin-top:20px;">
       <div class="info-box">
-  <h4 style="margin-top:0;">Maklumat Peserta Ditemui:</h4>
-  <p><b>Nama:</b> <span id="displayName"></span></p>
-  <p><b>Kategori Arrow Carbon:</b> <span id="carbonDisplay"></span></p>
-  <p><b>Kategori Arrow Natural:</b> <span id="naturalDisplay"></span></p>
-  <p><b>Saiz Asal:</b> <span id="sizeUtamaDisplay"></span></p>
-  <p><b>Saiz Pukal / Kelab:</b> <span id="saizPukalDisplay"></span></p>
-</div>
+        <h4 style="margin-top:0;">Maklumat Peserta Ditemui:</h4>
+        <p><b>Nama:</b> <span id="displayName"></span></p>
+        <p><b>Kategori Arrow Carbon:</b> <span id="carbonDisplay"></span></p>
+        <p><b>Kategori Arrow Natural:</b> <span id="naturalDisplay"></span></p>
+        <p><b>Saiz Asal:</b> <span id="sizeUtamaDisplay"></span></p>
+        <p><b>Saiz Pukal / Kelab:</b> <span id="saizPukalDisplay"></span></p>
+      </div>
 
-
-
-
-            <h3>Kaedah Serahan</h3>
+      <h3>Kaedah Serahan</h3>
       <div class="form-group">
         <label>Pilihan Serahan:<span class="required-star">*</span></label>
         <select id="deliveryMethod" onchange="toggleDelivery()" required>
@@ -315,14 +311,13 @@ input[type="text"], input[type="number"], textarea, select {
         </div>
       </div>
 
-      <!-- RUANGAN BARU JIKA PILIH WALK-IN -->
+      <!-- RUANGAN JIKA PILIH WALK-IN -->
       <div id="walkinSection" style="display:none;">
         <div class="form-group">
           <label>Lokasi / Tempat Pilihan Walk-In:<span class="required-star">*</span></label>
           <input type="text" id="walkinLocation" placeholder="Contoh: Kaunter A (Kuala Terengganu), Tapak Karnival, dll.">
         </div>
       </div>
-
 
       <h3>Tuntutan Baju (Belum Dapat)</h3>
       <div class="form-group">
@@ -348,18 +343,17 @@ input[type="text"], input[type="number"], textarea, select {
     </div>
   </div>
 
-  <!-- TAB 2: PESANAN BAJU BARU (REKA BENTUK BERKEMBAR GABUNGAN GAMBAR & GRID SAIZ) -->
+  <!-- TAB 2: PESANAN BAJU BARU -->
   <div id="tab2Section" class="form-section">
     <h3>Borang Tempahan Baju Baru</h3>
     
     <!-- CARTA SAIZ -->
-<div class="form-group">
-  <label>Carta Saiz Ukuran Baju (Klik gambar untuk besarkan):</label>
-  <div class="charts-box">
-    <img id="imgCartaSaiz" src="chartsize.webp" alt="Carta Saiz Ukuran" onclick="window.open(this.src)">
-  </div>
-</div>
-
+    <div class="form-group">
+      <label>Carta Saiz Ukuran Baju (Klik gambar untuk besarkan):</label>
+      <div class="charts-box">
+        <img id="imgCartaSaiz" src="chartsize.webp" alt="Carta Saiz Ukuran" onclick="window.open(this.src)">
+      </div>
+    </div>
 
     <div class="form-group">
       <label>Nama Penuh Pembeli:<span class="required-star">*</span></label>
@@ -380,7 +374,7 @@ input[type="text"], input[type="number"], textarea, select {
     <p style="text-align:center; font-size:12px; color:#666; margin-top:-5px;">Sila isi kuantiti baju pada kotak saiz di bawah imej pilihan anda.</p>
 
     <!-- KATEGORI LELAKI (2 DESIGN) -->
-        <div class="kategori-section">
+    <div class="kategori-section">
       <div class="kategori-title">1. Baju Lelaki (Dewasa)</div>
       <div class="versi-container">
         <div class="versi-box">
@@ -416,15 +410,12 @@ input[type="text"], input[type="number"], textarea, select {
       </div>
     </div>
 
-
     <!-- KATEGORI WANITA (2 MODEL) -->
-        <div class="kategori-section">
+    <div class="kategori-section">
       <div class="kategori-title">2. Baju Wanita (Muslimah)</div>
       <div class="versi-container">
-        <!-- Design A -->
         <div class="versi-box">
           <div class="versi-header">REKA BENTUK A</div>
-          <!-- Tukar src guna fail wanita1.webp -->
           <img src="wanita1.webp" alt="Baju Wanita Design A" class="model-img" onclick="window.open(this.src)">
           <div class="size-grid">
             <div class="size-item"><label>XS</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-XS" min="0" value="0"></div>
@@ -438,10 +429,8 @@ input[type="text"], input[type="number"], textarea, select {
             <div class="size-item"><label>5XL</label><input type="number" class="order-size-input" data-size="Wanita-DesignA-5XL" min="0" value="0"></div>
           </div>
         </div>
-        <!-- Design B -->
         <div class="versi-box">
           <div class="versi-header">REKA BENTUK B</div>
-          <!-- Tukar src guna fail wanita1.webp -->
           <img src="muslimah.webp" alt="Baju Wanita Design B" class="model-img" onclick="window.open(this.src)">
           <div class="size-grid">
             <div class="size-item"><label>XS</label><input type="number" class="order-size-input" data-size="Wanita-DesignB-XS" min="0" value="0"></div>
@@ -458,12 +447,10 @@ input[type="text"], input[type="number"], textarea, select {
       </div>
     </div>
 
-
-    <!-- KATEGORI KANAK-KANAK / CILIK (2 MODEL) -->
+    <!-- KATEGORI KANAK-KANAK / CILIK -->
     <div class="kategori-section">
       <div class="kategori-title">3. Baju Kanak-Kanak (Cilik)</div>
       <div class="versi-container">
-        <!-- Design A -->
         <div class="versi-box">
           <div class="versi-header">REKA BENTUK A</div>
           <img src="https://placehold.co/300x350?text=Baju+Cilik+Design+A" alt="Baju Cilik Design A" class="model-img" onclick="window.open(this.src)">
@@ -476,7 +463,6 @@ input[type="text"], input[type="number"], textarea, select {
             <div class="size-item"><label>32</label><input type="number" class="order-size-input" data-size="Cilik-DesignA-32" min="0" value="0"></div>
           </div>
         </div>
-        <!-- Design B -->
         <div class="versi-box">
           <div class="versi-header">REKA BENTUK B</div>
           <img src="https://placehold.co/300x350?text=Baju+Cilik+Design+B" alt="Baju Cilik Design B" class="model-img" onclick="window.open(this.src)">
@@ -517,12 +503,9 @@ const message = document.getElementById('message');
 
 function toggleDelivery() {
   const method = document.getElementById('deliveryMethod').value;
-  // Papar kotak alamat jika POS
   document.getElementById('addressSection').style.display = (method === 'POS') ? 'block' : 'none';
-  // Papar kotak lokasi jika WALK-IN
   document.getElementById('walkinSection').style.display = (method === 'WALK-IN') ? 'block' : 'none';
 }
-
 
 function toggleReceipt() {
   const qty = parseInt(document.getElementById('missingQty').value) || 0;
@@ -563,15 +546,12 @@ async function searchParticipant() {
       return;
     }
 
-    // KOD BARU YANG BETUL:
-verifiedName = data.name;
-document.getElementById('displayName').textContent = data.name || "-";
-document.getElementById('carbonDisplay').textContent = data.arrowCarbon || "-";
-document.getElementById('naturalDisplay').textContent = data.arrowNatural || "-";
-document.getElementById('sizeUtamaDisplay').textContent = data.sizeutama || "-";
-document.getElementById('saizPukalDisplay').textContent = data.saizpukal || "-";
-      // Tukar ke data.sizeutama
-
+    verifiedName = data.name;
+    document.getElementById('displayName').textContent = data.name || "-";
+    document.getElementById('carbonDisplay').textContent = data.arrowCarbon || "-";
+    document.getElementById('naturalDisplay').textContent = data.arrowNatural || "-";
+    document.getElementById('sizeUtamaDisplay').textContent = data.sizeutama || "-";
+    document.getElementById('saizPukalDisplay').textContent = data.saizpukal || "-";
 
     document.getElementById('updateForm').style.display = "block";
     message.innerHTML = "";
@@ -586,6 +566,7 @@ document.getElementById('saizPukalDisplay').textContent = data.saizpukal || "-";
 async function submitUpdateForm() {
   const deliveryMethod = document.getElementById('deliveryMethod').value;
   const address = document.getElementById('address').value.trim();
+  const walkinLocation = document.getElementById('walkinLocation').value.trim();
   const missingQty = document.getElementById('missingQty').value;
   const missingSizes = document.getElementById('missingSizes').value.trim();
   const fileInput = document.getElementById('receiptFile').files[0];
@@ -600,6 +581,10 @@ async function submitUpdateForm() {
   }
   if (deliveryMethod === 'POS' && !address) {
     message.innerHTML = "<div class='error'>Sila isi alamat lengkap untuk tujuan pengeposan!</div>";
+    return;
+  }
+  if (deliveryMethod === 'WALK-IN' && !walkinLocation) {
+    message.innerHTML = "<div class='error'>Sila isi lokasi pilihan untuk Walk-In!</div>";
     return;
   }
   if (missingQty === "" || parseInt(missingQty) < 0) {
@@ -626,15 +611,12 @@ async function submitUpdateForm() {
     const fileData = await fileToBase64(fileInput);
 
     const payload = {
-          const payload = {
       formType: "KEMASKINI_TUNTUTAN",
       name: verifiedName,
       deliveryMethod: deliveryMethod,
-      // Jika pilih POS, hantar alamat. Jika pilih WALK-IN, hantar lokasi walk-in yang ditulis.
       address: deliveryMethod === 'POS' ? address : 'WALK-IN: ' + walkinLocation,
       missingQty: missingQty,
-      ...
- > 0 ? missingSizes : '-',
+      missingSizes: parseInt(missingQty) > 0 ? missingSizes : '-',
       receiptData: fileData.data,
       receiptName: fileData.name
     };
@@ -649,6 +631,8 @@ async function submitUpdateForm() {
       message.innerHTML = "<div class='success'>Berjaya Dikemaskini! Terima kasih.</div>";
       document.getElementById('updateForm').style.display = "none";
       document.getElementById('searchName').value = "";
+      document.getElementById('walkinLocation').value = "";
+      document.getElementById('address').value = "";
     } else {
       message.innerHTML = "<div class='error'>Gagal mengemaskini data.</div>";
     }
