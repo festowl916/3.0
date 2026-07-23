@@ -21,11 +21,17 @@
         
         /* GALERI GAMBAR */
         .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
-        .image-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fafafa; text-align: center; }
+        .image-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fafafa; text-align: center; cursor: pointer; transition: transform 0.2s; }
+        .image-card:hover { transform: scale(1.02); }
         .image-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
         .image-card span { display: block; padding: 5px; font-size: 11px; font-weight: 600; color: #4b5563; background-color: #f3f4f6; }
         .chart-size-card { grid-column: span 2; }
         .chart-size-card img { height: auto; max-height: 300px; object-fit: contain; }
+
+        /* MODAL POPUP UNTUK ZOOM GAMBAR */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { max-width: 95%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .close-btn { position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; }
 
         /* KOTAK ITEM BAJU */
         .item-row { background: #f9fafb; border: 1px solid #e5e7eb; padding: 15px; border-radius: 8px; margin-bottom: 12px; position: relative; }
@@ -62,28 +68,32 @@
         <ul>
             <li>👨 <strong>Baju Lelaki:</strong> RM 40</li>
             <li>🧕 <strong>Baju Muslimah:</strong> RM 45</li>
-            <li>👶 <strong>Baju Cilik:</strong> RM 40</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
         </ul>
 
         <p><strong>🏬 Harga Walk-In / Ambil Sendiri:</strong></p>
         <ul>
             <li>👨 <strong>Baju Lelaki:</strong> RM 35</li>
             <li>🧕 <strong>Baju Muslimah:</strong> RM 40</li>
-            <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 30</li>
         </ul>
     </div>
 
-        <!-- GALERI GAMBAR -->
-    <div class="section-title">📸 GALERI & REKA BENTUK BAJU</div>
+    <!-- GALERI GAMBAR -->
+    <div class="section-title">📸 GALERI & REKA BENTUK BAJU <small style="font-weight:normal; font-size:11px; color:#666;">(Klik gambar untuk besarkan)</small></div>
     <div class="image-grid">
-        <div class="image-card"><img src="baju-depan.webp" alt="Pandangan Depan"><span>Pandangan Depan</span></div>
-        <div class="image-card"><img src="baju-belakang.webp" alt="Pandangan Belakang"><span>Pandangan Belakang</span></div>
-        <div class="image-card"><img src="baju-lelaki.webp" alt="Koleksi Lelaki"><span>Koleksi Lelaki</span></div>
-        <div class="image-card"><img src="baju-muslimah.webp" alt="Koleksi Muslimah"><span>Koleksi Muslimah</span></div>
-        <div class="image-card chart-size-card"><img src="chart-size.webp" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki, Muslimah & Cilik)</span></div>
+        <div class="image-card" onclick="zoomImage('baju-depan.webp')"><img src="baju-depan.webp" alt="Pandangan Depan"><span>Pandangan Depan 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-belakang.webp')"><img src="baju-belakang.webp" alt="Pandangan Belakang"><span>Pandangan Belakang 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-lelaki.webp')"><img src="baju-lelaki.webp" alt="Koleksi Lelaki"><span>Koleksi Lelaki 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-muslimah.webp')"><img src="baju-muslimah.webp" alt="Koleksi Muslimah"><span>Koleksi Muslimah 🔍</span></div>
+        <div class="image-card chart-size-card" onclick="zoomImage('chart-size.webp')"><img src="chart-size.webp" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki, Muslimah & Cilik) 🔍</span></div>
     </div>
 
-
+    <!-- POPUP MODAL UNTUK GAMBAR BESAR -->
+    <div id="imageModal" class="modal" onclick="closeZoom()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
 
     <!-- BORANG TEMPAHAN -->
     <form id="orderForm">
@@ -127,12 +137,23 @@
     let availableStocks = {};
     let itemCounter = 0;
 
-    // Mapping saiz bagi setiap kategori (termasuk 4XL & Cilik)
     const sizesMap = {
         "Lelaki": ["S", "M", "L", "XL", "2XL", "3XL", "4XL"],
         "Muslimah": ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL"],
         "Cilik": ["M", "L"]
     };
+
+    /* FUNGSI ZOOM GAMBAR */
+    function zoomImage(src) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        modal.style.display = "flex";
+        modalImg.src = src;
+    }
+
+    function closeZoom() {
+        document.getElementById("imageModal").style.display = "none";
+    }
 
     window.onload = function() {
         fetch(GOOGLE_SCRIPT_URL)
