@@ -95,10 +95,7 @@
 </div>
 
 <script>
-    // URL Google Apps Script yang dikemaskini
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby8PfcYLMII74aVEV7engQ6T3JDvRtchXH9sHKbLLIkNaJdsk0cPiZjwdO_bH2BJQ9dfQ/exec";
-    
-    // TUKAR NOMBOR WHATSAPP ANDA DI SINI (Contoh: 60123456789)
     const SELLER_WHATSAPP = "60123456789"; 
 
     let availableStocks = {};
@@ -187,12 +184,42 @@
         if(row) row.remove();
     }
 
+    // FUNGSI AUTO-COMPRESS GAMBAR SEBELUM UPLOAD
+    function compressAndGetBase64(file, callback) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const MAX_WIDTH = 800;
+
+                if (width > MAX_WIDTH) {
+                    height = Math.round((height * MAX_WIDTH) / width);
+                    width = MAX_WIDTH;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Tukar ke JPEG kualiti 0.6 (sangat ringan)
+                const base64Str = canvas.toDataURL('image/jpeg', 0.6).split(',')[1];
+                callback(base64Str);
+            };
+        };
+    }
+
     document.getElementById('orderForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
         const btn = document.getElementById('btnSubmit');
         btn.disabled = true;
-        btn.innerText = "Memproses & Upload Resit...";
+        btn.innerText = "Memproses Gambar Resit...";
 
         const rows = document.querySelectorAll('.item-row');
         let itemsData = [];
@@ -211,22 +238,19 @@
         const file = fileInput.files[0];
 
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                const base64Data = evt.target.result.split(',')[1];
-                
+            compressAndGetBase64(file, function(base64Data) {
+                btn.innerText = "Mengirim Tempahan...";
                 const formData = {
                     nama: document.getElementById('nama').value,
                     telefon: document.getElementById('telefon').value,
                     alamat: document.getElementById('alamat').value,
                     items: itemsData,
                     resitBase64: base64Data,
-                    resitMimeType: file.type
+                    resitMimeType: "image/jpeg"
                 };
 
                 sendData(formData, waItemList, btn);
-            };
-            reader.readAsDataURL(file);
+            });
         } else {
             alert("Sila pilih fail resit.");
             btn.disabled = false;
