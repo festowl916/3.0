@@ -84,6 +84,12 @@
 
         <button type="button" class="btn-add" onclick="addItemRow()">+ Tambah Baju Lain (Kategori / Saiz Berbeza)</button>
 
+        <div class="section-title">🧾 BUKTI PEMBAYARAN</div>
+        <div class="form-group">
+            <label for="resit">Muat Naik Resit / Bukti Pembayaran (Imej sahaja)</label>
+            <input type="file" id="resit" accept="image/*" required>
+        </div>
+
         <button type="submit" id="btnSubmit" class="btn-submit">Hantar & Terus Ke WhatsApp</button>
     </form>
 </div>
@@ -96,13 +102,12 @@
     let itemCounter = 0;
     const sizesList = ["S", "M", "L", "XL", "2XL", "3XL"];
 
-    // Muat turun stok dari Google Sheets semasa laman dibuka
     window.onload = function() {
         fetch(GOOGLE_SCRIPT_URL)
             .then(res => res.json())
             .then(data => {
                 availableStocks = data;
-                addItemRow(); // Tambah item pertama selepas stok berjaya dimuat turun
+                addItemRow();
             })
             .catch(err => {
                 alert("Gagal membaca data stok dari Google Sheet.");
@@ -110,7 +115,6 @@
             });
     };
 
-    // Fungsi Tambah Pilihan Baju
     function addItemRow() {
         itemCounter++;
         const container = document.getElementById('itemsContainer');
@@ -145,7 +149,6 @@
         container.appendChild(itemDiv);
     }
 
-    // Kemaskini senarai saiz & baki stok secara dinamik berdasarkan Kategori yang dipilih
     function updateSizeOptions(rowId) {
         const row = document.getElementById(`item_row_${rowId}`);
         const kat = row.querySelector('.item-kategori').value;
@@ -169,7 +172,7 @@
                 option.textContent = `${saiz} (Stok: ${stockQty})`;
             } else {
                 option.textContent = `${saiz} (Habis Stok)`;
-                option.disabled = true; // Tidak boleh dipilih jika stok 0
+                option.disabled = true;
             }
 
             saizSelect.appendChild(option);
@@ -181,13 +184,12 @@
         if(row) row.remove();
     }
 
-    // Submit Tempahan
     document.getElementById('orderForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
         const btn = document.getElementById('btnSubmit');
         btn.disabled = true;
-        btn.innerText = "Memproses Tempahan...";
+        btn.innerText = "Memproses & Upload Resit...";
 
         const rows = document.querySelectorAll('.item-row');
         let itemsData = [];
@@ -198,23 +200,38 @@
             const saiz = row.querySelector('.item-saiz').value;
             const qty = row.querySelector('.item-qty').value;
 
-            itemsData.push({
-                kategori: kat,
-                saiz: saiz,
-                kuantiti: qty
-            });
-
+            itemsData.push({ kategori: kat, saiz: saiz, kuantiti: qty });
             waItemList += `*Baju #${index + 1}:* ${kat} | Saiz ${saiz} | ${qty} helai%0A`;
         });
 
-        const formData = {
-            nama: document.getElementById('nama').value,
-            telefon: document.getElementById('telefon').value,
-            alamat: document.getElementById('alamat').value,
-            items: itemsData
-        };
+        const fileInput = document.getElementById('resit');
+        const file = fileInput.files[0];
 
-        // Hantar Data ke Apps Script
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const base64Data = evt.target.result.split(',')[1];
+                
+                const formData = {
+                    nama: document.getElementById('nama').value,
+                    telefon: document.getElementById('telefon').value,
+                    alamat: document.getElementById('alamat').value,
+                    items: itemsData,
+                    resitBase64: base64Data,
+                    resitMimeType: file.type
+                };
+
+                sendData(formData, waItemList, btn);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert("Sila pilih fail resit.");
+            btn.disabled = false;
+            btn.innerText = "Hantar & Terus Ke WhatsApp";
+        }
+    });
+
+    function sendData(formData, waItemList, btn) {
         fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             body: JSON.stringify(formData)
@@ -227,7 +244,7 @@
                     `*No Tel:* ${encodeURIComponent(formData.telefon)}%0A` +
                     `*Alamat:* ${encodeURIComponent(formData.alamat)}%0A%0A` +
                     `*SENARAI TEMPAHAN:*%0A${waItemList}%0A` +
-                    `Saya dah isi borang tempahan. Nak buat pengesahan bayaran. Terima kasih!`;
+                    `Saya dah muat naik resit pembayaran dalam borang. Terima kasih!`;
 
                 window.location.href = `https://wa.me/${SELLER_WHATSAPP}?text=${message}`;
             } else {
@@ -241,7 +258,7 @@
             btn.disabled = false;
             btn.innerText = "Hantar & Terus Ke WhatsApp";
         });
-    });
+    }
 </script>
 
 </body>
