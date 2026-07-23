@@ -3,131 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borang Tempahan Baju edisi 2OWL916 - Design Terbaru</title>
+    <title>Borang Tempahan Baju OWL916</title>
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
+        body { background-color: #f4f7f6; color: #333; display: flex; justify-content: center; padding: 20px; }
+        .container { background-color: #ffffff; width: 100%; max-width: 650px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #25d366; padding-bottom: 15px; }
+        .header h2 { color: #1e3a8a; font-size: 22px; margin-bottom: 5px; }
+        .badge { background-color: #ef4444; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 8px; }
+        
+        .section-title { font-size: 14px; font-weight: bold; color: #1e3a8a; margin: 15px 0 10px 0; border-left: 4px solid #25d366; padding-left: 8px; }
+        
+        /* GALERI GAMBAR */
+        .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        .image-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fafafa; text-align: center; }
+        .image-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+        .image-card span { display: block; padding: 5px; font-size: 11px; font-weight: 600; color: #4b5563; background-color: #f3f4f6; }
+        .chart-size-card { grid-column: span 2; }
+        .chart-size-card img { height: auto; max-height: 300px; object-fit: contain; }
 
-        body {
-            background-color: #f4f7f6;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+        /* PAPARAN STOK LIVE */
+        .stock-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px; margin-bottom: 20px; font-size: 13px; }
 
-        .container {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 600px;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+        /* KOTAK ITEM BAJU */
+        .item-row { background: #f9fafb; border: 1px solid #e5e7eb; padding: 15px; border-radius: 8px; margin-bottom: 12px; position: relative; }
+        .btn-remove { position: absolute; top: 10px; right: 10px; background: #ef4444; color: white; border: none; padding: 3px 8px; border-radius: 4px; font-size: 12px; cursor: pointer; }
+        
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #374151; }
+        input, select, textarea { width: 100%; padding: 9px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; }
+        .form-row { display: flex; gap: 10px; }
+        .form-row .form-group { flex: 1; }
 
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 15px;
-        }
+        .btn-add { background-color: #3b82f6; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 20px; font-size: 14px; }
+        .btn-add:hover { background-color: #2563eb; }
 
-        .header h2 {
-            color: #1e3a8a;
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .badge {
-            background-color: #ef4444;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #374151;
-        }
-
-        input[type="text"],
-        input[type="tel"],
-        input[type="number"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-
-        input[type="text"]:focus,
-        input[type="tel"]:focus,
-        input[type="number"]:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #3b82f6;
-            outline: none;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        .note {
-            background-color: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #1e40af;
-            margin-bottom: 20px;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background-color: #25d366;
-            color: #ffffff;
-            border: none;
-            padding: 14px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-submit:hover {
-            background-color: #1eb857;
-        }
+        .btn-submit { width: 100%; background-color: #25d366; color: #ffffff; border: none; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-submit:hover { background-color: #1eb857; }
+        .btn-submit:disabled { background-color: #9ca3af; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -139,82 +52,197 @@
         <p>Kod Produk: <strong>OWL916</strong></p>
     </div>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
-        
-        <!-- Maklumat Pelanggan -->
+    <!-- GALERI GAMBAR -->
+    <div class="section-title">📸 GALERI & REKA BENTUK BAJU</div>
+    <div class="image-grid">
+        <div class="image-card"><img src="baju-depan.jpg" alt="Pandangan Depan"><span>Pandangan Depan</span></div>
+        <div class="image-card"><img src="baju-belakang.jpg" alt="Pandangan Belakang"><span>Pandangan Belakang</span></div>
+        <div class="image-card"><img src="baju-lelaki.jpg" alt="Koleksi Lelaki"><span>Koleksi Lelaki</span></div>
+        <div class="image-card"><img src="baju-muslimah.jpg" alt="Koleksi Muslimah"><span>Koleksi Muslimah</span></div>
+        <div class="image-card chart-size-card"><img src="chart-size.jpg" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki & Muslimah)</span></div>
+    </div>
+
+    <!-- NOTIS BAKI STOK -->
+    <div class="stock-box">
+        <strong>📦 Status Stok Semasa:</strong>
+        <p id="liveStockList" style="margin-top:5px; color:#1e40af;">Sedang memuat turun baki stok...</p>
+    </div>
+
+    <!-- BORANG TEMPAHAN -->
+    <form id="orderForm">
+        <div class="section-title">👤 MAKLUMAT PELANGGAN</div>
         <div class="form-group">
             <label for="nama">Nama Penuh</label>
-            <input type="text" id="nama" name="nama" placeholder="Masukkan nama penuh" required>
+            <input type="text" id="nama" required placeholder="Masukkan nama anda">
         </div>
 
         <div class="form-group">
             <label for="telefon">Nombor Telefon (WhatsApp)</label>
-            <input type="tel" id="telefon" name="telefon" placeholder="Cth: 0123456789" required>
+            <input type="tel" id="telefon" required placeholder="Cth: 0123456789">
         </div>
 
         <div class="form-group">
             <label for="alamat">Alamat Penghantaran</label>
-            <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+            <textarea id="alamat" rows="2" required placeholder="Masukkan alamat lengkap"></textarea>
         </div>
 
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e5e7eb;">
-
-        <!-- Detail Tempahan Baju -->
-        <div class="form-row">
-            <div class="form-group">
-                <label for="jenis_lengan">Jenis Lengan</label>
-                <select id="jenis_lengan" name="jenis_lengan" required>
-                    <option value="">-- Pilih --</option>
-                    <option value="Pendek">Lengan Pendek</option>
-                    <option value="Panjang">Lengan Panjang</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="saiz">Saiz Baju</label>
-                <select id="saiz" name="saiz" required>
-                    <option value="">-- Pilih Saiz --</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="2XL">2XL</option>
-                    <option value="3XL">3XL</option>
-                </select>
-            </div>
+        <div class="section-title">👕 PILIHAN BAJU</div>
+        <div id="itemsContainer">
+            <!-- Item Baju Didefinisikan Oleh JavaScript -->
         </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label for="warna">Pilihan Warna Design OWL916</label>
-                <select id="warna" name="warna" required>
-                    <option value="">-- Pilih Warna --</option>
-                    <option value="Hitam">Hitam (Edisi Khas)</option>
-                    <option value="Putih">Putih</option>
-                    <option value="Navy Blue">Navy Blue</option>
-                </select>
-            </div>
+        <button type="button" class="btn-add" onclick="addItemRow()">+ Tambah Baju Lain (Kategori / Saiz Berbeza)</button>
 
-            <div class="form-group">
-                <label for="kuantiti">Kuantiti (Helaian)</label>
-                <input type="number" id="kuantiti" name="kuantiti" min="1" value="1" required>
-            </div>
-        </div>
-
-        <!-- Bukti Pembayaran -->
-        <div class="form-group">
-            <label for="resit">Muat Naik Bukti Pembayaran (Resit)</label>
-            <input type="file" id="resit" name="resit" accept="image/*,.pdf" required>
-        </div>
-
-        <div class="note">
-            📌 <strong>Peringatan:</strong> Sila pastikan ukuran saiz dipilih dengan betul berpandukan jadual saiz. Tempahan akan diproses dalam tempoh 1-3 hari bekerja selepas bayaran disahkan.
-        </div>
-
-        <button type="submit" class="btn-submit">Hantar Tempahan Now</button>
+        <button type="submit" id="btnSubmit" class="btn-submit">Hantar & Terus Ke WhatsApp</button>
     </form>
 </div>
+
+<script>
+    const GOOGLE_SCRIPT_URL = "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI";
+    const SELLER_WHATSAPP = "60123456789"; // Tukar nombor WhatsApp anda
+
+    let availableStocks = {};
+    let itemCounter = 0;
+
+    // Load Stok semasa laman dibuka
+    window.onload = function() {
+        addItemRow(); // Tambah item pertama secara automatik
+        fetch(GOOGLE_SCRIPT_URL)
+            .then(res => res.json())
+            .then(data => {
+                availableStocks = data;
+                let stockText = [];
+                for (let key in data) {
+                    stockText.push(`<b>${key}:</b> ${data[key]}`);
+                }
+                document.getElementById('liveStockList').innerHTML = stockText.join(' | ');
+            })
+            .catch(err => {
+                document.getElementById('liveStockList').innerHTML = "Gagal membaca data stok.";
+            });
+    };
+
+    // Fungsi Tambah Pilihan Baju
+    function addItemRow() {
+        itemCounter++;
+        const container = document.getElementById('itemsContainer');
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item-row';
+        itemDiv.id = `item_row_${itemCounter}`;
+
+        itemDiv.innerHTML = `
+            ${itemCounter > 1 ? `<button type="button" class="btn-remove" onclick="removeItemRow(${itemCounter})">Padam</button>` : ''}
+            <div style="font-weight:bold; font-size:12px; margin-bottom:8px; color:#1e3a8a;">Baju #${itemCounter}</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kategori Baju</label>
+                    <select class="item-kategori" required>
+                        <option value="">-- Pilih --</option>
+                        <option value="Lelaki">Lelaki</option>
+                        <option value="Muslimah">Muslimah</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Saiz</label>
+                    <select class="item-saiz" required>
+                        <option value="">-- Pilih Saiz --</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="2XL">2XL</option>
+                        <option value="3XL">3XL</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Warna Design</label>
+                    <select class="item-warna" required>
+                        <option value="">-- Pilih Warna --</option>
+                        <option value="Hitam">Hitam</option>
+                        <option value="Putih">Putih</option>
+                        <option value="Navy Blue">Navy Blue</option>
+                    </select>
+                </div>
+                <div class="form-group" style="max-width:100px;">
+                    <label>Kuantiti</label>
+                    <input type="number" class="item-qty" min="1" value="1" required>
+                </div>
+            </div>
+        `;
+        container.appendChild(itemDiv);
+    }
+
+    function removeItemRow(id) {
+        const row = document.getElementById(`item_row_${id}`);
+        if(row) row.remove();
+    }
+
+    // Submit Tempahan
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const btn = document.getElementById('btnSubmit');
+        btn.disabled = true;
+        btn.innerText = "Memproses Tempahan...";
+
+        const rows = document.querySelectorAll('.item-row');
+        let itemsData = [];
+        let waItemList = "";
+
+        rows.forEach((row, index) => {
+            const kat = row.querySelector('.item-kategori').value;
+            const saiz = row.querySelector('.item-saiz').value;
+            const warna = row.querySelector('.item-warna').value;
+            const qty = row.querySelector('.item-qty').value;
+
+            itemsData.push({
+                kategori: kat,
+                saiz: saiz,
+                warna: warna,
+                kuantiti: qty
+            });
+
+            waItemList += `*Baju #${index + 1}:* ${kat} | Saiz ${saiz} | ${warna} | ${qty} helai%0A`;
+        });
+
+        const formData = {
+            nama: document.getElementById('nama').value,
+            telefon: document.getElementById('telefon').value,
+            alamat: document.getElementById('alamat').value,
+            items: itemsData
+        };
+
+        // Hantar Data ke Apps Script
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.result === "success") {
+                const message = `*TEMPAHAN BAJU TERBARU (OWL916)*%0A%0A` +
+                    `*Nama:* ${encodeURIComponent(formData.nama)}%0A` +
+                    `*No Tel:* ${encodeURIComponent(formData.telefon)}%0A` +
+                    `*Alamat:* ${encodeURIComponent(formData.alamat)}%0A%0A` +
+                    `*SENARAI TEMPAHAN:*%0A${waItemList}%0A` +
+                    `Saya dah isi borang tempahan. Nak buat pengesahan bayaran. Terima kasih!`;
+
+                window.location.href = `https://wa.me/${SELLER_WHATSAPP}?text=${message}`;
+            } else {
+                alert(res.message || "Ralat semasa menolak stok!");
+                btn.disabled = false;
+                btn.innerText = "Hantar & Terus Ke WhatsApp";
+            }
+        })
+        .catch(err => {
+            alert("Ralat sambungan. Sila cuba lagi!");
+            btn.disabled = false;
+            btn.innerText = "Hantar & Terus Ke WhatsApp";
+        });
+    });
+</script>
 
 </body>
 </html>
