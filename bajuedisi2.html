@@ -5,25 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borang Tempahan Baju OWL916</title>
     <style>
-        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; font-family: Arial, sans-serif;">
-  <h3 style="margin-top: 0; color: #333; text-align: center;">🏷️ Senarai Harga Baju</h3>
-  
-  <p style="margin-bottom: 5px;"><strong>🚚 Harga Termasuk Pos (Semenanjung):</strong></p>
-  <ul style="margin-top: 5px; padding-left: 20px;">
-    <li>👨 <strong>Baju Lelaki:</strong> RM 40</li>
-    <li>🧕 <strong>Baju Muslimah:</strong> RM 45</li>
-    <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
-  </ul>
-
-  <p style="margin-bottom: 5px;"><strong>🏬 Harga Walk-In / Ambil Sendiri:</strong></p>
-  <ul style="margin-top: 5px; padding-left: 20px;">
-    <li>👨 <strong>Baju Lelaki:</strong> RM 35</li>
-    <li>🧕 <strong>Baju Muslimah:</strong> RM 40</li>
-    <li>👶 <strong>Baju Cilik:</strong> RM 30</li>
-  </ul>
-</div>
-
-              
         * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
         body { background-color: #f4f7f6; color: #333; display: flex; justify-content: center; padding: 20px; }
         .container { background-color: #ffffff; width: 100%; max-width: 650px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -31,6 +12,11 @@
         .header h2 { color: #1e3a8a; font-size: 22px; margin-bottom: 5px; }
         .badge { background-color: #ef4444; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 8px; }
         
+        /* KOTAK HARGA */
+        .price-box { background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 20px; font-size: 13px; line-height: 1.5; }
+        .price-box h3 { margin-top: 0; color: #1e3a8a; text-align: center; margin-bottom: 10px; font-size: 16px; }
+        .price-box ul { padding-left: 20px; margin-top: 4px; margin-bottom: 10px; }
+
         .section-title { font-size: 14px; font-weight: bold; color: #1e3a8a; margin: 15px 0 10px 0; border-left: 4px solid #25d366; padding-left: 8px; }
         
         /* GALERI GAMBAR */
@@ -68,6 +54,25 @@
         <p>Kod Produk: <strong>OWL916</strong></p>
     </div>
 
+    <!-- KOTAK SENARAI HARGA -->
+    <div class="price-box">
+        <h3>🏷️ Senarai Harga Baju</h3>
+        
+        <p><strong>🚚 Harga Termasuk Pos (Semenanjung):</strong></p>
+        <ul>
+            <li>👨 <strong>Baju Lelaki:</strong> RM 40</li>
+            <li>🧕 <strong>Baju Muslimah:</strong> RM 45</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
+        </ul>
+
+        <p><strong>🏬 Harga Walk-In / Ambil Sendiri:</strong></p>
+        <ul>
+            <li>👨 <strong>Baju Lelaki:</strong> RM 35</li>
+            <li>🧕 <strong>Baju Muslimah:</strong> RM 40</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 30</li>
+        </ul>
+    </div>
+
     <!-- GALERI GAMBAR -->
     <div class="section-title">📸 GALERI & REKA BENTUK BAJU</div>
     <div class="image-grid">
@@ -75,7 +80,7 @@
         <div class="image-card"><img src="baju-belakang.jpg" alt="Pandangan Belakang"><span>Pandangan Belakang</span></div>
         <div class="image-card"><img src="baju-lelaki.jpg" alt="Koleksi Lelaki"><span>Koleksi Lelaki</span></div>
         <div class="image-card"><img src="baju-muslimah.jpg" alt="Koleksi Muslimah"><span>Koleksi Muslimah</span></div>
-        <div class="image-card chart-size-card"><img src="chart-size.jpg" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki & Muslimah)</span></div>
+        <div class="image-card chart-size-card"><img src="chart-size.jpg" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki, Muslimah & Cilik)</span></div>
     </div>
 
     <!-- BORANG TEMPAHAN -->
@@ -119,7 +124,13 @@
 
     let availableStocks = {};
     let itemCounter = 0;
-    const sizesList = ["S", "M", "L", "XL", "2XL", "3XL"];
+
+    // Mapping saiz bagi setiap kategori (termasuk 4XL & Cilik)
+    const sizesMap = {
+        "Lelaki": ["S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+        "Muslimah": ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+        "Cilik": ["M", "L"]
+    };
 
     window.onload = function() {
         fetch(GOOGLE_SCRIPT_URL)
@@ -151,6 +162,7 @@
                         <option value="">-- Pilih --</option>
                         <option value="Lelaki">Lelaki</option>
                         <option value="Muslimah">Muslimah</option>
+                        <option value="Cilik">Cilik</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -180,7 +192,9 @@
             return;
         }
 
-        sizesList.forEach(saiz => {
+        const currentSizes = sizesMap[kat] || [];
+
+        currentSizes.forEach(saiz => {
             const itemKey = `${kat}-${saiz}`;
             const stockQty = availableStocks[itemKey] !== undefined ? parseInt(availableStocks[itemKey]) : 0;
             
@@ -203,7 +217,6 @@
         if(row) row.remove();
     }
 
-    // FUNGSI AUTO-COMPRESS GAMBAR SEBELUM UPLOAD
     function compressAndGetBase64(file, callback) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -226,7 +239,6 @@
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
 
-                // Tukar ke JPEG kualiti 0.6 (sangat ringan)
                 const base64Str = canvas.toDataURL('image/jpeg', 0.6).split(',')[1];
                 callback(base64Str);
             };
