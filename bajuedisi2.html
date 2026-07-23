@@ -22,9 +22,6 @@
         .chart-size-card { grid-column: span 2; }
         .chart-size-card img { height: auto; max-height: 300px; object-fit: contain; }
 
-        /* PAPARAN STOK LIVE */
-        .stock-box { background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px; margin-bottom: 20px; font-size: 13px; }
-
         /* KOTAK ITEM BAJU */
         .item-row { background: #f9fafb; border: 1px solid #e5e7eb; padding: 15px; border-radius: 8px; margin-bottom: 12px; position: relative; }
         .btn-remove { position: absolute; top: 10px; right: 10px; background: #ef4444; color: white; border: none; padding: 3px 8px; border-radius: 4px; font-size: 12px; cursor: pointer; }
@@ -62,12 +59,6 @@
         <div class="image-card chart-size-card"><img src="chart-size.jpg" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki & Muslimah)</span></div>
     </div>
 
-    <!-- NOTIS BAKI STOK -->
-    <div class="stock-box">
-        <strong>📦 Status Stok Semasa:</strong>
-        <p id="liveStockList" style="margin-top:5px; color:#1e40af;">Sedang memuat turun baki stok...</p>
-    </div>
-
     <!-- BORANG TEMPAHAN -->
     <form id="orderForm">
         <div class="section-title">👤 MAKLUMAT PELANGGAN</div>
@@ -98,30 +89,24 @@
 </div>
 
 <script>
-    // URL Google Apps Script yang telah dikemaskini
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_RgSqk0y90cbv_rUqv2nSIBhrKUOxm0LwBRwn4JIHXGmrhpDl3rM6C6Wgsjx1XDR1gA/exec";
-    
-    // PERHATIAN: Tukar no WhatsApp penjual di bawah (format: 60123456789)
-    const SELLER_WHATSAPP = "60123456789";
+    const SELLER_WHATSAPP = "60123456789"; // Tukar nombor WhatsApp anda
 
     let availableStocks = {};
     let itemCounter = 0;
+    const sizesList = ["S", "M", "L", "XL", "2XL", "3XL"];
 
-    // Load Stok semasa laman dibuka
+    // Muat turun stok dari Google Sheets semasa laman dibuka
     window.onload = function() {
-        addItemRow(); // Tambah item pertama secara automatik
         fetch(GOOGLE_SCRIPT_URL)
             .then(res => res.json())
             .then(data => {
                 availableStocks = data;
-                let stockText = [];
-                for (let key in data) {
-                    stockText.push(`<b>${key}:</b> ${data[key]}`);
-                }
-                document.getElementById('liveStockList').innerHTML = stockText.join(' | ');
+                addItemRow(); // Tambah item pertama selepas stok berjaya dimuat turun
             })
             .catch(err => {
-                document.getElementById('liveStockList').innerHTML = "Gagal membaca data stok.";
+                alert("Gagal membaca data stok dari Google Sheet.");
+                addItemRow();
             });
     };
 
@@ -139,7 +124,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Kategori Baju</label>
-                    <select class="item-kategori" required>
+                    <select class="item-kategori" onchange="updateSizeOptions(${itemCounter})" required>
                         <option value="">-- Pilih --</option>
                         <option value="Lelaki">Lelaki</option>
                         <option value="Muslimah">Muslimah</option>
@@ -147,23 +132,48 @@
                 </div>
                 <div class="form-group">
                     <label>Saiz</label>
-                    <select class="item-saiz" required>
-                        <option value="">-- Pilih Saiz --</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="2XL">2XL</option>
-                        <option value="3XL">3XL</option>
+                    <select class="item-saiz" id="saiz_${itemCounter}" required>
+                        <option value="">-- Pilih Kategori Dulu --</option>
                     </select>
                 </div>
-                <div class="form-group" style="max-width:100px;">
+                <div class="form-group" style="max-width:90px;">
                     <label>Kuantiti</label>
                     <input type="number" class="item-qty" min="1" value="1" required>
                 </div>
             </div>
         `;
         container.appendChild(itemDiv);
+    }
+
+    // Kemaskini senarai saiz & baki stok secara dinamik berdasarkan Kategori yang dipilih
+    function updateSizeOptions(rowId) {
+        const row = document.getElementById(`item_row_${rowId}`);
+        const kat = row.querySelector('.item-kategori').value;
+        const saizSelect = row.querySelector('.item-saiz');
+
+        saizSelect.innerHTML = '<option value="">-- Pilih Saiz --</option>';
+
+        if (!kat) {
+            saizSelect.innerHTML = '<option value="">-- Pilih Kategori Dulu --</option>';
+            return;
+        }
+
+        sizesList.forEach(saiz => {
+            const itemKey = `${kat}-${saiz}`;
+            const stockQty = availableStocks[itemKey] !== undefined ? parseInt(availableStocks[itemKey]) : 0;
+            
+            const option = document.createElement('option');
+            option.value = saiz;
+
+            if (stockQty > 0) {
+                option.textContent = `${saiz} (Stok: ${stockQty})`;
+            } else {
+                option.textContent = `${saiz} (Habis Stok)`;
+                option.disabled = true; // Tidak boleh dipilih jika stok 0
+            }
+
+            saizSelect.appendChild(option);
+        });
     }
 
     function removeItemRow(id) {
