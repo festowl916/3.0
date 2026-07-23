@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borang Tempahan Baju OWL916 - Design Terbaru</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 15px;
+        }
+
+        .header h2 {
+            color: #1e3a8a;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .badge {
+            background-color: #ef4444;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .note {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1eb857;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <span class="badge">DESIGN TERBARU</span>
+        <h2>BORANG TEMPAHAN BAJU</h2>
+        <p>Kod Produk: <strong>OWL916</strong></p>
+    </div>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+        
+        <!-- Maklumat Pelanggan -->
+        <div class="form-group">
+            <label for="nama">Nama Penuh</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama penuh" required>
+        </div>
+
+        <div class="form-group">
+            <label for="telefon">Nombor Telefon (WhatsApp)</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="Cth: 0123456789" required>
+        </div>
+
+        <div class="form-group">
+            <label for="alamat">Alamat Penghantaran</label>
+            <textarea id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+        </div>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e5e7eb;">
+
+        <!-- Detail Tempahan Baju -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="jenis_lengan">Jenis Lengan</label>
+                <select id="jenis_lengan" name="jenis_lengan" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Pendek">Lengan Pendek</option>
+                    <option value="Panjang">Lengan Panjang</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="saiz">Saiz Baju</label>
+                <select id="saiz" name="saiz" required>
+                    <option value="">-- Pilih Saiz --</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="2XL">2XL</option>
+                    <option value="3XL">3XL</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="warna">Pilihan Warna Design OWL916</label>
+                <select id="warna" name="warna" required>
+                    <option value="">-- Pilih Warna --</option>
+                    <option value="Hitam">Hitam (Edisi Khas)</option>
+                    <option value="Putih">Putih</option>
+                    <option value="Navy Blue">Navy Blue</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="kuantiti">Kuantiti (Helaian)</label>
+                <input type="number" id="kuantiti" name="kuantiti" min="1" value="1" required>
+            </div>
+        </div>
+
+        <!-- Bukti Pembayaran -->
+        <div class="form-group">
+            <label for="resit">Muat Naik Bukti Pembayaran (Resit)</label>
+            <input type="file" id="resit" name="resit" accept="image/*,.pdf" required>
+        </div>
+
+        <div class="note">
+            📌 <strong>Peringatan:</strong> Sila pastikan ukuran saiz dipilih dengan betul berpandukan jadual saiz. Tempahan akan diproses dalam tempoh 1-3 hari bekerja selepas bayaran disahkan.
+        </div>
+
+        <button type="submit" class="btn-submit">Hantar Tempahan Now</button>
+    </form>
+</div>
+
+</body>
+</html>
