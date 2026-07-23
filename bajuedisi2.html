@@ -98,8 +98,11 @@
 </div>
 
 <script>
-    const GOOGLE_SCRIPT_URL = "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI";
-    const SELLER_WHATSAPP = "60123456789"; // Tukar nombor WhatsApp anda
+    // URL Google Apps Script yang telah dikemaskini
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz_RgSqk0y90cbv_rUqv2nSIBhrKUOxm0LwBRwn4JIHXGmrhpDl3rM6C6Wgsjx1XDR1gA/exec";
+    
+    // PERHATIAN: Tukar no WhatsApp penjual di bawah (format: 60123456789)
+    const SELLER_WHATSAPP = "60123456789";
 
     let availableStocks = {};
     let itemCounter = 0;
@@ -154,17 +157,6 @@
                         <option value="3XL">3XL</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Warna Design</label>
-                    <select class="item-warna" required>
-                        <option value="">-- Pilih Warna --</option>
-                        <option value="Hitam">Hitam</option>
-                        <option value="Putih">Putih</option>
-                        <option value="Navy Blue">Navy Blue</option>
-                    </select>
-                </div>
                 <div class="form-group" style="max-width:100px;">
                     <label>Kuantiti</label>
                     <input type="number" class="item-qty" min="1" value="1" required>
@@ -194,17 +186,15 @@
         rows.forEach((row, index) => {
             const kat = row.querySelector('.item-kategori').value;
             const saiz = row.querySelector('.item-saiz').value;
-            const warna = row.querySelector('.item-warna').value;
             const qty = row.querySelector('.item-qty').value;
 
             itemsData.push({
                 kategori: kat,
                 saiz: saiz,
-                warna: warna,
                 kuantiti: qty
             });
 
-            waItemList += `*Baju #${index + 1}:* ${kat} | Saiz ${saiz} | ${warna} | ${qty} helai%0A`;
+            waItemList += `*Baju #${index + 1}:* ${kat} | Saiz ${saiz} | ${qty} helai%0A`;
         });
 
         const formData = {
