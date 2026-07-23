@@ -68,14 +68,14 @@
         <ul>
             <li>👨 <strong>Baju Lelaki:</strong> RM 40</li>
             <li>🧕 <strong>Baju Muslimah:</strong> RM 45</li>
-            <li>👶 <strong>Baju Cilik:</strong> RM 40</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
         </ul>
 
         <p><strong>🏬 Harga Walk-In / Ambil Sendiri:</strong></p>
         <ul>
             <li>👨 <strong>Baju Lelaki:</strong> RM 35</li>
             <li>🧕 <strong>Baju Muslimah:</strong> RM 40</li>
-            <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 30</li>
         </ul>
     </div>
 
@@ -98,6 +98,7 @@
     <!-- BORANG TEMPAHAN -->
     <form id="orderForm">
         <div class="section-title">👤 MAKLUMAT PELANGGAN</div>
+        
         <div class="form-group">
             <label for="nama">Nama Penuh</label>
             <input type="text" id="nama" required placeholder="Masukkan nama anda">
@@ -108,9 +109,19 @@
             <input type="tel" id="telefon" required placeholder="Cth: 0123456789">
         </div>
 
+        <!-- KAEDAH PENGHANTARAN -->
         <div class="form-group">
-            <label for="alamat">Alamat Penghantaran</label>
-            <textarea id="alamat" rows="2" required placeholder="Masukkan alamat lengkap"></textarea>
+            <label for="jenisPenghantaran">Pilihan Penghantaran</label>
+            <select id="jenisPenghantaran" onchange="toggleAlamatOption()" required>
+                <option value="Pos">🚚 Pos (Semenanjung Malaysia)</option>
+                <option value="Walk-In">🏬 Walk-In / Ambil Sendiri</option>
+            </select>
+        </div>
+
+        <!-- ALAMAT ATAU NOTIS WALK IN -->
+        <div class="form-group" id="alamatContainer">
+            <label id="labelAlamat" for="alamat">Alamat Penghantaran Lengkap</label>
+            <textarea id="alamat" rows="2" required placeholder="Masukkan alamat lengkap termasuk poskod"></textarea>
         </div>
 
         <div class="section-title">👕 PILIHAN BAJU</div>
@@ -153,6 +164,25 @@
 
     function closeZoom() {
         document.getElementById("imageModal").style.display = "none";
+    }
+
+    /* FUNGSI TOGGLE PILIHAN ALAMAT / WALK-IN */
+    function toggleAlamatOption() {
+        const jenis = document.getElementById("jenisPenghantaran").value;
+        const labelAlamat = document.getElementById("labelAlamat");
+        const inputAlamat = document.getElementById("alamat");
+
+        if (jenis === "Walk-In") {
+            labelAlamat.textContent = "Nota / Lokasi Ambil Sendiri (Walk-In)";
+            inputAlamat.value = "Walk-In / Ambil Sendiri di Kedai";
+            inputAlamat.placeholder = "Cth: Ambil di Kedai / Lokasi Serahan";
+        } else {
+            labelAlamat.textContent = "Alamat Penghantaran Lengkap";
+            if (inputAlamat.value === "Walk-In / Ambil Sendiri di Kedai") {
+                inputAlamat.value = "";
+            }
+            inputAlamat.placeholder = "Masukkan alamat lengkap termasuk poskod";
+        }
     }
 
     window.onload = function() {
@@ -288,6 +318,8 @@
             waItemList += `*Baju #${index + 1}:* ${kat} | Saiz ${saiz} | ${qty} helai%0A`;
         });
 
+        const jenisPenghantaran = document.getElementById('jenisPenghantaran').value;
+
         const fileInput = document.getElementById('resit');
         const file = fileInput.files[0];
 
@@ -297,6 +329,7 @@
                 const formData = {
                     nama: document.getElementById('nama').value,
                     telefon: document.getElementById('telefon').value,
+                    jenisPenghantaran: jenisPenghantaran,
                     alamat: document.getElementById('alamat').value,
                     items: itemsData,
                     resitBase64: base64Data,
@@ -323,7 +356,8 @@
                 const message = `*TEMPAHAN BAJU TERBARU (OWL916)*%0A%0A` +
                     `*Nama:* ${encodeURIComponent(formData.nama)}%0A` +
                     `*No Tel:* ${encodeURIComponent(formData.telefon)}%0A` +
-                    `*Alamat:* ${encodeURIComponent(formData.alamat)}%0A%0A` +
+                    `*Jenis Penghantaran:* ${encodeURIComponent(formData.jenisPenghantaran)}%0A` +
+                    `*Alamat/Nota:* ${encodeURIComponent(formData.alamat)}%0A%0A` +
                     `*SENARAI TEMPAHAN:*%0A${waItemList}%0A` +
                     `Saya dah muat naik resit pembayaran dalam borang. Terima kasih!`;
 
