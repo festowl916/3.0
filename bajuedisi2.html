@@ -60,7 +60,7 @@
         <p>Kod Produk: <strong>OWL916</strong></p>
     </div>
 
-    <!-- KOTAK SENARAI HARGA (BARU) -->
+    <!-- KOTAK SENARAI HARGA LELONG -->
     <div class="price-box">
         <h3>🏷️ Senarai Harga Baju Lelong</h3>
         
@@ -99,22 +99,11 @@
     <!-- GALERI GAMBAR -->
     <div class="section-title">📸 GALERI & REKA BENTUK BAJU <small style="font-weight:normal; font-size:11px; color:#666;">(Klik gambar untuk besarkan)</small></div>
     <div class="image-grid">
-        <div class="image-card" onclick="zoomImage('baju-lelaki.jpg')">
-            <img src="baju-lelaki.jpg" alt="Koleksi Lelaki">
-            <span>👨 Koleksi Lelaki 🔍</span>
-        </div>
-        <div class="image-card" onclick="zoomImage('baju-muslimah.jpg')">
-            <img src="baju-muslimah.jpg" alt="Koleksi Muslimah">
-            <span>🧕 Koleksi Muslimah 🔍</span>
-        </div>
-        <div class="image-card" onclick="zoomImage('baju-cilik.jpg')">
-            <img src="baju-cilik.jpg" alt="Koleksi Cilik">
-            <span>👶 Koleksi Cilik 🔍</span>
-        </div>
-        <div class="image-card chart-size-card" onclick="zoomImage('chart-size.webp')">
-            <img src="chart-size.webp" alt="Carta Saiz">
-            <span>📏 Carta Saiz (Lelaki, Muslimah & Cilik) 🔍</span>
-        </div>
+        <div class="image-card" onclick="zoomImage('baju-depan.webp')"><img src="baju-depan.webp" alt="Pandangan Depan"><span>Pandangan Depan 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-belakang.webp')"><img src="baju-belakang.webp" alt="Pandangan Belakang"><span>Pandangan Belakang 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-lelaki.webp')"><img src="baju-lelaki.webp" alt="Koleksi Lelaki"><span>Koleksi Lelaki 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-muslimah.webp')"><img src="baju-muslimah.webp" alt="Koleksi Muslimah"><span>Koleksi Muslimah 🔍</span></div>
+        <div class="image-card chart-size-card" onclick="zoomImage('chart-size.webp')"><img src="chart-size.webp" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki, Muslimah & Cilik) 🔍</span></div>
     </div>
 
     <!-- POPUP MODAL UNTUK GAMBAR BESAR -->
@@ -179,7 +168,7 @@
 </div>
 
 <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyVGBqW_ac46XY-TTBvkwOJUcLaFY6W3NvbGBIw5alKmLa9NBTf_AXluF-SDeWg-LS/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwNWjbVhAyExI0j9hrRB-_0Tg-GII7GS28t-GwQbNydG_3kMkFcy466dmMVl77hvbP/exec";
     const SELLER_WHATSAPP = "60129452631"; 
 
     let availableStocks = {};
@@ -211,11 +200,13 @@
 
         if (jenis === "Walk-In") {
             labelAlamat.textContent = "Nota / Lokasi Ambil Sendiri (Walk-In)";
-            inputAlamat.value = ""; 
-            inputAlamat.placeholder = "Cth: Ambil di Kedai / Tapak Event Tersenarai";
+            inputAlamat.value = "Walk-In / Ambil Sendiri di Kedai";
+            inputAlamat.placeholder = "Cth: Ambil di Kedai / Lokasi Serahan";
         } else {
             labelAlamat.textContent = "Alamat Penghantaran Lengkap";
-            inputAlamat.value = "";
+            if (inputAlamat.value === "Walk-In / Ambil Sendiri di Kedai") {
+                inputAlamat.value = "";
+            }
             inputAlamat.placeholder = "Masukkan alamat lengkap termasuk poskod";
         }
     }
