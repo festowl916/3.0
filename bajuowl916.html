@@ -205,23 +205,24 @@
     }
 
     /* FUNGSI TOGGLE PILIHAN ALAMAT / WALK-IN */
-    function toggleAlamatOption() {
-        const jenis = document.getElementById("jenisPenghantaran").value;
-        const labelAlamat = document.getElementById("labelAlamat");
-        const inputAlamat = document.getElementById("alamat");
+function toggleAlamatOption() {
+    const jenis = document.getElementById("jenisPenghantaran").value;
+    const labelAlamat = document.getElementById("labelAlamat");
+    const inputAlamat = document.getElementById("alamat");
 
-        if (jenis === "Walk-In") {
-            labelAlamat.textContent = "Nota / Lokasi Ambil Sendiri (Walk-In)";
-            inputAlamat.value = "Walk-In Kedai / Tapak Event Tersenarai";
-            inputAlamat.placeholder = "Cth: Ambil di Kedai / Lokasi Serahan";
-        } else {
-            labelAlamat.textContent = "Alamat Penghantaran Lengkap";
-            if (inputAlamat.value === "Walk-In / Ambil Sendiri di Kedai") {
-                inputAlamat.value = "";
-            }
-            inputAlamat.placeholder = "Masukkan alamat lengkap termasuk poskod";
-        }
+    if (jenis === "Walk-In") {
+        labelAlamat.textContent = "Nota / Lokasi Ambil Sendiri (Walk-In)";
+        // Kosongkan nilai supaya user boleh taip terus
+        inputAlamat.value = ""; 
+        // Letak ayat petunjuk dalam placeholder (teks kelabu yang auto hilang bila taip)
+        inputAlamat.placeholder = "Cth: Ambil di Kedai / Tapak Event Tersenarai";
+    } else {
+        labelAlamat.textContent = "Alamat Penghantaran Lengkap";
+        inputAlamat.value = "";
+        inputAlamat.placeholder = "Masukkan alamat lengkap termasuk poskod";
     }
+}
+
 
     window.onload = function() {
         fetch(GOOGLE_SCRIPT_URL)
