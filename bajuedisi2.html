@@ -60,33 +60,61 @@
         <p>Kod Produk: <strong>OWL916</strong></p>
     </div>
 
-    <!-- KOTAK SENARAI HARGA -->
+    <!-- KOTAK SENARAI HARGA (BARU) -->
     <div class="price-box">
-        <h3>🏷️ Senarai Harga Baju</h3>
+        <h3>🏷️ Senarai Harga Baju Lelong</h3>
         
-        <p><strong>🚚 Harga Termasuk Pos (Semenanjung):</strong></p>
+        <p><strong>🚚 Harga Pos (Semenanjung):</strong></p>
+        <p style="font-size: 11px; color: #666; margin-top: -2px;">*Harga termasuk kos pembungkusan & penghantaran</p>
         <ul>
-            <li>👨 <strong>Baju Lelaki:</strong> RM 40</li>
-            <li>🧕 <strong>Baju Muslimah:</strong> RM 45</li>
-            <li>👶 <strong>Baju Cilik:</strong> RM 40</li>
+            <li>👨‍💼 <strong>Baju Lelaki:</strong> RM 30</li>
+            <li>🧕 <strong>Baju Muslimah:</strong> RM 38</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 20</li>
         </ul>
 
-        <p><strong>🏬 Harga Walk-In / Ambil Sendiri:</strong></p>
+        <hr style="border: 0; border-top: 1px dashed #ccc; margin: 10px 0;">
+
+        <p><strong>🏬 Harga Walk-In / Terus Di Premis:</strong></p>
+        <p style="font-size: 12px; color: #4b5563; margin-top: 2px;">Sama untuk pembelian di:</p>
+        <p style="font-size: 12px; margin-left: 10px;">📍 Kedai Pok CKT Cafe</p>
+        <p style="font-size: 12px; margin-left: 10px;">📍 Tapak Kejohanan / Event</p>
+
+        <!-- KOTAK LOKASI EVENT DIBESARKAN -->
+        <div style="padding: 10px; margin: 10px 0; text-align: center; background-color: #fef3c7; border: 1px solid #fde68a; border-radius: 8px;">
+            <p style="font-size: 14px; font-weight: bold; color: #1e3a8a; margin-bottom: 4px;">
+                📍 LOKASI EVENT AKAN DATANG:
+            </p>
+            <p style="font-size: 16px; font-weight: bold; color: #b45309; letter-spacing: 0.5px; line-height: 1.4;">
+                Penang • Perak • Kedah • Perlis • Kuantan • Temerloh • Kelantan
+            </p>
+        </div>
+
         <ul>
-            <li>👨 <strong>Baju Lelaki:</strong> RM 35</li>
-            <li>🧕 <strong>Baju Muslimah:</strong> RM 40</li>
-            <li>👶 <strong>Baju Cilik:</strong> RM 35</li>
+            <li>👨‍💼 <strong>Baju Lelaki:</strong> RM 25</li>
+            <li>🧕 <strong>Baju Muslimah:</strong> RM 30</li>
+            <li>👶 <strong>Baju Cilik:</strong> RM 15</li>
         </ul>
     </div>
 
     <!-- GALERI GAMBAR -->
     <div class="section-title">📸 GALERI & REKA BENTUK BAJU <small style="font-weight:normal; font-size:11px; color:#666;">(Klik gambar untuk besarkan)</small></div>
     <div class="image-grid">
-        <div class="image-card" onclick="zoomImage('baju-depan.webp')"><img src="baju-depan.webp" alt="Pandangan Depan"><span>Pandangan Depan 🔍</span></div>
-        <div class="image-card" onclick="zoomImage('baju-belakang.webp')"><img src="baju-belakang.webp" alt="Pandangan Belakang"><span>Pandangan Belakang 🔍</span></div>
-        <div class="image-card" onclick="zoomImage('baju-lelaki.webp')"><img src="baju-lelaki.webp" alt="Koleksi Lelaki"><span>Koleksi Lelaki 🔍</span></div>
-        <div class="image-card" onclick="zoomImage('baju-muslimah.webp')"><img src="baju-muslimah.webp" alt="Koleksi Muslimah"><span>Koleksi Muslimah 🔍</span></div>
-        <div class="image-card chart-size-card" onclick="zoomImage('chart-size.webp')"><img src="chart-size.webp" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki, Muslimah & Cilik) 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-lelaki.jpg')">
+            <img src="baju-lelaki.jpg" alt="Koleksi Lelaki">
+            <span>👨 Koleksi Lelaki 🔍</span>
+        </div>
+        <div class="image-card" onclick="zoomImage('baju-muslimah.jpg')">
+            <img src="baju-muslimah.jpg" alt="Koleksi Muslimah">
+            <span>🧕 Koleksi Muslimah 🔍</span>
+        </div>
+        <div class="image-card" onclick="zoomImage('baju-cilik.jpg')">
+            <img src="baju-cilik.jpg" alt="Koleksi Cilik">
+            <span>👶 Koleksi Cilik 🔍</span>
+        </div>
+        <div class="image-card chart-size-card" onclick="zoomImage('chart-size.webp')">
+            <img src="chart-size.webp" alt="Carta Saiz">
+            <span>📏 Carta Saiz (Lelaki, Muslimah & Cilik) 🔍</span>
+        </div>
     </div>
 
     <!-- POPUP MODAL UNTUK GAMBAR BESAR -->
@@ -131,7 +159,7 @@
 
         <button type="button" class="btn-add" onclick="addItemRow()">+ Tambah Baju Lain (Kategori / Saiz Berbeza)</button>
 
-                <div class="section-title">🧾 BUKTI PEMBAYARAN</div>
+        <div class="section-title">🧾 BUKTI PEMBAYARAN</div>
         
         <!-- KOTAK MAKLUMAT AKAUN BANK -->
         <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; margin-bottom: 12px; text-align: center;">
@@ -146,13 +174,12 @@
             <input type="file" id="resit" accept="image/*" required>
         </div>
 
-
         <button type="submit" id="btnSubmit" class="btn-submit">Hantar & Terus Ke WhatsApp</button>
     </form>
 </div>
 
 <script>
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwNWjbVhAyExI0j9hrRB-_0Tg-GII7GS28t-GwQbNydG_3kMkFcy466dmMVl77hvbP/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyVGBqW_ac46XY-TTBvkwOJUcLaFY6W3NvbGBIw5alKmLa9NBTf_AXluF-SDeWg-LS/exec";
     const SELLER_WHATSAPP = "60129452631"; 
 
     let availableStocks = {};
@@ -184,13 +211,11 @@
 
         if (jenis === "Walk-In") {
             labelAlamat.textContent = "Nota / Lokasi Ambil Sendiri (Walk-In)";
-            inputAlamat.value = "Walk-In / Ambil Sendiri di Kedai";
-            inputAlamat.placeholder = "Cth: Ambil di Kedai / Lokasi Serahan";
+            inputAlamat.value = ""; 
+            inputAlamat.placeholder = "Cth: Ambil di Kedai / Tapak Event Tersenarai";
         } else {
             labelAlamat.textContent = "Alamat Penghantaran Lengkap";
-            if (inputAlamat.value === "Walk-In / Ambil Sendiri di Kedai") {
-                inputAlamat.value = "";
-            }
+            inputAlamat.value = "";
             inputAlamat.placeholder = "Masukkan alamat lengkap termasuk poskod";
         }
     }
