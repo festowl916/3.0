@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borang Tempahan Baju OWL916 3.0 V1</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; }
+        body { background-color: #f4f7f6; color: #333; display: flex; justify-content: center; padding: 20px; }
+        .container { background-color: #ffffff; width: 100%; max-width: 650px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #25d366; padding-bottom: 15px; }
+        .header h2 { color: #1e3a8a; font-size: 22px; margin-bottom: 5px; }
+        .badge { background-color: #ef4444; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; display: inline-block; margin-bottom: 8px; }
+        
+        /* KOTAK HARGA (DITAMBAH BAIK) */
+        .price-box { background-color: #ffffff; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 20px; font-size: 13px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .price-box h2 { color: #1e3a8a; text-align: center; margin-bottom: 15px; font-size: 18px; }
+        .price-card { background: #f8fafc; padding: 12px 15px; border-radius: 8px; border-left: 4px solid #3b82f6; margin-bottom: 12px; }
+        .walkin-card { border-left-color: #10b981; }
+        .price-card h3 { font-size: 15px; color: #1e293b; margin-bottom: 4px; }
+        .price-card .note { font-size: 11px; color: #64748b; margin-bottom: 8px; }
+        .price-card .subtitle { font-size: 12px; color: #334155; margin-top: 4px; }
+        .price-list { list-style: none; padding-left: 0; margin: 8px 0; }
+        .price-list li { margin-bottom: 4px; font-size: 13px; }
+        .location-list { list-style: none; padding-left: 10px; font-size: 12px; color: #475569; margin: 4px 0 8px 0; }
+        .upcoming-locations { background: #f1f5f9; padding: 8px; border-radius: 6px; font-size: 11px; color: #334155; margin: 8px 0; text-align: center; }
+        .divider { border: 0; height: 1px; background: #e2e8f0; margin: 15px 0; }
+
+        .section-title { font-size: 14px; font-weight: bold; color: #1e3a8a; margin: 15px 0 10px 0; border-left: 4px solid #25d366; padding-left: 8px; }
+        
+        /* GALERI GAMBAR */
+        .image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
+        .image-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fafafa; text-align: center; cursor: pointer; transition: transform 0.2s; }
+        .image-card:hover { transform: scale(1.02); }
+        .image-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+        .image-card span { display: block; padding: 5px; font-size: 11px; font-weight: 600; color: #4b5563; background-color: #f3f4f6; }
+        .chart-size-card { grid-column: span 2; }
+        .chart-size-card img { height: auto; max-height: 300px; object-fit: contain; }
+
+        /* MODAL POPUP UNTUK ZOOM GAMBAR */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { max-width: 95%; max-height: 90vh; border-radius: 8px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .close-btn { position: absolute; top: 15px; right: 25px; color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; }
+
+        /* KOTAK ITEM BAJU */
+        .item-row { background: #f9fafb; border: 1px solid #e5e7eb; padding: 15px; border-radius: 8px; margin-bottom: 12px; position: relative; }
+        .btn-remove { position: absolute; top: 10px; right: 10px; background: #ef4444; color: white; border: none; padding: 3px 8px; border-radius: 4px; font-size: 12px; cursor: pointer; }
+        
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #374151; }
+        input, select, textarea { width: 100%; padding: 9px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; }
+        .form-row { display: flex; gap: 10px; }
+        .form-row .form-group { flex: 1; }
+
+        .btn-add { background-color: #3b82f6; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-bottom: 20px; font-size: 14px; }
+        .btn-add:hover { background-color: #2563eb; }
+
+        .btn-submit { width: 100%; background-color: #25d366; color: #ffffff; border: none; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-submit:hover { background-color: #1eb857; }
+        .btn-submit:disabled { background-color: #9ca3af; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <span class="badge">DESIGN OWL EDISI 1</span>
+        <h2>BORANG TEMPAHAN LELONG BAJU V1</h2>
+        <p>Kod Produk: <strong>OWL916 V1</strong></p>
+    </div>
+
+    <!-- KOTAK SENARAI HARGA LELONG -->
+    <div class="price-box">
+        <h2>🏷️ Senarai Harga Baju Lelong</h2>
+        
+        <!-- BAHAGIAN 1: HARGA POS -->
+        <div class="price-card delivery-card">
+            <h3>🚚 Harga Pos (Semenanjung)</h3>
+            <p class="note">*Harga termasuk kos pembungkusan & penghantaran</p>
+            <ul class="price-list">
+                <li>👨‍💼 <strong>Baju Lelaki:</strong> RM 38</li>
+                <li>🧕 <strong>Baju Muslimah:</strong> RM 40</li>
+                <li>👶 <strong>Baju Cilik:</strong> RM 38</li>
+            </ul>
+        </div>
+
+        <hr class="divider">
+
+        <!-- BAHAGIAN 2: HARGA WALK-IN (KEDAI & EVENT) -->
+        <div class="price-card walkin-card">
+            <h3>🏬 Harga Walk-In / Terus Di Premis</h3>
+            <p class="subtitle"><strong>Sama untuk pembelian di:</strong></p>
+            <ul class="location-list">
+                <li>📍 Kedai Pok CKT Cafe</li>
+                <li>📍 Tapak Kejohanan / Event</li>
+            </ul>
+
+            <div class="upcoming-locations">
+                <p><strong>Lokasi Event Akan Datang:</strong></p>
+                <p>Penang • Perak • Kedah • Perlis • Kuantan • Temerloh • Kelantan</p>
+            </div>
+
+            <ul class="price-list highlight-price">
+                <li>👨‍💼 <strong>Baju Lelaki:</strong> RM 25</li>
+                <li>🧕 <strong>Baju Muslimah:</strong> RM 30</li>
+                <li>👶 <strong>Baju Cilik:</strong> RM 20</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- GALERI GAMBAR -->
+    <div class="section-title">📸 GALERI & REKA BENTUK BAJU <small style="font-weight:normal; font-size:11px; color:#666;">(Klik gambar untuk besarkan)</small></div>
+    <div class="image-grid">
+        <div class="image-card" onclick="zoomImage('baju-depan.webp')"><img src="baju-depan.webp" alt="Pandangan Depan"><span>Pandangan Depan 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-belakang.webp')"><img src="baju-belakang.webp" alt="Pandangan Belakang"><span>Pandangan Belakang 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-lelaki.webp')"><img src="baju-lelaki.webp" alt="Koleksi Lelaki"><span>Koleksi Lelaki 🔍</span></div>
+        <div class="image-card" onclick="zoomImage('baju-muslimah.webp')"><img src="baju-muslimah.webp" alt="Koleksi Muslimah"><span>Koleksi Muslimah 🔍</span></div>
+        <div class="image-card chart-size-card" onclick="zoomImage('chart-size.webp')"><img src="chart-size.webp" alt="Carta Saiz"><span>📏 Carta Saiz (Lelaki, Muslimah & Cilik) 🔍</span></div>
+    </div>
+
+    <!-- POPUP MODAL UNTUK GAMBAR BESAR -->
+    <div id="imageModal" class="modal" onclick="closeZoom()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Gambar Terbesar">
+    </div>
+
+    <!-- BORANG TEMPAHAN -->
+    <form id="orderForm">
+        <div class="section-title">👤 MAKLUMAT PELANGGAN</div>
+        
+        <div class="form-group">
+            <label for="nama">Nama Penuh</label>
+            <input type="text" id="nama" required placeholder="Masukkan nama anda">
+        </div>
+
+        <div class="form-group">
+            <label for="telefon">Nombor Telefon (WhatsApp)</label>
+            <input type="tel" id="telefon" required placeholder="Cth: 0123456789">
+        </div>
+
+        <!-- KAEDAH PENGHANTARAN -->
+        <div class="form-group">
+            <label for="jenisPenghantaran">Pilihan Penghantaran</label>
+            <select id="jenisPenghantaran" onchange="toggleAlamatOption()" required>
+                <option value="Pos">🚚 Pos (Semenanjung Malaysia)</option>
+                <option value="Walk-In">🏬 Walk-In / Ambil Sendiri</option>
+            </select>
+        </div>
+
+        <!-- ALAMAT ATAU NOTIS WALK IN -->
+        <div class="form-group" id="alamatContainer">
+            <label id="labelAlamat" for="alamat">Alamat Penghantaran Lengkap</label>
+            <textarea id="alamat" rows="2" required placeholder="Masukkan alamat lengkap termasuk poskod"></textarea>
+        </div>
+
+        <div class="section-title">👕 PILIHAN BAJU</div>
+        <div id="itemsContainer">
+            <!-- Item Baju Didefinisikan Oleh JavaScript -->
+        </div>
+
+        <button type="button" class="btn-add" onclick="addItemRow()">+ Tambah Baju Lain (Kategori / Saiz Berbeza)</button>
+
+        <div class="section-title">🧾 BUKTI PEMBAYARAN</div>
+        
+        <!-- KOTAK MAKLUMAT AKAUN BANK -->
+        <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; margin-bottom: 12px; text-align: center;">
+            <p style="font-size: 12px; color: #166534; font-weight: bold; margin-bottom: 4px;">Sila Buat Pembayaran Ke Akaun Berikut:</p>
+            <p style="font-size: 15px; font-weight: bold; color: #15803d; margin: 2px 0;">Bank: RHB</p>
+            <p style="font-size: 16px; font-weight: bold; color: #1e3a8a; letter-spacing: 1px; margin: 4px 0;">NO Akaun: 26301500025817</p>
+            <p style="font-size: 12px; color: #374151;">Penama: <strong>POK ARCHERY CENTRE</strong></p>
+        </div>
+
+        <div class="form-group">
+            <label for="resit">Muat Naik Resit / Bukti Pembayaran (Imej sahaja)</label>
+            <input type="file" id="resit" accept="image/*" required>
+        </div>
+
+        <button type="submit" id="btnSubmit" class="btn-submit">Hantar & Terus Ke WhatsApp</button>
+    </form>
+</div>
+
+<script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwNWjbVhAyExI0j9hrRB-_0Tg-GII7GS28t-GwQbNydG_3kMkFcy466dmMVl77hvbP/exec";
+    const SELLER_WHATSAPP = "60129452631"; 
+
+    let availableStocks = {};
+    let itemCounter = 0;
+
+    const sizesMap = {
+        "Lelaki": ["S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+        "Muslimah": ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+        "Cilik": ["S", "M", "L"]
+    };
+
+    /* FUNGSI ZOOM GAMBAR */
+    function zoomImage(src) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        modal.style.display = "flex";
+        modalImg.src = src;
+    }
+
+    function closeZoom() {
+        document.getElementById("imageModal").style.display = "none";
+    }
+
+    /* FUNGSI TOGGLE PILIHAN ALAMAT / WALK-IN */
+    function toggleAlamatOption() {
+        const jenis = document.getElementById("jenisPenghantaran").value;
+        const labelAlamat = document.getElementById("labelAlamat");
+        const inputAlamat = document.getElementById("alamat");
+
+        if (jenis === "Walk-In") {
+            labelAlamat.textContent = "Nota / Lokasi Ambil Sendiri (Walk-In)";
+            inputAlamat.value = "Walk-In / Ambil Sendiri di Kedai";
+            inputAlamat.placeholder = "Cth: Ambil di Kedai / Lokasi Serahan";
+        } else {
+            labelAlamat.textContent = "Alamat Penghantaran Lengkap";
+            if (inputAlamat.value === "Walk-In / Ambil Sendiri di Kedai") {
+                inputAlamat.value = "";
+            }
+            inputAlamat.placeholder = "Masukkan alamat lengkap termasuk poskod";
+        }
+    }
+
+    window.onload = function() {
+        fetch(GOOGLE_SCRIPT_URL)
+            .then(res => res.json())
+            .then(data => {
+                availableStocks = data;
+                addItemRow();
+            })
+            .catch(err => {
+                alert("Gagal membaca data stok dari Google Sheet.");
+                addItemRow();
+            });
+    };
+
+    function addItemRow() {
+        itemCounter++;
+        const container = document.getElementById('itemsContainer');
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item-row';
+        itemDiv.id = `item_row_${itemCounter}`;
+
+        itemDiv.innerHTML = `
+            ${itemCounter > 1 ? `<button type="button" class="btn-remove" onclick="removeItemRow(${itemCounter})">Padam</button>` : ''}
+            <div style="font-weight:bold; font-size:12px; margin-bottom:8px; color:#1e3a8a;">Baju #${itemCounter}</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kategori Baju</label>
+                    <select class="item-kategori" onchange="updateSizeOptions(${itemCounter})" required>
+                        <option value="">-- Pilih --</option>
+                        <option value="Lelaki">Lelaki</option>
+                        <option value="Muslimah">Muslimah</option>
+                        <option value="Cilik">Cilik</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Saiz</label>
+                    <select class="item-saiz" id="saiz_${itemCounter}" required>
+                        <option value="">-- Pilih Kategori Dulu --</option>
+                    </select>
+                </div>
+                <div class="form-group" style="max-width:90px;">
+                    <label>Kuantiti</label>
+                    <input type="number" class="item-qty" min="1" value="1" required>
+                </div>
+            </div>
+        `;
+        container.appendChild(itemDiv);
+    }
+
+    function updateSizeOptions(rowId) {
+        const row = document.getElementById(`item_row_${rowId}`);
+        const kat = row.querySelector('.item-kategori').value;
+        const saizSelect = row.querySelector('.item-saiz');
+
+        saizSelect.innerHTML = '<option value="">-- Pilih Saiz --</option>';
+
+        if (!kat) {
+            saizSelect.innerHTML = '<option value="">-- Pilih Kategori Dulu --</option>';
+            return;
+        }
+
+        const currentSizes = sizesMap[kat] || [];
+
+        currentSizes.forEach(saiz => {
+            const itemKey = `${kat}-${saiz}`;
+            const stockQty = availableStocks[itemKey] !== undefined ? parseInt(availableStocks[itemKey]) : 0;
+            
+            const option = document.createElement('option');
+            option.value = saiz;
+
+            if (stockQty > 0) {
+                option.textContent = `${saiz} (Stok: ${stockQty})`;
+            } else {
+                option.textContent = `${saiz} (Habis Stok)`;
+                option.disabled = true;
+            }
+
+            saizSelect.appendChild(option);
+        });
+    }
+
+    function removeItemRow(id) {
+        const row = document.getElementById(`item_row_${id}`);
+        if(row) row.remove();
+    }
+
+    function compressAndGetBase64(file, callback) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const MAX_WIDTH = 800;
+
+                if (width > MAX_WIDTH) {
+                    height = Math.round((height * MAX_WIDTH) / width);
+                    width = MAX_WIDTH;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const base64Str = canvas.toDataURL('image/jpeg', 0.6).split(',')[1];
+                callback(base64Str);
+            };
+        };
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const btn = document.getElementById('btnSubmit');
+        btn.disabled = true;
+        btn.innerText = "Memproses Gambar Resit...";
+
+        const rows = document.querySelectorAll('.item-row');
+        let itemsData = [];
+        let waItemList = "";
+
+        rows.forEach((row, index) => {
+            const kat = row.querySelector('.item-kategori').value;
+            const saiz = row.querySelector('.item-saiz').value;
+            const qty = row.querySelector('.item-qty').value;
+
+            itemsData.push({ kategori: kat, saiz: saiz, kuantiti: qty });
+            waItemList += `*Baju #${index + 1}:* ${kat} | Saiz ${saiz} | ${qty} helai%0A`;
+        });
+
+        const jenisPenghantaran = document.getElementById('jenisPenghantaran').value;
+
+        const fileInput = document.getElementById('resit');
+        const file = fileInput.files[0];
+
+        if (file) {
+            compressAndGetBase64(file, function(base64Data) {
+                btn.innerText = "Mengirim Tempahan...";
+                const formData = {
+                    nama: document.getElementById('nama').value,
+                    telefon: document.getElementById('telefon').value,
+                    jenisPenghantaran: jenisPenghantaran,
+                    alamat: document.getElementById('alamat').value,
+                    items: itemsData,
+                    resitBase64: base64Data,
+                    resitMimeType: "image/jpeg"
+                };
+
+                sendData(formData, waItemList, btn);
+            });
+        } else {
+            alert("Sila pilih fail resit.");
+            btn.disabled = false;
+            btn.innerText = "Hantar & Terus Ke WhatsApp";
+        }
+    });
+
+    function sendData(formData, waItemList, btn) {
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.result === "success") {
+                const message = `*TEMPAHAN BAJU TERBARU (OWL916)*%0A%0A` +
+                    `*Nama:* ${encodeURIComponent(formData.nama)}%0A` +
+                    `*No Tel:* ${encodeURIComponent(formData.telefon)}%0A` +
+                    `*Jenis Penghantaran:* ${encodeURIComponent(formData.jenisPenghantaran)}%0A` +
+                    `*Alamat/Nota:* ${encodeURIComponent(formData.alamat)}%0A%0A` +
+                    `*SENARAI TEMPAHAN:*%0A${waItemList}%0A` +
+                    `Saya dah muat naik resit pembayaran dalam borang. Terima kasih!`;
+
+                window.location.href = `https://wa.me/${SELLER_WHATSAPP}?text=${message}`;
+            } else {
+                alert(res.message || "Ralat semasa menolak stok!");
+                btn.disabled = false;
+                btn.innerText = "Hantar & Terus Ke WhatsApp";
+            }
+        })
+        .catch(err => {
+            alert("Ralat sambungan. Sila cuba lagi!");
+            btn.disabled = false;
+            btn.innerText = "Hantar & Terus Ke WhatsApp";
+        });
+    }
+</script>
+
+</body>
+</html>
